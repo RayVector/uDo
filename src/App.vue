@@ -1,28 +1,35 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
+
+<div id="app">
+  <todoListWrap></todoListWrap>
+</div>
+
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import todoListWrap from './components/TodoListWrap.vue'
 
 export default {
   name: 'app',
-  components: {
-    HelloWorld
-  }
+  components : {
+    todoListWrap
+  },
 }
 </script>
 
 <style lang="scss">
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+
+*{
+  margin: 0;
+  padding: 0;
+  outline: none;
+
+}
+#app{
+  padding: 1.25rem;
+  color: rgba(0,0,0,0.8)
+}
+#app > *{
+  transition: .3s;
 }
 </style>
