@@ -1,6 +1,7 @@
 {
-  "name": "vuelesson",
-  "short_name": "vuelesson",
+  "name": "uDo",
+  "short_name": "uDo",
+  "lang": "en-US",
   "icons": [
     {
       "src": "./img/icons/android-chrome-192x192.png",
@@ -15,6 +16,7 @@
   ],
   "start_url": "./index.html",
   "display": "standalone",
-  "background_color": "#000000",
-  "theme_color": "#4DBA87"
+  "description": "Write you ideas and todo task to this app smart and quickly. Keep your information everywhere!",
+  "background_color": "#42b983",
+  "theme_color": "#42b983"
 }
