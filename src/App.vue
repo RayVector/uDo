@@ -34,25 +34,25 @@
     },
     methods: {
       getHelp() {
-        alert( "To delete ALL notes click recycle button, swipe left to edit note, swipe right to delete note." );
-      }
+        alert("To delete ALL notes click recycle button, swipe left to edit note, swipe right to delete note.");
+      },
+
     }
   }
 </script>
 
 <style lang="scss">
-
   * {
     margin: 0;
     padding: 0;
     outline: none;
-
   }
 
   #app {
     margin: unset;
     color: rgba(0, 0, 0, 0.8)
   }
+
   body {
     height: 100vh;
   }
@@ -69,6 +69,7 @@
     flex-direction: column;
     background-color: #e7e7e7;
   }
+
   .menu {
     display: flex;
     justify-content: space-between;
@@ -76,11 +77,13 @@
     border-bottom: 0.0625rem solid rgba(0, 0, 0, .5);
     padding-bottom: .5rem;
   }
+
   .closeAppBtn {
     font-size: 2rem;
     cursor: pointer;
   }
-  .helpBtn{
+
+  .helpBtn {
     cursor: pointer;
     font-size: 1.5rem;
     height: 1.5rem;

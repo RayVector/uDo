@@ -1,10 +1,13 @@
 <template>
 
-  <ul class="todoWrap">
+  <div class="todoWrap">
 
 
     <p class="todoTitle">
-      To Do:
+      <span
+        @click="getAuthorInfo">
+        To Do:
+      </span>
       <button
         class="todoClearBtn"
         @click='clearCashe'
@@ -18,14 +21,16 @@
       <button class="todoBtn" @click='addNewTask'>
         &#9998;
       </button>
-      <input
-        type="text"
-        class="addTaskField"
-        placeholder="Task name..."
-        v-model="val"
-        maxlength="100"
-        required
-      >
+      <label class="addTaskFieldWrap">
+        <input
+          type="text"
+          class="addTaskField"
+          placeholder="Task name..."
+          v-model="val"
+          maxlength="100"
+          required
+        >
+      </label>
     </div>
     <draggable
       tag="ul"
@@ -39,13 +44,13 @@
       <todoListItem
         v-for="(item, index) in getList"
         :item="item"
-        :key="index"
+        :key="item.id"
         @delete="delTaskItem(item)"
         @update="updateItem"
         @completed="completeItem"
       ></todoListItem>
     </draggable>
-  </ul>
+  </div>
 
 </template>
 
@@ -70,7 +75,7 @@
       addNewTask() {
         if (this.val !== '') {
           let newIndex = this.todoList.length > 0 ? (Math.max(...this.todoList.map(e => e.id)) + 1) : 0;
-          this.todoList.push({txt: this.val, id: newIndex, checked: false});
+          this.todoList.unshift({txt: this.val, id: newIndex, checked: false});
         }
         this.val = '';
       },
@@ -84,7 +89,10 @@
       },
       completeItem(completedItem) {
         const item = this.todoList.find(i => i.id === completedItem.id);
-        item.checked = completedItem.checked
+        item.checked = completedItem.checked;
+        this.todoList.sort( (a, b)=> {
+          return a.checked - b.checked
+        })
       },
       moveItem() {
         localStorage.todoList = JSON.stringify(this.todoList);
@@ -97,6 +105,9 @@
             localStorage.clear();
           }
         }
+      },
+      getAuthorInfo() {
+        alert("created by Ray Vector. rayvectorspqr@yahoo.com");
       },
     },
     components: {
@@ -132,8 +143,10 @@
 
 <style scoped lang="scss">
   .chosen {
+    transform: scale(1.05,1.05);
     transition: .2s;
     background-color: rgba(0, 0, 0, 0.2);
+    z-index: 999;
   }
   .todoWrap {
     position: relative;
@@ -159,6 +172,9 @@
 
   .todoClearBtn:hover {
     color: rgba(255, 5, 5, 0.8);
+    -webkit-box-shadow: 0 5px 30px 0 rgba(50, 50, 50, 0.36);
+    -moz-box-shadow:    0 5px 30px 0 rgba(50, 50, 50, 0.36);
+    box-shadow:         0 5px 30px 0 rgba(50, 50, 50, 0.36);
   }
 
   .todoTitle {
@@ -189,23 +205,28 @@
     backface-visibility: hidden;
     font-size: 1rem;
   }
-
   .todoBtn:hover {
     color: rgba(255, 255, 255, 1);
+    -webkit-box-shadow: 0 5px 30px 0 rgba(50, 50, 50, 0.36);
+    -moz-box-shadow:    0 5px 30px 0 rgba(50, 50, 50, 0.36);
+    box-shadow:         0 5px 30px 0 rgba(50, 50, 50, 0.36);
   }
-
-  .addTaskField {
+  .addTaskFieldWrap {
     flex-grow: 2;
+  }
+  .addTaskField {
+    width: 100%;
     padding-bottom: 1rem;
     background: transparent;
-    border: none;
-    border-bottom: 0.0325rem solid rgba(0, 0, 0, 0.5);
     transition: .3s;
-    font-size: 0.8rem;
-  }
-  .addTaskField {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-weight: 500;
+    font-size: 1rem;
+    color: rgb(84, 84, 84);
+    border: none;
     border-radius: 0;
-
     -webkit-border-radius: 0;
     border-bottom: 0.0325rem solid rgba(0, 0, 0, 0.5);
     -webkit-border-bottom: 0.0325rem solid rgba(0, 0, 0, 0.5);
@@ -217,9 +238,12 @@
     -webkit-border-left: 0;
     -webkit-appearance: none;
   }
-
-  .addTaskField:hover {
-    border-bottom: 0.0325rem solid rgba(0, 0, 0, 1);
+  .addTaskField:focus {
+    background: rgba(50, 50, 50, 0.1);
+    border: 0;
+    -webkit-box-shadow: 0 5px 30px 0 rgba(50, 50, 50, 0.36);
+    -moz-box-shadow:    0 5px 30px 0 rgba(50, 50, 50, 0.36);
+    box-shadow:         0 5px 30px 0 rgba(50, 50, 50, 0.36);
   }
 
   .addTaskField:focus {

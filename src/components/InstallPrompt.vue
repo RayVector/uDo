@@ -38,7 +38,7 @@
   };
 </script>
 
-<style scoped lang="scss" >
+<style scoped lang="scss">
   .installAppPup {
     position: absolute;
     width: 20%;
@@ -51,16 +51,19 @@
     justify-content: center;
     align-items: center;
   }
+
   .close {
     margin-right: 0.5rem;
     font-size: 1.5rem;
     cursor: pointer;
   }
+
   .installAppTxt {
     display: flex;
     justify-content: flex-start;
     color: rgb(84, 84, 84);
   }
+
   .installLink {
     margin-right: 0.5rem;
     color: rgb(84, 84, 84);
@@ -69,6 +72,7 @@
   .installAppFade-enter-active, .installAppFade-leave-active {
     transition: opacity .5s;
   }
+
   .installAppFade-enter, .installAppFade-leave-to {
     opacity: 0;
   }
@@ -79,8 +83,8 @@
       bottom: 2rem;
       width: 80%;
       -webkit-box-shadow: 0 10px 29px 0 rgba(50, 50, 50, 0.44);
-      -moz-box-shadow:    0 10px 29px 0 rgba(50, 50, 50, 0.44);
-      box-shadow:         0 10px 29px 0 rgba(50, 50, 50, 0.44);
+      -moz-box-shadow: 0 10px 29px 0 rgba(50, 50, 50, 0.44);
+      box-shadow: 0 10px 29px 0 rgba(50, 50, 50, 0.44);
     }
 
   }

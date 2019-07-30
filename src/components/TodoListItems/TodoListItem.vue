@@ -2,6 +2,7 @@
   <v-touch
     tag="li"
     class="todoItemWrap handle"
+    :class="{completed:completeItem, editableMod:isEditable}"
     v-on:swipeleft="onSwipeLeft"
     v-on:swiperight="$emit('delete')"
   >
@@ -41,7 +42,7 @@
       return {
         name: '',
         isEditable: false,
-        checked: false,
+        checked: Boolean,
       }
     },
     computed: {
@@ -56,11 +57,15 @@
     methods: {
       update() {
         this.isEditable = false;
-        this.$emit('update', {txt: this.name, id: this.item.id})
+        if (this.name !== '') {
+          this.$emit('update', {txt: this.name, id: this.item.id})
+        }
+
       },
       onSwipeLeft() {
         if (this.isEditable === false) {
           this.isEditable = true;
+          this.$nextTick(() => {this.$el.querySelector('input[type=text]').focus()})
         }
       },
     },
@@ -71,6 +76,7 @@
         },
         deep: true
       }
+
     }
 
   }
@@ -79,8 +85,7 @@
 <style scoped lang="scss">
 
   .todoItemWrap {
-    margin-bottom: 1rem;
-    padding: 0.4rem;
+    padding: 0.8rem 0.5rem;
     border-bottom: 0.0325rem solid rgba(0, 0, 0, 0.5);
     display: flex;
     justify-content: space-between;
@@ -95,7 +100,10 @@
     font-size: 1rem;
     font-weight: bold;
   }
-
+  .completeTask {
+    width: 1rem;
+    height: 1rem;
+  }
 
   .todoItemNameWrap {
     width: 90%;
@@ -116,13 +124,15 @@
     font-weight: 500;
     font-size: 1.3rem;
     border: none;
-    opacity: 1;
     background-color: unset;
     color: darkred;
   }
-
+  .editableMod {
+    -webkit-box-shadow: 0 5px 30px 0 rgba(50, 50, 50, 0.36);
+    -moz-box-shadow:    0 5px 30px 0 rgba(50, 50, 50, 0.36);
+    box-shadow:         0 5px 30px 0 rgba(50, 50, 50, 0.36);
+  }
   .todoItemName:disabled {
-    opacity: .8;
     background-color: unset;
     color: rgb(84, 84, 84);
   }
@@ -145,8 +155,12 @@
   }
 
   .deleteTodoItem:hover {
+    text-shadow: 0 9px 10px rgba(150, 150, 150, 1);
     color: rgba(255, 5, 5, 0.8);
   }
-
+  .completed {
+    background-color: #cecece61;
+    opacity: .5;
+  }
 
 </style>

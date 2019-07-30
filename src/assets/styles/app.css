@@ -7,3 +7,10 @@ button {
     border: none;
     background: unset;
 }
+
+input,
+button,
+select,
+a {
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+}
