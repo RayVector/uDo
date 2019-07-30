@@ -1,33 +1,19 @@
 <template>
 
   <div id="app" class="mainApp">
+    <install-prompt></install-prompt>
     <div class="menu">
       <button
         class="closeAppBtn"
         type="button"
-        onclick="window.open('', '_self', ''); window.close();">
+        onclick="window.close();">
         &#x292B;
       </button>
       <button
-        class="installApp"
-        @click="callInstallPrompt">
-        <svg
-          enable-background="new 0 0 48 48"
-          height="1rem"
-          id="Layer_4"
-          version="1.1"
-          viewBox="0 0 48 48"
-          width="1rem"
-          xml:space="preserve"
-          xmlns="http://www.w3.org/2000/svg">
-        <g>
-          <polygon fill="#241F20"
-                   points="44,37.984 44,44 4,44 4,37.984 0,37.984 0,44 0,48 4,48 44,48 48,48 48,44 48,37.984  "></polygon>
-          <polygon
-            fill="#241F20"
-            points="29,25 29,0 27,0 21,0 19,0 19,25 13.046,25 24,40 34.954,25  "></polygon>
-        </g>
-      </svg>
+        class="helpBtn"
+        @click="getHelp"
+      >
+        ?
       </button>
     </div>
     <todoListWrap></todoListWrap>
@@ -37,43 +23,19 @@
 
 <script>
   import todoListWrap from './components/TodoListWrap.vue'
-
-  let installPromptEvent;
-
+  import InstallPrompt from './components/InstallPrompt';
 
   export default {
 
     name: 'app',
     components: {
-      todoListWrap
+      todoListWrap,
+      InstallPrompt
     },
     methods: {
-      callInstallPrompt() {
-        installPromptEvent.prompt();
-
-        installPromptEvent.userChoice
-          .then((choiceResult) => {
-            if (choiceResult.outcome === 'accepted') {
-              console.log('... installation');
-            } else {
-              console.log('cancel');
-            }
-            installPromptEvent = null;
-          });
+      getHelp() {
+        alert( "To delete ALL notes click recycle button, swipe left to edit note, swipe right to delete note." );
       }
-    },
-    mounted() {
-      installPromptEvent.prompt();
-
-      installPromptEvent.userChoice
-        .then((choiceResult) => {
-          if (choiceResult.outcome === 'accepted') {
-            console.log('... installation');
-          } else {
-            console.log('cancel');
-          }
-          installPromptEvent = null;
-        });
     }
   }
 </script>
@@ -88,8 +50,11 @@
   }
 
   #app {
-    margin: 1.25rem;
+    margin: unset;
     color: rgba(0, 0, 0, 0.8)
+  }
+  body {
+    height: 100vh;
   }
 
   #app > * {
@@ -97,11 +62,11 @@
   }
 
   .mainApp {
-    padding: 1rem;
     display: flex;
+    padding: 1rem;
+    width: unset;
+    height: 100%;
     flex-direction: column;
-    width: 18.75rem;
-    height: 26.875rem;
     background-color: #e7e7e7;
   }
   .menu {
@@ -112,28 +77,24 @@
     padding-bottom: .5rem;
   }
   .closeAppBtn {
-    background-color: unset;
-    border: unset;
     font-size: 2rem;
+    cursor: pointer;
   }
-  .installApp {
-    background-color: unset;
-    border: unset;
-  }
-  .installApp svg {
+  .helpBtn{
+    cursor: pointer;
+    font-size: 1.5rem;
     height: 1.5rem;
     width: 1.5rem;
   }
 
-  @media screen and (max-width: 1125px) {
+  @media screen and (min-width: 1920px) {
+
     #app {
-      margin: 0;
+      margin: 1.25rem;
     }
     .mainApp {
-      padding: 1.8rem;
-      width: 100%;
-      height: 100vh;
-      background-color: #e7e7e7;
+      width: 18.75rem;
+      height: 26.875rem;
     }
   }
 </style>

@@ -23,23 +23,34 @@
         class="addTaskField"
         placeholder="Task name..."
         v-model="val"
-        maxlength="20"
+        maxlength="100"
+        required
       >
     </div>
-    <div class="todoItemsList">
+    <draggable
+      tag="ul"
+      class="todoItemsList"
+      v-model="todoList"
+      handle=".handle"
+      @start="drag=true"
+      @end="moveItem"
+      :options="{delay:600, chosenClass: 'chosen'}"
+    >
       <todoListItem
-        v-for="(item, index) in todoList"
-        :name="item"
+        v-for="(item, index) in getList"
+        :item="item"
         :key="index"
-        @delete="delTaskItem(index)"
-        @update="updateItem($event, index)"
+        @delete="delTaskItem(item)"
+        @update="updateItem"
+        @completed="completeItem"
       ></todoListItem>
-    </div>
+    </draggable>
   </ul>
 
 </template>
 
 <script>
+  import draggable from 'vuedraggable'
   import todoListItem from './TodoListItems/TodoListItem.vue'
 
   export default {
@@ -50,62 +61,83 @@
         todoList: [],
       }
     },
+    computed: {
+      getList() {
+        return this.todoList
+      }
+    },
     methods: {
       addNewTask() {
         if (this.val !== '') {
-          this.todoList.push(this.val);
+          let newIndex = this.todoList.length > 0 ? (Math.max(...this.todoList.map(e => e.id)) + 1) : 0;
+          this.todoList.push({txt: this.val, id: newIndex, checked: false});
         }
         this.val = '';
       },
-      delTaskItem(id) {
-        this.todoList.splice(id, 1);
+      delTaskItem(deletedItem) {
+        const item = this.todoList.findIndex(i => i.id === deletedItem.id);
+        this.todoList.splice(item, 1);
       },
-      updateItem(name, index) {
-        console.log( name, index)
+      updateItem(updatedItem) {
+        const item = this.todoList.find(i => i.id === updatedItem.id);
+        item.txt = updatedItem.txt
+      },
+      completeItem(completedItem) {
+        const item = this.todoList.find(i => i.id === completedItem.id);
+        item.checked = completedItem.checked
+      },
+      moveItem() {
+        localStorage.todoList = JSON.stringify(this.todoList);
       },
       clearCashe() {
-
         if (localStorage.getItem('todoList') !== '') {
-
           let isAccept = confirm('Do You want to clear ALL notes?');
           if (isAccept) {
             this.todoList = [];
             localStorage.clear();
           }
-
         }
-
-
       },
     },
     components: {
-      todoListItem
+      draggable,
+      todoListItem,
     },
     beforeMount() {
       if (localStorage.todoList) {
-        this.todoList = localStorage.todoList.split(',');
+        this.todoList = JSON.parse(localStorage.todoList);
       }
     },
-    mounted() {
+    created() {
       window.addEventListener('keyup', event => {
         if (event.keyCode === 13) {
-          if (this.val != '') {
+          if (this.val !== '') {
             this.addNewTask()
           }
         }
       })
     },
     watch: {
-      todoList(newTodoList) {
-        localStorage.todoList = newTodoList;
+      todoList: {
+        handler: function (newTodoList) {
+          localStorage.todoList = JSON.stringify(newTodoList);
+        },
+        deep: true,
       }
-    }
+    },
   }
 </script>
 
+
+
 <style scoped lang="scss">
+  .chosen {
+    transition: .2s;
+    background-color: rgba(0, 0, 0, 0.2);
+  }
   .todoWrap {
     position: relative;
+    height: 75%;
   }
 
   .todoClearBtn {
@@ -122,6 +154,7 @@
     backface-visibility: hidden;
     font-size: 1.5rem;
     transition: .3s;
+    line-height: 2rem;
   }
 
   .todoClearBtn:hover {
@@ -130,8 +163,7 @@
 
   .todoTitle {
     margin-bottom: 1rem;
-    padding: 1.8rem;
-    padding-bottom: 1rem;
+    padding: 1rem;
     border-bottom: 0.0625rem solid rgba(0, 0, 0, 0.5);
     font-size: 2rem;
   }
@@ -144,7 +176,7 @@
   }
 
   .todoBtn {
-    flex-grow: 1;
+    flex-grow: 0.5;
     margin-right: 1rem;
     padding: 0.1rem;
     height: 1.875rem;
@@ -171,6 +203,20 @@
     transition: .3s;
     font-size: 0.8rem;
   }
+  .addTaskField {
+    border-radius: 0;
+
+    -webkit-border-radius: 0;
+    border-bottom: 0.0325rem solid rgba(0, 0, 0, 0.5);
+    -webkit-border-bottom: 0.0325rem solid rgba(0, 0, 0, 0.5);
+    border-right: 0;
+    border-right: 0;
+    border-top: 0;
+    -webkit-border-top: 0;
+    -webkit-border-left: 0;
+    -webkit-border-left: 0;
+    -webkit-appearance: none;
+  }
 
   .addTaskField:hover {
     border-bottom: 0.0325rem solid rgba(0, 0, 0, 1);
@@ -183,6 +229,7 @@
   .todoItemsList {
     padding-right: 5px;
     width: 100%;
+    height: 95%;
     overflow-x: hidden;
     overflow-y: auto;
     min-height: 16.125rem;
