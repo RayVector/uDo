@@ -4,8 +4,24 @@
 
 
     <p class="todoTitle">
+      <svg
+        class="mainIcon"
+        version="1.1"
+        viewBox="0 0 32 32"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <g fill="none" fill-rule="evenodd" id="Page-1" stroke="none" stroke-width="1">
+          <g fill="#929292" id="icon-45-note-list">
+            <path
+              d="M5,11 L5,25.9991358 C5,27.0983727 5.8927712,28 6.99406028,28 L21,28 L21,21.9981014 C21,20.8867064 21.8980806,20 23.0059191,20 L28,20 L28,11 L5,11 L5,11 Z M5,10 L5,7.00086422 C5,5.89581743 5.90162726,5 7.00086422,5 L25.9991358,5 C27.1041826,5 28,5.89339733 28,6.99188419 L28,10 L5,10 L5,10 Z M22,28 L22,22.0029293 C22,21.4490268 22.4509752,21 22.990778,21 L28,21 L22,28 L22,28 Z M13,18 L13,19 L20,19 L20,18 L13,18 L13,18 Z M8,17 L8,20 L11,20 L11,17 L8,17 L8,17 Z M9,18 L9,19 L10,19 L10,18 L9,18 L9,18 Z M13,14 L13,15 L25,15 L25,14 L13,14 L13,14 Z M8,13 L8,16 L11,16 L11,13 L8,13 L8,13 Z M9,14 L9,15 L10,15 L10,14 L9,14 L9,14 Z M13,22 L13,23 L19,23 L19,22 L13,22 L13,22 Z M8,21 L8,24 L11,24 L11,21 L8,21 L8,21 Z M9,22 L9,23 L10,23 L10,22 L9,22 L9,22 Z"
+              id="note-list"></path>
+          </g>
+        </g>
+      </svg>
       <span
-        @click="getAuthorInfo">
+        class="mainTitle"
+        @click="getAuthorInfo"
+      >
         To Do:
       </span>
       <button
@@ -107,7 +123,7 @@
         }
       },
       getAuthorInfo() {
-        alert("created by Ray Vector. rayvectorspqr@yahoo.com");
+        alert("| created by Ray Vector | rayvectorspqr@yahoo.com | rayvector.info |");
       },
     },
     components: {
@@ -152,7 +168,12 @@
     position: relative;
     height: 75%;
   }
-
+  .mainTitle {
+    user-select: none;
+    font-size: 2.2rem;
+    font-weight: 600;
+    letter-spacing: -0.125rem;
+  }
   .todoClearBtn {
     margin-left: auto;
     position: absolute;
@@ -172,18 +193,23 @@
 
   .todoClearBtn:hover {
     color: rgba(255, 5, 5, 0.8);
-    -webkit-box-shadow: 0 5px 30px 0 rgba(50, 50, 50, 0.36);
-    -moz-box-shadow:    0 5px 30px 0 rgba(50, 50, 50, 0.36);
-    box-shadow:         0 5px 30px 0 rgba(50, 50, 50, 0.36);
+    -webkit-box-shadow: 0 0.3125rem 1.875rem 0 rgba(50, 50, 50, 0.36);
+    -moz-box-shadow:    0 0.3125rem 1.875rem 0 rgba(50, 50, 50, 0.36);
+    box-shadow:         0 0.3125rem 1.875rem 0 rgba(50, 50, 50, 0.36);
   }
 
   .todoTitle {
     margin-bottom: 1rem;
-    padding: 1rem;
+    padding: 1rem 1rem 1rem 0;
+    display: flex;
+    align-items: center;
     border-bottom: 0.0625rem solid rgba(0, 0, 0, 0.5);
     font-size: 2rem;
   }
-
+  .mainIcon {
+    width: 2rem;
+    height: 2rem;
+  }
   .userMenu {
     margin-bottom: 2rem;
     display: flex;
@@ -207,9 +233,9 @@
   }
   .todoBtn:hover {
     color: rgba(255, 255, 255, 1);
-    -webkit-box-shadow: 0 5px 30px 0 rgba(50, 50, 50, 0.36);
-    -moz-box-shadow:    0 5px 30px 0 rgba(50, 50, 50, 0.36);
-    box-shadow:         0 5px 30px 0 rgba(50, 50, 50, 0.36);
+    -webkit-box-shadow: 0 0.3125rem 1.875rem 0 rgba(50, 50, 50, 0.36);
+    -moz-box-shadow:    0 0.3125rem 1.875rem 0 rgba(50, 50, 50, 0.36);
+    box-shadow:         0 0.3125rem 1.875rem 0 rgba(50, 50, 50, 0.36);
   }
   .addTaskFieldWrap {
     flex-grow: 2;
@@ -241,9 +267,9 @@
   .addTaskField:focus {
     background: rgba(50, 50, 50, 0.1);
     border: 0;
-    -webkit-box-shadow: 0 5px 30px 0 rgba(50, 50, 50, 0.36);
-    -moz-box-shadow:    0 5px 30px 0 rgba(50, 50, 50, 0.36);
-    box-shadow:         0 5px 30px 0 rgba(50, 50, 50, 0.36);
+    -webkit-box-shadow: 0 0.3125rem 1.875rem 0 rgba(50, 50, 50, 0.36);
+    -moz-box-shadow:    0 0.3125rem 1.875rem 0 rgba(50, 50, 50, 0.36);
+    box-shadow:         0 0.3125rem 1.875rem 0 rgba(50, 50, 50, 0.36);
   }
 
   .addTaskField:focus {
@@ -251,7 +277,7 @@
   }
 
   .todoItemsList {
-    padding-right: 5px;
+    padding-right: 0.3125rem;
     width: 100%;
     height: 95%;
     overflow-x: hidden;

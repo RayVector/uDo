@@ -128,9 +128,9 @@
     color: darkred;
   }
   .editableMod {
-    -webkit-box-shadow: 0 5px 30px 0 rgba(50, 50, 50, 0.36);
-    -moz-box-shadow:    0 5px 30px 0 rgba(50, 50, 50, 0.36);
-    box-shadow:         0 5px 30px 0 rgba(50, 50, 50, 0.36);
+    -webkit-box-shadow: 0 0.3125rem 1.875rem 0 rgba(50, 50, 50, 0.36);
+    -moz-box-shadow:    0 0.3125rem 1.875rem 0 rgba(50, 50, 50, 0.36);
+    box-shadow:         0 0.3125rem 1.875rem 0 rgba(50, 50, 50, 0.36);
   }
   .todoItemName:disabled {
     background-color: unset;
@@ -155,7 +155,7 @@
   }
 
   .deleteTodoItem:hover {
-    text-shadow: 0 9px 10px rgba(150, 150, 150, 1);
+    text-shadow: 0 0.5625rem 0.625rem rgba(150, 150, 150, 1);
     color: rgba(255, 5, 5, 0.8);
   }
   .completed {

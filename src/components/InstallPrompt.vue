@@ -82,9 +82,9 @@
       z-index: 999;
       bottom: 2rem;
       width: 80%;
-      -webkit-box-shadow: 0 10px 29px 0 rgba(50, 50, 50, 0.44);
-      -moz-box-shadow: 0 10px 29px 0 rgba(50, 50, 50, 0.44);
-      box-shadow: 0 10px 29px 0 rgba(50, 50, 50, 0.44);
+      -webkit-box-shadow: 0 0.625rem 1.8125rem 0 rgba(50, 50, 50, 0.44);
+      -moz-box-shadow: 0 0.625rem 1.8125rem 0 rgba(50, 50, 50, 0.44);
+      box-shadow: 0 0.625rem 1.8125rem 0 rgba(50, 50, 50, 0.44);
     }
 
   }
