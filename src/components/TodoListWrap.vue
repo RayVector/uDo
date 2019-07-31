@@ -78,7 +78,7 @@
         :options="{delay:600, chosenClass: 'chosen'}"
       >
         <todoListItem
-          v-for="(item, index) in getList"
+          v-for=" item in getList"
           :item="item"
           :key="item.id"
           @delete="delTaskItem(item)"
@@ -168,7 +168,7 @@
             this.addNewTask()
           }
         }
-      })
+      });
       window.onscroll = () => {
         this.isMenuShow = false
       }
