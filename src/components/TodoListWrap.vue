@@ -9,6 +9,7 @@
             v-show="isMenuShow"
             @clearCache="clearCashe"
             @closeMenu="isMenuShow = false"
+            @clearAllCompleted="clearAllCompleted"
           ></app-menu>
         </transition>
       </v-touch>
@@ -22,6 +23,7 @@
         <p class="todoTitle">
           <button
             @click="getAuthorInfo"
+            class="mainIconBtn"
           >
             <svg
               class="mainIcon"
@@ -39,7 +41,7 @@
             </svg>
           </button>
           <span class="mainTitle">
-            To Do:
+            uDo:
           </span>
           <button class="openMenuBtn" @click="isMenuShow = true">
             <svg
@@ -129,12 +131,25 @@
       completeItem(completedItem) {
         const item = this.todoList.find(i => i.id === completedItem.id);
         item.checked = completedItem.checked;
-        this.todoList.sort((a, b) => {
-          return a.checked - b.checked
-        })
+        this.sortItem();
+      },
+      sortItem() {
+        this.todoList.sort((a, b) => a.checked < b.checked  ? -1 : 1);
       },
       moveItem() {
+        this.sortItem();
         localStorage.todoList = JSON.stringify(this.todoList);
+      },
+      clearAllCompleted() {
+        if (this.todoList.filter(item => item.checked !== false).length > 0) {
+          let isAccept = confirm('Do You want to delete all completed notes?');
+          if (isAccept) {
+            this.todoList = this.todoList.filter(item => item.checked !== true);
+            this.isMenuShow = false;
+          }
+        } else {
+          alert('Nothing completed');
+        }
       },
       clearCashe() {
         if (JSON.parse(localStorage.todoList).length > 0) {
@@ -142,6 +157,7 @@
           if (isAccept) {
             this.todoList = [];
             localStorage.clear();
+            this.isMenuShow = false;
           }
         } else {
           alert('Nothing to delete.');
@@ -161,7 +177,11 @@
         this.todoList = JSON.parse(localStorage.todoList);
       }
     },
+    mounted() {
+      this.sortItem();
+    },
     created() {
+
       window.addEventListener('keyup', event => {
         if (event.keyCode === 13) {
           if (this.val !== '') {
@@ -186,6 +206,9 @@
 
 
 <style scoped lang="scss">
+  .appWrap {
+    height: 100%;
+  }
 
   .chosen {
     transform: scale(1.05, 1.05);
@@ -204,6 +227,7 @@
     font-size: 2.2rem;
     font-weight: 600;
     letter-spacing: -0.125rem;
+    color: rgba(0, 0, 0, 0.7);
   }
   .openMenuBtn {
     margin-left: auto;
@@ -219,6 +243,9 @@
   .openMenuBtnItem {
     transition: .3s;
   }
+  .openMenuBtnItem line{
+    stroke: rgba(0, 0, 0, 0.7);
+  }
 
   .todoTitle {
     margin-bottom: 1rem;
@@ -228,7 +255,9 @@
     border-bottom: 0.0625rem solid rgba(0, 0, 0, 0.5);
     font-size: 2rem;
   }
-
+  .mainIconBtn {
+    margin-right: 1.8rem;
+  }
   .mainIcon {
     width: 2rem;
     height: 2rem;
@@ -238,29 +267,25 @@
     margin-bottom: 2rem;
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: flex-start;
   }
 
   .todoBtn {
     flex-grow: 0.5;
     margin-right: 1rem;
     padding: 0.1rem;
-    height: 1.875rem;
-    background-color: rgba(0, 0, 0, 0.7);
-    color: rgba(255, 255, 255, .8);
+    color: rgba(0, 0, 0, 0.7);
     border: none;
     cursor: pointer;
     user-select: none;
-    transition: .3s;
     backface-visibility: hidden;
-    font-size: 1rem;
+    font-size: 2rem;
+    line-height: 1rem;
+    transition: .3s;
   }
 
   .todoBtn:hover {
-    color: rgba(255, 255, 255, 1);
-    -webkit-box-shadow: 0 0.3125rem 1.875rem 0 rgba(50, 50, 50, 0.36);
-    -moz-box-shadow: 0 0.3125rem 1.875rem 0 rgba(50, 50, 50, 0.36);
-    box-shadow: 0 0.3125rem 1.875rem 0 rgba(50, 50, 50, 0.36);
+    color: rgba(0, 0, 0, .25);
   }
 
   .addTaskFieldWrap {
@@ -307,15 +332,13 @@
   .todoItemsList {
     padding-right: 0.3125rem;
     width: 100%;
-    height: 90%;
-    overflow-x: hidden;
-    overflow-y: auto;
+
   }
 
   /*animation:*/
   .appMenuFade-enter-active, .appMenuFade-leave-active {
     transform: translateY(-1rem);
-    transition: .3s;
+    transition: .6s;
   }
 
   .appMenuFade-enter, .appMenuFade-leave-to {

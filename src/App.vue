@@ -19,7 +19,7 @@
 
   }
   /**
-   * todo create menu;
+   * todo create menu; +
    * todo create themes;
    * todo create translating (en, ru, esp);
    */
@@ -41,6 +41,7 @@
 
   body {
     height: 100vh;
+    background-color: #e7e7e7;
   }
 
   #app > * {
@@ -51,7 +52,6 @@
     display: flex;
     padding: 1rem;
     width: unset;
-    height: 100%;
     flex-direction: column;
     background-color: #e7e7e7;
   }

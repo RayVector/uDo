@@ -3,8 +3,9 @@ Project: [Site](https://todovue-f9884.firebaseapp.com/).
 ### TODO:
 ___
 ```
-* Menu;
-* Menu -> Delete all completed notes (Btn);
+* Menu; +
+* Menu -> Delete all completed notes (Btn); +
+* Popup: App tutorial about UI (icons);
 * Menu -> Translation (Btn);
 * Menu -> Themes (Btn);
 * DataBase (indexedDB);
