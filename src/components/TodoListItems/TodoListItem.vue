@@ -1,36 +1,40 @@
 <template>
-  <v-touch
-    tag="li"
-    class="todoItemWrap handle"
-    :class="{completed:completeItem, editableMod:isEditable}"
-    v-on:swipeleft="onSwipeLeft"
-    v-on:swiperight="$emit('delete')"
-  >
-    <label class="todoItemNameDivider">
-      <input
-        type="checkbox"
-        class="completeTask"
-        :checked="completeItem"
-        @input="checked = $event.target.checked"
-      >
-    </label>
-    <div class="todoItem">
-      <label class="todoItemNameWrap">
+  <transition appear name="itemFade">
+    <li
+      class="todoItemWrap handle"
+      :class="{completed:completeItem, editableMod:isEditable}"
+    >
+      <label class="todoItemNameDivider">
         <input
-          type="text"
-          class="todoItemName"
-          :value="itemName"
-          :disabled="!isEditable"
-          @input="name = $event.target.value"
-          @blur="update"
-          @keyup.enter="update"
+          type="checkbox"
+          class="completeTask"
+          :checked="completeItem"
+          @input="checked = $event.target.checked"
         >
-
       </label>
-    </div>
-    <div class="deleteTodoItem" @click="$emit('delete')">&#10006;</div>
+      <div class="todoItem">
+        <v-touch
+          class="todoItemNameWrap"
+          tag="label"
+          v-on:swipeleft="onSwipeLeft"
+          v-on:swiperight="$emit('delete')"
+        >
+          <input
+            type="text"
+            class="todoItemName"
+            :value="itemName"
+            :disabled="!isEditable"
+            @input="name = $event.target.value"
+            @blur="update"
+            @keyup.enter="update"
+          >
 
-  </v-touch>
+        </v-touch>
+      </div>
+      <div class="deleteTodoItem" @click="$emit('delete')">&#10006;</div>
+
+    </li>
+  </transition>
 </template>
 
 <script>
@@ -162,5 +166,13 @@
     background-color: #cecece61;
     opacity: .5;
   }
+  /*animation:*/
+  .itemFade-enter-active, .itemFade-leave-active {
+    transform: translateX(2rem);
+    transition: .6s;
+  }
 
+  .itemFade-enter, .itemFade-leave-to {
+    opacity: 0;
+  }
 </style>
