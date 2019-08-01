@@ -1,5 +1,5 @@
 <template>
-  <transition appear name="itemFade">
+
     <li
       class="todoItemWrap handle"
       :class="{completed:completeItem, editableMod:isEditable}"
@@ -34,7 +34,6 @@
       <div class="deleteTodoItem" @click="$emit('delete')">&#10006;</div>
 
     </li>
-  </transition>
 </template>
 
 <script>
@@ -130,11 +129,18 @@
     border: none;
     background-color: unset;
     color: darkred;
+    -webkit-touch-callout:none;
+    -webkit-user-select:none;
+    -khtml-user-select:none;
+    -moz-user-select:none;
+    -ms-user-select:none;
+    user-select:none;
+    -webkit-tap-highlight-color:rgba(0,0,0,0);
   }
   .editableMod {
-    -webkit-box-shadow: 0 0.3125rem 1.875rem 0 rgba(50, 50, 50, 0.36);
-    -moz-box-shadow:    0 0.3125rem 1.875rem 0 rgba(50, 50, 50, 0.36);
-    box-shadow:         0 0.3125rem 1.875rem 0 rgba(50, 50, 50, 0.36);
+    -webkit-box-shadow: 0 0.3125rem 1.875rem 0 rgba(50, 50, 50, 0.3);
+    -moz-box-shadow:    0 0.3125rem 1.875rem 0 rgba(50, 50, 50, 0.3);
+    box-shadow:         0 0.3125rem 1.875rem 0 rgba(50, 50, 50, 0.3);
   }
   .todoItemName:disabled {
     background-color: unset;
@@ -166,13 +172,5 @@
     background-color: #cecece61;
     opacity: .5;
   }
-  /*animation:*/
-  .itemFade-enter-active, .itemFade-leave-active {
-    transform: translateX(2rem);
-    transition: .6s;
-  }
 
-  .itemFade-enter, .itemFade-leave-to {
-    opacity: 0;
-  }
 </style>

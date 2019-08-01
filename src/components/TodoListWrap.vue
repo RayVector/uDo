@@ -70,25 +70,30 @@
           >
         </label>
       </div>
-      <draggable
-        tag="ul"
-        class="todoItemsList"
-        v-model="todoList"
-        handle=".handle"
-        @start="drag=true"
-        @end="moveItem"
-        :options="{delay:600, chosenClass: 'chosen'}"
-      >
-        <todoListItem
-          v-for=" item in getList"
-          :item="item"
-          :key="item.id"
-          @delete="delTaskItem(item)"
-          @update="updateItem"
-          @completed="completeItem"
-        ></todoListItem>
 
-      </draggable>
+        <draggable
+          tag="div"
+          class="todoItemsList"
+          v-model="todoList"
+          handle=".handle"
+          @start="drag=true"
+          @end="moveItem"
+          :options="{delay:600, chosenClass: 'chosen'}"
+        >
+          <transition-group
+            tag="ul"
+            name="itemFade">
+          <todoListItem
+            v-for=" item in getList"
+            :item="item"
+            :key="item.id"
+            @delete="delTaskItem(item)"
+            @update="updateItem"
+            @completed="completeItem"
+          ></todoListItem>
+          </transition-group>
+        </draggable>
+
     </div>
   </div>
 </template>
@@ -337,11 +342,24 @@
 
   /*animation:*/
   .appMenuFade-enter-active, .appMenuFade-leave-active {
-    transform: translateY(-1rem);
-    transition: .6s;
+    transition: .3s;
   }
 
   .appMenuFade-enter, .appMenuFade-leave-to {
+    transform: translateY(-5rem);
+  }
+
+  /*animation:*/
+  .itemFade-move {
+    transition: .3s;
+  }
+  .itemFade-enter-active, .itemFade-leave-active {
+    transition: .6s;
+    transform: translateX(0);
+  }
+
+  .itemFade-enter, .itemFade-leave-to {
+    transform: translateX(2rem);
     opacity: 0;
   }
 </style>
