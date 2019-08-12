@@ -84,12 +84,12 @@
             tag="ul"
             name="itemFade">
           <todoListItem
-            v-for=" item in getList"
+            v-for="item in getList"
             :item="item"
             :key="item.id"
             @delete="delTaskItem(item)"
             @update="updateItem"
-            @completed="completeItem"
+            @toggle="completeItem(item, $event)"
           ></todoListItem>
           </transition-group>
         </draggable>
@@ -114,7 +114,7 @@
     },
     computed: {
       getList() {
-        return this.todoList
+        return [...this.todoList].sort((a, b) => a.checked - b.checked);
       }
     },
     methods: {
@@ -130,20 +130,17 @@
         this.todoList.splice(item, 1);
       },
       updateItem(updatedItem) {
+        console.log(updatedItem);
         const item = this.todoList.find(i => i.id === updatedItem.id);
-        item.txt = updatedItem.txt
-      },
-      completeItem(completedItem) {
-        const item = this.todoList.find(i => i.id === completedItem.id);
-        item.checked = completedItem.checked;
-        this.sortItem();
-      },
-      sortItem() {
-        this.todoList.sort((a, b) => a.checked < b.checked  ? -1 : 1);
+        item.txt = updatedItem.txt;
+        this.todoList.sort((a, b) => a.checked - b.checked);
       },
       moveItem() {
-        this.sortItem();
-        localStorage.todoList = JSON.stringify(this.todoList);
+        this.todoList.sort((a, b) => a.checked - b.checked);
+      },
+      completeItem(item, $event) {
+        item.checked = $event;
+        this.todoList.sort((a, b) => a.checked - b.checked);
       },
       clearAllCompleted() {
         if (this.todoList.filter(item => item.checked !== false).length > 0) {
@@ -169,7 +166,7 @@
         }
       },
       getAuthorInfo() {
-        alert("| created by Ray Vector | rayvectorspqr@yahoo.com | rayvector.info |");
+        alert("| created by Ray Vector & Dezl | rayvectorspqr@yahoo.com & demozluk@gmail.com | rayvector.info |");
       },
     },
     components: {
@@ -181,9 +178,6 @@
       if (localStorage.todoList) {
         this.todoList = JSON.parse(localStorage.todoList);
       }
-    },
-    mounted() {
-      this.sortItem();
     },
     created() {
 
@@ -236,10 +230,8 @@
   }
   .openMenuBtn {
     margin-left: auto;
-    position: absolute;
-    right: 0;
     padding: 0.1rem;
-    width: 2.5rem;
+    width: 2rem;
     border: none;
     cursor: pointer;
     user-select: none;
@@ -254,7 +246,7 @@
 
   .todoTitle {
     margin-bottom: 1rem;
-    padding: 0.5rem 1rem 1rem 0;
+    padding: 0.5rem 1rem;
     display: flex;
     align-items: center;
     border-bottom: 0.0625rem solid rgba(0, 0, 0, 0.5);
@@ -270,13 +262,13 @@
 
   .userMenu {
     margin-bottom: 2rem;
+    padding: 0.5rem 1rem;
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
   }
 
   .todoBtn {
-    flex-grow: 0.5;
     margin-right: 1rem;
     padding: 0.1rem;
     color: rgba(0, 0, 0, 0.7);
@@ -290,7 +282,7 @@
   }
 
   .todoBtn:hover {
-    color: rgba(0, 0, 0, .25);
+    color: rgba(0, 0, 0, .6);
   }
 
   .addTaskFieldWrap {

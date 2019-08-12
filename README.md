@@ -5,11 +5,15 @@ ___
 ```
 * Menu (popup); +
 * Menu -> Delete all completed notes (Btn); +
+* All "Alerts" to popup;
 * Tutorial about UI (popup);
 * Menu -> settings (popup);
 * Menu -> settings (popup) -> Translation (Btn);
 * Menu -> settings (popup) -> Themes (Btn);
 * Use "indexedDB" (Database);
+* Multiple tabs under main title (routing with one local (inner objects));
+* PC version;
+
 ```
 ___
 ## Project setup

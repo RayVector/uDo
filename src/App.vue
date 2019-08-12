@@ -18,11 +18,6 @@
     },
 
   }
-  /**
-   * todo create menu; +
-   * todo create themes;
-   * todo create translating (en, ru, esp);
-   */
 
 </script>
 
@@ -41,19 +36,20 @@
 
   body {
     height: 100vh;
-    background-color: #e7e7e7;
+
   }
 
+  body, .mainApp {
+    background-color: #f1f1f1;
+  }
   #app > * {
     transition: .3s;
   }
 
   .mainApp {
     display: flex;
-    padding: 1rem;
     width: unset;
     flex-direction: column;
-    background-color: #e7e7e7;
   }
 
 
