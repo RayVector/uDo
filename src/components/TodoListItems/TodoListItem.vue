@@ -20,14 +20,16 @@
         v-on:swipeleft="onSwipeLeft"
         v-on:swiperight="$emit('delete')"
       >
-        <input
-          type="text"
-          class="todoItemName"
-          :value="itemName"
-          :disabled="!isEditable"
-          @input="name = $event.target.value"
-          @keyup.enter="update"
-        >
+        <label>
+          <input
+            type="text"
+            class="todoItemName"
+            :value="itemName"
+            :disabled="!isEditable"
+            @input="name = $event.target.value"
+            @keyup.enter="update"
+          >
+        </label>
       </v-touch>
     </div>
     <div class="deleteTodoItem" @click="$emit('delete')">&#10006;</div>
