@@ -1,18 +1,18 @@
 <template>
   <div class="appWrap">
 
-      <v-touch
-        v-on:swipeup="isMenuShow = false"
-      >
-        <transition name="appMenuFade">
-          <app-menu
-            v-show="isMenuShow"
-            @clearCache="clearCashe"
-            @closeMenu="isMenuShow = false"
-            @clearAllCompleted="clearAllCompleted"
-          ></app-menu>
-        </transition>
-      </v-touch>
+    <v-touch
+      v-on:swipeup="isMenuShow = false"
+    >
+      <transition name="appMenuFade">
+        <app-menu
+          v-show="isMenuShow"
+          @clearCache="clearCashe"
+          @closeMenu="isMenuShow = false"
+          @clearAllCompleted="clearAllCompleted"
+        ></app-menu>
+      </transition>
+    </v-touch>
 
 
     <div class="todoWrap">
@@ -47,14 +47,33 @@
             <svg
               class="openMenuBtnItem"
               viewBox="0 0 24 24" xml:space="preserve"
-                 xmlns="http://www.w3.org/2000/svg" >
-              <line fill="none" stroke="#000000" stroke-miterlimit="10" stroke-width="2" x1="2" x2="22" y1="12" y2="12"></line>
-              <line fill="none" stroke="#000000" stroke-miterlimit="10" stroke-width="2" x1="2" x2="22" y1="6" y2="6"></line>
-              <line fill="none" stroke="#000000" stroke-miterlimit="10" stroke-width="2" x1="2" x2="22" y1="18" y2="18"></line>
+              xmlns="http://www.w3.org/2000/svg">
+              <line fill="none" stroke="#000000" stroke-miterlimit="10" stroke-width="2" x1="2" x2="22" y1="12"
+                    y2="12"></line>
+              <line fill="none" stroke="#000000" stroke-miterlimit="10" stroke-width="2" x1="2" x2="22" y1="6"
+                    y2="6"></line>
+              <line fill="none" stroke="#000000" stroke-miterlimit="10" stroke-width="2" x1="2" x2="22" y1="18"
+                    y2="18"></line>
             </svg>
           </button>
         </p>
       </v-touch>
+      <div class="tabsArea">
+        <div class="tab defAddTab" @click="addNewTab">
+          +
+        </div>
+        <div
+          class="tab"
+          v-for="(item, index) in tabsList"
+          :item="item"
+          :key="index"
+          :class="{activeTab: index === activeTab}"
+          @click="swapTab(index)"
+          @dblclick="changeTab(item)"
+        >
+          {{item.title}}
+        </div>
+      </div>
       <div class="userMenu">
         <button class="todoBtn" @click='addNewTask'>
           &#9998;
@@ -71,18 +90,18 @@
         </label>
       </div>
 
-        <draggable
-          tag="div"
-          class="todoItemsList"
-          v-model="todoList"
-          handle=".handle"
-          @start="drag=true"
-          @end="moveItem"
-          :options="{delay:600, chosenClass: 'chosen'}"
-        >
-          <transition-group
-            tag="ul"
-            name="itemFade">
+      <draggable
+        tag="div"
+        class="todoItemsList"
+        v-model="todoList"
+        handle=".handle"
+        @start="drag=true"
+        @end="moveItem"
+        :options="{delay:600, chosenClass: 'chosen'}"
+      >
+        <transition-group
+          tag="ul"
+          name="itemFade">
           <todoListItem
             v-for="item in getList"
             :item="item"
@@ -91,8 +110,8 @@
             @update="updateItem"
             @toggle="completeItem(item, $event)"
           ></todoListItem>
-          </transition-group>
-        </draggable>
+        </transition-group>
+      </draggable>
 
     </div>
   </div>
@@ -107,6 +126,21 @@
     name: 'TodoListWrap',
     data() {
       return {
+        activeTab: 0,
+        tabsList: [
+          {
+            name: "1",
+            title: "Main",
+          },
+          {
+            name: "2",
+            title: "Buy",
+          },
+          {
+            name: "3",
+            title: "Sell",
+          }
+        ],
         val: '',
         todoList: [],
         isMenuShow: false
@@ -118,6 +152,16 @@
       }
     },
     methods: {
+      swapTab(index) {
+        this.activeTab = index;
+      },
+      addNewTab() {
+        this.tabsList.push({name: this.tabsList.length, title: this.tabsList.length,});
+        localStorage.setItem("tabs", JSON.stringify(this.tabsList));
+      },
+      changeTab() {
+        this.tabsList.push({name: this.tabsList.length, title: this.tabsList.length,})
+      },
       addNewTask() {
         if (this.val !== '') {
           let newIndex = this.todoList.length > 0 ? (Math.max(...this.todoList.map(e => e.id)) + 1) : 0;
@@ -130,7 +174,6 @@
         this.todoList.splice(item, 1);
       },
       updateItem(updatedItem) {
-        console.log(updatedItem);
         const item = this.todoList.find(i => i.id === updatedItem.id);
         item.txt = updatedItem.txt;
         this.todoList.sort((a, b) => a.checked - b.checked);
@@ -168,6 +211,7 @@
       getAuthorInfo() {
         alert("| created by Ray Vector & Dezl | rayvectorspqr@yahoo.com & demozluk@gmail.com | rayvector.info |");
       },
+
     },
     components: {
       draggable,
@@ -175,12 +219,14 @@
       AppMenu
     },
     beforeMount() {
+      if (localStorage.tabs) {
+        this.tabsList = JSON.parse(localStorage.tabs);
+      }
       if (localStorage.todoList) {
         this.todoList = JSON.parse(localStorage.todoList);
       }
     },
     created() {
-
       window.addEventListener('keyup', event => {
         if (event.keyCode === 13) {
           if (this.val !== '') {
@@ -196,6 +242,12 @@
       todoList: {
         handler: function (newTodoList) {
           localStorage.todoList = JSON.stringify(newTodoList);
+        },
+        deep: true,
+      },
+      tabsList: {
+        handler: function (newTabsList) {
+          localStorage.tabs = JSON.stringify(newTabsList);
         },
         deep: true,
       }
@@ -228,6 +280,7 @@
     letter-spacing: -0.125rem;
     color: rgba(0, 0, 0, 0.7);
   }
+
   .openMenuBtn {
     margin-left: auto;
     padding: 0.1rem;
@@ -237,27 +290,64 @@
     user-select: none;
     backface-visibility: hidden;
   }
+
   .openMenuBtnItem {
     transition: .3s;
   }
-  .openMenuBtnItem line{
+
+  .openMenuBtnItem line {
     stroke: rgba(0, 0, 0, 0.7);
   }
 
   .todoTitle {
-    margin-bottom: 1rem;
-    padding: 0.5rem 1rem;
+    padding: .5rem 1rem;
     display: flex;
     align-items: center;
-    border-bottom: 0.0625rem solid rgba(0, 0, 0, 0.5);
+    border-bottom: .0625rem solid rgba(0, 0, 0, 0.5);
     font-size: 2rem;
   }
+
   .mainIconBtn {
     margin-right: 1.8rem;
   }
+
   .mainIcon {
     width: 2rem;
     height: 2rem;
+  }
+
+  .tabsArea {
+    margin-bottom: 1rem;
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    overflow-x: auto;
+    overflow-y: hidden;
+  }
+
+  .tab {
+    height: 1.5rem;
+    font-size: 1rem;
+    padding: .4rem;
+    border-top: 0;
+    border-left: 0;
+    border-right: 0.0625rem solid rgba(0, 0, 0, 0.5);
+    border-bottom: 0.0625rem solid rgba(0, 0, 0, 0.5);
+    text-align: center;
+    font-weight: normal;
+  }
+
+  .defAddTab {
+    font-weight: bold;
+    font-size: 1.5rem;
+  }
+
+  .activeTab {
+    height: 2rem;
+    font-weight: bold;
+    font-size: 1.5rem;
+    border-left: 0.0625rem solid rgba(0, 0, 0, 0.5);
   }
 
   .userMenu {
@@ -345,6 +435,7 @@
   .itemFade-move {
     transition: .3s;
   }
+
   .itemFade-enter-active, .itemFade-leave-active {
     transition: .6s;
     transform: translateX(0);
