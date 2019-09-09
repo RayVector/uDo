@@ -137,9 +137,11 @@
 
         </div>
       </div>
-      <div class="workspace" v-for="(space, index) in tabsList" :key="index">
-        <div class="userMenu" v-show="index === activeTab">
-          <button class="todoBtn" @click='addNewTask(index)'>
+
+      <div class="workspace"
+      >
+        <div class="userMenu">
+          <button class="todoBtn" @click='addNewTask'>
             <svg width="24" height="24" viewBox="0 0 28 31" fill="none" xmlns="http://www.w3.org/2000/svg">
               <circle cx="4.5837" cy="26.2265" r="3" transform="rotate(40 4.5837 26.2265)" fill="#494949"></circle>
               <rect x="22.212" width="6" height="26" rx="3" transform="rotate(40 22.212 0)" fill="#494949"></rect>
@@ -160,25 +162,23 @@
         <draggable
           tag="div"
           class="todoItemsList"
-          v-model="todoList"
+          v-model="todoList[activeTab]"
           handle=".handle"
           @start="drag=true"
-          @end="moveItem(index)"
+          @end="moveItem"
           :options="{delay:600, chosenClass: 'chosen'}"
-          :key="index"
         >
           <transition-group
-            v-show="index === activeTab"
             tag="ul"
             name="itemFade"
           >
             <todoListItem
-              v-for="(item, index2 ) in getList"
+              v-for="(item, index2) in getList"
               :item="item"
               :key="index2"
-              @delete="delTaskItem(item, index)"
-              @update="updateItem(index)"
-              @toggle="completeItem(item, index, $event)"
+              @delete="delTaskItem(item)"
+              @update="updateItem"
+              @toggle="completeItem(item, $event)"
             ></todoListItem>
           </transition-group>
         </draggable>
@@ -230,7 +230,6 @@
         this.tabsList.push({id: this.tabsList.length, title: this.tabsList.length,});
         this.activeTab = this.tabsList.length - 1;
         localStorage.setItem("activeTab", JSON.stringify(this.activeTab));
-        this.todoList.push([]);
         // ICON ANIMATION:
         const icon = document.querySelector('.addNewTabIcon');
         icon.classList.toggle('addNewTabIconActive');
@@ -239,38 +238,38 @@
         this.isTabMenuShow = !this.isTabMenuShow;
       },
       swapTab(index) {
-        this.val = '';
         this.activeTab = index;
+        this.val = '';
         localStorage.setItem("activeTab", JSON.stringify(this.activeTab));
       },
 
-      deleteTab(index) {
-        if (index > 0) {
-          this.tabsList.splice(index, 1);
+      deleteTab() {
+        if (this.activeTab > 0) {
+          this.tabsList.splice(this.activeTab, 1);
         }
       },
-      addNewTask(index) {
+      addNewTask() {
         if (this.val !== '') {
-          let newIndex = this.todoList[index].length > 0 ? (Math.max(...this.todoList[index].map(e => e.id)) + 1) : 0;
-          this.todoList[index].unshift({txt: this.val, id: newIndex, checked: false});
+          let newIndex = this.todoList[this.activeTab].length > 0 ? (Math.max(...this.todoList[this.activeTab].map(e => e.id)) + 1) : 0;
+          this.todoList[this.activeTab].unshift({txt: this.val, id: newIndex, checked: false});
         }
         this.val = '';
 
       },
 
-      delTaskItem(deletedItem, index) {
-        const item = this.todoList[index].findIndex(i => i.id === deletedItem.id);
-        this.todoList.splice(item, 1);
+      delTaskItem(deletedItem) {
+        const item = this.todoList[this.activeTab].findIndex(i => i.id === deletedItem.id);
+        this.todoList[this.activeTab].splice(item, 1);
       },
-      updateItem(updatedItem, index) {
-        const item = this.todoList[index].find(i => i.id === updatedItem.id);
+      updateItem(updatedItem) {
+        const item = this.todoList[this.activeTab].find(i => i.id === updatedItem.id);
         item.txt = updatedItem.txt;
-        this.todoList[index].sort((a, b) => a.checked - b.checked);
+        this.todoList[this.activeTab].sort((a, b) => a.checked - b.checked);
       },
-      moveItem(index) {
-        this.todoList[index].sort((a, b) => a.checked - b.checked);
+      moveItem() {
+        this.todoList[this.activeTab].sort((a, b) => a.checked - b.checked);
       },
-      completeItem(item, index, $event) {
+      completeItem(item, $event) {
         item.checked = $event;
         this.todoList[this.activeTab].sort((a, b) => a.checked - b.checked);
       },
@@ -437,7 +436,6 @@
     font-weight: bold;
     font-size: 1.5rem;
     border-bottom-left-radius: .5rem;
-    border-left: 0.1rem solid rgba(0, 0, 0, .5);
     border-right: 0.15rem solid rgba(0, 0, 0, .5);
     border-bottom: 0.15rem solid rgba(0, 0, 0, .5);
   }
@@ -463,15 +461,8 @@
     align-items: center;
     justify-content: center;
     padding: .4rem;
-    border-right: 0;
-    border-left: 0.0625rem solid rgba(0, 0, 0, .5);
-    border-bottom-left-radius: .5rem;
-    border-bottom-right-radius: 0;
   }
 
-  .defTab:nth-child(2) {
-    border-right: 0.0625rem solid rgba(0, 0, 0, .5);
-  }
 
   .tabSettingBtn {
     width: 1.2rem;

@@ -8,8 +8,8 @@
       <input
         type="checkbox"
         class="completeTask"
-        :checked="checked"
-        :value="checked"
+        :checked="getCheck"
+        :value="getCheck"
         @input="completeTask"
       >
     </label>
@@ -77,12 +77,15 @@
       itemName() {
         return this.item.txt
       },
+      getCheck() {
+        return this.item.checked
+      }
     },
     props: ['item'],
     methods: {
       completeTask() {
         this.checked = !this.checked;
-        this.$emit('toggle', this.checked)
+        this.$emit('toggle', this.checked);
       },
       update() {
         this.isEditable = false;
