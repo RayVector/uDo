@@ -10,7 +10,7 @@
         class="completeTask"
         :checked="checked"
         :value="checked"
-        @input="$emit('toggle', checked = !checked)"
+        @input="completeTask"
       >
     </label>
     <div class="todoItem">
@@ -32,24 +32,28 @@
         </label>
       </v-touch>
     </div>
-    <div class="deleteTodoItem" @click="$emit('delete')">&#10006;</div>
+    <button class="manageItemBtns deleteTodoItem" @click="$emit('delete')">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path
+          d="M16.0168 2.29813C17.0818 1.02891 18.974 0.863357 20.2433 1.92836V1.92836C21.5125 2.99337 21.678 4.88563 20.613 6.15486L18.4552 8.72652C17.3901 9.99575 15.4979 10.1613 14.2287 9.09629V9.09629C12.9594 8.03129 12.7939 6.13902 13.8589 4.8698L16.0168 2.29813Z"
+          fill="#494949"></path>
+        <path
+          d="M4.97624 15.4557C6.04124 14.1865 7.93351 14.021 9.20274 15.086V15.086C10.472 16.151 10.6375 18.0432 9.57251 19.3125L7.75727 21.4758C6.69226 22.745 4.8 22.9105 3.53077 21.8455V21.8455C2.26155 20.7805 2.096 18.8883 3.161 17.619L4.97624 15.4557Z"
+          fill="#494949"></path>
+        <rect y="5.8288" width="6" height="26" rx="3" transform="rotate(-50 0 5.8288)" fill="#494949"></rect>
+      </svg>
+    </button>
     <transition name="saveItemBtnFade">
       <button
         v-show="isEditable"
-        class="saveTodoItem" @click="update">
-        <svg
-          enable-background="new 0 0 26 26"
-          version="1.1"
-          viewBox="0 0 26 26"
-          xml:space="preserve"
-          xmlns="http://www.w3.org/2000/svg">
-            <path
-              d="M24.7802734,5.0820313c-0.2939453-0.2929688-0.7685547-0.2929688-1.0605469,0L9.4921875,19.3265381  l-7.2119141-7.2200928c-0.2919922-0.2919922-0.7666016-0.2939453-1.0605469,0c-0.2929688,0.2919922-0.2929688,0.7675781,0,1.0605469  l7.7421875,7.7509766c0.1464844,0.1464844,0.3378906,0.2197266,0.5302734,0.2197266s0.3837891-0.0732422,0.5302734-0.2197266  L24.7802734,6.1425781C25.0732422,5.8496094,25.0732422,5.3740234,24.7802734,
-                5.0820313z"
-              fill="#1D1D1B"
-            >
-            </path>
-          </svg>
+        class="manageItemBtns saveTodoItem" @click="update">
+        <svg width="34" height="30" viewBox="0 0 30 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path
+            d="M2.3566 14.8563C1.08738 13.7913 0.921829 11.899 1.98683 10.6298V10.6298C3.05184 9.36056 4.94411 9.19501 6.21333 10.26L8.37664 12.0752C9.64587 13.1403 9.81142 15.0325 8.74642 16.3017V16.3017C7.68141 17.571 5.78914 17.7365 4.51992 16.6715L2.3566 14.8563Z"
+            fill="#494949"></path>
+          <rect x="12.8288" y="23.7739" width="6" height="26" rx="3" transform="rotate(-140 12.8288 23.7739)" fill="#494949"></rect>
+        </svg>
+
       </button>
     </transition>
 
@@ -76,6 +80,10 @@
     },
     props: ['item'],
     methods: {
+      completeTask() {
+        this.checked = !this.checked;
+        this.$emit('toggle', this.checked)
+      },
       update() {
         this.isEditable = false;
         if (this.name !== '') {
@@ -173,16 +181,22 @@
     font-size: 1.3rem;
   }
 
-  .deleteTodoItem {
-    margin-left: auto;
-    width: 0.9375rem;
-    height: 1.625rem;
-    display: inline-block;
+  .manageItemBtns {
+    margin-right: 1rem;
+    width: 2rem;
+    height: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     cursor: pointer;
-    font-size: 1.3rem;
     user-select: none;
     transition: .3s;
     backface-visibility: hidden;
+  }
+
+  .deleteTodoItem svg{
+    width: 80%;
+    height: 80%;
   }
 
   .deleteTodoItem:hover {
@@ -190,15 +204,9 @@
     color: rgba(255, 5, 5, 0.8);
   }
 
-  .saveTodoItem {
-    margin-left: 1rem;
-    width: 1.5rem;
-    height: 1.5rem;
-    display: inline-block;
-    cursor: pointer;
-    user-select: none;
-    transition: .3s;
-    backface-visibility: hidden;
+  .saveTodoItem svg{
+    width: 100%;
+    height: 100%;
   }
 
   .saveTodoItem:hover {

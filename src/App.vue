@@ -23,25 +23,20 @@
 
 
 <style lang="scss">
-  * {
-    margin: 0;
-    padding: 0;
-    outline: none;
-  }
 
   #app {
     margin: unset;
     color: rgba(0, 0, 0, 0.8)
   }
 
-  body {
-    height: 100vh;
-
-  }
 
   body, .mainApp {
-    background-color: #f1f1f1;
+    background-color: #f0f0f0;
+   /* background-color: #0077C5;*/
   }
+
+  /*ATTENTION >*/
+
   #app > * {
     transition: .3s;
   }
