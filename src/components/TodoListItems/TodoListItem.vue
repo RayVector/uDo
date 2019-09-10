@@ -8,9 +8,8 @@
       <input
         type="checkbox"
         class="completeTask"
-        :checked="getCheck"
-        :value="getCheck"
-        @input="completeTask"
+        v-model="checked"
+        @change="completeTask"
       >
     </label>
     <div class="todoItem">
@@ -32,7 +31,7 @@
         </label>
       </v-touch>
     </div>
-    <button class="manageItemBtns deleteTodoItem" @click="$emit('delete')">
+    <button class="manageItemBtns deleteTodoItem" @click="deleteItem">
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path
           d="M16.0168 2.29813C17.0818 1.02891 18.974 0.863357 20.2433 1.92836V1.92836C21.5125 2.99337 21.678 4.88563 20.613 6.15486L18.4552 8.72652C17.3901 9.99575 15.4979 10.1613 14.2287 9.09629V9.09629C12.9594 8.03129 12.7939 6.13902 13.8589 4.8698L16.0168 2.29813Z"
@@ -46,12 +45,13 @@
     <transition name="saveItemBtnFade">
       <button
         v-show="isEditable"
-        class="manageItemBtns saveTodoItem" @click="update">
+        class="manageItemBtns saveTodoItem" @click="updateItem">
         <svg width="34" height="30" viewBox="0 0 30 24" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path
             d="M2.3566 14.8563C1.08738 13.7913 0.921829 11.899 1.98683 10.6298V10.6298C3.05184 9.36056 4.94411 9.19501 6.21333 10.26L8.37664 12.0752C9.64587 13.1403 9.81142 15.0325 8.74642 16.3017V16.3017C7.68141 17.571 5.78914 17.7365 4.51992 16.6715L2.3566 14.8563Z"
             fill="#494949"></path>
-          <rect x="12.8288" y="23.7739" width="6" height="26" rx="3" transform="rotate(-140 12.8288 23.7739)" fill="#494949"></rect>
+          <rect x="12.8288" y="23.7739" width="6" height="26" rx="3" transform="rotate(-140 12.8288 23.7739)"
+                fill="#494949"></rect>
         </svg>
 
       </button>
@@ -70,27 +70,26 @@
       return {
         name: '',
         isEditable: false,
-        checked: this.item.checked,
+        checked: this.item.checked
       }
     },
     computed: {
       itemName() {
         return this.item.txt
       },
-      getCheck() {
-        return this.item.checked
-      }
     },
     props: ['item'],
     methods: {
       completeTask() {
-        this.checked = !this.checked;
-        this.$emit('toggle', this.checked);
+        this.$store.dispatch("completeTask", {item: this.item, value: this.checked});
       },
-      update() {
+      deleteItem() {
+        this.$store.dispatch("delTask", this.item);
+      },
+      updateItem() {
         this.isEditable = false;
         if (this.name !== '') {
-          this.$emit('update', {txt: this.name, id: this.item.id});
+          this.$store.dispatch("updateTask", {txt: this.name, id: this.item.id});
         }
       },
       onSwipeLeft() {
@@ -197,7 +196,7 @@
     backface-visibility: hidden;
   }
 
-  .deleteTodoItem svg{
+  .deleteTodoItem svg {
     width: 80%;
     height: 80%;
   }
@@ -207,7 +206,7 @@
     color: rgba(255, 5, 5, 0.8);
   }
 
-  .saveTodoItem svg{
+  .saveTodoItem svg {
     width: 100%;
     height: 100%;
   }

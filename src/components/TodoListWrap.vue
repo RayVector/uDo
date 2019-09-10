@@ -6,10 +6,10 @@
     >
       <transition name="appMenuFade">
         <app-menu
-          v-show="isMenuShow"
+          @clearAllCompleted="clearAllCompleted"
           @clearCache="clearCashe"
           @closeMenu="isMenuShow = false"
-          @clearAllCompleted="clearAllCompleted"
+          v-show="isMenuShow"
         ></app-menu>
       </transition>
     </v-touch>
@@ -17,14 +17,14 @@
 
     <div class="todoWrap">
       <v-touch
-        v-on:swipeup="isMenuShow = false"
         v-on:swipedown="isMenuShow = true"
+        v-on:swipeup="isMenuShow = false"
       >
         <p class="todoTitle">
-          <span class="mainTitle" @click="getAuthorInfo">
+          <span @click="getAuthorInfo" class="mainTitle">
             uDo:
           </span>
-          <button class="openMenuBtn" @click="isMenuShow = true">
+          <button @click="isMenuShow = true" class="openMenuBtn">
             <svg
               class="openMenuBtnItem"
               viewBox="0 0 24 24" xml:space="preserve"
@@ -39,48 +39,47 @@
           </button>
         </p>
       </v-touch>
-      <div class="tabsArea" :class="{menuOpen: isTabMenuShow}">
-        <div class="tab defTab" @click="addNewTab">
-          <svg class="tabSettingBtn addNewTabIcon" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <div :class="{menuOpen: isTabMenuShow}" class="tabsArea">
+        <div @click="addNewTab" class="tab defTab">
+          <svg class="tabSettingBtn addNewTabIcon" fill="none" viewBox="0 0 26 26" xmlns="http://www.w3.org/2000/svg">
             <path
               d="M20 16C18.3431 16 17 14.6569 17 13V13C17 11.3431 18.3431 10 20 10H23C24.6569 10 26 11.3431 26 13V13C26 14.6569 24.6569 16 23 16H20Z"
               fill="#494949"></path>
             <path
               d="M3 16C1.34315 16 0 14.6569 0 13V13C0 11.3431 1.34315 10 3 10H6C7.65685 10 9 11.3431 9 13V13C9 14.6569 7.65685 16 6 16H3Z"
               fill="#494949"></path>
-            <rect x="10" y="17" width="6" height="9" rx="3" fill="#494949"></rect>
-            <rect x="10" width="6" height="9" rx="3" fill="#494949"></rect>
+            <rect fill="#494949" height="9" rx="3" width="6" x="10" y="17"></rect>
+            <rect fill="#494949" height="9" rx="3" width="6" x="10"></rect>
             <path
               d="M13 16C11.3431 16 10 14.6569 10 13V13C10 11.3431 11.3431 10 13 10V10C14.6569 10 16 11.3431 16 13V13C16 14.6569 14.6569 16 13 16V16Z"
               fill="#494949"></path>
           </svg>
 
         </div>
-        <div class="tab defTab" @click="showTabsList">
-          <svg class="tabSettingBtn" viewBox="0 0 23 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <div @click="showTabsList" class="tab defTab">
+          <svg class="tabSettingBtn" fill="none" viewBox="0 0 23 22" xmlns="http://www.w3.org/2000/svg">
             <path
               d="M3 6C1.34315 6 0 4.65685 0 3V3C0 1.34315 1.34315 0 3 0V0C4.65685 0 6 1.34315 6 3V3C6 4.65685 4.65685 6 3 6V6Z"
               fill="#494949"></path>
-            <rect x="7" y="6" width="6" height="16" rx="3" transform="rotate(-90 7 6)" fill="#494949"></rect>
+            <rect fill="#494949" height="16" rx="3" transform="rotate(-90 7 6)" width="6" x="7" y="6"></rect>
             <path
               d="M3 14C1.34315 14 0 12.6569 0 11V11C0 9.34315 1.34315 8 3 8V8C4.65685 8 6 9.34315 6 11V11C6 12.6569 4.65685 14 3 14V14Z"
               fill="#494949"></path>
-            <rect x="7" y="14" width="6" height="16" rx="3" transform="rotate(-90 7 14)" fill="#494949"></rect>
+            <rect fill="#494949" height="16" rx="3" transform="rotate(-90 7 14)" width="6" x="7" y="14"></rect>
             <path
               d="M3 22C1.34315 22 0 20.6569 0 19V19C0 17.3431 1.34315 16 3 16V16C4.65685 16 6 17.3431 6 19V19C6 20.6569 4.65685 22 3 22V22Z"
               fill="#494949"></path>
-            <rect x="7" y="22" width="6" height="16" rx="3" transform="rotate(-90 7 22)" fill="#494949"></rect>
+            <rect fill="#494949" height="16" rx="3" transform="rotate(-90 7 22)" width="6" x="7" y="22"></rect>
           </svg>
 
         </div>
 
         <div
-          class="tab"
           v-for="(item, index) in getTabList"
+          :class="{activeTab: index === getActiveTab}"
           :item="item"
           :key="index"
-          :class="{activeTab: index === activeTab}"
-          @click="swapTab(index)"
+          class="tab"
         >
           <!--<label class="tabNameWrap">
             <input
@@ -93,47 +92,47 @@
             >
           </label>-->
           <button
-            v-if="isTabMenuShow"
-            class="manageTab deleteTabBtn"
             @click="deleteTab(index)"
+            class="manageTab deleteTabBtn"
+            v-show="isTabMenuShow"
           >
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <svg fill="none" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
               <path
                 d="M16.0168 2.29813C17.0818 1.02891 18.974 0.863357 20.2433 1.92836V1.92836C21.5125 2.99337 21.678 4.88563 20.613 6.15486L18.4552 8.72652C17.3901 9.99575 15.4979 10.1613 14.2287 9.09629V9.09629C12.9594 8.03129 12.7939 6.13902 13.8589 4.8698L16.0168 2.29813Z"
                 fill="#494949"></path>
               <path
                 d="M4.97624 15.4557C6.04124 14.1865 7.93351 14.021 9.20274 15.086V15.086C10.472 16.151 10.6375 18.0432 9.57251 19.3125L7.75727 21.4758C6.69226 22.745 4.8 22.9105 3.53077 21.8455V21.8455C2.26155 20.7805 2.096 18.8883 3.161 17.619L4.97624 15.4557Z"
                 fill="#494949"></path>
-              <rect y="5.8288" width="6" height="26" rx="3" transform="rotate(-50 0 5.8288)" fill="#494949"></rect>
+              <rect fill="#494949" height="26" rx="3" transform="rotate(-50 0 5.8288)" width="6" y="5.8288"></rect>
             </svg>
           </button>
           <button
-            v-if="isTabMenuShow"
             class="manageTab renameTabBtn"
+            v-show="isTabMenuShow"
           >
-            <svg width="24" height="24" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <svg fill="none" height="24" viewBox="0 0 36 36" width="24" xmlns="http://www.w3.org/2000/svg">
               <path
                 d="M25.5 18C25.5 22.1421 22.1421 25.5 18 25.5C13.8579 25.5 10.5 22.1421 10.5 18C10.5 13.8579 13.8579 10.5 18 10.5C22.1421 10.5 25.5 13.8579 25.5 18Z"
                 fill="#494949" stroke="#494949"></path>
-              <circle cx="17.9309" cy="4.93091" r="3.5" transform="rotate(40 17.9309 4.93091)"
-                      fill="#494949"></circle>
-              <circle cx="30.9309" cy="17.9309" r="3.5" transform="rotate(40 30.9309 17.9309)"
-                      fill="#494949"></circle>
-              <circle cx="4.93091" cy="17.9309" r="3.5" transform="rotate(40 4.93091 17.9309)"
-                      fill="#494949"></circle>
-              <circle cx="8.93091" cy="8.93091" r="3.5" transform="rotate(40 8.93091 8.93091)"
-                      fill="#494949"></circle>
-              <circle cx="26.9309" cy="26.9309" r="3.5" transform="rotate(40 26.9309 26.9309)"
-                      fill="#494949"></circle>
-              <circle cx="8.93091" cy="26.9309" r="3.5" transform="rotate(40 8.93091 26.9309)"
-                      fill="#494949"></circle>
-              <circle cx="26.9309" cy="8.93091" r="3.5" transform="rotate(40 26.9309 8.93091)"
-                      fill="#494949"></circle>
-              <circle cx="17.9309" cy="30.9309" r="3.5" transform="rotate(40 17.9309 30.9309)"
-                      fill="#494949"></circle>
+              <circle cx="17.9309" cy="4.93091" fill="#494949" r="3.5"
+                      transform="rotate(40 17.9309 4.93091)"></circle>
+              <circle cx="30.9309" cy="17.9309" fill="#494949" r="3.5"
+                      transform="rotate(40 30.9309 17.9309)"></circle>
+              <circle cx="4.93091" cy="17.9309" fill="#494949" r="3.5"
+                      transform="rotate(40 4.93091 17.9309)"></circle>
+              <circle cx="8.93091" cy="8.93091" fill="#494949" r="3.5"
+                      transform="rotate(40 8.93091 8.93091)"></circle>
+              <circle cx="26.9309" cy="26.9309" fill="#494949" r="3.5"
+                      transform="rotate(40 26.9309 26.9309)"></circle>
+              <circle cx="8.93091" cy="26.9309" fill="#494949" r="3.5"
+                      transform="rotate(40 8.93091 26.9309)"></circle>
+              <circle cx="26.9309" cy="8.93091" fill="#494949" r="3.5"
+                      transform="rotate(40 26.9309 8.93091)"></circle>
+              <circle cx="17.9309" cy="30.9309" fill="#494949" r="3.5"
+                      transform="rotate(40 17.9309 30.9309)"></circle>
             </svg>
           </button>
-          <div class="tabName">{{item.title}}</div>
+          <div class="tabName" @click="swapTab(index)">{{item.title}}</div>
 
         </div>
       </div>
@@ -141,52 +140,45 @@
       <div class="workspace"
       >
         <div class="userMenu">
-          <button class="todoBtn" @click='addNewTask'>
-            <svg width="24" height="24" viewBox="0 0 28 31" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <circle cx="4.5837" cy="26.2265" r="3" transform="rotate(40 4.5837 26.2265)" fill="#494949"></circle>
-              <rect x="22.212" width="6" height="26" rx="3" transform="rotate(40 22.212 0)" fill="#494949"></rect>
-            </svg>
-          </button>
+
           <label class="addTaskFieldWrap">
             <input
-              type="text"
               class="addTaskField"
-              placeholder="Task name..."
-              v-model="val"
               maxlength="100"
+              placeholder="Task name..."
               required
+              type="text"
+              v-model="val"
             >
           </label>
+          <button @click='addNewTask' class="todoBtn">
+            <svg class="addNewTaskIcon" fill="none" height="24" viewBox="0 0 28 31" width="24"
+                 xmlns="http://www.w3.org/2000/svg">
+              <circle cx="4.5837" cy="26.2265" fill="#494949" r="3" transform="rotate(40 4.5837 26.2265)"></circle>
+              <rect fill="#494949" height="26" rx="3" transform="rotate(40 22.212 0)" width="6" x="22.212"></rect>
+            </svg>
+          </button>
         </div>
 
         <draggable
-          tag="div"
+          :options="{delay:400, chosenClass: 'chosen'}"
           class="todoItemsList"
-          v-model="todoList[activeTab]"
           handle=".handle"
-          @start="drag=true"
-          @end="moveItem"
-          :options="{delay:600, chosenClass: 'chosen'}"
+          tag="div"
+          v-model="newList"
         >
           <transition-group
-            tag="ul"
             name="itemFade"
+            tag="ul"
           >
             <todoListItem
-              v-for="(item, index2) in 0"
               :item="item"
               :key="index2"
-              @delete="delTaskItem(item)"
-              @update="updateItem"
-              @toggle="completeItem(item, $event)"
+              v-for="(item, index2) in getList"
             ></todoListItem>
           </transition-group>
         </draggable>
-       {{getCount}}
-        <label>
-          <input type="number" v-model="val2">
-        </label>
-        <button @click="update">Enter</button>
+
       </div>
     </div>
   </div>
@@ -206,87 +198,63 @@
     },
     data() {
       return {
-        activeTab: 0,
-        tabsList: [
-          {
-            id: 1,
-            title: "Main",
-          }
-        ],
         val: '',
-        val2: 0,
         tabName: '',
-        todoList: [
-          [],
-        ],
         isTabMenuShow: false,
         isMenuShow: false
       }
     },
     computed: {
-      getCount() {
-        return this.$store.state.count
-      },
       getList() {
-        return [...this.todoList[this.activeTab]].sort((a, b) => a.checked - b.checked);
+        /*!!!MAIN!!! return this.$store.getters.sortedToDoList.todoItems;*/
+        return this.$store.state.tabs[this.getActiveTab].todoItems
       },
       getTabList() {
-        return this.tabsList
+        return this.$store.state.tabs;
+      },
+      getActiveTab() {
+        return this.$store.state.activeTab
+      },
+      newList: {
+        get() {
+          return this.getList
+        },
+        set(newList) {
+          this.$store.dispatch('sortable', newList)
+        },
       }
     },
     methods: {
-      update() {
-        this.$store.commit('rise', parseInt(this.val2))
-      },
       addNewTab() {
-        this.tabsList.push({id: this.tabsList.length, title: this.tabsList.length,});
-        this.activeTab = this.tabsList.length - 1;
-        localStorage.setItem("activeTab", JSON.stringify(this.activeTab));
+        this.$store.dispatch("addTab");
         // ICON ANIMATION:
         const icon = document.querySelector('.addNewTabIcon');
-        icon.classList.toggle('addNewTabIconActive');
+        icon.classList.toggle('swipeIcon');
       },
       showTabsList() {
         this.isTabMenuShow = !this.isTabMenuShow;
       },
       swapTab(index) {
-        this.activeTab = index;
+        this.$store.dispatch("swapTab", index);
         this.val = '';
-        localStorage.setItem("activeTab", JSON.stringify(this.activeTab));
       },
-
-      deleteTab() {
-        if (this.activeTab > 0) {
-          this.tabsList.splice(this.activeTab, 1);
-        }
+      deleteTab(index) {
+        this.$store.dispatch("deleteTab", index);
       },
       addNewTask() {
         if (this.val !== '') {
-          let newIndex = this.todoList[this.activeTab].length > 0 ? (Math.max(...this.todoList[this.activeTab].map(e => e.id)) + 1) : 0;
-          this.todoList[this.activeTab].unshift({txt: this.val, id: newIndex, checked: false});
+          this.$store.dispatch("addTask", this.val);
+          // ICON ANIMATION:
+          const icon = document.querySelector('.addNewTaskIcon');
+          icon.classList.toggle('swipeIcon');
         }
         this.val = '';
-
       },
-
-      delTaskItem(deletedItem) {
-        const item = this.todoList[this.activeTab].findIndex(i => i.id === deletedItem.id);
-        this.todoList[this.activeTab].splice(item, 1);
-      },
-      updateItem(updatedItem) {
-        const item = this.todoList[this.activeTab].find(i => i.id === updatedItem.id);
-        item.txt = updatedItem.txt;
-        this.todoList[this.activeTab].sort((a, b) => a.checked - b.checked);
-      },
-      moveItem() {
-        this.todoList[this.activeTab].sort((a, b) => a.checked - b.checked);
-      },
-      completeItem(item, $event) {
-        item.checked = $event;
-        this.todoList[this.activeTab].sort((a, b) => a.checked - b.checked);
-      },
+      /*moveItem() {
+        this.$store.dispatch("sortTasksList");
+      },*/
       clearAllCompleted() {
-        if (this.todoList[this.activeTab].filter(item => item.checked !== false).length > 0) {
+        /*if (this.todoList[this.activeTab].filter(item => item.checked !== false).length > 0) {
           let isAccept = confirm('Do You want to delete all completed notes?');
           if (isAccept) {
             this.todoList = this.todoList[this.activeTab].filter(item => item.checked !== true);
@@ -294,7 +262,7 @@
           }
         } else {
           alert('Nothing completed');
-        }
+        }*/
       },
       clearCashe() {
         /*if (JSON.parse(localStorage.todoList).length > 0) {
@@ -313,48 +281,23 @@
       },
 
     },
-    beforeMount() {
-      if (localStorage.tabs) {
-        this.tabsList = JSON.parse(localStorage.tabs);
-      }
-      if (localStorage.todoList) {
-        this.todoList = JSON.parse(localStorage.todoList);
-      }
-      if (localStorage.activeTab) {
-        this.activeTab = JSON.parse(localStorage.activeTab);
-      }
-    },
     created() {
-      window.addEventListener('keyup', event => {
+      /*window.addEventListener('keyup', event => {
         if (event.keyCode === 13) {
           if (this.val !== '') {
             this.addNewTask(this.activeTab)
           }
         }
-      });
+      });*/
       window.onscroll = () => {
         this.isMenuShow = false
-      }
-    },
-    watch: {
-      todoList: {
-        handler: function (newTodoList) {
-          localStorage.todoList = JSON.stringify(newTodoList);
-        },
-        deep: true,
-      },
-      tabsList: {
-        handler: function (newTabsList) {
-          localStorage.tabs = JSON.stringify(newTabsList);
-        },
-        deep: true,
       }
     },
   }
 </script>
 
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
   .appWrap {
     height: 100%;
   }
@@ -486,8 +429,13 @@
     transition: all .3s ease;
   }
 
-  .addNewTabIconActive {
-    transform: rotate(-180deg);
+  .addNewTaskIcon {
+    display: inline-block;
+    transition: all .3s ease;
+  }
+
+  .swipeIcon {
+    transform: rotate(360deg);
   }
 
 
@@ -565,7 +513,7 @@
   }
 
   .todoBtn {
-    margin-right: 1rem;
+    margin-left: 1rem;
     padding: 0.1rem;
     color: rgba(0, 0, 0, 0.7);
     border: none;

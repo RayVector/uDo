@@ -9,6 +9,13 @@
   import todoListWrap from './components/TodoListWrap.vue';
   import InstallPrompt from './components/InstallPrompt';
 
+  /**
+   * todo: refactor all data to class type
+   * todo: use vuex with localstorage
+   * todo: migrate to database
+   * todo: random quotes to the right of the name
+   */
+
 
   export default {
     name: 'app',

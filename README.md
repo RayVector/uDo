@@ -3,16 +3,20 @@ Project: [Site](https://todovue-f9884.firebaseapp.com/).
 ### TODO:
 ___
 ```
-* Menu (popup); +
-* Menu -> Delete all completed notes (Btn); +
-* All "Alerts" to popup;
-* Tutorial about UI (popup);
-* Menu -> settings (popup);
-* Menu -> settings (popup) -> Translation (Btn);
-* Menu -> settings (popup) -> Themes (Btn);
-* Use "indexedDB" (Database);
-* Multiple tabs under main title (routing with one local (inner objects));
-* PC version;
++ Menu (popup);
++ Menu -> Delete all completed notes (Btn);
+- refactor all data to vuex;
+- random quotes to the right of the name
+- use vuex with localstorage
+- migrate to database
+- Multiple tabs under main title;
+- All "Alerts" to popup;
+- Tutorial about UI (popup);
+- Menu -> settings (popup);
+- Menu -> settings (popup) -> Translation (Btn);
+- Menu -> settings (popup) -> Themes (Btn);
+- Use "indexedDB" (Database);
+- PC version;
 
 ```
 ___
