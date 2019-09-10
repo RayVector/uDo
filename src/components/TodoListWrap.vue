@@ -173,7 +173,7 @@
             name="itemFade"
           >
             <todoListItem
-              v-for="(item, index2) in getList"
+              v-for="(item, index2) in 0"
               :item="item"
               :key="index2"
               @delete="delTaskItem(item)"
@@ -182,6 +182,11 @@
             ></todoListItem>
           </transition-group>
         </draggable>
+       {{getCount}}
+        <label>
+          <input type="number" v-model="val2">
+        </label>
+        <button @click="update">Enter</button>
       </div>
     </div>
   </div>
@@ -209,6 +214,7 @@
           }
         ],
         val: '',
+        val2: 0,
         tabName: '',
         todoList: [
           [],
@@ -218,6 +224,9 @@
       }
     },
     computed: {
+      getCount() {
+        return this.$store.state.count
+      },
       getList() {
         return [...this.todoList[this.activeTab]].sort((a, b) => a.checked - b.checked);
       },
@@ -226,6 +235,9 @@
       }
     },
     methods: {
+      update() {
+        this.$store.commit('rise', parseInt(this.val2))
+      },
       addNewTab() {
         this.tabsList.push({id: this.tabsList.length, title: this.tabsList.length,});
         this.activeTab = this.tabsList.length - 1;
@@ -285,7 +297,7 @@
         }
       },
       clearCashe() {
-        if (JSON.parse(localStorage.todoList).length > 0) {
+        /*if (JSON.parse(localStorage.todoList).length > 0) {
           let isAccept = confirm('Do You want to clear ALL notes?');
           if (isAccept) {
             this.todoList = [];
@@ -294,7 +306,7 @@
           }
         } else {
           alert('Nothing to delete.');
-        }
+        }*/
       },
       getAuthorInfo() {
         alert("| created by Ray Vector & Dezl | rayvectorspqr@yahoo.com & demozluk@gmail.com | rayvector.info |");
