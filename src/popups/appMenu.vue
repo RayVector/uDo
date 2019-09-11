@@ -46,22 +46,12 @@
     >
       <svg
         class="clearCacheBtnItem"
-        width="34" height="36" viewBox="0 0 34 36" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path
-          d="M2.15294 24.6812C1.30369 23.9749 1.18779 22.7139 1.89408 21.8646L7.00947 15.7138L20.08 26.584L14.9646 32.7348C14.2583 33.5841 12.9973 33.7 12.1481 32.9937L2.15294 24.6812Z"
-          fill="#494949"></path>
-        <path
-          d="M4.96947 24.4223C4.12022 23.7161 4.00432 22.455 4.71061 21.6058L8.54715 16.9927L18.5423 25.3052L14.7057 29.9183C13.9994 30.7675 12.7384 30.8834 11.8892 30.1771L4.96947 24.4223Z"
-          fill="#C7C7C7"></path>
-        <path
-          d="M20.8655 27.5333L6.25052 15.3924L17.1134 2.31582C18.1721 1.04135 20.0635 0.866448 21.338 1.92517L31.3377 10.2321C32.6122 11.2908 32.7871 13.1822 31.7284 14.4567L20.8655 27.5333Z"
-          fill="#494949"></path>
-        <line x1="25.7662" y1="15.055" x2="18.8465" y2="9.30021" stroke="#F2F2F2"></line>
-        <line x1="23.848" y1="17.3616" x2="16.9283" y2="11.6068" stroke="#F2F2F2"></line>
-        <line x1="21.9297" y1="19.6681" x2="15.01" y2="13.9133" stroke="#F2F2F2"></line>
-        <line x1="1" y1="35.5" x2="26" y2="35.5" stroke="#494949"></line>
+        width="26" height="29" viewBox="0 0 26 29" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="7.33969" cy="21.3398" r="4.5" transform="rotate(-140 7.33969 21.3398)" fill="#494949"></circle>
+        <circle cx="7.522" cy="21.5221" r="2.5" transform="rotate(-140 7.522 21.5221)" fill="#D1D1D1"></circle>
+        <rect x="15.1888" y="20.453" width="11" height="16.3629" rx="4" transform="rotate(-140 15.1888 20.453)"
+              fill="#494949"></rect>
       </svg>
-
     </button>
 
     <button
@@ -102,7 +92,10 @@
       clearAllCompleted() {
         // ANIMATION ICON:
         const icon = document.querySelector('.deleteCompletedBtnItem');
-        icon.classList.toggle('swipeIcon');
+        icon.classList.add('increaseIcon');
+        setTimeout(()=> {
+          icon.classList.remove('increaseIcon');
+        }, 400)
         /*if (this.todoList[this.activeTab].filter(item => item.checked !== false).length > 0) {
           let isAccept = confirm('Do You want to delete all completed notes?');
           if (isAccept) {
@@ -183,6 +176,7 @@
   }
 
   .clearCacheBtn {
+    position: relative;
     width: 3rem;
     padding: 0.1rem;
     color: rgba(0, 0, 0, 0.7);
@@ -193,6 +187,16 @@
     font-size: 2rem;
     transition: .3s;
     line-height: 2rem;
+  }
+
+  .clearCacheBtn:after {
+    position: absolute;
+    content: "";
+    bottom: 0;
+    right: 0;
+    left: 0;
+    width: 50%;
+    border-bottom: 1.5px solid rgba(73, 73, 73, 0.75);
   }
 
   .clearCacheBtnItem {

@@ -29,6 +29,7 @@
       tag="div"
       v-model="newList"
       @end="moveItem"
+      :sort="true"
 
       v-for="(dragItem, index) in getTabList"
       v-show="index === $store.state.activeTab"
@@ -40,6 +41,7 @@
         tag="ul"
         class="fadeList"
       >
+
         <todoListItem
           v-for="item in getList"
           :item="item"
@@ -104,6 +106,12 @@
 </script>
 
 <style lang="scss" scoped>
+  .workspace {
+    display: flex;
+    flex-direction: column;
+    height: 79%;
+  }
+
   .userMenu {
     margin-bottom: 2rem;
     padding: 0.5rem 1rem;
@@ -173,9 +181,16 @@
   .todoItemsList {
     padding-right: 0.3125rem;
     width: 100%;
+    height: 100%;
+    overflow-x: hidden;
   }
 
   .fadeList {
+    overflow-y: auto;
+    overflow-x: hidden;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
     width: 100%;
     transition: all .3s ease-in-out;
   }

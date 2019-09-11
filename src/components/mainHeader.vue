@@ -12,15 +12,13 @@
       <button @click="openMenu" class="openMenuBtn">
         <svg
           class="openMenuBtnItem"
-          viewBox="0 0 24 24" xml:space="preserve"
-          xmlns="http://www.w3.org/2000/svg">
-              <line fill="none" stroke="#000000" stroke-miterlimit="10" stroke-width="2" x1="2" x2="22" y1="12"
-                    y2="12"></line>
-          <line fill="none" stroke="#000000" stroke-miterlimit="10" stroke-width="2" x1="2" x2="22" y1="6"
-                y2="6"></line>
-          <line fill="none" stroke="#000000" stroke-miterlimit="10" stroke-width="2" x1="2" x2="22" y1="18"
-                y2="18"></line>
-            </svg>
+          width="39" height="30" viewBox="0 0 39 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="5" y="11.8975" width="29" height="18" rx="2" fill="#494949"></rect>
+          <path d="M25 23C25 21.8954 25.8954 21 27 21H28C29.1046 21 30 21.8954 30 23V30H25V23Z" fill="white"></path>
+          <path
+            d="M18.972 0.328302C19.2953 0.127278 19.7047 0.127279 20.028 0.328303L33.4133 8.65077C34.2676 9.18191 33.8912 10.5 32.8853 10.5H6.11471C5.1088 10.5 4.73244 9.18191 5.58669 8.65077L18.972 0.328302Z"
+            fill="#494949"></path>
+        </svg>
       </button>
     </div>
     <div class="todoQuotes">
@@ -41,7 +39,10 @@
       },
       openMenu() {
         const icon = document.querySelector('.openMenuBtnItem');
-        icon.classList.toggle('swipeIcon');
+        icon.classList.add('increaseIcon');
+        setTimeout(() => {
+          icon.classList.remove('increaseIcon');
+        }, 400);
         this.$emit('swapMenu', true)
       },
     },
@@ -81,7 +82,6 @@
   .openMenuBtn {
     margin-left: auto;
     padding: 0.1rem;
-    width: 2rem;
     border: none;
     cursor: pointer;
     user-select: none;
@@ -89,6 +89,8 @@
   }
 
   .openMenuBtnItem {
+    width: 2rem;
+    height: 2rem;
     transition: .3s;
   }
 

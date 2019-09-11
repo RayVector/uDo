@@ -1,7 +1,7 @@
 <template>
 
   <li
-    class="todoItemWrap handle"
+    class="todoItemWrap"
     :class="{completed: item.checked, editableMod:isEditable}"
   >
     <label class="todoItemNameDivider">
@@ -31,19 +31,25 @@
         </label>
       </v-touch>
     </div>
-    <button class="manageItemBtns deleteTodoItem" @click="deleteItem">
-      <svg
-        class="deleteTodoItemIcon"
-        width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path
-          d="M16.0168 2.29813C17.0818 1.02891 18.974 0.863357 20.2433 1.92836V1.92836C21.5125 2.99337 21.678 4.88563 20.613 6.15486L18.4552 8.72652C17.3901 9.99575 15.4979 10.1613 14.2287 9.09629V9.09629C12.9594 8.03129 12.7939 6.13902 13.8589 4.8698L16.0168 2.29813Z"
-          fill="#494949"></path>
-        <path
-          d="M4.97624 15.4557C6.04124 14.1865 7.93351 14.021 9.20274 15.086V15.086C10.472 16.151 10.6375 18.0432 9.57251 19.3125L7.75727 21.4758C6.69226 22.745 4.8 22.9105 3.53077 21.8455V21.8455C2.26155 20.7805 2.096 18.8883 3.161 17.619L4.97624 15.4557Z"
-          fill="#494949"></path>
-        <rect y="5.8288" width="6" height="26" rx="3" transform="rotate(-50 0 5.8288)" fill="#494949"></rect>
-      </svg>
-    </button>
+    <transition name="saveItemBtnFade">
+      <button
+        class="manageItemBtns deleteTodoItem"
+        @click="deleteItem"
+        v-show="isEditable"
+      >
+        <svg
+          class="deleteTodoItemIcon"
+          width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path
+            d="M16.0168 2.29813C17.0818 1.02891 18.974 0.863357 20.2433 1.92836V1.92836C21.5125 2.99337 21.678 4.88563 20.613 6.15486L18.4552 8.72652C17.3901 9.99575 15.4979 10.1613 14.2287 9.09629V9.09629C12.9594 8.03129 12.7939 6.13902 13.8589 4.8698L16.0168 2.29813Z"
+            fill="#494949"></path>
+          <path
+            d="M4.97624 15.4557C6.04124 14.1865 7.93351 14.021 9.20274 15.086V15.086C10.472 16.151 10.6375 18.0432 9.57251 19.3125L7.75727 21.4758C6.69226 22.745 4.8 22.9105 3.53077 21.8455V21.8455C2.26155 20.7805 2.096 18.8883 3.161 17.619L4.97624 15.4557Z"
+            fill="#494949"></path>
+          <rect y="5.8288" width="6" height="26" rx="3" transform="rotate(-50 0 5.8288)" fill="#494949"></rect>
+        </svg>
+      </button>
+    </transition>
     <transition name="saveItemBtnFade">
       <button
         v-show="isEditable"
@@ -55,10 +61,16 @@
           <rect x="12.8288" y="23.7739" width="6" height="26" rx="3" transform="rotate(-140 12.8288 23.7739)"
                 fill="#494949"></rect>
         </svg>
-
       </button>
     </transition>
-
+    <div class="dragHandle handle">
+      <svg
+        class="dragHandleIcon"
+        width="23" height="23" viewBox="0 0 23 23" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="11.5" cy="11.5" r="11" fill="#C7C7C7" stroke="#494949"></circle>
+        <circle cx="11.5" cy="11.5" r="6" fill="#C7C7C7" stroke="#494949"></circle>
+      </svg>
+    </div>
 
   </li>
 </template>
@@ -233,6 +245,11 @@
   .completed {
     background-color: #cecece61;
     opacity: .5;
+  }
+
+  .dragHandleIcon {
+    width: 1rem;
+    height: 1rem;
   }
 
   /*animation:*/

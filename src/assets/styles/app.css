@@ -31,3 +31,7 @@ a {
 .swipeIcon {
     transform: rotate(360deg);
 }
+
+.increaseIcon {
+    transform: scale(1.5);
+}

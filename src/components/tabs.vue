@@ -144,6 +144,14 @@
         icon.classList.toggle('swipeIcon');
       },
       showTabsList() {
+
+        const icon = document.querySelector('.deleteCompletedBtnItem');
+        icon.classList.add('increaseIcon');
+
+        setTimeout(()=> {
+          icon.classList.remove('increaseIcon');
+        }, 400);
+
         this.isTabMenuShow = !this.isTabMenuShow;
       },
       swapTab(index) {

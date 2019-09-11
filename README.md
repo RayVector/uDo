@@ -6,10 +6,13 @@ ___
 + Menu (popup);
 + Menu -> Delete all completed notes (Btn);
 + refactor all data to vuex;
-+ use vuex with localstorage
-- random quotes to the right of the name
-- migrate to database
-- Multiple tabs under main title;
++ use vuex with localstorage;
++ random quotes to the right of the name;
++ Multiple tabs under main title;
+- add tab renaming;
+- migrate from inputs (itemName) to textarea;
+- change main logo (write own);
+- migrate to database;
 - All "Alerts" to popup;
 - Tutorial about UI (popup);
 - Menu -> settings (popup);
