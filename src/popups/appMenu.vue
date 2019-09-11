@@ -3,43 +3,80 @@
     <button
       class="closeAppBtn"
       type="button"
-      @click="$emit('closeMenu')">
-      &#10006;
+      @click="closeMenu">
+      <svg
+        class="closeMenuIcon"
+        width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path
+          d="M16.0168 2.29813C17.0818 1.02891 18.974 0.863357 20.2433 1.92836V1.92836C21.5125 2.99337 21.678 4.88563 20.613 6.15486L18.4552 8.72652C17.3901 9.99575 15.4979 10.1613 14.2287 9.09629V9.09629C12.9594 8.03129 12.7939 6.13902 13.8589 4.8698L16.0168 2.29813Z"
+          fill="#494949"></path>
+        <path
+          d="M4.97624 15.4557C6.04124 14.1865 7.93351 14.021 9.20274 15.086V15.086C10.472 16.151 10.6375 18.0432 9.57251 19.3125L7.75727 21.4758C6.69226 22.745 4.8 22.9105 3.53077 21.8455V21.8455C2.26155 20.7805 2.096 18.8883 3.161 17.619L4.97624 15.4557Z"
+          fill="#494949"></path>
+        <rect y="5.8288" width="6" height="26" rx="3" transform="rotate(-50 0 5.8288)" fill="#494949"></rect>
+      </svg>
     </button>
 
     <button
       class="deleteCompletedBtn"
-      @click="$emit('clearAllCompleted')"
+      @click="clearAllCompleted"
     >
       <svg
         class="deleteCompletedBtnItem"
-        width="2rem" height="2rem" viewBox="0 0 33 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path class="blackPathBtn" d="M25.5 5.33333V0H7.5V5.33333H0V8H33V5.33333H25.5ZM22.5 5.33333H10.5V2.66667H22.5V5.33333Z" fill="black"></path>
-        <rect class="blackPathBtn" x="5" y="10" width="24" height="22" fill="black"></rect>
-        <path d="M23.786 14L15.654 22.132L11.414 17.891L10 19.305L15.654 24.96L25.2 15.414L23.786 14Z" fill="white"></path>
+        width="36" height="37" viewBox="0 0 26 27" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M3 9H23V21.3913C23 24.1527 20.7614 26.3913 18 26.3913H8C5.23858 26.3913 3 24.1527 3 21.3913L3 9Z"
+              fill="#494949"></path>
+        <path
+          d="M2 8C0.89543 8 0 7.10457 0 6V6C0 4.89543 0.895431 4 2 4L24 4C25.1046 4 26 4.89543 26 6V6C26 7.10457 25.1046 8 24 8L2 8Z"
+          fill="#494949"></path>
+        <path
+          d="M6.5 3C5.67157 3 5 2.32843 5 1.5V1.5C5 0.671573 5.67157 0 6.5 0L19.5 0C20.3284 0 21 0.671573 21 1.5V1.5C21 2.32843 20.3284 3 19.5 3L6.5 3Z"
+          fill="#494949"></path>
+        <path
+          d="M7.03405 17.7292C6.42109 17.189 6.33761 16.2336 6.84758 15.5952V15.5952C7.35755 14.9569 8.26787 14.8774 8.88083 15.4176L10.2143 16.5928C10.8273 17.133 10.9107 18.0883 10.4008 18.7267V18.7267C9.89079 19.365 8.98048 19.4445 8.36752 18.9043L7.03405 17.7292Z"
+          fill="white"></path>
+        <rect width="2.93363" height="12.8211" rx="1.46682"
+              transform="matrix(-0.75023 -0.661177 0.624181 -0.78128 12.6444 22.7391)" fill="white"></rect>
       </svg>
     </button>
 
     <button
-      class="todoClearBtn"
-      @click="$emit('clearCache')"
+      class="clearCacheBtn"
+      @click="clearCache"
     >
       <svg
-        class="todoClearBtnItem"
-        height="2rem"
-        width="2rem"
-        viewBox="0 0 1792 1792"
-        xmlns="http://www.w3.org/2000/svg">
+        class="clearCacheBtnItem"
+        width="34" height="36" viewBox="0 0 34 36" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path
-          d="M836 1169l-15 368-2 22-420-29q-36-3-67-31.5t-47-65.5q-11-27-14.5-55t4-65 12-55 21.5-64 19-53q78 12 509 28zm-387-586l180 379-147-92q-63 72-111.5 144.5t-72.5 125-39.5 94.5-18.5 63l-4 21-190-357q-17-26-18-56t6-47l8-18q35-63 114-188l-140-86zm1231 517l-188 359q-12 29-36.5 46.5t-43.5 20.5l-18 4q-71 7-219 12l8 164-230-367 211-362 7 173q170 16 283 5t170-33zm-785-924q-47 63-265 435l-317-187-19-12 225-356q20-31 60-45t80-10q24 2 48.5 12t42 21 41.5 33 36 34.5 36 39.5 32 35zm655 307l212 363q18 37 12.5 76t-27.5 74q-13 20-33 37t-38 28-48.5 22-47 16-51.5 14-46 12q-34-72-265-436l313-195zm-143-226l142-83-220 373-419-20 151-86q-34-89-75-166t-75.5-123.5-64.5-80-47-46.5l-17-13 405 1q31-3 58 10.5t39 28.5l11 15q39 61 112 190z"></path>
+          d="M2.15294 24.6812C1.30369 23.9749 1.18779 22.7139 1.89408 21.8646L7.00947 15.7138L20.08 26.584L14.9646 32.7348C14.2583 33.5841 12.9973 33.7 12.1481 32.9937L2.15294 24.6812Z"
+          fill="#494949"></path>
+        <path
+          d="M4.96947 24.4223C4.12022 23.7161 4.00432 22.455 4.71061 21.6058L8.54715 16.9927L18.5423 25.3052L14.7057 29.9183C13.9994 30.7675 12.7384 30.8834 11.8892 30.1771L4.96947 24.4223Z"
+          fill="#C7C7C7"></path>
+        <path
+          d="M20.8655 27.5333L6.25052 15.3924L17.1134 2.31582C18.1721 1.04135 20.0635 0.866448 21.338 1.92517L31.3377 10.2321C32.6122 11.2908 32.7871 13.1822 31.7284 14.4567L20.8655 27.5333Z"
+          fill="#494949"></path>
+        <line x1="25.7662" y1="15.055" x2="18.8465" y2="9.30021" stroke="#F2F2F2"></line>
+        <line x1="23.848" y1="17.3616" x2="16.9283" y2="11.6068" stroke="#F2F2F2"></line>
+        <line x1="21.9297" y1="19.6681" x2="15.01" y2="13.9133" stroke="#F2F2F2"></line>
+        <line x1="1" y1="35.5" x2="26" y2="35.5" stroke="#494949"></line>
       </svg>
+
     </button>
 
     <button
       class="helpBtn"
       @click="getHelp"
     >
-      ?
+      <svg
+        class="helpBtnIcon"
+        width="7" height="25" viewBox="0 0 7 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path
+          d="M3.26087 6.52173C1.45994 6.52173 0 5.06179 0 3.26086V3.26086C0 1.45993 1.45994 -1.04904e-05 3.26087 -1.04904e-05H3.73913C5.54006 -1.04904e-05 7 1.45993 7 3.26086V3.26086C7 5.06179 5.54006 6.52173 3.73913 6.52173H3.26087Z"
+          fill="#494949"></path>
+        <rect y="7.6087" width="7" height="17.3913" rx="3" fill="#494949"></rect>
+      </svg>
+
     </button>
   </div>
 </template>
@@ -49,9 +86,61 @@
     name: "appMenu",
     methods: {
       getHelp() {
+        // ANIMATION ICON:
+        const item = document.querySelector('.helpBtnIcon');
+        item.classList.toggle('swipeIcon');
+
         alert("To delete ALL notes click recycle button, swipe note name left to edit note, swipe right to delete note.");
       },
-    }
+      closeMenu() {
+        // ANIMATION ICON:
+        const icon = document.querySelector('.closeMenuIcon');
+        icon.classList.toggle('swipeIcon');
+
+        this.$emit('closeMenu');
+      },
+      clearAllCompleted() {
+        // ANIMATION ICON:
+        const icon = document.querySelector('.deleteCompletedBtnItem');
+        icon.classList.toggle('swipeIcon');
+        /*if (this.todoList[this.activeTab].filter(item => item.checked !== false).length > 0) {
+          let isAccept = confirm('Do You want to delete all completed notes?');
+          if (isAccept) {
+            this.todoList = this.todoList[this.activeTab].filter(item => item.checked !== true);
+            this.isMenuShow = false;
+          }
+        } else {
+          alert('Nothing completed');
+        }*/
+      },
+      clearCache() {
+        // ANIMATION ICON:
+        const icon = document.querySelector('.clearCacheBtnItem');
+        icon.classList.toggle('swipeIcon');
+        /*if (JSON.parse(localStorage.todoList).length > 0) {
+          let isAccept = confirm('Do You want to clear ALL notes?');
+          if (isAccept) {
+            this.todoList = [];
+            localStorage.clear();
+            this.isMenuShow = false;
+          }
+        } else {
+          alert('Nothing to delete.');
+        }*/
+      },
+    },
+    created() {
+      /*window.addEventListener('keyup', event => {
+        if (event.keyCode === 13) {
+          if (this.val !== '') {
+            this.addNewTask(this.activeTab)
+          }
+        }
+      });*/
+      window.onscroll = () => {
+        this.isMenuShow = false
+      }
+    },
   }
 </script>
 
@@ -61,6 +150,7 @@
     align-items: center;
     justify-content: center;
   }
+
   .menu {
     z-index: 99;
     position: fixed;
@@ -80,11 +170,19 @@
   }
 
   .closeAppBtn {
+    transition: .3s;
     font-size: 2rem;
     cursor: pointer;
     color: rgba(0, 0, 0, 0.7);
   }
-  .todoClearBtn {
+
+  .closeMenuIcon {
+    transition: .3s;
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+
+  .clearCacheBtn {
     width: 3rem;
     padding: 0.1rem;
     color: rgba(0, 0, 0, 0.7);
@@ -96,31 +194,43 @@
     transition: .3s;
     line-height: 2rem;
   }
-  .todoClearBtnItem {
-    width: 1.5rem;
-    height: 1.5rem;
+
+  .clearCacheBtnItem {
+    transition: .3s;
+    width: 1.8rem;
+    height: 1.8rem;
   }
-  .todoClearBtnItem{
+
+  .clearCacheBtnItem {
+    transition: .3s;
     fill: rgba(0, 0, 0, 0.7);
   }
+
   .deleteCompletedBtn {
     font-size: 1.4rem;
     cursor: pointer;
   }
+
   .deleteCompletedBtnItem {
+    transition: .3s;
     height: 1.5rem;
     width: 1.5rem;
-
   }
+
   .blackPathBtn {
     fill: rgba(0, 0, 0, 0.7);
   }
+
   .helpBtn {
     cursor: pointer;
     font-size: 1.5rem;
-    height: 1.5rem;
-    width: 1.5rem;
     color: rgba(0, 0, 0, 0.7);
     font-weight: bold;
+  }
+
+  .helpBtnIcon {
+    transition: .3s;
+    height: 1.5rem;
+    width: 1.5rem;
   }
 </style>

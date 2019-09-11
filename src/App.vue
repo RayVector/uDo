@@ -1,18 +1,18 @@
 <template>
   <div id="app" class="mainApp">
     <install-prompt></install-prompt>
-    <todoListWrap></todoListWrap>
+    <main-page></main-page>
   </div>
 </template>
 
 <script>
-  import todoListWrap from './components/TodoListWrap.vue';
+  import mainPage from './components/mainPage.vue';
   import InstallPrompt from './components/InstallPrompt';
 
   export default {
     name: 'app',
     components: {
-      todoListWrap,
+      mainPage,
       InstallPrompt,
     },
 

@@ -27,3 +27,7 @@ a {
     -webkit-tap-highlight-color: rgba(0,0,0,0);
     font-family: 'Manjari', sans-serif;
 }
+
+.swipeIcon {
+    transform: rotate(360deg);
+}

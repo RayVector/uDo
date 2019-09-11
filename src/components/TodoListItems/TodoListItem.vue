@@ -32,7 +32,9 @@
       </v-touch>
     </div>
     <button class="manageItemBtns deleteTodoItem" @click="deleteItem">
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <svg
+        class="deleteTodoItemIcon"
+        width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path
           d="M16.0168 2.29813C17.0818 1.02891 18.974 0.863357 20.2433 1.92836V1.92836C21.5125 2.99337 21.678 4.88563 20.613 6.15486L18.4552 8.72652C17.3901 9.99575 15.4979 10.1613 14.2287 9.09629V9.09629C12.9594 8.03129 12.7939 6.13902 13.8589 4.8698L16.0168 2.29813Z"
           fill="#494949"></path>
@@ -84,6 +86,10 @@
         this.$store.dispatch("completeTask", {item: this.item, value: this.checked});
       },
       deleteItem() {
+        // ANIMATION ICON:
+        const item = document.querySelector('.deleteTodoItemIcon');
+        item.classList.toggle('swipeIcon');
+
         this.$store.dispatch("delTask", this.item);
       },
       updateItem() {
@@ -196,7 +202,15 @@
     backface-visibility: hidden;
   }
 
-  .deleteTodoItem svg {
+  .deleteTodoItem {
+    transition: .3s;
+  }
+
+  .deleteTodoItemIcon {
+    transition: .3s;
+  }
+
+  .deleteTodoItem .deleteTodoItemIcon {
     width: 80%;
     height: 80%;
   }
