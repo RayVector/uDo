@@ -65,6 +65,12 @@ export default new Vuex.Store({
     },
     sortTasksList(state) {
       state.tabs[state.activeTab].todoItems.sort((a, b) => a.checked - b.checked);
+    },
+    updateTab(state, item) {
+      const foundItem = state.tabs.find(i => i.id === item.id);
+      console.log(item)
+      foundItem.title = item.title;
+
     }
   },
   actions: {
@@ -94,6 +100,9 @@ export default new Vuex.Store({
     },
     sortTasksList(state) {
       state.commit("sortTasksList");
+    },
+    updateTab(state, item) {
+      state.commit("updateTab", item);
     }
 
   },

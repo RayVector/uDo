@@ -39,7 +39,6 @@
     },
     data() {
       return {
-        tabName: '',
         isMenuShow: false
       }
     },

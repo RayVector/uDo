@@ -9,8 +9,11 @@ ___
 + use vuex with localstorage;
 + random quotes to the right of the name;
 + Multiple tabs under main title;
-- add tab renaming;
++ add tab renaming;
 - migrate from inputs (itemName) to textarea;
+- rewrite tips (from alerts);
+- show all task's text by choosing;
+- add tabs draggable + sorting;
 - change main logo (write own);
 - migrate to database;
 - All "Alerts" to popup;

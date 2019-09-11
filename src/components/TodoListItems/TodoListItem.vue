@@ -31,7 +31,7 @@
         </label>
       </v-touch>
     </div>
-    <transition name="saveItemBtnFade">
+    <transition name="fadeEditItemBtn">
       <button
         class="manageItemBtns deleteTodoItem"
         @click="deleteItem"
@@ -50,7 +50,7 @@
         </svg>
       </button>
     </transition>
-    <transition name="saveItemBtnFade">
+    <transition name="fadeEditItemBtn">
       <button
         v-show="isEditable"
         class="manageItemBtns saveTodoItem" @click="updateItem">
@@ -63,15 +63,22 @@
         </svg>
       </button>
     </transition>
-    <div class="dragHandle handle">
-      <svg
-        class="dragHandleIcon"
-        width="23" height="23" viewBox="0 0 23 23" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="11.5" cy="11.5" r="11" fill="#C7C7C7" stroke="#494949"></circle>
-        <circle cx="11.5" cy="11.5" r="6" fill="#C7C7C7" stroke="#494949"></circle>
-      </svg>
-    </div>
-
+    <transition name="fadeEditItemBtn">
+      <div
+        v-show="isEditable"
+        class="dragHandle handle">
+        <svg
+          class="dragHandleIcon"
+          width="32" height="22" viewBox="0 0 32 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path
+            d="M15.4553 0.353796C15.7866 0.138633 16.2134 0.138633 16.5447 0.353796L27.0257 7.16137C27.8606 7.70368 27.4766 9 26.4809 9H5.51905C4.52344 9 4.1394 7.70368 4.97435 7.16137L15.4553 0.353796Z"
+            fill="#494949"></path>
+          <path
+            d="M16.5447 21.6462C16.2134 21.8614 15.7866 21.8614 15.4553 21.6462L4.97435 14.8386C4.1394 14.2963 4.52344 13 5.51905 13L26.481 13C27.4766 13 27.8606 14.2963 27.0257 14.8386L16.5447 21.6462Z"
+            fill="#494949"></path>
+        </svg>
+      </div>
+    </transition>
   </li>
 </template>
 
@@ -247,17 +254,20 @@
     opacity: .5;
   }
 
+  .dragHandle {
+    cursor: e-resize;
+  }
   .dragHandleIcon {
-    width: 1rem;
-    height: 1rem;
+    width: 1.4rem;
+    height: 1.4rem;
   }
 
   /*animation:*/
-  .saveItemBtnFade-enter-active, .saveItemBtnFade-leave-active {
+  .fadeEditItemBtn-enter-active, .fadeEditItemBtn-leave-active {
     transition: .3s;
   }
 
-  .saveItemBtnFade-enter, .saveItemBtnFade-leave-to {
+  .fadeEditItemBtn-enter, .fadeEditItemBtn-leave-to {
     opacity: 0;
   }
 </style>
