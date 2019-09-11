@@ -5,9 +5,9 @@ ___
 ```
 + Menu (popup);
 + Menu -> Delete all completed notes (Btn);
-- refactor all data to vuex;
++ refactor all data to vuex;
++ use vuex with localstorage
 - random quotes to the right of the name
-- use vuex with localstorage
 - migrate to database
 - Multiple tabs under main title;
 - All "Alerts" to popup;

@@ -136,7 +136,6 @@
 
         </div>
       </div>
-
       <div class="workspace"
       >
         <div class="userMenu">
@@ -159,26 +158,30 @@
             </svg>
           </button>
         </div>
-
         <draggable
           :options="{delay:400, chosenClass: 'chosen'}"
           class="todoItemsList"
           handle=".handle"
           tag="div"
           v-model="newList"
+          @end="moveItem"
+
+          v-for="(dragItem, index) in getTabList"
+          v-show="index === $store.state.activeTab"
+          :dragItem="dragItem"
+          :key="index"
         >
           <transition-group
             name="itemFade"
             tag="ul"
           >
             <todoListItem
+              v-for="item in getList"
               :item="item"
-              :key="index2"
-              v-for="(item, index2) in getList"
+              :key="item.id"
             ></todoListItem>
           </transition-group>
         </draggable>
-
       </div>
     </div>
   </div>
@@ -237,6 +240,12 @@
       swapTab(index) {
         this.$store.dispatch("swapTab", index);
         this.val = '';
+        // SWAP ANIMATION:
+        const pages = document.querySelectorAll('.todoItemsList');
+        pages[index].classList.add('swipePage');
+        setTimeout(()=> {
+          pages[index].classList.remove('swipePage');
+        }, 100);
       },
       deleteTab(index) {
         this.$store.dispatch("deleteTab", index);
@@ -250,9 +259,9 @@
         }
         this.val = '';
       },
-      /*moveItem() {
+      moveItem() {
         this.$store.dispatch("sortTasksList");
-      },*/
+      },
       clearAllCompleted() {
         /*if (this.todoList[this.activeTab].filter(item => item.checked !== false).length > 0) {
           let isAccept = confirm('Do You want to delete all completed notes?');
@@ -404,6 +413,7 @@
   .tabName {
     background-color: unset;
     border: unset;
+
   }
 
   .defTab {
@@ -460,7 +470,7 @@
     padding: 1rem;
     display: flex;
     width: 100%;
-    max-width: 90%;
+    max-width: 91%;
     border-radius: 0;
   }
 
@@ -481,6 +491,7 @@
   .menuOpen .tabName {
     display: inline-block;
     padding-bottom: 1.9rem;
+    width: 100%;
     max-width: 75%;
     background-color: unset;
     border: unset;
@@ -501,6 +512,14 @@
   .manageTab:nth-child(2) {
     border-right: 0.0625rem solid rgba(0, 0, 0, 0.5);
     margin-right: .5rem;
+  }
+
+  .todoItemsList {
+    transition: all .3s ease-in-out;
+  }
+
+  .swipePage {
+    opacity: 0;
   }
 
 
@@ -585,6 +604,7 @@
   .appMenuFade-enter, .appMenuFade-leave-to {
     transform: translateY(-5rem);
   }
+
 
   /*animation:*/
   .itemFade-move {

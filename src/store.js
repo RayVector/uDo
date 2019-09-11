@@ -62,14 +62,17 @@ export default new Vuex.Store({
     },
     sortable(state, newList) {
       state.tabs[state.activeTab].todoItems = newList
+    },
+    sortTasksList(state) {
+      state.tabs[state.activeTab].todoItems.sort((a, b) => a.checked - b.checked);
     }
   },
   actions: {
     addTab(state) {
-      state.commit("addTab")
+      state.commit("addTab");
     },
     swapTab(state, index) {
-      state.commit("swapTab", index)
+      state.commit("swapTab", index);
     },
     deleteTab(state, index) {
       state.commit("deleteTab", index);
@@ -88,6 +91,9 @@ export default new Vuex.Store({
     },
     sortable(state, newList) {
       state.commit("sortable", newList);
+    },
+    sortTasksList(state) {
+      state.commit("sortTasksList");
     }
 
   },
