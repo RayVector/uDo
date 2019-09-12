@@ -21,6 +21,7 @@ button {
 }
 
 input,
+textarea,
 button,
 select,
 a {
@@ -30,6 +31,10 @@ a {
 
 .swipeIcon {
     transform: rotate(360deg);
+}
+
+.swipePage {
+    opacity: 0;
 }
 
 .increaseIcon {

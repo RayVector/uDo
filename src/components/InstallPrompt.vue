@@ -33,7 +33,7 @@
         installEvent.userChoice.then(() => {
           installEvent = null;
         });
-      },
+      }
     }
   };
 </script>

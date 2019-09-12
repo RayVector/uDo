@@ -1,21 +1,5 @@
 <template>
   <div :class="{menuOpen: isTabMenuShow}" class="tabsArea">
-    <div @click="addNewTab" class="tab defTab">
-      <svg class="tabSettingBtn addNewTabIcon" fill="none" viewBox="0 0 26 26" xmlns="http://www.w3.org/2000/svg">
-        <path
-          d="M20 16C18.3431 16 17 14.6569 17 13V13C17 11.3431 18.3431 10 20 10H23C24.6569 10 26 11.3431 26 13V13C26 14.6569 24.6569 16 23 16H20Z"
-          fill="#494949"></path>
-        <path
-          d="M3 16C1.34315 16 0 14.6569 0 13V13C0 11.3431 1.34315 10 3 10H6C7.65685 10 9 11.3431 9 13V13C9 14.6569 7.65685 16 6 16H3Z"
-          fill="#494949"></path>
-        <rect fill="#494949" height="9" rx="3" width="6" x="10" y="17"></rect>
-        <rect fill="#494949" height="9" rx="3" width="6" x="10"></rect>
-        <path
-          d="M13 16C11.3431 16 10 14.6569 10 13V13C10 11.3431 11.3431 10 13 10V10C14.6569 10 16 11.3431 16 13V13C16 14.6569 14.6569 16 13 16V16Z"
-          fill="#494949"></path>
-      </svg>
-
-    </div>
     <div @click="showTabsList" class="tab defTab">
       <div
         class="defTabWrap"
@@ -56,73 +40,42 @@
         </svg>
       </div>
     </div>
-    <div
-      v-for="(item, index) in getTabList"
-      :class="{activeTab: index === getActiveTab}"
-      :item="item"
-      :key="index"
-      class="tab"
-    >
-      <!--<label class="tabNameWrap">
-        <input
-          type="text"
-          class="tabName"
-          :placeholder="item.title"
-          v-model="tabName"
-          :disabled="!isTabMenuShow"
-          v-show="isTabMenuShow"
-        >
-      </label>-->
-      <button
-        @click="deleteTab(index)"
-        class="manageTab deleteTabBtn"
-        v-show="isTabMenuShow"
-      >
-        <svg fill="none" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
-          <path
-            d="M16.0168 2.29813C17.0818 1.02891 18.974 0.863357 20.2433 1.92836V1.92836C21.5125 2.99337 21.678 4.88563 20.613 6.15486L18.4552 8.72652C17.3901 9.99575 15.4979 10.1613 14.2287 9.09629V9.09629C12.9594 8.03129 12.7939 6.13902 13.8589 4.8698L16.0168 2.29813Z"
-            fill="#494949"></path>
-          <path
-            d="M4.97624 15.4557C6.04124 14.1865 7.93351 14.021 9.20274 15.086V15.086C10.472 16.151 10.6375 18.0432 9.57251 19.3125L7.75727 21.4758C6.69226 22.745 4.8 22.9105 3.53077 21.8455V21.8455C2.26155 20.7805 2.096 18.8883 3.161 17.619L4.97624 15.4557Z"
-            fill="#494949"></path>
-          <rect fill="#494949" height="26" rx="3" transform="rotate(-50 0 5.8288)" width="6" y="5.8288"></rect>
-        </svg>
-      </button>
-      <button
-        class="manageTab renameTabBtn"
-        v-show="isTabMenuShow"
-      >
-        <svg fill="none" height="24" viewBox="0 0 36 36" width="24" xmlns="http://www.w3.org/2000/svg">
-          <path
-            d="M25.5 18C25.5 22.1421 22.1421 25.5 18 25.5C13.8579 25.5 10.5 22.1421 10.5 18C10.5 13.8579 13.8579 10.5 18 10.5C22.1421 10.5 25.5 13.8579 25.5 18Z"
-            fill="#494949" stroke="#494949"></path>
-          <circle cx="17.9309" cy="4.93091" fill="#494949" r="3.5"
-                  transform="rotate(40 17.9309 4.93091)"></circle>
-          <circle cx="30.9309" cy="17.9309" fill="#494949" r="3.5"
-                  transform="rotate(40 30.9309 17.9309)"></circle>
-          <circle cx="4.93091" cy="17.9309" fill="#494949" r="3.5"
-                  transform="rotate(40 4.93091 17.9309)"></circle>
-          <circle cx="8.93091" cy="8.93091" fill="#494949" r="3.5"
-                  transform="rotate(40 8.93091 8.93091)"></circle>
-          <circle cx="26.9309" cy="26.9309" fill="#494949" r="3.5"
-                  transform="rotate(40 26.9309 26.9309)"></circle>
-          <circle cx="8.93091" cy="26.9309" fill="#494949" r="3.5"
-                  transform="rotate(40 8.93091 26.9309)"></circle>
-          <circle cx="26.9309" cy="8.93091" fill="#494949" r="3.5"
-                  transform="rotate(40 26.9309 8.93091)"></circle>
-          <circle cx="17.9309" cy="30.9309" fill="#494949" r="3.5"
-                  transform="rotate(40 17.9309 30.9309)"></circle>
-        </svg>
-      </button>
-      <div class="tabName" @click="swapTab(index)">{{item.title}}</div>
-
+    <div @click="addNewTab" class="tab defTab" v-show="isTabMenuShow">
+      <svg class="tabSettingBtn addNewTabIcon" fill="none" viewBox="0 0 26 26" xmlns="http://www.w3.org/2000/svg">
+        <path
+          d="M20 16C18.3431 16 17 14.6569 17 13V13C17 11.3431 18.3431 10 20 10H23C24.6569 10 26 11.3431 26 13V13C26 14.6569 24.6569 16 23 16H20Z"
+          fill="#494949"></path>
+        <path
+          d="M3 16C1.34315 16 0 14.6569 0 13V13C0 11.3431 1.34315 10 3 10H6C7.65685 10 9 11.3431 9 13V13C9 14.6569 7.65685 16 6 16H3Z"
+          fill="#494949"></path>
+        <rect fill="#494949" height="9" rx="3" width="6" x="10" y="17"></rect>
+        <rect fill="#494949" height="9" rx="3" width="6" x="10"></rect>
+        <path
+          d="M13 16C11.3431 16 10 14.6569 10 13V13C10 11.3431 11.3431 10 13 10V10C14.6569 10 16 11.3431 16 13V13C16 14.6569 14.6569 16 13 16V16Z"
+          fill="#494949"></path>
+      </svg>
     </div>
+    <transition-group
+      name="tabFade"
+      tag="ul"
+      class="fadeTabList"
+    >
+      <tab-item
+        v-for="(item, index) in getTabList"
+        :index="index"
+        :item="item"
+        :key="item.id"
+        :isTabMenuShow="isTabMenuShow"
+      ></tab-item>
+    </transition-group>
   </div>
 </template>
 
 <script>
+  import TabItem from "./parts/tabItem";
   export default {
     name: "tabs",
+    components: {TabItem},
     data() {
       return {
         isTabMenuShow: false,
@@ -131,10 +84,7 @@
     computed: {
       getTabList() {
         return this.$store.state.tabs;
-      },
-      getActiveTab() {
-        return this.$store.state.activeTab
-      },
+      }
     },
     methods: {
       addNewTab() {
@@ -144,7 +94,6 @@
         icon.classList.toggle('swipeIcon');
       },
       showTabsList() {
-
         const icon = document.querySelector('.deleteCompletedBtnItem');
         icon.classList.add('increaseIcon');
 
@@ -153,19 +102,6 @@
         }, 400);
 
         this.isTabMenuShow = !this.isTabMenuShow;
-      },
-      swapTab(index) {
-        this.$store.dispatch("swapTab", index);
-        this.val = '';
-        // ANIMATION SWAP:
-        const pages = document.querySelectorAll('.fadeList');
-        pages[index].classList.add('swipePage');
-        setTimeout(() => {
-          pages[index].classList.remove('swipePage');
-        }, 100);
-      },
-      deleteTab(index) {
-        this.$store.dispatch("deleteTab", index);
       }
     },
   }
@@ -183,13 +119,13 @@
 
   .tab {
     display: inline-block;
-    min-width: 15%;
-    width: 100%;
-    max-width: 20%;
+    min-width: 25%;
+    max-width: 50%;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
-    min-height: 1rem;
+    min-height: 1.5rem;
+    height: 100%;
     max-height: 1.5rem;
     font-size: 1rem;
     padding: .8rem .4rem .4rem .4rem;
@@ -216,11 +152,7 @@
     align-items: center;
   }
 
-  .tabName {
-    background-color: unset;
-    border: unset;
 
-  }
 
   .defTab {
     min-width: 10%;
@@ -252,6 +184,15 @@
     transition: all .3s ease;
   }
 
+  .fadeTabList {
+    overflow-y: hidden;
+    overflow-x: auto;
+    height: 100%;
+    display: flex;
+    width: 100%;
+    transition: all .3s ease-in-out;
+  }
+
 
   .menuOpen {
     z-index: 9;
@@ -269,6 +210,7 @@
     -moz-box-shadow: 0 10px 30px 0 rgba(50, 50, 50, 0.4);
     box-shadow: 0 10px 30px 0 rgba(50, 50, 50, 0.4);
   }
+
 
   .menuOpen .tab {
     padding: 1rem;
@@ -290,6 +232,11 @@
     border-left: 0;
     border-right: 0.0625rem solid rgba(0, 0, 0, 0.5);
     border-bottom: 0.0625rem solid rgba(0, 0, 0, 0.5);
+  }
+
+  .menuOpen .defTab:nth-child(2) {
+    margin-bottom: 1rem;
+    box-shadow: 0 10px 13px 0 rgba(50, 50, 50, 0.27);
   }
 
   .menuOpen .tabName {
@@ -319,6 +266,27 @@
   }
 
   .swipePage {
+    opacity: 0;
+  }
+
+  .menuOpen .fadeTabList {
+    flex-direction: column;
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
+
+  /*animation:*/
+  .tabFade-move {
+    transition: .3s;
+  }
+
+  .tabFade-enter-active, .tabFade-leave-active {
+    transition: .6s;
+    transform: translateX(0);
+  }
+
+  .tabFade-enter, .tabFade-leave-to {
+    transform: translateX(2rem);
     opacity: 0;
   }
 

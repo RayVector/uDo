@@ -7,7 +7,7 @@
         <input
           class="addTaskField"
           maxlength="100"
-          placeholder="Task name..."
+          placeholder="Task..."
           required
           type="text"
           v-model="val"
@@ -37,15 +37,17 @@
       :key="index"
     >
       <transition-group
+        mode="out-in"
         name="itemFade"
         tag="ul"
         class="fadeList"
       >
 
         <todoListItem
-          v-for="item in getList"
+          v-for="(item, index2) in getList"
           :item="item"
-          :key="item.id"
+          :index="index2"
+          :key="item"
         ></todoListItem>
       </transition-group>
     </draggable>
@@ -54,7 +56,7 @@
 
 <script>
   import draggable from 'vuedraggable'
-  import todoListItem from './TodoListItems/TodoListItem.vue'
+  import todoListItem from './parts/TodoListItem.vue'
 
   export default {
     name: "page",
@@ -89,13 +91,20 @@
     },
     methods: {
       addNewTask() {
-        if (this.val !== '') {
-          this.$store.dispatch("addTask", this.val);
-          // ICON ANIMATION:
-          const icon = document.querySelector('.addNewTaskIcon');
-          icon.classList.toggle('swipeIcon');
+        if (this.getTabList.length > 0) {
+          if (this.val !== '') {
+            this.$store.dispatch("addTask", this.val);
+            // ICON ANIMATION:
+            const icon = document.querySelector('.addNewTaskIcon');
+            icon.classList.toggle('swipeIcon');
+          } else {
+            alert("Type something in the field.");
+          }
+          this.val = '';
+        } else {
+          alert("Create tab");
         }
-        this.val = '';
+
       },
       moveItem() {
         this.$store.dispatch("sortTasksList");
@@ -188,11 +197,12 @@
   .fadeList {
     overflow-y: auto;
     overflow-x: hidden;
-    height: 100%;
+    height: 99%;
     display: flex;
     flex-direction: column;
     width: 100%;
     transition: all .3s ease-in-out;
+    /*border-top: 0.0325rem solid rgba(0, 0, 0, 0.5);*/
   }
 
   .addTaskField:focus {

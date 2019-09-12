@@ -4,7 +4,7 @@
     class="todoItemWrap"
     :class="{completed: item.checked, editableMod:isEditable}"
   >
-    <label class="todoItemNameDivider">
+    <label class="todoItemNameDivider" v-show="isEditable">
       <input
         type="checkbox"
         class="completeTask"
@@ -15,7 +15,7 @@
     <div class="todoItem">
       <v-touch
         class="todoItemNameWrap"
-        tag="label"
+        tag="div"
         v-on:swipeleft="onSwipeLeft"
         v-on:swiperight="$emit('delete')"
       >
@@ -29,9 +29,36 @@
             @keyup.enter="update"
           >
         </label>
+        <div class="todoItemTextWrap">
+          <div class="todoItemText"
+               v-show="isEditable && !isEditableText"
+               @click="descEdit"
+          >
+            <p class="todoItemTextInfo">Info:</p>
+            {{itemDesc}}
+          </div>
+          <div class="todoItemTextArea" v-show="isEditable && isEditableText">
+            <label class="todoItemTextWrapLabel">
+              <textarea
+                autocomplete="off"
+                class="todoItemTextInput"
+                cols="25"
+
+                :disabled="!isEditable"
+                @blur="updateItem"
+                :value="itemDesc"
+                @input="desc = $event.target.value"
+                placeholder="Description"
+              ></textarea>
+            </label>
+          </div>
+
+
+        </div>
+
       </v-touch>
     </div>
-    <transition name="saveItemBtnFade">
+    <transition name="fadeEditItemBtn" mode="out-in">
       <button
         class="manageItemBtns deleteTodoItem"
         @click="deleteItem"
@@ -50,7 +77,7 @@
         </svg>
       </button>
     </transition>
-    <transition name="saveItemBtnFade">
+    <transition name="fadeEditItemBtn" mode="out-in">
       <button
         v-show="isEditable"
         class="manageItemBtns saveTodoItem" @click="updateItem">
@@ -63,15 +90,22 @@
         </svg>
       </button>
     </transition>
-    <div class="dragHandle handle">
-      <svg
-        class="dragHandleIcon"
-        width="23" height="23" viewBox="0 0 23 23" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="11.5" cy="11.5" r="11" fill="#C7C7C7" stroke="#494949"></circle>
-        <circle cx="11.5" cy="11.5" r="6" fill="#C7C7C7" stroke="#494949"></circle>
-      </svg>
-    </div>
-
+    <transition name="fadeEditItemBtn" mode="out-in">
+      <div
+        v-show="isEditable"
+        class="dragHandle handle">
+        <svg
+          class="dragHandleIcon"
+          width="32" height="22" viewBox="0 0 32 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path
+            d="M15.4553 0.353796C15.7866 0.138633 16.2134 0.138633 16.5447 0.353796L27.0257 7.16137C27.8606 7.70368 27.4766 9 26.4809 9H5.51905C4.52344 9 4.1394 7.70368 4.97435 7.16137L15.4553 0.353796Z"
+            fill="#494949"></path>
+          <path
+            d="M16.5447 21.6462C16.2134 21.8614 15.7866 21.8614 15.4553 21.6462L4.97435 14.8386C4.1394 14.2963 4.52344 13 5.51905 13L26.481 13C27.4766 13 27.8606 14.2963 27.0257 14.8386L16.5447 21.6462Z"
+            fill="#494949"></path>
+        </svg>
+      </div>
+    </transition>
   </li>
 </template>
 
@@ -83,7 +117,9 @@
     data() {
       return {
         name: '',
+        desc: '',
         isEditable: false,
+        isEditableText: false,
         checked: this.item.checked
       }
     },
@@ -91,24 +127,39 @@
       itemName() {
         return this.item.txt
       },
+      itemDesc() {
+        return this.item.desc
+      }
     },
-    props: ['item'],
+    props: ['item', 'index'],
     methods: {
       completeTask() {
+        this.isEditable = false;
         this.$store.dispatch("completeTask", {item: this.item, value: this.checked});
       },
       deleteItem() {
+        this.isEditable = false;
         // ANIMATION ICON:
-        const item = document.querySelector('.deleteTodoItemIcon');
-        item.classList.toggle('swipeIcon');
+        const items = document.querySelectorAll('.deleteTodoItemIcon');
+        items[this.index].classList.toggle('swipeIcon');
 
         this.$store.dispatch("delTask", this.item);
       },
       updateItem() {
         this.isEditable = false;
+        this.isEditableText = false;
         if (this.name !== '') {
-          this.$store.dispatch("updateTask", {txt: this.name, id: this.item.id});
+          this.$store.dispatch("updateTask", {txt: this.name, id: this.item.id, desc: this.item.desc});
         }
+        if (this.desc !== '') {
+          this.$store.dispatch("updateTask", {txt: this.item.txt, id: this.item.id, desc: this.desc});
+        }
+      },
+      descEdit() {
+        this.isEditableText = true;
+        this.$nextTick(() => {
+          this.$el.querySelector('textarea').focus()
+        });
       },
       onSwipeLeft() {
         if (this.isEditable === false) {
@@ -147,16 +198,20 @@
     height: 1rem;
   }
 
-  .todoItemNameWrap {
-    width: 90%;
-    position: relative;
-    display: flex;
-    justify-content: space-between;
+  .todoItem {
+    width: 95%;
+    height: 100%;
   }
 
-  .todoItem {
-    width: 100%;
+  .todoItemNameWrap {
+    width: 90%;
+    height: 100%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
   }
+
 
   .todoItemName {
     width: 90%;
@@ -177,8 +232,10 @@
   }
 
   .editableMod {
-    -webkit-box-shadow: 0 0.3125rem 1.875rem 0 rgba(50, 50, 50, 0.3);
-    -moz-box-shadow: 0 0.3125rem 1.875rem 0 rgba(50, 50, 50, 0.3);
+    /*height: 10rem;*/
+    display: flex;
+    align-items: flex-start;
+    border-top: 0.0325rem solid rgba(0, 0, 0, 0.5);
     box-shadow: 0 0.3125rem 1.875rem 0 rgba(50, 50, 50, 0.3);
   }
 
@@ -194,6 +251,47 @@
     -moz-user-select: text;
     -ms-user-select: text;
     user-select: text;
+  }
+
+  .todoItemTextWrap {
+    margin-top: .5rem;
+    display: flex;
+    width: 100%;
+    height: 100%;
+  }
+
+  .todoItemTextWrapLabel {
+    width: 100%;
+    height: 100%;
+  }
+
+  .todoItemTextArea {
+    width: 100%;
+    height: 10rem;
+  }
+
+  .todoItemTextInput {
+    width: 100%;
+    height: 100%;
+    border: none;
+    background-color: unset;
+    resize: none;
+  }
+
+  .todoItemText {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    width: 100%;
+    height: 100%;
+    overflow-y: auto;
+    overflow-x: hidden;
+    word-break: break-word;
+  }
+
+  .todoItemTextInfo {
+    margin-bottom: .5rem;
+    color: rgba(0, 0, 0, 0.47);
   }
 
   .itemLabel {
@@ -247,17 +345,21 @@
     opacity: .5;
   }
 
+  .dragHandle {
+    cursor: e-resize;
+  }
+
   .dragHandleIcon {
-    width: 1rem;
-    height: 1rem;
+    width: 1.4rem;
+    height: 1.4rem;
   }
 
   /*animation:*/
-  .saveItemBtnFade-enter-active, .saveItemBtnFade-leave-active {
+  .fadeEditItemBtn-enter-active, .fadeEditItemBtn-leave-active {
     transition: .3s;
   }
 
-  .saveItemBtnFade-enter, .saveItemBtnFade-leave-to {
+  .fadeEditItemBtn-enter, .fadeEditItemBtn-leave-to {
     opacity: 0;
   }
 </style>

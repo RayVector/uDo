@@ -74,6 +74,15 @@
 <script>
   export default {
     name: "appMenu",
+    computed: {
+      getList() {
+        /*!!!MAIN!!! return this.$store.getters.sortedToDoList.todoItems;*/
+        return this.$store.state.tabs[this.getActiveTab].todoItems
+      },
+      getActiveTab() {
+        return this.$store.state.activeTab
+      },
+    },
     methods: {
       getHelp() {
         // ANIMATION ICON:
@@ -90,36 +99,35 @@
         this.$emit('closeMenu');
       },
       clearAllCompleted() {
-        // ANIMATION ICON:
-        const icon = document.querySelector('.deleteCompletedBtnItem');
-        icon.classList.add('increaseIcon');
-        setTimeout(() => {
-          icon.classList.remove('increaseIcon');
-        }, 400)
-        /*if (this.todoList[this.activeTab].filter(item => item.checked !== false).length > 0) {
+
+        if (this.getList.filter(item => item.checked !== false).length > 0) {
           let isAccept = confirm('Do You want to delete all completed notes?');
           if (isAccept) {
-            this.todoList = this.todoList[this.activeTab].filter(item => item.checked !== true);
-            this.isMenuShow = false;
+            // ANIMATION ICON:
+            const icon = document.querySelector('.deleteCompletedBtnItem');
+            icon.classList.add('increaseIcon');
+            setTimeout(()=> {
+              icon.classList.remove('increaseIcon');
+            }, 400);
+            this.$store.dispatch("clearCompleted");
           }
         } else {
           alert('Nothing completed');
-        }*/
+        }
       },
       clearCache() {
-        // ANIMATION ICON:
-        const icon = document.querySelector('.clearCacheBtnItem');
-        icon.classList.toggle('swipeIcon');
-        /*if (JSON.parse(localStorage.todoList).length > 0) {
-          let isAccept = confirm('Do You want to clear ALL notes?');
+
+        if (this.getList.length > 0) {
+          let isAccept = confirm('Do You want to clear ALL notes in this tab?');
           if (isAccept) {
-            this.todoList = [];
-            localStorage.clear();
-            this.isMenuShow = false;
+            // ANIMATION ICON:
+            const icon = document.querySelector('.clearCacheBtnItem');
+            icon.classList.toggle('swipeIcon');
+            this.$store.dispatch("clearPage");
           }
         } else {
           alert('Nothing to delete.');
-        }*/
+        }
       },
     },
     created() {
