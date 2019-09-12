@@ -55,7 +55,7 @@
 
 <script>
   import draggable from 'vuedraggable'
-  import todoListItem from './TodoListItems/TodoListItem.vue'
+  import todoListItem from './parts/TodoListItem.vue'
 
   export default {
     name: "page",

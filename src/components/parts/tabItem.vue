@@ -7,7 +7,8 @@
       class="manageTab deleteTabBtn"
       v-show="isTabMenuShow"
     >
-      <svg class="deleteTabIcon" fill="none" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+      <svg class="deleteTabIcon" fill="none" height="24" viewBox="0 0 24 24" width="24"
+           xmlns="http://www.w3.org/2000/svg">
         <path
           d="M16.0168 2.29813C17.0818 1.02891 18.974 0.863357 20.2433 1.92836V1.92836C21.5125 2.99337 21.678 4.88563 20.613 6.15486L18.4552 8.72652C17.3901 9.99575 15.4979 10.1613 14.2287 9.09629V9.09629C12.9594 8.03129 12.7939 6.13902 13.8589 4.8698L16.0168 2.29813Z"
           fill="#494949"></path>
@@ -99,65 +100,12 @@
 </script>
 
 <style lang="scss" scoped>
-  .tab {
-    display: inline-block;
-    min-width: 15%;
-    width: 100%;
-    max-width: 20%;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    min-height: 1rem;
-    max-height: 1.5rem;
-    font-size: 1rem;
-    padding: .8rem .4rem .4rem .4rem;
-    border-top: 0;
-    border-left: 0;
-    border-right: 0.0625rem solid rgba(0, 0, 0, .5);
-    border-bottom: 0.0625rem solid rgba(0, 0, 0, .5);
-    border-bottom-right-radius: .5rem;
-    text-align: left;
-    font-weight: normal;
-  }
-
-  .activeTab {
-    font-weight: bold;
-    font-size: 1.5rem;
-    border-bottom-left-radius: .5rem;
-    border-right: 0.15rem solid rgba(0, 0, 0, .5);
-    border-bottom: 0.15rem solid rgba(0, 0, 0, .5);
-  }
-
-  .tabNameWrap {
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-  }
-
   .tabName {
     background-color: unset;
     border: unset;
-  }
-
-
-  .defTab {
-    min-width: 10%;
-    width: 1rem;
-    height: 1.8rem;
-    font-size: 1rem;
-    text-align: center;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: .4rem;
-  }
-
-  .defTabWrap {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
 
   .tabSettingBtn {
@@ -245,8 +193,31 @@
   }
 
 
-  .menuOpen  .tabNameInput {
+  .menuOpen .tabNameInput {
     padding-bottom: 0;
   }
+
+  /*.tabName {
+    display: inline-block;
+  }
+
+  .tabName:hover {
+    animation: marquee 15s linear infinite;
+  }
+
+  @keyframes marquee {
+    0% {
+      transform: translate(0, 0);
+    }
+    100% {
+      transform: translate(-80%, 0);
+    }
+  }
+
+  .menuOpen .tabName {
+    display: flex;
+    animation-play-state: paused
+  }*/
+
 
 </style>

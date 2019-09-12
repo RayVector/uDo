@@ -12,7 +12,7 @@ ___
 + add tab renaming;
 + Deleting complete tasks;
 + Delete all tasks on the page;
-- migrate from inputs (itemName) to textarea;
++ migrate from inputs (itemName) to textarea;
 - repair getter - sort list (sortedToDoList);
 - refactor all action icons to isolate component;
 - moving tasks to another tab;

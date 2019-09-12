@@ -41,15 +41,17 @@ export default new Vuex.Store({
       let newIndex = state.tabs[state.activeTab].todoItems
         .length > 0 ? (Math.max(...state.tabs[state.activeTab].todoItems
         .map(e => e.id)) + 1) : 0;
-      state.tabs[state.activeTab].todoItems.unshift({txt: value, id: newIndex, checked: false});
+      state.tabs[state.activeTab].todoItems.unshift({txt: value, id: newIndex, checked: false, desc: ''});
     },
     delTask(state, item) {
       const findItem = state.tabs[state.activeTab].todoItems.findIndex(i => i.id === item.id);
       state.tabs[state.activeTab].todoItems.splice(findItem, 1);
     },
     updateTask(state, item) {
+      console.log(item)
       const foundItem = state.tabs[state.activeTab].todoItems.find(i => i.id === item.id);
       foundItem.txt = item.txt;
+      foundItem.desc = item.desc;
       state.tabs[state.activeTab].todoItems.sort((a, b) => a.checked - b.checked);
     },
     completeTask(state, data) {

@@ -1,6 +1,6 @@
 <template>
   <div class="quoteBlock">
-    <span class="raw">{{quote}}</span>
+    <span class="row">{{quote}}</span>
   </div>
 </template>
 
@@ -32,19 +32,23 @@
     font-style: italic;
   }
 
-  .raw {
+  .row {
     display: inline-block;
     padding-left: 100%;
     animation: marquee 15s linear 3 3s;
   }
 
-  .raw:hover {
+  .row:hover {
     animation-play-state: paused
   }
 
   @keyframes marquee {
-    0%   { transform: translate(0, 0); }
-    100% { transform: translate(-100%, 0); }
+    0% {
+      transform: translate(0, 0);
+    }
+    100% {
+      transform: translate(-100%, 0);
+    }
   }
 
 </style>

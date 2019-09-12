@@ -120,8 +120,7 @@
   .tab {
     display: inline-block;
     min-width: 25%;
-    width: 100%;
-    max-width: 25%;
+    max-width: 50%;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -153,11 +152,7 @@
     align-items: center;
   }
 
-  .tabName {
-    background-color: unset;
-    border: unset;
 
-  }
 
   .defTab {
     min-width: 10%;

@@ -28,7 +28,7 @@
 </template>
 
 <script>
-  import Quotes from "./quotes";
+  import Quotes from "./parts/quotes";
 
   export default {
     name: "main-header",
