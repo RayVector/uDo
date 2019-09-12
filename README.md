@@ -10,6 +10,11 @@ ___
 + random quotes to the right of the name;
 + Multiple tabs under main title;
 + add tab renaming;
++ Deleting complete tasks;
+- Delete all tasks on the page;
+- repair getter - sort list (sortedToDoList);
+- refactor all action icons to isolate component;
+- moving tasks to another tab;
 - migrate from inputs (itemName) to textarea;
 - rewrite tips (from alerts);
 - show all task's text by choosing;
@@ -26,6 +31,16 @@ ___
 
 ```
 ___
+
+### Problems:
+___
+```
+- Bugs with icon delete task;
+- Delete Task Icon doesn't spin in other tabs except main;
+
+```
+___
+
 ## Project setup
 ```
 npm install

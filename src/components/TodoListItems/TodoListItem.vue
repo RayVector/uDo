@@ -4,7 +4,7 @@
     class="todoItemWrap"
     :class="{completed: item.checked, editableMod:isEditable}"
   >
-    <label class="todoItemNameDivider">
+    <label class="todoItemNameDivider" v-show="isEditable">
       <input
         type="checkbox"
         class="completeTask"
@@ -99,15 +99,17 @@
         return this.item.txt
       },
     },
-    props: ['item'],
+    props: ['item', 'index'],
     methods: {
       completeTask() {
+        this.isEditable = false;
         this.$store.dispatch("completeTask", {item: this.item, value: this.checked});
       },
       deleteItem() {
+        this.isEditable = false;
         // ANIMATION ICON:
-        const item = document.querySelector('.deleteTodoItemIcon');
-        item.classList.toggle('swipeIcon');
+        const items = document.querySelectorAll('.deleteTodoItemIcon');
+        items[this.index].classList.toggle('swipeIcon');
 
         this.$store.dispatch("delTask", this.item);
       },

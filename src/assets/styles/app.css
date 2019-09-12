@@ -32,6 +32,10 @@ a {
     transform: rotate(360deg);
 }
 
+.swipePage {
+    opacity: 0;
+}
+
 .increaseIcon {
     transform: scale(1.5);
 }

@@ -7,7 +7,7 @@
       class="manageTab deleteTabBtn"
       v-show="isTabMenuShow"
     >
-      <svg fill="none" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+      <svg class="deleteTabIcon" fill="none" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
         <path
           d="M16.0168 2.29813C17.0818 1.02891 18.974 0.863357 20.2433 1.92836V1.92836C21.5125 2.99337 21.678 4.88563 20.613 6.15486L18.4552 8.72652C17.3901 9.99575 15.4979 10.1613 14.2287 9.09629V9.09629C12.9594 8.03129 12.7939 6.13902 13.8589 4.8698L16.0168 2.29813Z"
           fill="#494949"></path>
@@ -22,26 +22,12 @@
       v-show="isTabMenuShow"
       @click="updateTab(index)"
     >
-      <svg fill="none" height="24" viewBox="0 0 36 36" width="24" xmlns="http://www.w3.org/2000/svg">
+      <svg
+        class="renameTabIcon" width="32" height="30" viewBox="0 0 32 30" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path
-          d="M25.5 18C25.5 22.1421 22.1421 25.5 18 25.5C13.8579 25.5 10.5 22.1421 10.5 18C10.5 13.8579 13.8579 10.5 18 10.5C22.1421 10.5 25.5 13.8579 25.5 18Z"
-          fill="#494949" stroke="#494949"></path>
-        <circle cx="17.9309" cy="4.93091" fill="#494949" r="3.5"
-                transform="rotate(40 17.9309 4.93091)"></circle>
-        <circle cx="30.9309" cy="17.9309" fill="#494949" r="3.5"
-                transform="rotate(40 30.9309 17.9309)"></circle>
-        <circle cx="4.93091" cy="17.9309" fill="#494949" r="3.5"
-                transform="rotate(40 4.93091 17.9309)"></circle>
-        <circle cx="8.93091" cy="8.93091" fill="#494949" r="3.5"
-                transform="rotate(40 8.93091 8.93091)"></circle>
-        <circle cx="26.9309" cy="26.9309" fill="#494949" r="3.5"
-                transform="rotate(40 26.9309 26.9309)"></circle>
-        <circle cx="8.93091" cy="26.9309" fill="#494949" r="3.5"
-                transform="rotate(40 8.93091 26.9309)"></circle>
-        <circle cx="26.9309" cy="8.93091" fill="#494949" r="3.5"
-                transform="rotate(40 26.9309 8.93091)"></circle>
-        <circle cx="17.9309" cy="30.9309" fill="#494949" r="3.5"
-                transform="rotate(40 17.9309 30.9309)"></circle>
+          d="M6.3934 4.3934C8.59315 2.19365 11.4224 0.732262 14.4894 0.211588C17.5565 -0.309086 20.7095 0.136716 23.512 1.48727C26.3145 2.83781 28.6277 5.02629 30.1314 7.74966C31.635 10.473 32.2548 13.5965 31.9048 16.6877C31.5547 19.7789 30.2523 22.6847 28.1777 25.0029C26.1032 27.3211 23.3592 28.937 20.3257 29.6267C17.2922 30.3164 14.1193 30.0459 11.2464 28.8526C8.37339 27.6594 5.94252 25.6024 4.29033 22.9664L8.20483 20.5128C9.34816 22.3369 11.0303 23.7604 13.0184 24.5861C15.0065 25.4119 17.2022 25.599 19.3014 25.1218C21.4006 24.6445 23.2995 23.5263 24.7351 21.9221C26.1707 20.3179 27.072 18.307 27.3142 16.1679C27.5564 14.0288 27.1275 11.8673 26.087 9.98272C25.0464 8.09813 23.4457 6.58369 21.5063 5.64911C19.567 4.71452 17.3851 4.40602 15.2627 4.76633C13.1403 5.12664 11.1824 6.13793 9.66017 7.66017L6.3934 4.3934Z"
+          fill="#494949"></path>
+        <circle cx="4" cy="10" r="4" fill="#494949"></circle>
       </svg>
     </button>
     <div
@@ -85,18 +71,25 @@
     methods: {
       swapTab(index) {
         this.$store.dispatch("swapTab", index);
-        this.val = '';
         // ANIMATION SWAP:
-        const pages = document.querySelectorAll('.fadeList');
-        pages[index].classList.add('swipePage');
+        const page = document.querySelectorAll('.fadeList')[index];
+        page.classList.add('swipePage');
         setTimeout(() => {
-          pages[index].classList.remove('swipePage');
+          page.classList.remove('swipePage');
         }, 100);
       },
       deleteTab(index) {
+        const icons = document.querySelectorAll('.deleteTabIcon');
+        icons[index].classList.toggle('swipeIcon');
+
         this.$store.dispatch("deleteTab", index);
       },
-      updateTab() {
+      updateTab(index) {
+        // ANIMATION ICON:
+
+        const icons = document.querySelectorAll('.renameTabIcon');
+        icons[index].classList.toggle('swipeIcon');
+
         if (this.tabName !== '') {
           this.$store.dispatch("updateTab", {title: this.tabName, id: this.item.id});
         }
@@ -238,14 +231,19 @@
     width: 50%;
   }
 
+  .deleteTabIcon {
+    transition: .3s;
+  }
+
+  .renameTabIcon {
+    transition: .3s;
+  }
+
   .manageTab:nth-child(2) {
     border-right: 0.0625rem solid rgba(0, 0, 0, 0.5);
     margin-right: .5rem;
   }
 
-  .swipePage {
-    opacity: 0;
-  }
 
   .menuOpen  .tabNameInput {
     padding-bottom: 0;

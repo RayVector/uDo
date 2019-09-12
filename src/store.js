@@ -9,7 +9,6 @@ const vuexPersist = new VuexPersist({
   storage: window.localStorage
 });
 
-
 export default new Vuex.Store({
   state: {
     tabs: [
@@ -35,10 +34,8 @@ export default new Vuex.Store({
       state.activeTab = index;
     },
     deleteTab(state, index) {
-      if (index !== 0) {
-        state.tabs.splice(index, 1);
-        state.activeTab = 0;
-      }
+      state.tabs.splice(index, 1);
+      state.activeTab = 0;
     },
     addTask(state, value) {
       let newIndex = state.tabs[state.activeTab].todoItems
@@ -68,10 +65,14 @@ export default new Vuex.Store({
     },
     updateTab(state, item) {
       const foundItem = state.tabs.find(i => i.id === item.id);
-      console.log(item)
       foundItem.title = item.title;
-
-    }
+    },
+    clearCompleted(state) {
+      state.tabs[state.activeTab].todoItems = state.tabs[state.activeTab].todoItems.filter(item => item.checked !== true);
+    },
+    clearPage(state) {
+      state.tabs[state.activeTab].todoItems = [];
+    },
   },
   actions: {
     addTab(state) {
@@ -103,8 +104,13 @@ export default new Vuex.Store({
     },
     updateTab(state, item) {
       state.commit("updateTab", item);
-    }
-
+    },
+    clearCompleted(state) {
+      state.commit("clearCompleted");
+    },
+    clearPage(state) {
+      state.commit("clearPage");
+    },
   },
   plugins: [vuexPersist.plugin]
 })

@@ -55,14 +55,19 @@
         </svg>
       </div>
     </div>
-    <tab-item
-      v-for="(item, index) in getTabList"
-      :index="index"
-      :item="item"
-      :key="item.id"
-      :isTabMenuShow="isTabMenuShow"
-    ></tab-item>
-
+    <transition-group
+      name="tabFade"
+      tag="ul"
+      class="fadeTabList"
+    >
+      <tab-item
+        v-for="(item, index) in getTabList"
+        :index="index"
+        :item="item"
+        :key="item.id"
+        :isTabMenuShow="isTabMenuShow"
+      ></tab-item>
+    </transition-group>
   </div>
 </template>
 
@@ -183,6 +188,15 @@
     transition: all .3s ease;
   }
 
+  .fadeTabList {
+    overflow-y: auto;
+    overflow-x: hidden;
+    height: 100%;
+    display: flex;
+    width: 100%;
+    transition: all .3s ease-in-out;
+  }
+
 
   .menuOpen {
     z-index: 9;
@@ -200,6 +214,7 @@
     -moz-box-shadow: 0 10px 30px 0 rgba(50, 50, 50, 0.4);
     box-shadow: 0 10px 30px 0 rgba(50, 50, 50, 0.4);
   }
+
 
   .menuOpen .tab {
     padding: 1rem;
@@ -255,6 +270,25 @@
   }
 
   .swipePage {
+    opacity: 0;
+  }
+
+  .menuOpen .fadeTabList {
+    flex-direction: column;
+  }
+
+  /*animation:*/
+  .tabFade-move {
+    transition: .3s;
+  }
+
+  .tabFade-enter-active, .tabFade-leave-active {
+    transition: .6s;
+    transform: translateX(0);
+  }
+
+  .tabFade-enter, .tabFade-leave-to {
+    transform: translateX(2rem);
     opacity: 0;
   }
 

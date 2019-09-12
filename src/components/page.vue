@@ -7,7 +7,7 @@
         <input
           class="addTaskField"
           maxlength="100"
-          placeholder="Task name..."
+          placeholder="Task..."
           required
           type="text"
           v-model="val"
@@ -43,8 +43,9 @@
       >
 
         <todoListItem
-          v-for="item in getList"
+          v-for="(item, index2) in getList"
           :item="item"
+          :index="index2"
           :key="item.id"
         ></todoListItem>
       </transition-group>
@@ -94,6 +95,8 @@
           // ICON ANIMATION:
           const icon = document.querySelector('.addNewTaskIcon');
           icon.classList.toggle('swipeIcon');
+        } else {
+          alert("Type something in the field.")
         }
         this.val = '';
       },
@@ -188,11 +191,12 @@
   .fadeList {
     overflow-y: auto;
     overflow-x: hidden;
-    height: 100%;
+    height: 99%;
     display: flex;
     flex-direction: column;
     width: 100%;
     transition: all .3s ease-in-out;
+    /*border-top: 0.0325rem solid rgba(0, 0, 0, 0.5);*/
   }
 
   .addTaskField:focus {
