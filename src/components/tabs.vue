@@ -119,13 +119,14 @@
 
   .tab {
     display: inline-block;
-    min-width: 15%;
+    min-width: 25%;
     width: 100%;
-    max-width: 20%;
+    max-width: 25%;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
-    min-height: 1rem;
+    min-height: 1.5rem;
+    height: 100%;
     max-height: 1.5rem;
     font-size: 1rem;
     padding: .8rem .4rem .4rem .4rem;
@@ -189,8 +190,8 @@
   }
 
   .fadeTabList {
-    overflow-y: auto;
-    overflow-x: hidden;
+    overflow-y: hidden;
+    overflow-x: auto;
     height: 100%;
     display: flex;
     width: 100%;
@@ -275,6 +276,8 @@
 
   .menuOpen .fadeTabList {
     flex-direction: column;
+    overflow-y: auto;
+    overflow-x: hidden;
   }
 
   /*animation:*/

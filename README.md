@@ -11,11 +11,11 @@ ___
 + Multiple tabs under main title;
 + add tab renaming;
 + Deleting complete tasks;
-- Delete all tasks on the page;
++ Delete all tasks on the page;
+- migrate from inputs (itemName) to textarea;
 - repair getter - sort list (sortedToDoList);
 - refactor all action icons to isolate component;
 - moving tasks to another tab;
-- migrate from inputs (itemName) to textarea;
 - rewrite tips (from alerts);
 - show all task's text by choosing;
 - add tabs draggable + sorting;
