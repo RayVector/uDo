@@ -93,7 +93,7 @@
         // ANIMATION ICON:
         const icon = document.querySelector('.deleteCompletedBtnItem');
         icon.classList.add('increaseIcon');
-        setTimeout(()=> {
+        setTimeout(() => {
           icon.classList.remove('increaseIcon');
         }, 400)
         /*if (this.todoList[this.activeTab].filter(item => item.checked !== false).length > 0) {
