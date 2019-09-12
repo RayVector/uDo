@@ -34,8 +34,7 @@
                v-show="isEditable && !isEditableText"
                @click="descEdit"
           >
-            Info:
-            <br>
+            <p class="todoItemTextInfo">Info:</p>
             {{itemDesc}}
           </div>
           <div class="todoItemTextArea" v-show="isEditable && isEditableText">
@@ -281,12 +280,18 @@
 
   .todoItemText {
     display: flex;
+    flex-direction: column;
     text-align: left;
     width: 100%;
     height: 100%;
     overflow-y: auto;
     overflow-x: hidden;
     word-break: break-word;
+  }
+
+  .todoItemTextInfo {
+    margin-bottom: .5rem;
+    color: rgba(0, 0, 0, 0.47);
   }
 
   .itemLabel {

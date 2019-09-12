@@ -13,12 +13,12 @@ ___
 + Deleting complete tasks;
 + Delete all tasks on the page;
 + inputs (itemName) + textarea (desc);
++ show all task's text by choosing;
+- draggable + sorting tabs ;
 - repair getter - sort list (sortedToDoList);
 - refactor all action icons to isolate component;
+- rewrite help tips (from alerts);
 - moving tasks to another tab;
-- rewrite tips (from alerts);
-- show all task's text by choosing;
-- add tabs draggable + sorting;
 - change main logo (write own);
 - migrate to database;
 - All "Alerts" to popup;
@@ -35,8 +35,9 @@ ___
 ### Problems:
 ___
 ```
-- Bugs with icon delete task;
-- Delete Task Icon doesn't spin in other tabs except main;
+- Conflict: Scrolling list + v-touch (8/10)
+- Bugs with icon delete task (2/10);
+- Delete Task Icon doesn't spin in other tabs except main (2/10);
 
 ```
 ___
