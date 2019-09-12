@@ -130,18 +130,6 @@
         }
       },
     },
-    created() {
-      /*window.addEventListener('keyup', event => {
-        if (event.keyCode === 13) {
-          if (this.val !== '') {
-            this.addNewTask(this.activeTab)
-          }
-        }
-      });*/
-      window.onscroll = () => {
-        this.isMenuShow = false
-      }
-    },
   }
 </script>
 

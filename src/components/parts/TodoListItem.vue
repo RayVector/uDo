@@ -27,6 +27,7 @@
             :disabled="!isEditable"
             @input="name = $event.target.value"
             @keyup.enter="update"
+            @blur="$event.target.value = itemName"
           >
         </label>
         <div class="todoItemTextWrap">
@@ -45,7 +46,7 @@
                 cols="25"
 
                 :disabled="!isEditable"
-                @blur="updateItem"
+                @blur="$event.target.value = itemDesc"
                 :value="itemDesc"
                 @input="desc = $event.target.value"
                 placeholder="Description"

@@ -88,10 +88,10 @@
     },
     methods: {
       addNewTab() {
-        this.$store.dispatch("addTab");
         // ANIMATION ICON:
         const icon = document.querySelector('.addNewTabIcon');
         icon.classList.toggle('swipeIcon');
+        this.$store.dispatch("addTab");
       },
       showTabsList() {
         const icon = document.querySelector('.deleteCompletedBtnItem');
