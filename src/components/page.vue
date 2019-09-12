@@ -37,6 +37,7 @@
       :key="index"
     >
       <transition-group
+        mode="out-in"
         name="itemFade"
         tag="ul"
         class="fadeList"
@@ -46,7 +47,7 @@
           v-for="(item, index2) in getList"
           :item="item"
           :index="index2"
-          :key="item.id"
+          :key="item"
         ></todoListItem>
       </transition-group>
     </draggable>
@@ -90,15 +91,20 @@
     },
     methods: {
       addNewTask() {
-        if (this.val !== '') {
-          this.$store.dispatch("addTask", this.val);
-          // ICON ANIMATION:
-          const icon = document.querySelector('.addNewTaskIcon');
-          icon.classList.toggle('swipeIcon');
+        if (this.getTabList.length > 0) {
+          if (this.val !== '') {
+            this.$store.dispatch("addTask", this.val);
+            // ICON ANIMATION:
+            const icon = document.querySelector('.addNewTaskIcon');
+            icon.classList.toggle('swipeIcon');
+          } else {
+            alert("Type something in the field.");
+          }
+          this.val = '';
         } else {
-          alert("Type something in the field.")
+          alert("Create tab");
         }
-        this.val = '';
+
       },
       moveItem() {
         this.$store.dispatch("sortTasksList");

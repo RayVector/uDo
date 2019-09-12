@@ -58,7 +58,7 @@
 
       </v-touch>
     </div>
-    <transition name="fadeEditItemBtn">
+    <transition name="fadeEditItemBtn" mode="out-in">
       <button
         class="manageItemBtns deleteTodoItem"
         @click="deleteItem"
@@ -77,7 +77,7 @@
         </svg>
       </button>
     </transition>
-    <transition name="fadeEditItemBtn">
+    <transition name="fadeEditItemBtn" mode="out-in">
       <button
         v-show="isEditable"
         class="manageItemBtns saveTodoItem" @click="updateItem">
@@ -90,7 +90,7 @@
         </svg>
       </button>
     </transition>
-    <transition name="fadeEditItemBtn">
+    <transition name="fadeEditItemBtn" mode="out-in">
       <div
         v-show="isEditable"
         class="dragHandle handle">

@@ -14,14 +14,14 @@ ___
 + Delete all tasks on the page;
 + inputs (itemName) + textarea (desc);
 + show all task's text by choosing;
++ change main logo (write own);
 - draggable + sorting tabs ;
 - repair getter - sort list (sortedToDoList);
 - refactor all action icons to isolate component;
 - rewrite help tips (from alerts);
-- moving tasks to another tab;
-- change main logo (write own);
-- migrate to database;
 - All "Alerts" to popup;
+- moving tasks to another tab;
+- migrate to database;
 - Tutorial about UI (popup);
 - Menu -> settings (popup);
 - Menu -> settings (popup) -> Translation (Btn);

@@ -43,10 +43,11 @@
         type="text"
         class="tabName tabNameInput"
         :placeholder="item.title"
-        :value="tabNewName"
-        @input="tabName = $event.target.value"
-        :disabled="!isTabMenuShow"
         v-show="isTabMenuShow"
+        :value="tabNewName"
+        :disabled="!isTabMenuShow"
+        @input="tabName = $event.target.value"
+        @blur="$event.target.value = tabNewName"
       >
     </label>
   </div>

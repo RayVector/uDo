@@ -1,20 +1,5 @@
 <template>
   <div :class="{menuOpen: isTabMenuShow}" class="tabsArea">
-    <div @click="addNewTab" class="tab defTab">
-      <svg class="tabSettingBtn addNewTabIcon" fill="none" viewBox="0 0 26 26" xmlns="http://www.w3.org/2000/svg">
-        <path
-          d="M20 16C18.3431 16 17 14.6569 17 13V13C17 11.3431 18.3431 10 20 10H23C24.6569 10 26 11.3431 26 13V13C26 14.6569 24.6569 16 23 16H20Z"
-          fill="#494949"></path>
-        <path
-          d="M3 16C1.34315 16 0 14.6569 0 13V13C0 11.3431 1.34315 10 3 10H6C7.65685 10 9 11.3431 9 13V13C9 14.6569 7.65685 16 6 16H3Z"
-          fill="#494949"></path>
-        <rect fill="#494949" height="9" rx="3" width="6" x="10" y="17"></rect>
-        <rect fill="#494949" height="9" rx="3" width="6" x="10"></rect>
-        <path
-          d="M13 16C11.3431 16 10 14.6569 10 13V13C10 11.3431 11.3431 10 13 10V10C14.6569 10 16 11.3431 16 13V13C16 14.6569 14.6569 16 13 16V16Z"
-          fill="#494949"></path>
-      </svg>
-    </div>
     <div @click="showTabsList" class="tab defTab">
       <div
         class="defTabWrap"
@@ -54,6 +39,21 @@
             fill="#494949"></path>
         </svg>
       </div>
+    </div>
+    <div @click="addNewTab" class="tab defTab" v-show="isTabMenuShow">
+      <svg class="tabSettingBtn addNewTabIcon" fill="none" viewBox="0 0 26 26" xmlns="http://www.w3.org/2000/svg">
+        <path
+          d="M20 16C18.3431 16 17 14.6569 17 13V13C17 11.3431 18.3431 10 20 10H23C24.6569 10 26 11.3431 26 13V13C26 14.6569 24.6569 16 23 16H20Z"
+          fill="#494949"></path>
+        <path
+          d="M3 16C1.34315 16 0 14.6569 0 13V13C0 11.3431 1.34315 10 3 10H6C7.65685 10 9 11.3431 9 13V13C9 14.6569 7.65685 16 6 16H3Z"
+          fill="#494949"></path>
+        <rect fill="#494949" height="9" rx="3" width="6" x="10" y="17"></rect>
+        <rect fill="#494949" height="9" rx="3" width="6" x="10"></rect>
+        <path
+          d="M13 16C11.3431 16 10 14.6569 10 13V13C10 11.3431 11.3431 10 13 10V10C14.6569 10 16 11.3431 16 13V13C16 14.6569 14.6569 16 13 16V16Z"
+          fill="#494949"></path>
+      </svg>
     </div>
     <transition-group
       name="tabFade"

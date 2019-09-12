@@ -48,7 +48,6 @@ export default new Vuex.Store({
       state.tabs[state.activeTab].todoItems.splice(findItem, 1);
     },
     updateTask(state, item) {
-      console.log(item)
       const foundItem = state.tabs[state.activeTab].todoItems.find(i => i.id === item.id);
       foundItem.txt = item.txt;
       foundItem.desc = item.desc;
