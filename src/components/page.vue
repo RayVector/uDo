@@ -201,6 +201,7 @@
     display: flex;
     flex-direction: column;
     width: 100%;
+    height: 100%;
     transition: all .3s ease-in-out;
     /*border-top: 0.0325rem solid rgba(0, 0, 0, 0.5);*/
   }

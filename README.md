@@ -3,6 +3,8 @@ Project: [Site](https://todovue-f9884.firebaseapp.com/).
 ### TODO:
 ___
 ```
+COMMON:
+
 + Menu (popup);
 + Menu -> Delete all completed notes (Btn);
 + refactor all data to vuex;
@@ -15,20 +17,22 @@ ___
 + inputs (itemName) + textarea (desc);
 + show all task's text by choosing;
 + change main logo (write own);
+- Adding an image to a task;
 - draggable + sorting tabs ;
 - repair getter - sort list (sortedToDoList);
 - refactor all action icons to isolate component;
 - rewrite help tips (from alerts);
 - All "Alerts" to popups (vue modal window);
 - moving tasks to another tab;
-- migrate to database;
-- Tutorial about UI (popup);
 - Menu -> settings (popup);
+
+Large:
 - Menu -> settings (popup) -> Translation (Btn);
 - Menu -> settings (popup) -> Themes (Btn);
-- Use "indexedDB" (Database);
+- Tutorial about UI (popup);
+- User Auth;
+- migrate to database or use "indexedDB" (Database);
 - PC version;
-
 ```
 ___
 

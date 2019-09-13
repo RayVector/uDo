@@ -124,9 +124,9 @@
     max-width: 50%;
     text-overflow: ellipsis;
     white-space: nowrap;
-    min-height: 1.5rem;
+    min-height: 1.2rem;
     height: 100%;
-    max-height: 1.5rem;
+    max-height: 1.2rem;
     font-size: 1rem;
     padding: .8rem .4rem .4rem .4rem;
     border-top: 0;
@@ -141,6 +141,10 @@
 
 
   .activeTab {
+    min-height: 1.5rem;
+    height: 100%;
+    max-height: 1.5rem;
+
     font-weight: bold;
     font-size: 1.5rem;
     border-bottom-left-radius: .5rem;
@@ -157,7 +161,9 @@
   .defTab {
     min-width: 10%;
     width: 1rem;
-    height: 1.8rem;
+    min-height: 1.5rem;
+    height: 100%;
+    max-height: 1.5rem;
     font-size: 1rem;
     text-align: center;
     display: flex;
@@ -213,6 +219,9 @@
 
 
   .menuOpen .tab {
+    min-height: 1.5rem;
+    height: 100%;
+    max-height: 1.5rem;
     padding: 1rem;
     display: flex;
     width: 100%;
@@ -236,6 +245,11 @@
     border-left: 0;
     border-right: 0.0625rem solid rgba(0, 0, 0, 0.5);
     border-bottom: 0.0625rem solid rgba(0, 0, 0, 0.5);
+  }
+
+  .menuOpen .tabSettingBtn {
+    width: 1.8rem;
+    height: 1.8rem;
   }
 
   .menuOpen .defTab:nth-child(2) {

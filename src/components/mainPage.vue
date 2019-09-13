@@ -39,7 +39,7 @@
     },
     data() {
       return {
-        isMenuShow: false
+        isMenuShow: false,
       }
     },
     methods: {

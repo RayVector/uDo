@@ -142,6 +142,9 @@
   }
 
   .menuOpen .tab {
+    min-height: 1.5rem;
+    height: 100%;
+    max-height: 1.5rem;
     padding: 1rem;
     display: flex;
     width: 100%;
