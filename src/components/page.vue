@@ -195,9 +195,9 @@
   }
 
   .fadeList {
+    padding-bottom: 4rem;
     overflow-y: auto;
     overflow-x: hidden;
-    height: 99%;
     display: flex;
     flex-direction: column;
     width: 100%;

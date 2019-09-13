@@ -73,6 +73,7 @@
 
 <script>
   import TabItem from "./parts/tabItem";
+
   export default {
     name: "tabs",
     components: {TabItem},
@@ -121,7 +122,6 @@
     display: inline-block;
     min-width: 25%;
     max-width: 50%;
-    overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
     min-height: 1.5rem;
@@ -136,7 +136,9 @@
     border-bottom-right-radius: .5rem;
     text-align: left;
     font-weight: normal;
+    overflow: hidden;
   }
+
 
   .activeTab {
     font-weight: bold;
@@ -151,8 +153,6 @@
     justify-content: flex-start;
     align-items: center;
   }
-
-
 
   .defTab {
     min-width: 10%;
@@ -216,8 +216,12 @@
     padding: 1rem;
     display: flex;
     width: 100%;
+    min-width: 90%;
     max-width: 91%;
     border-radius: 0;
+    resize: unset;
+    overflow-y: hidden;
+    overflow-x: auto;
   }
 
   .menuOpen .activeTab {

@@ -17,6 +17,7 @@ Vue.use(VueRouter);
 Vue.config.productionTip = false;
 Vue.use(Vuex);
 
+
 new Vue({
   store,
   render: h => h(App)

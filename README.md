@@ -19,7 +19,7 @@ ___
 - repair getter - sort list (sortedToDoList);
 - refactor all action icons to isolate component;
 - rewrite help tips (from alerts);
-- All "Alerts" to popup;
+- All "Alerts" to popups (vue modal window);
 - moving tasks to another tab;
 - migrate to database;
 - Tutorial about UI (popup);

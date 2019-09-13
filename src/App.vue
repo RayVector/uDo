@@ -46,6 +46,7 @@
     height: 100%;
     flex-direction: column;
     overflow-x: hidden;
+    flex-grow: 3;
   }
 
 
