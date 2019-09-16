@@ -64,7 +64,6 @@
       v-model="newTabList"
       @end="moveItem"
       :sort="true"
-      :key="index"
     >
       <transition-group
         mode="out-in"

@@ -19,14 +19,15 @@ COMMON:
 + change main logo (write own);
 + Adding an image to a task;
 + draggable + sorting tabs ;
+- moving tasks to another tab;
 - repair getter - sort list (sortedToDoList);
 - refactor all action icons to isolate component;
 - rewrite help tips (from alerts);
 - All "Alerts" to popups (vue modal window);
-- moving tasks to another tab;
 - Menu -> settings (popup);
 
 Large:
+- Restyle app;
 - Menu -> settings (popup) -> Translation (Btn);
 - Menu -> settings (popup) -> Themes (Btn);
 - Tutorial about UI (popup);
