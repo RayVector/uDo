@@ -54,6 +54,19 @@
         @blur="$event.target.value = tabNewName"
       >
     </label>
+    <button
+      class="dragHandle handle">
+      <svg
+        class="dragHandleIcon"
+        width="32" height="22" viewBox="0 0 32 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path
+          d="M15.4553 0.353796C15.7866 0.138633 16.2134 0.138633 16.5447 0.353796L27.0257 7.16137C27.8606 7.70368 27.4766 9 26.4809 9H5.51905C4.52344 9 4.1394 7.70368 4.97435 7.16137L15.4553 0.353796Z"
+          fill="#494949"></path>
+        <path
+          d="M16.5447 21.6462C16.2134 21.8614 15.7866 21.8614 15.4553 21.6462L4.97435 14.8386C4.1394 14.2963 4.52344 13 5.51905 13L26.481 13C27.4766 13 27.8606 14.2963 27.0257 14.8386L16.5447 21.6462Z"
+          fill="#494949"></path>
+      </svg>
+    </button>
   </div>
 </template>
 
@@ -139,6 +152,7 @@
     -webkit-box-shadow: 0 10px 30px 0 rgba(50, 50, 50, 0.4);
     -moz-box-shadow: 0 10px 30px 0 rgba(50, 50, 50, 0.4);
     box-shadow: 0 10px 30px 0 rgba(50, 50, 50, 0.4);
+    overflow: hidden;
   }
 
   .menuOpen .tab {
@@ -206,10 +220,23 @@
     border-right: 0.0625rem solid rgba(0, 0, 0, 0.5);
   }
 
+  .dragHandle {
+    display: none;
+  }
 
   .menuOpen .tabNameInput {
     padding-bottom: 0;
     font-size: 1.5rem;
+  }
+
+  .menuOpen .dragHandle {
+    display: inline-block;
+    cursor: e-resize;
+  }
+
+  .menuOpen .dragHandleIcon {
+    width: 1.4rem;
+    height: 1.4rem;
   }
 
   /*.tabName {

@@ -17,8 +17,8 @@ COMMON:
 + inputs (itemName) + textarea (desc);
 + show all task's text by choosing;
 + change main logo (write own);
-- Adding an image to a task;
-- draggable + sorting tabs ;
++ Adding an image to a task;
++ draggable + sorting tabs ;
 - repair getter - sort list (sortedToDoList);
 - refactor all action icons to isolate component;
 - rewrite help tips (from alerts);

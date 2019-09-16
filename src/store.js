@@ -33,6 +33,12 @@ export default new Vuex.Store({
     swapTab(state, index) {
       state.activeTab = index;
     },
+    sortTabsList(state) {
+      state.tabs[state.activeTab].todoItems.sort((a, b) => a.checked - b.checked);
+    },
+    newTabList(state, newTabList) {
+      state.tabs = newTabList
+    },
     deleteTab(state, index) {
       state.tabs.splice(index, 1);
       state.activeTab = 0;
@@ -85,6 +91,12 @@ export default new Vuex.Store({
     },
     deleteTab(state, index) {
       state.commit("deleteTab", index);
+    },
+    sortTabsList(state) {
+      state.commit("sortTabsList", state);
+    },
+    newTabList(state, newTabList) {
+      state.commit("newTabList", newTabList);
     },
     addTask(state, value) {
       state.commit("addTask", value);

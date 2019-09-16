@@ -55,28 +55,42 @@
           fill="#494949"></path>
       </svg>
     </div>
-    <transition-group
-      name="tabFade"
-      tag="ul"
-      class="fadeTabList"
+    <draggable
+      :delay="400"
+      chosenClass="chosen"
+      class="todoTabsList"
+      handle=".handle"
+      tag="div"
+      v-model="newTabList"
+      @end="moveItem"
+      :sort="true"
+      :key="index"
     >
-      <tab-item
-        v-for="(item, index) in getTabList"
-        :index="index"
-        :item="item"
-        :key="item.id"
-        :isTabMenuShow="isTabMenuShow"
-      ></tab-item>
-    </transition-group>
+      <transition-group
+        mode="out-in"
+        name="tabFade"
+        tag="ul"
+        class="fadeTabList"
+      >
+        <tab-item
+          v-for="(item, index2) in getTabList"
+          :index="index2"
+          :item="item"
+          :key="item.id"
+          :isTabMenuShow="isTabMenuShow"
+        ></tab-item>
+      </transition-group>
+    </draggable>
   </div>
 </template>
 
 <script>
   import TabItem from "./parts/tabItem";
+  import draggable from 'vuedraggable'
 
   export default {
     name: "tabs",
-    components: {TabItem},
+    components: {draggable, TabItem},
     data() {
       return {
         isTabMenuShow: false,
@@ -85,9 +99,20 @@
     computed: {
       getTabList() {
         return this.$store.state.tabs;
+      },
+      newTabList: {
+        get() {
+          return this.getTabList
+        },
+        set(newTabList) {
+          this.$store.dispatch('newTabList', newTabList)
+        },
       }
     },
     methods: {
+      moveItem() {
+        this.$store.dispatch("sortTabsList");
+      },
       addNewTab() {
         // ANIMATION ICON:
         const icon = document.querySelector('.addNewTabIcon');
@@ -150,6 +175,20 @@
     border-bottom-left-radius: .5rem;
     border-right: 0.15rem solid rgba(0, 0, 0, .5);
     border-bottom: 0.15rem solid rgba(0, 0, 0, .5);
+  }
+
+  .menuOpen .chosen {
+    transform: scale(1.05, 1.05);
+    transition: .2s;
+    background-color: rgba(0, 0, 0, 0.2);
+    z-index: 999;
+  }
+
+  .todoTabsList {
+    padding-right: 0.3125rem;
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden;
   }
 
   .tabNameWrap {
@@ -215,8 +254,8 @@
     -webkit-box-shadow: 0 10px 30px 0 rgba(50, 50, 50, 0.4);
     -moz-box-shadow: 0 10px 30px 0 rgba(50, 50, 50, 0.4);
     box-shadow: 0 10px 30px 0 rgba(50, 50, 50, 0.4);
+    overflow: hidden;
   }
-
 
   .menuOpen .tab {
     min-height: 1.5rem;

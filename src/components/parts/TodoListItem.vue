@@ -103,6 +103,8 @@
                   placeholder="Description"
                 ></textarea>
             </label>
+          </div>
+          <div class="imgMenu" v-show="isEditable && isEditableText">
             <input class="fileInput" id="taskImg" type="file" @change="uploadImage">
             <label class="fileInputWrap" for="taskImg">
               <svg class="fileInputIcon" width="42" height="26" viewBox="0 0 42 26" fill="none"
@@ -113,12 +115,10 @@
                 <rect x="3.9375" y="22.75" width="34.125" height="3.25" rx="1" fill="#494949"></rect>
               </svg>
             </label>
-
           </div>
           <div class="imgArea" v-show="isEditable">
-            <img :src="imgData" alt="" class="imgItem">
+            <img :src="getImgData" alt="" class="imgItem">
           </div>
-
         </div>
         <button v-show="!isEditable" class="manageItemBtns" @click="changeItemName">
           <svg class="settingsItemBtn" width="32" height="26" viewBox="0 0 32 26" fill="none"
@@ -155,22 +155,35 @@
       },
       itemDesc() {
         return this.item.desc
+      },
+      getImgData() {
+        return this.item.img
       }
     },
     props: ['item', 'index'],
     methods: {
       uploadImage(e) {
         let input = e.target;
-        if (input.files && input.files[0]) {
-          let reader = new FileReader();
-          reader.onload = (e) => {
-            this.imgData = e.target.result;
-          };
-          reader.readAsDataURL(input.files[0]);
+        let file = input.files[0];
+        let reader = new FileReader();
+
+        reader.onload = () => {
+          this.imgData = reader.result;
+          if (this.imgData !== '') {
+            this.$store.dispatch("updateTask", {
+              txt: this.item.txt,
+              id: this.item.id,
+              desc: this.item.desc,
+              img: this.imgData
+            });
+          }
+        };
+
+
+        if (file) {
+          reader.readAsDataURL(file);
         }
-        if (this.imgData !== '') {
-          this.$store.dispatch("updateTask", {txt: this.item.txt, id: this.item.id, desc: this.item.desc, img: this.imgData});
-        }
+
       },
       completeTask() {
         this.isEditable = false;
@@ -188,11 +201,26 @@
         this.isEditable = false;
         this.isEditableText = false;
         if (this.name !== '') {
-          this.$store.dispatch("updateTask", {txt: this.name, id: this.item.id, desc: this.item.desc, img: this.item.imgData});
+          this.$store.dispatch("updateTask", {
+            txt: this.name,
+            id: this.item.id,
+            desc: this.item.desc,
+            img: this.item.imgData
+          });
         }
-        this.$store.dispatch("updateTask", {txt: this.item.txt, id: this.item.id, desc: this.desc, img: this.item.imgData});
+        this.$store.dispatch("updateTask", {
+          txt: this.item.txt,
+          id: this.item.id,
+          desc: this.desc,
+          img: this.item.imgData
+        });
         if (this.imgData !== '') {
-          this.$store.dispatch("updateTask", {txt: this.item.txt, id: this.item.id, desc: this.item.desc, img: this.imgData});
+          this.$store.dispatch("updateTask", {
+            txt: this.item.txt,
+            id: this.item.id,
+            desc: this.item.desc,
+            img: this.imgData
+          });
         }
       },
       descEdit() {
@@ -249,6 +277,7 @@
     justify-content: flex-start;
     align-items: flex-start;
     width: 100%;
+    height: 100%;
   }
 
   .editableMod .todoItem {
@@ -307,8 +336,8 @@
 
 
   .editableMod {
-    min-height: 10rem;
-    flex-grow: 3;
+    /*min-height: 10rem;
+    flex-grow: 3;*/
     max-height: 20rem;
     display: flex;
     align-items: flex-start;
@@ -350,10 +379,13 @@
 
   .todoItemTextInput {
     width: 100%;
-    height: 50%;
+    min-height: 20%;
+    height: 100%;
+    max-height: 50%;
     border: none;
     background-color: unset;
     resize: none;
+    border-bottom: 0.0325rem solid rgba(0, 0, 0, 0.5);
   }
 
   .fileInputWrap {
@@ -378,6 +410,8 @@
 
   .addItemArea {
     width: unset;
+    overflow-y: scroll;
+    overflow-x: hidden;
   }
 
   .editableMod .addItemArea {
@@ -393,18 +427,22 @@
   }
 
   .imgItem {
-    width: 100%;
-    height: 100%;
+    /*width: 100%;
+    height: 100%;*/
     max-width: 55%;
-    max-height: 55%;
+    /*max-height: 55%;*/
   }
+
+  /*
+    .editableMod .todoItemText {
+      min-height: 10rem;
+  }*/
 
   .todoItemText {
     display: flex;
     flex-direction: column;
     text-align: left;
     width: 100%;
-    height: 100%;
     overflow-y: auto;
     overflow-x: hidden;
     word-break: break-word;

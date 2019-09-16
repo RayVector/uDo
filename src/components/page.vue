@@ -30,10 +30,6 @@
       v-model="newList"
       @end="moveItem"
       :sort="true"
-
-      v-for="(dragItem, index) in getTabList"
-      v-show="index === $store.state.activeTab"
-      :dragItem="dragItem"
       :key="index"
     >
       <transition-group
