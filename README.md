@@ -19,6 +19,7 @@ COMMON:
 + change main logo (write own);
 + Adding an image to a task;
 + draggable + sorting tabs ;
++ image preview in the task;
 - moving tasks to another tab;
 - repair getter - sort list (sortedToDoList);
 - refactor all action icons to isolate component;

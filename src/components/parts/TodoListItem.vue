@@ -79,13 +79,12 @@
         </div>
       </div>
       <div class="addItemArea">
-        <div class="todoItemTextWrap" v-show="isEditable">
+        <div class="todoItemTextWrap" v-show="isEditable || isEditableText">
+          <p class="todoItemTextInfo" v-show="itemDesc !== '' || getImgData !== ''">Info:</p>
           <div class="todoItemText"
                v-show="isEditable && !isEditableText"
                @click="descEdit"
           >
-
-            <p class="todoItemTextInfo" v-show="itemDesc !== ''">Info:</p>
 
             {{itemDesc}}
           </div>
@@ -117,7 +116,12 @@
             </label>
           </div>
           <div class="imgArea" v-show="isEditable">
-            <img :src="getImgData" alt="" class="imgItem">
+            <img :src="getImgData" alt="" class="imgItem" v-show="!isImgPreview" @click="isImgPreview = true">
+            <div class="imgPreviewShadow" v-show="isImgPreview" @click="isImgPreview = false">
+              <transition>
+                <img :src="getImgData" alt="" class="imgItem imgPreview" v-show="isImgPreview">
+              </transition>
+            </div>
           </div>
         </div>
         <button v-show="!isEditable" class="manageItemBtns" @click="changeItemName">
@@ -146,6 +150,7 @@
         imgData: '',
         isEditable: false,
         isEditableText: false,
+        isImgPreview: false,
         checked: this.item.checked,
       }
     },
@@ -442,10 +447,30 @@
   }
 
   .imgItem {
+    max-width: 55%;
     /*width: 100%;
     height: 100%;*/
-    max-width: 55%;
     /*max-height: 55%;*/
+  }
+
+  .imgPreviewShadow {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    z-index: 2;
+  }
+
+  .imgPreview {
+    max-width: 100%;
+    z-index: 3;
   }
 
   /*
