@@ -186,7 +186,7 @@
     padding-right: 0.3125rem;
     width: 100%;
     height: 100%;
-    overflow-x: hidden;
+    /*overflow-x: hidden;*/
     transition: all .3s ease-out;
     opacity: 1;
   }

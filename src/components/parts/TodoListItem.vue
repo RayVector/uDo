@@ -256,6 +256,8 @@
     border-bottom: 0.0325rem solid rgba(0, 0, 0, 0.5);
     overflow-y: hidden;
     overflow-x: auto;
+    min-height: 2rem;
+    max-height: 2rem;
   }
 
   .todoItemWrap::-webkit-scrollbar {
