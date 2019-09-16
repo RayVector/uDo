@@ -20,8 +20,9 @@ COMMON:
 + Adding an image to a task;
 + draggable + sorting tabs ;
 + image preview in the task;
-- number of tasks in the tab;
++ number of tasks in the tab;
 - multiple edit of desc, name, img of the task;
+- delete task (trash icon);
 - moving tasks to another tab;
 ----------------
 - repair getter - sort list (sortedToDoList);

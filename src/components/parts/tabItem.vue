@@ -54,6 +54,7 @@
         @blur="$event.target.value = tabNewName"
       >
     </label>
+    <p class="tabTasksAmount">{{getTasksList}}</p>
     <button
       class="dragHandle handle">
       <svg
@@ -86,6 +87,9 @@
       tabNewName() {
         return this.item.title
       },
+      getTasksList() {
+        return this.$store.state.tabs[this.index].todoItems.length
+      }
     },
     methods: {
       swapTab(index) {
@@ -119,6 +123,13 @@
 </script>
 
 <style lang="scss" scoped>
+  .tabNameWrap {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
   .tabName {
     background-color: unset;
     border: unset;
@@ -137,6 +148,10 @@
     transition: all .3s ease;
   }
 
+  .tabTasksAmount {
+    display: none;
+    font-size: 1rem !important;
+  }
 
   .menuOpen {
     z-index: 9;
@@ -156,12 +171,21 @@
     overflow: hidden;
   }
 
+  .menuOpen .tabTasksAmount {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 1rem;
+    color: rgba(0, 0, 0, .4);
+  }
+
   .menuOpen .tab {
     min-height: 1.5rem;
     height: 100%;
     max-height: 1.5rem;
     padding: 1rem;
     display: flex;
+    align-items: center;
     width: 100%;
     max-width: 91%;
     border-radius: 0;
@@ -193,6 +217,8 @@
   }
 
   .manageTab {
+    display: flex;
+    align-items: center;
     font-size: 1.5rem;
     color: rgba(0, 0, 0, 0.5);
     width: 2rem;
@@ -217,6 +243,7 @@
   }
 
   .manageTabMenu {
+    display: flex;
     margin-right: .8rem;
     border-right: 0.0625rem solid rgba(0, 0, 0, 0.5);
   }

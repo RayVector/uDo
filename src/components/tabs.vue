@@ -194,7 +194,9 @@
     display: flex;
     justify-content: flex-start;
     align-items: center;
+    flex-direction: column;
   }
+
 
   .defTab {
     min-width: 10%;
@@ -262,6 +264,7 @@
     max-height: 1.5rem;
     padding: 1rem;
     display: flex;
+    align-items: center;
     width: 100%;
     min-width: 90%;
     max-width: 91%;

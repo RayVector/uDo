@@ -14,10 +14,9 @@
         quote: ''
       }
     },
-    created() {
+    mounted() {
       const max = Object.keys(quotesBookEN).length;
       let randomNumber = Math.floor(Math.random() * Math.floor(max));
-
       this.quote = quotesBookEN[randomNumber];
     }
   }
