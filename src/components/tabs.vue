@@ -72,8 +72,8 @@
         class="fadeTabList"
       >
         <tab-item
-          v-for="(item, index2) in getTabList"
-          :index="index2"
+          v-for="(item, index) in getTabList"
+          :index="index"
           :item="item"
           :key="item.id"
           :isTabMenuShow="isTabMenuShow"

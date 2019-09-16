@@ -39,9 +39,9 @@
       >
 
         <todoListItem
-          v-for="(item, index2) in getList"
+          v-for="(item, index) in getList"
           :item="item"
-          :index="index2"
+          :index="index"
           :key="item.id"
         ></todoListItem>
       </transition-group>
@@ -187,6 +187,8 @@
     width: 100%;
     height: 100%;
     overflow-x: hidden;
+    transition: all .3s ease-out;
+    opacity: 1;
   }
 
   .fadeList {
@@ -197,7 +199,6 @@
     flex-direction: column;
     width: 100%;
     height: 100%;
-    transition: all .3s ease-in-out;
     /*border-top: 0.0325rem solid rgba(0, 0, 0, 0.5);*/
   }
 

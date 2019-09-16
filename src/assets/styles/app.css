@@ -31,7 +31,7 @@ textarea,
 button,
 select,
 a {
-    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
     font-family: 'Manjari', sans-serif;
 }
 
@@ -40,7 +40,7 @@ a {
 }
 
 .swipePage {
-    opacity: 0;
+    opacity: 0 !important;
 }
 
 .increaseIcon {

@@ -89,13 +89,14 @@
     },
     methods: {
       swapTab(index) {
-        this.$store.dispatch("swapTab", index);
         // ANIMATION SWAP:
-        const page = document.querySelectorAll('.fadeList')[index];
+        const page = document.querySelector('.todoItemsList');
         page.classList.add('swipePage');
         setTimeout(() => {
           page.classList.remove('swipePage');
-        }, 100);
+        }, 600);
+        this.$store.dispatch("swapTab", index);
+
       },
       deleteTab(index) {
         const icons = document.querySelectorAll('.deleteTabIcon');

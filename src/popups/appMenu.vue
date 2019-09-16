@@ -89,7 +89,12 @@
         const item = document.querySelector('.helpBtnIcon');
         item.classList.toggle('swipeIcon');
 
-        alert("To delete ALL notes click recycle button, swipe note name left to edit note, swipe right to delete note.");
+        alert("To delete ALL complete notes, press the button (2). " +
+          "To clear ALL notes on the page, press the button (3). " +
+          "Swipe the note to the left, and press the button to edit this note. " +
+          "To move items hold the Refresh button. " +
+          "To manage the tabs, click the list button (the first button in the tab menu). " +
+          "To change the name of a tab or note, tap the name.");
       },
       closeMenu() {
         // ANIMATION ICON:
@@ -106,7 +111,7 @@
             // ANIMATION ICON:
             const icon = document.querySelector('.deleteCompletedBtnItem');
             icon.classList.add('increaseIcon');
-            setTimeout(()=> {
+            setTimeout(() => {
               icon.classList.remove('increaseIcon');
             }, 400);
             this.$store.dispatch("clearCompleted");

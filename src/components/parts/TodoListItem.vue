@@ -285,7 +285,7 @@
     width: 65%;
   }
 
-  .editableMod .mainItemArea{
+  .editableMod .mainItemArea {
     max-width: 100%;
   }
 
@@ -307,7 +307,11 @@
     height: 100%;
   }
 
-  .editableMod .todoItem{
+  .todoItemWrapName {
+    width: 100%;
+  }
+
+  .editableMod .todoItem {
     display: flex;
     align-items: flex-end;
     justify-content: flex-start;
