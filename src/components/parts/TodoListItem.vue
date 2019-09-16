@@ -79,7 +79,7 @@
         </div>
       </div>
       <div class="addItemArea">
-        <div class="todoItemTextWrap">
+        <div class="todoItemTextWrap" v-show="isEditable">
           <div class="todoItemText"
                v-show="isEditable && !isEditableText"
                @click="descEdit"
@@ -263,6 +263,7 @@
     display: flex;
     align-items: center;
     width: 100%;
+    max-width: 85%;
   }
 
   .todoItemInner {
@@ -284,6 +285,10 @@
     width: 65%;
   }
 
+  .editableMod .mainItemArea{
+    max-width: 100%;
+  }
+
   .todoItemNameDivider {
     margin-right: 1rem;
     display: flex;
@@ -300,6 +305,12 @@
   .todoItem {
     width: 95%;
     height: 100%;
+  }
+
+  .editableMod .todoItem{
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-start;
   }
 
   .todoItemNameWrap {
