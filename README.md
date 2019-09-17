@@ -21,8 +21,9 @@ COMMON:
 + draggable + sorting tabs ;
 + image preview in the task;
 + number of tasks in the tab;
-- keep image in the localstorage;
-- multiple edit task system;
++ deleting image in the task;
++ multiple edit task system;
++ keep image in the localstorage;
 - moving tasks to another tab;
 ----------------
 - repair getter - sort list (sortedToDoList);

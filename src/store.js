@@ -32,7 +32,6 @@ export default new Vuex.Store({
         .map(e => e.id)) + 1) : 0;
       state.tabs.push({id: newId, title: String(state.tabs.length + 1), todoItems: []});
       state.activeTab = state.tabs.length-1;
-      console.log(state.tabs)
     },
     swapTab(state, index) {
       state.activeTab = index;
@@ -63,6 +62,18 @@ export default new Vuex.Store({
       foundItem.desc = item.desc;
       foundItem.img = item.img;
       state.tabs[state.activeTab].todoItems.sort((a, b) => a.checked - b.checked);
+    },
+    updateTaskName(state, item) {
+      const foundItem = state.tabs[state.activeTab].todoItems.find(i => i.id === item.id);
+      foundItem.txt = item.txt;
+    },
+    updateTaskDesc(state, item) {
+      const foundItem = state.tabs[state.activeTab].todoItems.find(i => i.id === item.id);
+      foundItem.desc = item.desc;
+    },
+    updateTaskImg(state, item) {
+      const foundItem = state.tabs[state.activeTab].todoItems.find(i => i.id === item.id);
+      foundItem.img = item.img;
     },
     completeTask(state, data) {
       const foundItem = state.tabs[state.activeTab].todoItems.find(i => i.id === data.item.id);
@@ -108,8 +119,14 @@ export default new Vuex.Store({
     delTask(state, item) {
       state.commit("delTask", item);
     },
-    updateTask(state, item) {
-      state.commit("updateTask", item);
+    updateTaskName(state, item) {
+      state.commit("updateTaskName", item);
+    },
+    updateTaskDesc(state, item) {
+      state.commit("updateTaskDesc", item);
+    },
+    updateTaskImg(state, item) {
+      state.commit("updateTaskImg", item);
     },
     completeTask(state, data) {
       state.commit("completeTask", data);

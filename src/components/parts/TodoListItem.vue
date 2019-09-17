@@ -6,7 +6,7 @@
   >
     <div class="todoItemInner">
       <div class="mainItemArea">
-        <label class="todoItemNameDivider" v-show="isEditable">
+        <label class="todoItemNameDivider" v-show="isEditable && !isEditableText">
           <input
             type="checkbox"
             class="completeTask"
@@ -23,7 +23,6 @@
                 :value="itemName"
                 :disabled="!isEditable"
                 @input="name = $event.target.value"
-                @keyup.enter="update"
               >
             </label>
             <p
@@ -37,7 +36,7 @@
         </div>
         <div class="todoItemMenu" v-show="isEditable">
           <button
-            class="manageItemBtns revertItem" @click="isEditable = false">
+            class="manageItemBtns revertItem" @click="cancelEdit">
             <svg
               class="revertItemIcon"
               width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -51,7 +50,7 @@
             </svg>
           </button>
           <button
-            class="manageItemBtns saveTodoItem" @click="updateItem">
+            class="manageItemBtns saveTodoItem" @click="updateItem" v-show="!checked">
             <svg width="34" height="30" viewBox="0 0 30 24" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path
                 d="M2.3566 14.8563C1.08738 13.7913 0.921829 11.899 1.98683 10.6298V10.6298C3.05184 9.36056 4.94411 9.19501 6.21333 10.26L8.37664 12.0752C9.64587 13.1403 9.81142 15.0325 8.74642 16.3017V16.3017C7.68141 17.571 5.78914 17.7365 4.51992 16.6715L2.3566 14.8563Z"
@@ -88,7 +87,6 @@
                v-show="isEditable && !isEditableText"
                @click="descEdit"
           >
-
             {{itemDesc}}
           </div>
           <div class="todoItemTextArea" v-show="isEditable && isEditableText">
@@ -97,16 +95,15 @@
                   autocomplete="off"
                   class="todoItemTextInput"
                   cols="25"
-
                   :disabled="!isEditable"
                   :value="itemDesc"
-                  @input="desc = $event.target.value"
+                  @change="desc = $event.target.value"
                   placeholder="Description"
                 ></textarea>
             </label>
           </div>
           <div class="imgMenu" v-show="isEditable && isEditableText">
-            <input class="fileInput" id="taskImg" type="file" @change="uploadImage">
+            <input class="fileInput" id="taskImg" type="file" @change="uploadImage" accept="image/png, image/jpeg">
             <label class="fileInputWrap" for="taskImg">
               <svg class="fileInputIcon" width="42" height="26" viewBox="0 0 42 26" fill="none"
                    xmlns="http://www.w3.org/2000/svg">
@@ -117,16 +114,30 @@
               </svg>
             </label>
           </div>
-          <div class="imgArea" v-show="isEditable">
-            <img :src="getImgData" alt="" class="imgItem" v-show="!isImgPreview" @click="isImgPreview = true">
+          <div class="imgArea" v-show="imgData !== ''">
+            <img :src="imgData" alt="" class="imgItem" v-show="!isImgPreview" @click="isImgPreview = true">
+            <button
+              class="manageItemBtns revertItem deleteImg" @click="deleteImage" v-show="!checked">
+              <svg
+                class="revertItemIcon"
+                width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M16.0168 2.29813C17.0818 1.02891 18.974 0.863357 20.2433 1.92836V1.92836C21.5125 2.99337 21.678 4.88563 20.613 6.15486L18.4552 8.72652C17.3901 9.99575 15.4979 10.1613 14.2287 9.09629V9.09629C12.9594 8.03129 12.7939 6.13902 13.8589 4.8698L16.0168 2.29813Z"
+                  fill="#494949"></path>
+                <path
+                  d="M4.97624 15.4557C6.04124 14.1865 7.93351 14.021 9.20274 15.086V15.086C10.472 16.151 10.6375 18.0432 9.57251 19.3125L7.75727 21.4758C6.69226 22.745 4.8 22.9105 3.53077 21.8455V21.8455C2.26155 20.7805 2.096 18.8883 3.161 17.619L4.97624 15.4557Z"
+                  fill="#494949"></path>
+                <rect y="5.8288" width="6" height="26" rx="3" transform="rotate(-50 0 5.8288)" fill="#494949"></rect>
+              </svg>
+            </button>
             <div class="imgPreviewShadow" v-show="isImgPreview" @click="isImgPreview = false">
-              <transition>
+              <transition name="fadeImgPreview">
                 <img :src="getImgData" alt="" class="imgItem imgPreview" v-show="isImgPreview">
               </transition>
             </div>
           </div>
         </div>
-        <button v-show="!isEditable" class="manageItemBtns" @click="changeItemName">
+        <button v-show="!isEditable" class="manageItemBtns" @click="editItem">
           <svg class="settingsItemBtn" width="32" height="26" viewBox="0 0 32 26" fill="none"
                xmlns="http://www.w3.org/2000/svg">
             <rect y="3" width="16" height="6" rx="2" fill="#494949"></rect>
@@ -188,18 +199,13 @@
         let reader = new FileReader();
         reader.onload = () => {
           this.imgData = reader.result;
-          if (this.imgData !== '') {
-            this.$store.dispatch("updateTask", {
-              txt: this.item.txt,
-              id: this.item.id,
-              desc: this.item.desc,
-              img: this.imgData
-            });
-          }
         };
         if (file) {
           reader.readAsDataURL(file);
         }
+      },
+      deleteImage() {
+        this.imgData = '';
       },
       completeTask() {
         this.isEditable = false;
@@ -213,52 +219,64 @@
 
         this.$store.dispatch("delTask", this.item);
       },
+      cancelEdit() {
+        this.isEditable = false;
+        this.isEditableText = false;
+        this.name = this.item.txt;
+        this.desc = this.item.desc;
+        this.imgData = this.item.img;
+      },
       updateItem() {
         this.isEditable = false;
         this.isEditableText = false;
 
+
+        // NAME:
         if (this.name !== '') {
-          this.$store.dispatch("updateTask", {
-            txt: this.name,
-            id: this.item.id,
-            desc: this.item.desc,
-            img: this.item.imgData
-          });
+          if (this.name !== ' ') {
+            this.$store.dispatch("updateTaskName", {
+              id: this.item.id,
+              txt: this.name,
+            });
+          } else {
+            alert("Enter a name without a space")
+          }
         }
 
-        this.$store.dispatch("updateTask", {
-          txt: this.item.txt,
+// DESCRIPTION:
+
+        this.$store.dispatch("updateTaskDesc", {
           id: this.item.id,
           desc: this.desc,
-          img: this.imgData
         });
 
-        if (this.imgData !== '') {
-          this.$store.dispatch("updateTask", {
-            txt: this.item.txt,
-            id: this.item.id,
-            desc: this.item.desc,
-            img: this.imgData
-          });
-        }
+
+// IMG:
+
+        this.$store.dispatch("updateTaskImg", {
+          id: this.item.id,
+          img: this.imgData
+        });
 
 
       },
       descEdit() {
-        if (this.isEditable === true) {
-          this.isEditableText = true;
-          this.$nextTick(() => {
-            this.$el.querySelector('textarea').focus()
-          });
+        if (!this.checked) {
+          if (this.isEditable === true) {
+            this.isEditableText = true;
+            this.$nextTick(() => {
+              this.$el.querySelector('textarea').focus()
+            });
+          }
         }
       },
-      changeItemName() {
-        if (this.isEditable === false) {
-          this.isEditable = true;
-          this.$nextTick(() => {
-            this.$el.querySelector('input[type=text]').focus()
-          });
-        }
+      editItem() {
+          if (this.isEditable === false) {
+            this.isEditable = true;
+            this.$nextTick(() => {
+              this.$el.querySelector('input[type=text]').focus()
+            });
+          }
       },
     },
 
@@ -272,8 +290,7 @@
     border-bottom: 0.0325rem solid rgba(0, 0, 0, 0.5);
     overflow-y: hidden;
     overflow-x: auto;
-    min-height: 2rem;
-    max-height: 2rem;
+    height: 2rem;
   }
 
   .todoItemWrap::-webkit-scrollbar {
@@ -374,14 +391,15 @@
 
 
   .editableMod {
-    /*min-height: 10rem;
+    /*min-height: 18rem;
     flex-grow: 3;*/
-    max-height: 20rem;
+    height: auto;
     display: flex;
     align-items: flex-start;
     border-top: 0.0325rem solid rgba(0, 0, 0, 0.5);
     box-shadow: 0 0.3125rem 1.875rem 0 rgba(50, 50, 50, 0.3);
   }
+
 
   .todoItemName:disabled {
     background-color: unset;
@@ -519,15 +537,15 @@
 
   .todoItemMenu {
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-end;
     align-items: center;
     width: 30%;
   }
 
   .manageItemBtns {
     margin-right: 1rem;
-    width: 2rem;
-    height: 2rem;
+    width: 1.5rem;
+    height: 1.5rem;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -584,12 +602,26 @@
     height: 1.4rem;
   }
 
+  .deleteImg {
+    width: 1.4rem;
+    height: 1.4rem;
+  }
+
   /*animation:*/
   .fadeEditItemBtn-enter-active, .fadeEditItemBtn-leave-active {
     transition: .3s;
   }
 
   .fadeEditItemBtn-enter, .fadeEditItemBtn-leave-to {
+    opacity: 0;
+  }
+
+  /*animation:*/
+  .fadeImgPreview-enter-active, .fadeImgPreview-leave-active {
+    transition: .6s;
+  }
+
+  .fadeImgPreview-enter, .fadeImgPreview-leave-to {
     opacity: 0;
   }
 </style>

@@ -192,7 +192,8 @@
     padding-right: 0.3125rem;
     width: 100%;
     height: 100%;
-    /*overflow-x: hidden;*/
+    overflow-y: auto;
+    overflow-x: hidden;
     transition: all .3s ease-out;
     opacity: 1;
   }
@@ -204,7 +205,7 @@
     display: flex;
     flex-direction: column;
     width: 100%;
-    height: 100%;
+    /*height: 100%;*/
     /*border-top: 0.0325rem solid rgba(0, 0, 0, 0.5);*/
   }
 
