@@ -27,8 +27,12 @@ export default new Vuex.Store({
   },
   mutations: {
     addTab(state) {
-      state.tabs.push({id: state.tabs.length, title: String(state.tabs.length+1), todoItems: []});
-      state.activeTab = state.tabs.length - 1;
+      let newId = state.tabs
+        .length > 0 ? (Math.max(...state.tabs
+        .map(e => e.id)) + 1) : 0;
+      state.tabs.push({id: newId, title: String(state.tabs.length + 1), todoItems: []});
+      state.activeTab = state.tabs.length-1;
+      console.log(state.tabs)
     },
     swapTab(state, index) {
       state.activeTab = index;

@@ -66,11 +66,17 @@
     },
     computed: {
       getTabList() {
+
         return this.$store.state.tabs;
+
       },
       getList() {
         /*!!!MAIN!!! return this.$store.getters.sortedToDoList.todoItems;*/
-        return this.$store.state.tabs[this.getActiveTab].todoItems
+        if (this.$store.state.tabs.length > 0) {
+          return this.$store.state.tabs[this.getActiveTab].todoItems;
+        } else {
+          return [];
+        }
       },
       getActiveTab() {
         return this.$store.state.activeTab
