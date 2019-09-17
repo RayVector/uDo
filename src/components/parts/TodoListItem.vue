@@ -115,7 +115,7 @@
             </label>
           </div>
           <div class="imgArea" v-show="imgData !== ''">
-            <img :src="imgData" alt="" class="imgItem" v-show="!isImgPreview" @click="isImgPreview = true">
+            <img :src="imgData" alt="" class="imgItem" @click="isImgPreview = true">
             <button
               class="manageItemBtns revertItem deleteImg" @click="deleteImage" v-show="!checked">
               <svg
@@ -132,7 +132,7 @@
             </button>
             <div class="imgPreviewShadow" v-show="isImgPreview" @click="isImgPreview = false">
               <transition name="fadeImgPreview">
-                <img :src="getImgData" alt="" class="imgItem imgPreview" v-show="isImgPreview">
+                <img :src="imgData" alt="" class="imgItem imgPreview" v-show="isImgPreview">
               </transition>
             </div>
           </div>
@@ -279,6 +279,10 @@
           }
       },
     },
+    beforeMount() {
+      this.imgData = this.getImgData;
+      this.desc = this.itemDesc;
+    }
 
   }
 </script>
