@@ -24,7 +24,6 @@
                 :disabled="!isEditable"
                 @input="name = $event.target.value"
                 @keyup.enter="update"
-                @blur="$event.target.value = itemName"
               >
             </label>
             <p
@@ -38,11 +37,9 @@
         </div>
         <div class="todoItemMenu" v-show="isEditable">
           <button
-            class="manageItemBtns deleteTodoItem"
-            @click="deleteItem"
-          >
+            class="manageItemBtns revertItem" @click="isEditable = false">
             <svg
-              class="deleteTodoItemIcon"
+              class="revertItemIcon"
               width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path
                 d="M16.0168 2.29813C17.0818 1.02891 18.974 0.863357 20.2433 1.92836V1.92836C21.5125 2.99337 21.678 4.88563 20.613 6.15486L18.4552 8.72652C17.3901 9.99575 15.4979 10.1613 14.2287 9.09629V9.09629C12.9594 8.03129 12.7939 6.13902 13.8589 4.8698L16.0168 2.29813Z"
@@ -80,7 +77,13 @@
       </div>
       <div class="addItemArea">
         <div class="todoItemTextWrap" v-show="isEditable || isEditableText">
-          <p class="todoItemTextInfo" v-show="itemDesc !== '' || getImgData !== ''">Info:</p>
+          <p
+            class="todoItemTextInfo"
+            v-show="itemDesc !== '' || getImgData !== ''"
+            @click="descEdit"
+          >
+            Info:
+          </p>
           <div class="todoItemText"
                v-show="isEditable && !isEditableText"
                @click="descEdit"
@@ -96,7 +99,6 @@
                   cols="25"
 
                   :disabled="!isEditable"
-                  @blur="$event.target.value = itemDesc"
                   :value="itemDesc"
                   @input="desc = $event.target.value"
                   placeholder="Description"
@@ -133,6 +135,19 @@
             <circle cx="7" cy="20" r="6" fill="#494949"></circle>
           </svg>
         </button>
+        <button v-show="!isEditable" class="manageItemBtns" @click="deleteItem">
+          <svg class="settingsItemBtn" width="26" height="27" viewBox="0 0 26 27" fill="none"
+               xmlns="http://www.w3.org/2000/svg">
+            <path d="M3 9H23V21.3913C23 24.1527 20.7614 26.3913 18 26.3913H8C5.23858 26.3913 3 24.1527 3 21.3913L3 9Z"
+                  fill="#494949"></path>
+            <path
+              d="M2 8C0.89543 8 0 7.10457 0 6V6C0 4.89543 0.895431 4 2 4L24 4C25.1046 4 26 4.89543 26 6V6C26 7.10457 25.1046 8 24 8L2 8Z"
+              fill="#494949"></path>
+            <path
+              d="M6.5 3C5.67157 3 5 2.32843 5 1.5V1.5C5 0.671573 5.67157 0 6.5 0L19.5 0C20.3284 0 21 0.671573 21 1.5V1.5C21 2.32843 20.3284 3 19.5 3L6.5 3Z"
+              fill="#494949"></path>
+          </svg>
+        </button>
       </div>
     </div>
   </li>
@@ -154,6 +169,7 @@
         checked: this.item.checked,
       }
     },
+    props: ['item', 'index'],
     computed: {
       itemName() {
         return this.item.txt
@@ -165,13 +181,11 @@
         return this.item.img
       }
     },
-    props: ['item', 'index'],
     methods: {
       uploadImage(e) {
         let input = e.target;
         let file = input.files[0];
         let reader = new FileReader();
-
         reader.onload = () => {
           this.imgData = reader.result;
           if (this.imgData !== '') {
@@ -183,12 +197,9 @@
             });
           }
         };
-
-
         if (file) {
           reader.readAsDataURL(file);
         }
-
       },
       completeTask() {
         this.isEditable = false;
@@ -197,7 +208,7 @@
       deleteItem() {
         this.isEditable = false;
         // ANIMATION ICON:
-        const items = document.querySelectorAll('.deleteTodoItemIcon');
+        const items = document.querySelectorAll('.revertItemIcon');
         items[this.index].classList.toggle('swipeIcon');
 
         this.$store.dispatch("delTask", this.item);
@@ -205,6 +216,7 @@
       updateItem() {
         this.isEditable = false;
         this.isEditableText = false;
+
         if (this.name !== '') {
           this.$store.dispatch("updateTask", {
             txt: this.name,
@@ -213,12 +225,14 @@
             img: this.item.imgData
           });
         }
+
         this.$store.dispatch("updateTask", {
           txt: this.item.txt,
           id: this.item.id,
           desc: this.desc,
-          img: this.item.imgData
+          img: this.imgData
         });
+
         if (this.imgData !== '') {
           this.$store.dispatch("updateTask", {
             txt: this.item.txt,
@@ -227,6 +241,8 @@
             img: this.imgData
           });
         }
+
+
       },
       descEdit() {
         if (this.isEditable === true) {
@@ -274,7 +290,7 @@
   }
 
   .todoItemInner {
-    width: 120%;
+    width: 130%;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -431,6 +447,7 @@
   }
 
   .addItemArea {
+    display: flex;
     width: unset;
     overflow-y: scroll;
     overflow-x: hidden;
@@ -520,20 +537,20 @@
     backface-visibility: hidden;
   }
 
-  .deleteTodoItem {
+  .revertItem {
     transition: .3s;
   }
 
-  .deleteTodoItemIcon {
+  .revertItemIcon {
     transition: .3s;
   }
 
-  .deleteTodoItem .deleteTodoItemIcon {
+  .revertItem .revertItemIcon {
     width: 80%;
     height: 80%;
   }
 
-  .deleteTodoItem:hover {
+  .revertItem:hover {
     text-shadow: 0 0.5625rem 0.625rem rgba(150, 150, 150, 1);
     color: rgba(255, 5, 5, 0.8);
   }
