@@ -46,3 +46,40 @@ a {
 .increaseIcon {
     transform: scale(1.5);
 }
+
+/*ORANGE THEME:*/
+
+.orange {
+    background-color: #FFB234;
+}
+
+.orange .bg-theme{
+    background-color: #FFB234;
+}
+
+.orange .item-theme{
+    background-color: #F58212;
+}
+
+.orange .completed{
+    background-color: #F58212;
+}
+
+/*BLUE THEME:*/
+
+.blue {
+    background-color: #57B3D8;
+}
+
+.blue .bg-theme{
+    background-color: #57B3D8;
+}
+
+.blue .item-theme{
+    background-color: #004481;
+}
+
+.blue .completed{
+    background-color: #004481;
+}
+

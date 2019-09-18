@@ -1,5 +1,5 @@
 <template>
-  <div id="app" class="mainApp">
+  <div id="app" class="mainApp" :class="mainColor">
     <install-prompt></install-prompt>
     <main-page></main-page>
   </div>
@@ -11,10 +11,18 @@
 
   export default {
     name: 'app',
+    data() {
+      return {
+        mainColor: ''
+      }
+    },
     components: {
       mainPage,
       InstallPrompt,
     },
+    beforeMount() {
+      this.mainColor = 'blue'
+    }
 
   }
 
@@ -22,16 +30,17 @@
 
 
 <style lang="scss">
+ * {
+    color: rgba(255, 255, 255, 0.7) !important;
+  }
 
   #app {
     margin: unset;
-    color: rgba(0, 0, 0, 0.8)
+    color: rgba(255, 255, 255, 0.7)
   }
 
-
-  body, .mainApp {
-    background-color: #f0f0f0;
-   /* background-color: #0077C5;*/
+  .mainApp {
+    background-color: #fdfdfd;
   }
 
   /*ATTENTION >*/

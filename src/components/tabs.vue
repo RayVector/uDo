@@ -1,5 +1,5 @@
 <template>
-  <div :class="{menuOpen: isTabMenuShow}" class="tabsArea">
+  <div :class="{menuOpen: isTabMenuShow}" class="tabsArea bg-theme">
     <div @click="showTabsList" class="tab defTab">
       <div
         class="defTabWrap"
@@ -251,7 +251,6 @@
     justify-content: flex-start;
     height: 80vh;
     background-color: #f0f0f0;
-    border: 1px solid silver;
     -webkit-box-shadow: 0 10px 30px 0 rgba(50, 50, 50, 0.4);
     -moz-box-shadow: 0 10px 30px 0 rgba(50, 50, 50, 0.4);
     box-shadow: 0 10px 30px 0 rgba(50, 50, 50, 0.4);

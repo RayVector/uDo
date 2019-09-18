@@ -1,5 +1,5 @@
 <template>
-  <div class="menu">
+  <div class="menu bg-theme">
     <button
       class="closeAppBtn"
       type="button"

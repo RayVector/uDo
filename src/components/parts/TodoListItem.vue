@@ -1,7 +1,7 @@
 <template>
 
   <li
-    class="todoItemWrap"
+    class="todoItemWrap item-theme"
     :class="{completed: item.checked, editableMod:isEditable}"
   >
     <div class="todoItemInner">
@@ -593,7 +593,7 @@
   }
 
   .completed {
-    background-color: #cecece61;
+    background-color: #0077C5;
     opacity: .5;
   }
 

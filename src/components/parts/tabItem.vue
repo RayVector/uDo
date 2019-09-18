@@ -93,14 +93,15 @@
     },
     methods: {
       swapTab(index) {
-        // ANIMATION SWAP:
-        const page = document.querySelector('.todoItemsList');
-        page.classList.add('swipePage');
-        setTimeout(() => {
-          page.classList.remove('swipePage');
-        }, 600);
-        this.$store.dispatch("swapTab", index);
-
+        if (index !== this.getActiveTab) {
+          // ANIMATION SWAP:
+          const page = document.querySelector('.todoItemsList');
+          page.classList.add('swipePage');
+          setTimeout(() => {
+            page.classList.remove('swipePage');
+          }, 600);
+          this.$store.dispatch("swapTab", index);
+        }
       },
       deleteTab(index) {
         const icons = document.querySelectorAll('.deleteTabIcon');
