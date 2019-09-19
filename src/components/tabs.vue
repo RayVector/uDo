@@ -248,7 +248,7 @@
     flex-direction: column;
     align-items: flex-start;
     justify-content: flex-start;
-    height: 80vh;
+    height: 75%;
     background-color: #f0f0f0;
     -webkit-box-shadow: 0 10px 30px 0 rgba(50, 50, 50, 0.4);
     -moz-box-shadow: 0 10px 30px 0 rgba(50, 50, 50, 0.4);
@@ -316,11 +316,12 @@
   .menuOpen .chosen {
     transform: scale(1.05, 1.05);
     transition: .2s;
-    background-color: rgba(0, 0, 0, 0.2);
+    background-color: rgba(0, 0, 0, .2);
     z-index: 999;
   }
 
   .menuOpen .todoTabsList {
+    padding-top: 2rem;
     padding-right: 0;
   }
 

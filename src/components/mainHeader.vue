@@ -6,9 +6,8 @@
   >
     <div class="todoTitle">
       <h1 @click="getAuthorInfo" class="mainTitle">
-        uDo:
+        uDo
       </h1>
-
       <button @click="openMenu" class="openMenuBtn">
         <svg
           class="openMenuBtnItem"
@@ -59,25 +58,19 @@
 
   .todoTitle {
     display: flex;
-    align-items: center;
-    font-size: 2rem;
+    align-items: flex-start;
   }
 
   .mainTitle {
     user-select: none;
-    font-size: 2.2rem;
+    font-size: 2.3rem;
     font-weight: bold;
-    letter-spacing: -0.125rem;
-    color: rgba(255, 255, 255, 0.8);
+    letter-spacing: -0.025rem;
+    color: rgba(255, 255, 255, .8);
   }
 
   .mainIconBtn {
     margin-right: 1.8rem;
-  }
-
-  .mainIcon {
-    width: 2rem;
-    height: 2rem;
   }
 
   .openMenuBtn {

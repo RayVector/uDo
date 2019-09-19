@@ -25,6 +25,7 @@ COMMON:
 + multiple edit task system;
 + keep image in the localstorage;
 - moving tasks to another tab;
+- settings popup (themes, help, info);
 ----------------
 - repair getter - sort list (sortedToDoList);
 - refactor all action icons to isolate component;
@@ -46,9 +47,9 @@ ___
 ### Problems:
 ___
 ```
-- Conflict: Scrolling list + v-touch (8/10)
-- Bugs with icon delete task (2/10);
-- Delete Task Icon doesn't spin in other tabs except main (2/10);
++ Conflict: Scrolling list + v-touch (8/10)
++ Bugs with icon delete task (2/10);
++ Delete Task Icon doesn't spin in other tabs except main (2/10);
 
 ```
 ___
