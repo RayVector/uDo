@@ -68,7 +68,7 @@
     font-size: 2.2rem;
     font-weight: bold;
     letter-spacing: -0.125rem;
-    color: rgba(0, 0, 0, 0.7);
+    color: rgba(255, 255, 255, 0.8);
   }
 
   .mainIconBtn {

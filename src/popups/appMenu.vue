@@ -133,7 +133,10 @@
           if (isAccept) {
             // ANIMATION ICON:
             const icon = document.querySelector('.clearCacheBtnItem');
-            icon.classList.toggle('swipeIcon');
+            icon.classList.add('increaseIcon');
+            setTimeout(() => {
+              icon.classList.remove('increaseIcon');
+            }, 400);
             this.$store.dispatch("clearPage");
           }
         } else {

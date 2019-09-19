@@ -19,7 +19,7 @@ export default new Vuex.Store({
       }
     ],
     activeTab: 0,
-    activeTheme: 'space',
+    activeTheme: 'deepForest',
   },
   getters: {
     sortedToDoList: state => {

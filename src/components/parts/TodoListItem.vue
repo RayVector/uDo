@@ -107,7 +107,7 @@
           </div>
           <div class="imgMenu" v-show="isEditable && isEditableText">
             <input class="fileInput" id="taskImg" type="file" @change="uploadImage" accept="image/png, image/jpeg">
-            <label class="fileInputWrap" for="taskImg">
+            <label class="fileInputWrap" for="taskImg" v-show="imgData === ''">
               <svg
                 class="fileInputIcon"
                 width="42" height="26" viewBox="0 0 42 26" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -314,6 +314,7 @@
 
   .mainItemArea {
     display: flex;
+    justify-content: space-between;
     align-items: center;
     width: 100%;
     max-width: 85%;
@@ -396,7 +397,7 @@
 
   .todoItemNameEdit {
     width: 80%;
-    color: darkred;
+    color: rgba(255, 255, 255, 0.8);
     border: none;
     background-color: unset;
     font-size: 1.2rem;
@@ -455,6 +456,7 @@
     background-color: unset;
     resize: none;
     border-bottom: 0.0325rem solid rgba(0, 0, 0, 0.5);
+    color: rgba(255, 255, 255, 0.8);
   }
 
   .fileInputWrap {
@@ -540,7 +542,7 @@
 
   .todoItemTextInfo {
     margin-bottom: .5rem;
-    color: rgba(0, 0, 0, 0.47);
+    color: rgba(255, 255, 255, 0.4);
     user-select: none;
   }
 
@@ -617,6 +619,7 @@
   }
 
   .deleteImg {
+    margin-left: 1rem;
     width: 1.4rem;
     height: 1.4rem;
   }

@@ -47,58 +47,65 @@ a {
     transform: scale(1.5);
 }
 
+
+/*DEEP FOREST THEME:*/
+
+.deepForest, .deepForest .bg-theme {
+    background-color: #00546B;
+}
+
+.deepForest .small-part {
+    background-color: #007B89;
+}
+
+.deepForest .item-theme, .deepForest .completed {
+    background-color: #009A99;
+}
+
 /*ORANGE THEME:*/
 
-.orange {
+.orange, .orange .bg-theme {
     background-color: #FFB234;
 }
 
-.orange .bg-theme {
-    background-color: #FFB234;
+.orange .small-part {
+    background-color: #485f6f;
 }
 
-.orange .item-theme {
+.orange .item-theme, .orange .completed {
     background-color: #F58212;
 }
 
-.orange .completed {
-    background-color: #F58212;
-}
 
 /*BLUE THEME:*/
 
-.blue {
+.blue, .blue .bg-theme {
     background-color: #57B3D8;
 }
 
-.blue .bg-theme {
-    background-color: #57B3D8;
+.blue .small-part {
+    background-color: #485f6f;
 }
 
-.blue .item-theme {
+.blue .item-theme, .blue .completed {
     background-color: #004481;
 }
 
-.blue .completed {
-    background-color: #004481;
-}
 
 
 /*SPACE THEME:*/
 
-.space {
+.space, .space .bg-theme {
     background-color: #334655;
 }
 
-.space .bg-theme {
-    background-color: #334655;
+.space .small-part {
+    background-color: #485f6f;
 }
 
-.space .item-theme {
+.space .item-theme, .space .completed {
     background-color: #1f98af;
 }
 
-.space .completed {
-    background-color: #1f98af;
-}
+
 

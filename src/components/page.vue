@@ -164,7 +164,7 @@
     white-space: nowrap;
     font-weight: 500;
     font-size: 1rem;
-    color: rgb(84, 84, 84);
+    color: rgba(255, 255, 255, 0.8);
     border: none;
     border-radius: 0;
     -webkit-border-radius: 0;
@@ -177,6 +177,10 @@
     -webkit-border-left: 0;
     -webkit-border-left: 0;
     -webkit-appearance: none;
+  }
+
+  .addTaskField::placeholder {
+    color: rgba(255, 255, 255, 0.4);
   }
 
   .addNewTaskIcon {
