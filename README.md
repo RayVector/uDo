@@ -33,7 +33,7 @@ COMMON:
 - Menu -> settings (popup);
 
 Large:
-- Restyle app;
++ Restyle app;
 - Menu -> settings (popup) -> Translation (Btn);
 - Menu -> settings (popup) -> Themes (Btn);
 - Tutorial about UI (popup);
