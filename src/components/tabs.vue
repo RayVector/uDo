@@ -161,8 +161,8 @@
     padding: .8rem .4rem .4rem .4rem;
     border-top: 0;
     border-left: 0;
-    border-right: 0.0625rem solid rgba(0, 0, 0, .5);
-    border-bottom: 0.0625rem solid rgba(0, 0, 0, .5);
+    border-right: 0.0625rem solid rgba(0, 0, 0, .3);
+    border-bottom: 0.0625rem solid rgba(0, 0, 0, .3);
     border-bottom-right-radius: .5rem;
     text-align: left;
     font-weight: normal;
@@ -174,12 +174,11 @@
     min-height: 1.5rem;
     height: 100%;
     max-height: 1.5rem;
-
     font-weight: bold;
     font-size: 1.5rem;
     border-bottom-left-radius: .5rem;
-    border-right: 0.15rem solid rgba(0, 0, 0, .5);
-    border-bottom: 0.15rem solid rgba(0, 0, 0, .5);
+    border-right: 0.15rem solid rgba(0, 0, 0, .4);
+    border-bottom: 0.15rem solid rgba(0, 0, 0, .4);
   }
 
   .todoTabsList {

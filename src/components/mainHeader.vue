@@ -53,7 +53,7 @@
   .todoHeaderWrap {
     position: relative;
     padding: 1rem 1rem 1.5rem 1rem;
-    border-bottom: .0625rem solid rgba(0, 0, 0, 0.5);
+    border-bottom: .0625rem solid rgba(0, 0, 0, .3);
   }
 
   .todoTitle {

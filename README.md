@@ -47,10 +47,16 @@ ___
 ### Problems:
 ___
 ```
-+ Conflict: Scrolling list + v-touch (8/10)
++ Conflict: Scrolling list + v-touch (8/10);
 + Bugs with icon delete task (2/10);
 + Delete Task Icon doesn't spin in other tabs except main (2/10);
+```
+___
 
+### Ideas:
+___
+```
+- Smart menu can swiping from left like side menu;
 ```
 ___
 
