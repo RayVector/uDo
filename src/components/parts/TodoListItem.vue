@@ -611,8 +611,7 @@
   }
 
   .completed {
-    background-color: #0077C5;
-    opacity: .5;
+    opacity: .7;
   }
 
   .dragHandle {

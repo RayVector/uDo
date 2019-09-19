@@ -69,7 +69,7 @@ a {
 
 /*ORANGE THEME:*/
 .orange, .orange .bg-theme {
-    background-color: #ED6544;
+    background-color: #F8814D;
 }
 
 .orange .small-part {
@@ -91,7 +91,7 @@ a {
 /*BLUE THEME:*/
 
 .blue, .blue .bg-theme {
-    background-color: #57B3D8;
+    background-color: #485f6f;
 }
 
 .blue .small-part {
@@ -106,8 +106,8 @@ a {
 
 /*SPACE THEME:*/
 
-.space{
-    background-color: #334655;
+.space, .space .bg-theme{
+    background-color: #485f6f;
 }
 
 .space .small-part {
