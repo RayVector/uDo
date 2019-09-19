@@ -1,5 +1,9 @@
 <template>
-  <div id="app" class="mainApp" :class="getTheme">
+  <div id="app"
+       class="mainApp"
+       :class="getTheme"
+       :style="{backgroundImage: 'url('+require('./assets/img/'+getTheme+'.jpg')+')'}"
+  >
     <install-prompt></install-prompt>
     <main-page></main-page>
   </div>
@@ -50,18 +54,20 @@
     flex-direction: column;
     overflow: hidden;
     flex-grow: 3;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
   }
 
 
-
   @media screen and (min-width: 1920px) {
-/*
-    #app {
-      margin: 1.25rem;
-    }
-    .mainApp {
-      width: 18.75rem;
-      height: 26.875rem;
-    }*/
+    /*
+        #app {
+          margin: 1.25rem;
+        }
+        .mainApp {
+          width: 18.75rem;
+          height: 26.875rem;
+        }*/
   }
 </style>

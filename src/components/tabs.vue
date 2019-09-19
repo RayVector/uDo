@@ -1,5 +1,9 @@
 <template>
-  <div :class="{menuOpen: isTabMenuShow}" class="tabsArea bg-theme">
+  <div
+    :class="{menuOpen: isTabMenuShow}"
+    class="tabsArea bg-theme"
+    :style="{backgroundImage: 'url('+require('../assets/img/'+getTheme+'.jpg')+')'}"
+  >
     <div class="tabsEditMenu">
       <div @click="isTabMenuShow = !isTabMenuShow" class="tab defTab small-part">
         <button
@@ -105,6 +109,9 @@
       }
     },
     computed: {
+      getTheme() {
+        return this.$store.state.activeTheme;
+      },
       getTabList() {
         return this.$store.state.tabs;
       },
@@ -139,8 +146,11 @@
     justify-content: flex-start;
     align-items: flex-start;
     overflow: auto;
+    background-size: 0;
+    border-top: .0625rem solid rgba(0, 0, 0, .3);
+    padding-top: .0625rem;
   }
-  
+
   .tabsEditMenu {
     width: 20%;
     display: flex;
@@ -249,10 +259,17 @@
     justify-content: flex-start;
     height: 75%;
     background-color: #f0f0f0;
-    -webkit-box-shadow: 0 10px 30px 0 rgba(50, 50, 50, 0.4);
-    -moz-box-shadow: 0 10px 30px 0 rgba(50, 50, 50, 0.4);
-    box-shadow: 0 10px 30px 0 rgba(50, 50, 50, 0.4);
+    -webkit-box-shadow: 0 10px 30px 0 rgba(50, 50, 50, .4);
+    -moz-box-shadow: 0 10px 30px 0 rgba(50, 50, 50, .4);
+    box-shadow: 0 10px 30px 0 rgba(50, 50, 50, .4);
     overflow: hidden;
+  }
+
+  .menuOpen.tabsArea {
+    border-top: 0;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
   }
 
   .menuOpen .tab {
@@ -274,7 +291,7 @@
   .menuOpen .activeTab {
     border-left: 0;
     border-right: 0;
-    border-bottom: 0.0625rem solid rgba(0, 0, 0, 0.5);
+    border-bottom: 0;
   }
 
   .menuOpen .tabsEditMenu {
@@ -288,11 +305,11 @@
     border-top: 0;
     border-left: 0;
     border-right: 0;
-    border-bottom: 0.0625rem solid rgba(0, 0, 0, 0.5);
+    border-bottom: 0;
   }
 
   .menuOpen .defTab:nth-child(1) {
-    border-right: 0.0625rem solid rgba(0, 0, 0, 0.5);
+    border-right: 0.0625rem solid rgba(0, 0, 0, 0.3);
   }
 
 

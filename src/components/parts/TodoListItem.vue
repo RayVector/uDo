@@ -459,6 +459,10 @@
     color: rgba(255, 255, 255, 0.8);
   }
 
+  .todoItemTextInput::placeholder {
+    color: rgba(255, 255, 255, 0.8);
+  }
+
   .fileInputWrap {
     font-size: 1.25em;
     font-weight: 700;
@@ -499,7 +503,9 @@
   }
 
   .imgItem {
+    border: 1px solid rgba(0, 0, 0, .8);
     max-width: 55%;
+    border-radius: 4px;
     /*width: 100%;
     height: 100%;*/
     /*max-height: 55%;*/
