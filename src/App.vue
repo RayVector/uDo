@@ -4,6 +4,7 @@
        :class="getTheme"
        :style="{backgroundImage: 'url('+require('./assets/img/'+getTheme+'.jpg')+')'}"
   >
+<!--    :style="{backgroundImage: 'url('+require('./assets/img/'+getTheme+'.jpg')+')'}"-->
     <install-prompt></install-prompt>
     <main-page></main-page>
   </div>

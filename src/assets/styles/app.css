@@ -68,17 +68,23 @@ a {
 }
 
 /*ORANGE THEME:*/
-
 .orange, .orange .bg-theme {
-    background-color: #FFB234;
+    background-color: #ED6544;
 }
 
 .orange .small-part {
-    background-color: #485f6f;
+    background-color: #F8814D;
 }
 
 .orange .item-theme, .orange .completed {
-    background-color: #F58212;
+    background: rgba(255,174,82,1);
+    background: -moz-linear-gradient(left, rgba(255,174,82,1) 0%, rgba(248,128,77,1) 100%);
+    background: -webkit-gradient(left top, right top, color-stop(0%, rgba(255,174,82,1)), color-stop(100%, rgba(248,128,77,1)));
+    background: -webkit-linear-gradient(left, rgba(255,174,82,1) 0%, rgba(248,128,77,1) 100%);
+    background: -o-linear-gradient(left, rgba(255,174,82,1) 0%, rgba(248,128,77,1) 100%);
+    background: -ms-linear-gradient(left, rgba(255,174,82,1) 0%, rgba(248,128,77,1) 100%);
+    background: linear-gradient(to right, rgba(255,174,82,1) 0%, rgba(248,128,77,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffae52', endColorstr='#f8804d', GradientType=1 );
 }
 
 

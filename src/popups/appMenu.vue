@@ -168,7 +168,7 @@
     -webkit-box-shadow: 0 10px 30px 0 rgba(50, 50, 50, 0.45);
     -moz-box-shadow: 0 10px 30px 0 rgba(50, 50, 50, 0.45);
     box-shadow: 0 10px 30px 0 rgba(50, 50, 50, 0.45);
-    border-bottom: 0.0625rem solid rgba(0, 0, 0, 0.5);
+    border-bottom: 0.0625rem solid rgba(0, 0, 0, .2);
     transition: .3s;
   }
 

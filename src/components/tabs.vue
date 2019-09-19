@@ -1,7 +1,7 @@
 <template>
   <div
     :class="{menuOpen: isTabMenuShow}"
-    class="tabsArea bg-theme"
+    class="tabsArea"
     :style="{backgroundImage: 'url('+require('../assets/img/'+getTheme+'.jpg')+')'}"
   >
     <div class="tabsEditMenu">
