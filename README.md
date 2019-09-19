@@ -25,13 +25,12 @@ COMMON:
 + multiple edit task system;
 + keep image in the localstorage;
 - moving tasks to another tab;
-- settings popup (themes, help, info);
+- settings popup from smart menu (themes, help, info, user);
 ----------------
 - repair getter - sort list (sortedToDoList);
 - refactor all action icons to isolate component;
-- rewrite help tips (from alerts);
-- All "Alerts" to popups (vue modal window);
-- Menu -> settings (popup);
+- rewrite help tips;
+- all "Alerts" to popups (vue modal window - https://vuejs.org/v2/examples/modal.html);
 
 Large:
 + Restyle app;
@@ -39,7 +38,7 @@ Large:
 - Menu -> settings (popup) -> Themes (Btn);
 - Tutorial about UI (popup);
 - User Auth;
-- migrate to database or use "indexedDB" (Database);
+- migrate to database or use "indexedDB" (LocalStorage Database);
 - PC version;
 ```
 ___
@@ -47,6 +46,7 @@ ___
 ### Problems:
 ___
 ```
+- Error while synchronizing task editing;
 + Conflict: Scrolling list + v-touch (8/10);
 + Bugs with icon delete task (2/10);
 + Delete Task Icon doesn't spin in other tabs except main (2/10);
