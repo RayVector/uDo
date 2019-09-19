@@ -53,15 +53,15 @@ a {
     background-color: #FFB234;
 }
 
-.orange .bg-theme{
+.orange .bg-theme {
     background-color: #FFB234;
 }
 
-.orange .item-theme{
+.orange .item-theme {
     background-color: #F58212;
 }
 
-.orange .completed{
+.orange .completed {
     background-color: #F58212;
 }
 
@@ -71,15 +71,34 @@ a {
     background-color: #57B3D8;
 }
 
-.blue .bg-theme{
+.blue .bg-theme {
     background-color: #57B3D8;
 }
 
-.blue .item-theme{
+.blue .item-theme {
     background-color: #004481;
 }
 
-.blue .completed{
+.blue .completed {
     background-color: #004481;
+}
+
+
+/*SPACE THEME:*/
+
+.space {
+    background-color: #334655;
+}
+
+.space .bg-theme {
+    background-color: #334655;
+}
+
+.space .item-theme {
+    background-color: #1f98af;
+}
+
+.space .completed {
+    background-color: #1f98af;
 }
 

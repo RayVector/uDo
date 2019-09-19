@@ -1,5 +1,5 @@
 <template>
-  <div id="app" class="mainApp" :class="mainColor">
+  <div id="app" class="mainApp" :class="getTheme">
     <install-prompt></install-prompt>
     <main-page></main-page>
   </div>
@@ -11,18 +11,15 @@
 
   export default {
     name: 'app',
-    data() {
-      return {
-        mainColor: ''
-      }
-    },
     components: {
       mainPage,
       InstallPrompt,
     },
-    beforeMount() {
-      this.mainColor = 'blue'
-    }
+    computed: {
+      getTheme() {
+        return this.$store.state.activeTheme;
+      }
+    },
 
   }
 
@@ -30,13 +27,10 @@
 
 
 <style lang="scss">
- * {
-    color: rgba(255, 255, 255, 0.7) !important;
-  }
 
   #app {
     margin: unset;
-    color: rgba(255, 255, 255, 0.7)
+    color: rgba(255, 255, 255, 0.8);
   }
 
   .mainApp {
@@ -61,13 +55,13 @@
 
 
   @media screen and (min-width: 1920px) {
-
+/*
     #app {
       margin: 1.25rem;
     }
     .mainApp {
       width: 18.75rem;
       height: 26.875rem;
-    }
+    }*/
   }
 </style>

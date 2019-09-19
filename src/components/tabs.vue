@@ -1,27 +1,32 @@
 <template>
   <div :class="{menuOpen: isTabMenuShow}" class="tabsArea bg-theme">
     <div @click="showTabsList" class="tab defTab">
-      <div
+      <button
         class="defTabWrap"
         v-show="!isTabMenuShow"
       >
         <svg
-          class="tabSettingBtn" fill="none" viewBox="0 0 23 22" xmlns="http://www.w3.org/2000/svg">
+          class="tabSettingBtn"
+          width="23" height="22" viewBox="0 0 23 22" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path
             d="M3 6C1.34315 6 0 4.65685 0 3V3C0 1.34315 1.34315 0 3 0V0C4.65685 0 6 1.34315 6 3V3C6 4.65685 4.65685 6 3 6V6Z"
-            fill="#494949"></path>
-          <rect fill="#494949" height="16" rx="3" transform="rotate(-90 7 6)" width="6" x="7" y="6"></rect>
+            fill="white" fill-opacity="0.8"></path>
+          <rect x="7" y="6" width="6" height="16" rx="3" transform="rotate(-90 7 6)" fill="white"
+                fill-opacity="0.8"></rect>
           <path
             d="M3 14C1.34315 14 0 12.6569 0 11V11C0 9.34315 1.34315 8 3 8V8C4.65685 8 6 9.34315 6 11V11C6 12.6569 4.65685 14 3 14V14Z"
-            fill="#494949"></path>
-          <rect fill="#494949" height="16" rx="3" transform="rotate(-90 7 14)" width="6" x="7" y="14"></rect>
+            fill="white" fill-opacity="0.8"></path>
+          <rect x="7" y="14" width="6" height="16" rx="3" transform="rotate(-90 7 14)" fill="white"
+                fill-opacity="0.8"></rect>
           <path
             d="M3 22C1.34315 22 0 20.6569 0 19V19C0 17.3431 1.34315 16 3 16V16C4.65685 16 6 17.3431 6 19V19C6 20.6569 4.65685 22 3 22V22Z"
-            fill="#494949"></path>
-          <rect fill="#494949" height="16" rx="3" transform="rotate(-90 7 22)" width="6" x="7" y="22"></rect>
+            fill="white" fill-opacity="0.8"></path>
+          <rect x="7" y="22" width="6" height="16" rx="3" transform="rotate(-90 7 22)" fill="white"
+                fill-opacity="0.8"></rect>
         </svg>
-      </div>
-      <div
+
+      </button>
+      <button
         class="defTabWrap"
         v-show="isTabMenuShow"
       >
@@ -30,29 +35,31 @@
           width="22" height="6" viewBox="0 0 22 6" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path
             d="M11 6C9.34315 6 8 4.65685 8 3V3C8 1.34315 9.34315 0 11 0V0C12.6569 0 14 1.34315 14 3V3C14 4.65685 12.6569 6 11 6V6Z"
-            fill="#494949"></path>
+            fill="white" fill-opacity="0.8"></path>
           <path
             d="M3 6C1.34315 6 0 4.65685 0 3V3C0 1.34315 1.34315 0 3 0V0C4.65685 0 6 1.34315 6 3V3C6 4.65685 4.65685 6 3 6V6Z"
-            fill="#494949"></path>
+            fill="white" fill-opacity="0.8"></path>
           <path
             d="M19 6C17.3431 6 16 4.65685 16 3V3C16 1.34315 17.3431 0 19 0V0C20.6569 0 22 1.34315 22 3V3C22 4.65685 20.6569 6 19 6V6Z"
-            fill="#494949"></path>
+            fill="white" fill-opacity="0.8"></path>
         </svg>
-      </div>
+      </button>
     </div>
     <div @click="addNewTab" class="tab defTab" v-show="isTabMenuShow">
-      <svg class="tabSettingBtn addNewTabIcon" fill="none" viewBox="0 0 26 26" xmlns="http://www.w3.org/2000/svg">
+      <svg
+        class="tabSettingBtn addNewTabIcon"
+        width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path
-          d="M20 16C18.3431 16 17 14.6569 17 13V13C17 11.3431 18.3431 10 20 10H23C24.6569 10 26 11.3431 26 13V13C26 14.6569 24.6569 16 23 16H20Z"
-          fill="#494949"></path>
+          d="M20 16.0001C18.3431 16.0001 17 14.6569 17 13.0001V13.0001C17 11.3432 18.3431 10.0001 20 10.0001H23C24.6569 10.0001 26 11.3432 26 13.0001V13.0001C26 14.6569 24.6569 16.0001 23 16.0001H20Z"
+          fill="white" fill-opacity="0.8"></path>
         <path
-          d="M3 16C1.34315 16 0 14.6569 0 13V13C0 11.3431 1.34315 10 3 10H6C7.65685 10 9 11.3431 9 13V13C9 14.6569 7.65685 16 6 16H3Z"
-          fill="#494949"></path>
-        <rect fill="#494949" height="9" rx="3" width="6" x="10" y="17"></rect>
-        <rect fill="#494949" height="9" rx="3" width="6" x="10"></rect>
+          d="M3 16.0001C1.34315 16.0001 0 14.6569 0 13.0001V13.0001C0 11.3432 1.34315 10.0001 3 10.0001H6C7.65685 10.0001 9 11.3432 9 13.0001V13.0001C9 14.6569 7.65685 16.0001 6 16.0001H3Z"
+          fill="white" fill-opacity="0.8"></path>
+        <rect x="10" y="17.0001" width="6" height="9" rx="3" fill="white" fill-opacity="0.8"></rect>
+        <rect x="10" y="6.10352e-05" width="6" height="9" rx="3" fill="white" fill-opacity="0.8"></rect>
         <path
-          d="M13 16C11.3431 16 10 14.6569 10 13V13C10 11.3431 11.3431 10 13 10V10C14.6569 10 16 11.3431 16 13V13C16 14.6569 14.6569 16 13 16V16Z"
-          fill="#494949"></path>
+          d="M13 16.0001C11.3431 16.0001 10 14.6569 10 13.0001V13.0001C10 11.3432 11.3431 10.0001 13 10.0001V10.0001C14.6569 10.0001 16 11.3432 16 13.0001V13.0001C16 14.6569 14.6569 16.0001 13 16.0001V16.0001Z"
+          fill="white" fill-opacity="0.8"></path>
       </svg>
     </div>
     <draggable
@@ -119,13 +126,6 @@
         this.$store.dispatch("addTab");
       },
       showTabsList() {
-        const icon = document.querySelector('.deleteCompletedBtnItem');
-        icon.classList.add('increaseIcon');
-
-        setTimeout(() => {
-          icon.classList.remove('increaseIcon');
-        }, 400);
-
         this.isTabMenuShow = !this.isTabMenuShow;
       }
     },
@@ -274,16 +274,15 @@
   }
 
   .menuOpen .activeTab {
-    border-top: 0;
     border-left: 0;
-    border-right: 0.0625rem solid rgba(0, 0, 0, 0.5);
+    border-right: 0;
     border-bottom: 0.0625rem solid rgba(0, 0, 0, 0.5);
   }
 
   .menuOpen .defTab {
     border-top: 0;
     border-left: 0;
-    border-right: 0.0625rem solid rgba(0, 0, 0, 0.5);
+    border-right: 0;
     border-bottom: 0.0625rem solid rgba(0, 0, 0, 0.5);
   }
 

@@ -41,22 +41,25 @@
               class="revertItemIcon"
               width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path
-                d="M16.0168 2.29813C17.0818 1.02891 18.974 0.863357 20.2433 1.92836V1.92836C21.5125 2.99337 21.678 4.88563 20.613 6.15486L18.4552 8.72652C17.3901 9.99575 15.4979 10.1613 14.2287 9.09629V9.09629C12.9594 8.03129 12.7939 6.13902 13.8589 4.8698L16.0168 2.29813Z"
-                fill="#494949"></path>
+                d="M7.75722 21.4757C6.69222 22.745 4.79995 22.9105 3.53072 21.8455V21.8455C2.2615 20.7805 2.09595 18.8882 3.16095 17.619L5.31883 15.0473C6.38384 13.7781 8.27611 13.6126 9.54533 14.6776V14.6776C10.8146 15.7426 10.9801 17.6348 9.9151 18.9041L7.75722 21.4757Z"
+                fill="white" fill-opacity="0.8"></path>
               <path
-                d="M4.97624 15.4557C6.04124 14.1865 7.93351 14.021 9.20274 15.086V15.086C10.472 16.151 10.6375 18.0432 9.57251 19.3125L7.75727 21.4758C6.69226 22.745 4.8 22.9105 3.53077 21.8455V21.8455C2.26155 20.7805 2.096 18.8883 3.161 17.619L4.97624 15.4557Z"
-                fill="#494949"></path>
-              <rect y="5.8288" width="6" height="26" rx="3" transform="rotate(-50 0 5.8288)" fill="#494949"></rect>
+                d="M18.7977 8.31814C17.7327 9.58736 15.8405 9.75291 14.5713 8.68791V8.68791C13.302 7.6229 13.1365 5.73064 14.2015 4.46141L16.0167 2.2981C17.0817 1.02887 18.974 0.863323 20.2432 1.92833V1.92833C21.5124 2.99333 21.678 4.8856 20.613 6.15482L18.7977 8.31814Z"
+                fill="white" fill-opacity="0.8"></path>
+              <rect x="23.7739" y="17.9451" width="6" height="26" rx="3" transform="rotate(130 23.7739 17.9451)"
+                    fill="white"
+                    fill-opacity="0.8"></rect>
             </svg>
           </button>
           <button
             class="manageItemBtns saveTodoItem" @click="updateItem" v-show="!checked">
-            <svg width="34" height="30" viewBox="0 0 30 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <svg width="30" height="24" viewBox="0 0 30 24" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path
                 d="M2.3566 14.8563C1.08738 13.7913 0.921829 11.899 1.98683 10.6298V10.6298C3.05184 9.36056 4.94411 9.19501 6.21333 10.26L8.37664 12.0752C9.64587 13.1403 9.81142 15.0325 8.74642 16.3017V16.3017C7.68141 17.571 5.78914 17.7365 4.51992 16.6715L2.3566 14.8563Z"
-                fill="#494949"></path>
-              <rect x="12.8288" y="23.7739" width="6" height="26" rx="3" transform="rotate(-140 12.8288 23.7739)"
-                    fill="#494949"></rect>
+                fill="white" fill-opacity="0.8"></path>
+              <rect x="12.8287" y="23.7739" width="6" height="26" rx="3" transform="rotate(-140 12.8287 23.7739)"
+                    fill="white"
+                    fill-opacity="0.8"></rect>
             </svg>
           </button>
           <button
@@ -66,10 +69,10 @@
               width="32" height="22" viewBox="0 0 32 22" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path
                 d="M15.4553 0.353796C15.7866 0.138633 16.2134 0.138633 16.5447 0.353796L27.0257 7.16137C27.8606 7.70368 27.4766 9 26.4809 9H5.51905C4.52344 9 4.1394 7.70368 4.97435 7.16137L15.4553 0.353796Z"
-                fill="#494949"></path>
+                fill="white" fill-opacity="0.8"></path>
               <path
                 d="M16.5447 21.6462C16.2134 21.8614 15.7866 21.8614 15.4553 21.6462L4.97435 14.8386C4.1394 14.2963 4.52344 13 5.51905 13L26.481 13C27.4766 13 27.8606 14.2963 27.0257 14.8386L16.5447 21.6462Z"
-                fill="#494949"></path>
+                fill="white" fill-opacity="0.8"></path>
             </svg>
           </button>
         </div>
@@ -105,12 +108,13 @@
           <div class="imgMenu" v-show="isEditable && isEditableText">
             <input class="fileInput" id="taskImg" type="file" @change="uploadImage" accept="image/png, image/jpeg">
             <label class="fileInputWrap" for="taskImg">
-              <svg class="fileInputIcon" width="42" height="26" viewBox="0 0 42 26" fill="none"
-                   xmlns="http://www.w3.org/2000/svg">
+              <svg
+                class="fileInputIcon"
+                width="42" height="26" viewBox="0 0 42 26" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path
                   d="M21.6267 18.9961C21.2607 19.2903 20.7393 19.2903 20.3733 18.9961L5.02605 6.65428C4.2904 6.0627 4.70871 4.875 5.65272 4.875L36.3473 4.875C37.2913 4.875 37.7096 6.0627 36.974 6.65428L21.6267 18.9961Z"
-                  fill="#494949"></path>
-                <rect x="3.9375" y="22.75" width="34.125" height="3.25" rx="1" fill="#494949"></rect>
+                  fill="white" fill-opacity="0.8"></path>
+                <rect x="3.9375" y="22.75" width="34.125" height="3.25" rx="1" fill="white" fill-opacity="0.8"></rect>
               </svg>
             </label>
           </div>
@@ -122,12 +126,14 @@
                 class="revertItemIcon"
                 width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path
-                  d="M16.0168 2.29813C17.0818 1.02891 18.974 0.863357 20.2433 1.92836V1.92836C21.5125 2.99337 21.678 4.88563 20.613 6.15486L18.4552 8.72652C17.3901 9.99575 15.4979 10.1613 14.2287 9.09629V9.09629C12.9594 8.03129 12.7939 6.13902 13.8589 4.8698L16.0168 2.29813Z"
-                  fill="#494949"></path>
+                  d="M7.75722 21.4757C6.69222 22.745 4.79995 22.9105 3.53072 21.8455V21.8455C2.2615 20.7805 2.09595 18.8882 3.16095 17.619L5.31883 15.0473C6.38384 13.7781 8.27611 13.6126 9.54533 14.6776V14.6776C10.8146 15.7426 10.9801 17.6348 9.9151 18.9041L7.75722 21.4757Z"
+                  fill="white" fill-opacity="0.8"></path>
                 <path
-                  d="M4.97624 15.4557C6.04124 14.1865 7.93351 14.021 9.20274 15.086V15.086C10.472 16.151 10.6375 18.0432 9.57251 19.3125L7.75727 21.4758C6.69226 22.745 4.8 22.9105 3.53077 21.8455V21.8455C2.26155 20.7805 2.096 18.8883 3.161 17.619L4.97624 15.4557Z"
-                  fill="#494949"></path>
-                <rect y="5.8288" width="6" height="26" rx="3" transform="rotate(-50 0 5.8288)" fill="#494949"></rect>
+                  d="M18.7977 8.31814C17.7327 9.58736 15.8405 9.75291 14.5713 8.68791V8.68791C13.302 7.6229 13.1365 5.73064 14.2015 4.46141L16.0167 2.2981C17.0817 1.02887 18.974 0.863323 20.2432 1.92833V1.92833C21.5124 2.99333 21.678 4.8856 20.613 6.15482L18.7977 8.31814Z"
+                  fill="white" fill-opacity="0.8"></path>
+                <rect x="23.7739" y="17.9451" width="6" height="26" rx="3" transform="rotate(130 23.7739 17.9451)"
+                      fill="white"
+                      fill-opacity="0.8"></rect>
               </svg>
             </button>
             <div class="imgPreviewShadow" v-show="isImgPreview" @click="isImgPreview = false">
@@ -138,25 +144,27 @@
           </div>
         </div>
         <button v-show="!isEditable" class="manageItemBtns" @click="editItem">
-          <svg class="settingsItemBtn" width="32" height="26" viewBox="0 0 32 26" fill="none"
-               xmlns="http://www.w3.org/2000/svg">
-            <rect y="3" width="16" height="6" rx="2" fill="#494949"></rect>
-            <circle cx="24" cy="6" r="6" fill="#494949"></circle>
-            <rect x="16" y="17" width="16" height="6" rx="2" fill="#494949"></rect>
-            <circle cx="7" cy="20" r="6" fill="#494949"></circle>
+          <svg
+            class="settingsItemBtn"
+            width="32" height="26" viewBox="0 0 32 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect y="3" width="16" height="6" rx="2" fill="white" fill-opacity="0.8"></rect>
+            <circle cx="24" cy="6" r="6" fill="white" fill-opacity="0.8"></circle>
+            <rect x="16" y="17" width="16" height="6" rx="2" fill="white" fill-opacity="0.8"></rect>
+            <circle cx="7" cy="20" r="6" fill="white" fill-opacity="0.8"></circle>
           </svg>
         </button>
         <button v-show="!isEditable" class="manageItemBtns" @click="deleteItem">
-          <svg class="settingsItemBtn" width="26" height="27" viewBox="0 0 26 27" fill="none"
-               xmlns="http://www.w3.org/2000/svg">
+          <svg
+            class="settingsItemBtn"
+            width="26" height="27" viewBox="0 0 26 27" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M3 9H23V21.3913C23 24.1527 20.7614 26.3913 18 26.3913H8C5.23858 26.3913 3 24.1527 3 21.3913L3 9Z"
-                  fill="#494949"></path>
+                  fill="white" fill-opacity="0.8"></path>
             <path
               d="M2 8C0.89543 8 0 7.10457 0 6V6C0 4.89543 0.895431 4 2 4L24 4C25.1046 4 26 4.89543 26 6V6C26 7.10457 25.1046 8 24 8L2 8Z"
-              fill="#494949"></path>
+              fill="white" fill-opacity="0.8"></path>
             <path
               d="M6.5 3C5.67157 3 5 2.32843 5 1.5V1.5C5 0.671573 5.67157 0 6.5 0L19.5 0C20.3284 0 21 0.671573 21 1.5V1.5C21 2.32843 20.3284 3 19.5 3L6.5 3Z"
-              fill="#494949"></path>
+              fill="white" fill-opacity="0.8"></path>
           </svg>
         </button>
       </div>
@@ -271,12 +279,12 @@
         }
       },
       editItem() {
-          if (this.isEditable === false) {
-            this.isEditable = true;
-            this.$nextTick(() => {
-              this.$el.querySelector('input[type=text]').focus()
-            });
-          }
+        if (this.isEditable === false) {
+          this.isEditable = true;
+          this.$nextTick(() => {
+            this.$el.querySelector('input[type=text]').focus()
+          });
+        }
       },
     },
     beforeMount() {
@@ -292,6 +300,7 @@
   .todoItemWrap {
     padding: 0.8rem 1rem;
     border-bottom: 0.0325rem solid rgba(0, 0, 0, 0.5);
+    border-top: 0.0325rem solid rgba(0, 0, 0, 0.5);
     overflow-y: hidden;
     overflow-x: auto;
     height: 2rem;
@@ -532,6 +541,7 @@
   .todoItemTextInfo {
     margin-bottom: .5rem;
     color: rgba(0, 0, 0, 0.47);
+    user-select: none;
   }
 
   .itemLabel {
@@ -578,8 +588,8 @@
   }
 
   .settingsItemBtn {
-    width: 80%;
-    height: 80%;
+    width: 100%;
+    height: 100%;
   }
 
   .saveTodoItem svg {

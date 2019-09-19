@@ -14,10 +14,13 @@
         >
       </label>
       <button @click='addNewTask' class="todoBtn">
-        <svg class="addNewTaskIcon" fill="none" height="24" viewBox="0 0 28 31" width="24"
-             xmlns="http://www.w3.org/2000/svg">
-          <circle cx="4.5837" cy="26.2265" fill="#494949" r="3" transform="rotate(40 4.5837 26.2265)"></circle>
-          <rect fill="#494949" height="26" rx="3" transform="rotate(40 22.212 0)" width="6" x="22.212"></rect>
+        <svg
+          class="addNewTaskIcon"
+          width="27" height="31" viewBox="0 0 27 31" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="4.4977" cy="26.2265" r="3" transform="rotate(40 4.4977 26.2265)" fill="white"
+                  fill-opacity="0.8"></circle>
+          <rect x="22.126" width="6" height="26" rx="3" transform="rotate(40 22.126 0)" fill="white"
+                fill-opacity="0.8"></rect>
         </svg>
       </button>
     </div>
