@@ -289,9 +289,20 @@
   }
 
   .menuOpen .activeTab {
-    border-left: 0;
-    border-right: 0;
-    border-bottom: 0;
+    border-top: 0.15rem solid rgba(0, 0, 0, .3);
+    border-bottom: 0.15rem solid rgba(0, 0, 0, .3);
+   }
+
+
+
+  .menuOpen .tabName {
+    display: inline-block;
+    width: 100%;
+    max-width: 75%;
+    background-color: unset;
+    border: unset;
+    overflow-x: auto;
+    overflow-y: hidden;
   }
 
   .menuOpen .tabsEditMenu {
@@ -318,16 +329,6 @@
     height: 1.8rem;
   }
 
-  .menuOpen .tabName {
-    display: inline-block;
-    padding-bottom: 1.9rem;
-    width: 100%;
-    max-width: 75%;
-    background-color: unset;
-    border: unset;
-    overflow-x: auto;
-    overflow-y: hidden;
-  }
 
   .menuOpen .chosen {
     transform: scale(1.05, 1.05);

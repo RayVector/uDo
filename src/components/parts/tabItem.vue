@@ -12,7 +12,9 @@
     >
       {{item.title}}
     </div>
-    <label class="tabNameWrap">
+    <label class="tabNameWrap"
+           @click="swapTab(index)"
+    >
       <input
         type="text"
         class="tabName tabNameInput"
@@ -214,6 +216,10 @@
     border: unset;
     overflow-x: auto;
     overflow-y: hidden;
+  }
+
+  .menuOpen .activeTab .tabNameInput {
+    font-size: 2rem;
   }
 
   .manageTab {

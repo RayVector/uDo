@@ -24,6 +24,7 @@ COMMON:
 + deleting image in the task;
 + multiple edit task system;
 + keep image in the localstorage;
+- upload new icons
 - moving tasks to another tab;
 - settings popup from smart menu (themes, help, info, user);
 ----------------
