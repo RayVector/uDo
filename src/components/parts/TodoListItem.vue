@@ -614,6 +614,7 @@
     opacity: .7;
   }
 
+
   .dragHandle {
     cursor: e-resize;
   }
