@@ -11,6 +11,7 @@ const vuexPersist = new VuexPersist({
 
 export default new Vuex.Store({
   state: {
+    version: 'alpha',
     tabs: [
       {
         id: 0,

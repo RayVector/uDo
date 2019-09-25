@@ -6,7 +6,12 @@
   >
 <!--    :style="{backgroundImage: 'url('+require('./assets/img/'+getTheme+'.jpg')+')'}"-->
     <install-prompt></install-prompt>
-    <main-page></main-page>
+    <main-page class="mainPage"></main-page>
+    <div class="warningAlpha">
+      <p class="notice">Warning: Alpha version.</p>
+      <p class="notice">Please install this app in your mobile device (less than 1125 pixels wide).</p>
+      <p class="notice">We sorry for the inconvenience.</p>
+    </div>
   </div>
 </template>
 
@@ -23,7 +28,7 @@
     computed: {
       getTheme() {
         return this.$store.state.activeTheme;
-      }
+      },
     },
 
   }
@@ -60,8 +65,34 @@
     background-repeat: no-repeat;
   }
 
+  .warningAlpha {
+    display: none;
+  }
+
+  .mainPage {
+    display: block;
+  }
 
   @media screen and (min-width: 1920px) {
+
+    .mainPage {
+      display: none;
+    }
+
+    .warningAlpha {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      height: 100%;
+      width: 100%;
+      text-align: center;
+      font-size: 1.5rem;
+    }
+
+    .notice {
+      margin-bottom: 1rem;
+    }
     /*
         #app {
           margin: 1.25rem;
