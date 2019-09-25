@@ -4,7 +4,7 @@
        :class="getTheme"
        :style="{backgroundImage: 'url('+require('./assets/img/'+getTheme+'.jpg')+')'}"
   >
-<!--    :style="{backgroundImage: 'url('+require('./assets/img/'+getTheme+'.jpg')+')'}"-->
+    <!--    :style="{backgroundImage: 'url('+require('./assets/img/'+getTheme+'.jpg')+')'}"-->
     <install-prompt></install-prompt>
     <main-page class="mainPage"></main-page>
     <div class="warningAlpha">
@@ -60,9 +60,10 @@
     flex-direction: column;
     overflow: hidden;
     flex-grow: 3;
-    background-position: center;
+    background-position: center center;
     background-size: cover;
     background-repeat: no-repeat;
+    background-attachment: fixed;
   }
 
   .warningAlpha {

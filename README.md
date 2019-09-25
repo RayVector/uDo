@@ -24,8 +24,9 @@ COMMON:
 + deleting image in the task;
 + multiple edit task system;
 + keep image in the localstorage;
-- upload new icons
++ upload new icons
 - moving tasks to another tab;
+- task time/date/complete time;
 - settings popup from smart menu (themes, help, info, user);
 ----------------
 - repair getter - sort list (sortedToDoList);
@@ -38,9 +39,9 @@ Large:
 - Menu -> settings (popup) -> Translation (Btn);
 - Menu -> settings (popup) -> Themes (Btn);
 - Tutorial about UI (popup);
+- PC version;
 - User Auth;
 - migrate to database or use "indexedDB" (LocalStorage Database);
-- PC version;
 ```
 ___
 

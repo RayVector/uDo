@@ -16,7 +16,7 @@
   ],
   "start_url": "/",
   "display": "standalone",
-  "description": "Write you ideas and todo task to this app smart and quickly. Keep your information everywhere!",
-  "background_color": "#42b983",
-  "theme_color": "#42b983"
+  "description": "Write you ideas and todo task to this app smart and quickly. Keep your information anywhere!",
+  "background_color": "#007B89",
+  "theme_color": "#007B89"
 }
