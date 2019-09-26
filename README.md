@@ -25,6 +25,12 @@ COMMON:
 + multiple edit task system;
 + keep image in the localstorage;
 + upload new icons
+- fix icons
+- fix application height.
+- Ask before deleting task.
+- Deleted task tab. Restore task. Clear after 30 days.
+- Accept button on mobile “return” keyboard.
+- Tabs name.
 - moving tasks to another tab;
 - task time/date/complete time;
 - settings popup from smart menu (themes, help, info, user);

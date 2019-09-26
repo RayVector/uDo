@@ -301,8 +301,6 @@
     padding: 0.8rem 1rem;
     border-bottom: 0.0325rem solid rgba(0, 0, 0, 0.5);
     border-top: 0.0325rem solid rgba(0, 0, 0, 0.5);
-    overflow-y: hidden;
-    overflow-x: auto;
     height: 2rem;
   }
 
@@ -389,6 +387,7 @@
     white-space: nowrap;
     font-weight: 500;
     font-size: 1.5rem;
+    user-select: none;
   }
 
   .editableMod .todoItemName {

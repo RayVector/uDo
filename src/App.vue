@@ -12,6 +12,16 @@
       <p class="notice">Please install this app in your mobile device (less than 1125 pixels wide).</p>
       <p class="notice">We sorry for the inconvenience.</p>
     </div>
+    <div class="wheel">
+      <div class="arc"><i class="fas fa-home"></i></div>
+      <div class="arc"><i class="fas fa-question"></i></div>
+      <div class="arc"><i class="fas fa-bell"></i></div>
+      <div class="arc"><i class="fas fa-camera"></i></div>
+      <div class="arc"><i class="fas fa-trash-alt"></i></div>
+      <div class="arc"><i class="fas fa-save"></i></div>
+      <div class="arc"><i class="fas fa-flag"></i></div>
+      <div class="arc"><i class="fab fa-codepen"></i></div>
+    </div>
   </div>
 </template>
 

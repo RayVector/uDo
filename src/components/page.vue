@@ -120,18 +120,19 @@
 
 <style lang="scss" scoped>
   .workspace {
-    display: flex;
-    flex-direction: column;
     height: 79%;
+    overflow-y: auto;
+    overflow-x: hidden;
   }
 
   .userMenu {
-    margin-bottom: 2rem;
-    padding: 0.5rem 1rem;
+    margin-bottom: .5rem;
+    padding: .5rem 1rem;
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
   }
+
 
   .todoBtn {
     margin-left: 1rem;
@@ -199,16 +200,12 @@
     padding-right: 0.3125rem;
     width: 100%;
     height: 100%;
-    overflow-y: auto;
-    overflow-x: hidden;
     transition: all .3s ease-out;
     opacity: 1;
   }
 
   .fadeList {
     padding-bottom: 4rem;
-    overflow-y: auto;
-    overflow-x: hidden;
     display: flex;
     flex-direction: column;
     width: 100%;
