@@ -26,7 +26,7 @@ COMMON:
 + keep image in the localstorage;
 + upload new icons;
 + fix application height;
-- fix icons;
++ fix icons;
 - Ask before deleting task;
 - Deleted task tab. Restore task. Clear after 30 days;
 - Accept button on mobile “return” keyboard;
