@@ -65,6 +65,7 @@
     data() {
       return {
         val: '',
+        activeTask: 0,
       }
     },
     computed: {
@@ -94,6 +95,7 @@
       }
     },
     methods: {
+
       addNewTask() {
         if (this.getTabList.length > 0) {
           if (this.val !== '') {
@@ -212,6 +214,7 @@
     /*height: 100%;*/
     /*border-top: 0.0325rem solid rgba(0, 0, 0, 0.5);*/
   }
+
 
   .addTaskField:focus {
     outline: none;

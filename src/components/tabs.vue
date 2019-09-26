@@ -261,7 +261,7 @@
     background-color: #f0f0f0;
     -webkit-box-shadow: 0 10px 30px 0 rgba(50, 50, 50, .4);
     -moz-box-shadow: 0 10px 30px 0 rgba(50, 50, 50, .4);
-    box-shadow: 0 10px 30px 0 rgba(50, 50, 50, .4);
+    box-shadow: 0 10px 30px 0 rgba(50, 50, 50, 1);
     overflow: hidden;
   }
 
@@ -291,8 +291,7 @@
   .menuOpen .activeTab {
     border-top: 0.15rem solid rgba(0, 0, 0, .3);
     border-bottom: 0.15rem solid rgba(0, 0, 0, .3);
-   }
-
+  }
 
 
   .menuOpen .tabName {
@@ -307,20 +306,22 @@
 
   .menuOpen .tabsEditMenu {
     width: 100%;
+    justify-content: space-between;
+    margin-bottom: 2rem;
   }
 
   .menuOpen .defTab {
-    width: 50%;
     min-width: unset;
     max-width: unset;
     border-top: 0;
     border-left: 0;
     border-right: 0;
     border-bottom: 0;
+    border-radius: 0 0 0 20px;
   }
 
   .menuOpen .defTab:nth-child(1) {
-    border-right: 0.0625rem solid rgba(0, 0, 0, 0.3);
+    border-radius: 0 0 20px 0;
   }
 
 
