@@ -7,10 +7,11 @@
         <input
           class="addTaskField"
           maxlength="100"
-          placeholder="Task..."
+          placeholder="You do..."
           required
           type="text"
           v-model="val"
+          @keypress.enter="addNewTask"
         >
       </label>
       <button @click='addNewTask' class="todoBtn">

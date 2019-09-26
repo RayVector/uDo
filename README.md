@@ -31,7 +31,7 @@ COMMON:
 - Deleted task tab. Restore task. Clear after 30 days;
 - Accept button on mobile “return” keyboard;
 - Tabs name fix;
-- moving tasks to another tab;
+- moving tasks to another tab (smart menu);
 - task time/date/complete time;
 - settings popup from smart menu (themes, help, info, user);
 ----------------

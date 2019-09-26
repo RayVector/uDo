@@ -24,6 +24,7 @@
                 :value="itemName"
                 :disabled="!isPreview"
                 @input="name = $event.target.value"
+                @keypress.enter="updateItem"
               >
             </label>
             <p
@@ -107,6 +108,7 @@
                   :value="itemDesc"
                   @change="desc = $event.target.value"
                   placeholder="Description"
+                  @keypress.enter="updateItem"
                 ></textarea>
           </label>
         </div>
@@ -271,6 +273,9 @@
             this.$store.dispatch("updateTaskName", {
               id: this.item.id,
               txt: this.name,
+            });
+            this.$nextTick(() => {
+              this.$el.querySelector('input[type=text]').blur()
             });
           } else {
             alert("Enter a name without a space")
