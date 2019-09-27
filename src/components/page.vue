@@ -202,7 +202,6 @@
   .todoItemsList {
     padding-right: 0.3125rem;
     width: 100%;
-    height: 100%;
     transition: all .3s ease-out;
     opacity: 1;
   }
