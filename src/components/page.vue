@@ -31,12 +31,10 @@
       class="todoItemsList"
       handle=".handle"
       tag="div"
-      v-model="newList"
       @end="moveItem"
       :sort="true"
     >
       <transition-group
-        mode="out-in"
         name="itemFade"
         tag="ul"
         class="fadeList"
@@ -72,19 +70,19 @@
     computed: {
       getTabList() {
 
-        return this.$store.state.tabs;
+        return this.$store.state.tabs.tabsList;
 
       },
       getList() {
         /*!!!MAIN!!! return this.$store.getters.sortedToDoList.todoItems;*/
-        if (this.$store.state.tabs.length > 0) {
-          return this.$store.state.tabs[this.getActiveTab].todoItems;
+        if (this.$store.state.tabs.tabsList.length > 0) {
+          return this.$store.state.tabs.tabsList[this.getActiveTab].todoItems;
         } else {
           return [];
         }
       },
       getActiveTab() {
-        return this.$store.state.activeTab
+        return this.$store.state.tabs.activeTab
       },
       newList: {
         get() {
@@ -202,7 +200,7 @@
   .todoItemsList {
     padding-right: 0.3125rem;
     width: 100%;
-    transition: all .3s ease-out;
+    transition: all .3s ease;
     opacity: 1;
   }
 
@@ -225,13 +223,22 @@
     transition: .3s;
   }
 
-  .itemFade-enter-active, .itemFade-leave-active {
-    transition: .6s;
-    transform: translateX(0);
-  }
+  @media screen and (min-width: 1000px) {
+    .workspace {
+      padding: 20px;
+    }
+    .userMenu {
+      max-width: 20%;
+      padding-left: 0;
+    }
 
-  .itemFade-enter, .itemFade-leave-to {
-    transform: translateX(2rem);
-    opacity: 0;
+    .addTaskField {
+      border-bottom: 1px solid rgba(255, 255, 255, .8);
+    }
+
+    .fadeList {
+      flex-direction: row;
+      flex-wrap: wrap;
+    }
   }
 </style>

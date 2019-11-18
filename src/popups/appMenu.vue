@@ -1,23 +1,16 @@
 <template>
   <div class="menu bg-theme">
-    <button
-      class="closeAppBtn"
-      type="button"
-      @click="closeMenu">
-      <svg
-        class="closeMenuIcon"
-        width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path
-          d="M7.75722 21.4757C6.69222 22.745 4.79995 22.9105 3.53072 21.8455V21.8455C2.2615 20.7805 2.09595 18.8882 3.16095 17.619L5.31883 15.0473C6.38384 13.7781 8.27611 13.6126 9.54533 14.6776V14.6776C10.8146 15.7426 10.9801 17.6348 9.9151 18.9041L7.75722 21.4757Z"
-          fill="white" fill-opacity="0.8"></path>
-        <path
-          d="M18.7977 8.31814C17.7327 9.58736 15.8405 9.75291 14.5713 8.68791V8.68791C13.302 7.6229 13.1365 5.73064 14.2015 4.46141L16.0167 2.2981C17.0817 1.02887 18.974 0.863323 20.2432 1.92833V1.92833C21.5124 2.99333 21.678 4.8856 20.613 6.15482L18.7977 8.31814Z"
-          fill="white" fill-opacity="0.8"></path>
-        <rect x="23.7739" y="17.9451" width="6" height="26" rx="3" transform="rotate(130 23.7739 17.9451)" fill="white"
-              fill-opacity="0.8"></rect>
-      </svg>
+    <close-btn @click.native="closeMenu"></close-btn>
 
+    <button
+      type="button"
+      @click="openOptionsPopup">
+      <svg
+        class="menu-icon" version="1.1" viewBox="0 0 24 24" xml:space="preserve"
+        xmlns="http://www.w3.org/2000/svg"><g/>
+        <g><path d="M22.2,14.4L21,13.7c-1.3-0.8-1.3-2.7,0-3.5l1.2-0.7c1-0.6,1.3-1.8,0.7-2.7l-1-1.7c-0.6-1-1.8-1.3-2.7-0.7   L18,5.1c-1.3,0.8-3-0.2-3-1.7V2c0-1.1-0.9-2-2-2h-2C9.9,0,9,0.9,9,2v1.3c0,1.5-1.7,2.5-3,1.7L4.8,4.4c-1-0.6-2.2-0.2-2.7,0.7   l-1,1.7C0.6,7.8,0.9,9,1.8,9.6L3,10.3C4.3,11,4.3,13,3,13.7l-1.2,0.7c-1,0.6-1.3,1.8-0.7,2.7l1,1.7c0.6,1,1.8,1.3,2.7,0.7L6,18.9   c1.3-0.8,3,0.2,3,1.7V22c0,1.1,0.9,2,2,2h2c1.1,0,2-0.9,2-2v-1.3c0-1.5,1.7-2.5,3-1.7l1.2,0.7c1,0.6,2.2,0.2,2.7-0.7l1-1.7   C23.4,16.2,23.1,15,22.2,14.4z M12,16c-2.2,0-4-1.8-4-4c0-2.2,1.8-4,4-4s4,1.8,4,4C16,14.2,14.2,16,12,16z"/></g></svg>
     </button>
+
     <button
       class="deleteCompletedBtn"
       @click="clearAllCompleted"
@@ -78,8 +71,10 @@
 </template>
 
 <script>
+  import CloseBtn from "../components/UI/close-btn";
   export default {
     name: "appMenu",
+    components: {CloseBtn},
     computed: {
       getList() {
         /*!!!MAIN!!! return this.$store.getters.sortedToDoList.todoItems;*/
@@ -103,11 +98,14 @@
           "To change the name of a tab or note, tap the name.");
       },
       closeMenu() {
-        // ANIMATION ICON:
-        const icon = document.querySelector('.closeMenuIcon');
-        icon.classList.toggle('swipeIcon');
-
         this.$emit('closeMenu');
+      },
+      openOptionsPopup() {
+        this.$emit('closeMenu');
+        /**
+         * second parameter is popup type
+         */
+        this.$store.dispatch("openPopup", "popupOptions");
       },
       clearAllCompleted() {
 
@@ -172,25 +170,26 @@
     transition: .3s;
   }
 
-  .closeAppBtn {
-    transition: .3s;
-    font-size: 2rem;
-    cursor: pointer;
-    color: rgba(0, 0, 0, 0.7);
-  }
-
-  .closeMenuIcon {
-    transition: .3s;
+  .menu .close-btn {
     width: 1.5rem;
     height: 1.5rem;
+    transition: .3s;
+    fill: rgba(255, 255, 255, .8)
   }
+
+  .menu-icon {
+    width: 1.5rem;
+    height: 1.5rem;
+    transition: .3s;
+    fill: rgba(255, 255, 255, .8)
+  }
+
+
 
   .clearCacheBtn {
     width: 3rem;
     padding: 0.1rem;
-    color: rgba(0, 0, 0, 0.7);
     border: none;
-    cursor: pointer;
     user-select: none;
     backface-visibility: hidden;
     font-size: 2rem;
@@ -211,7 +210,6 @@
 
   .deleteCompletedBtn {
     font-size: 1.4rem;
-    cursor: pointer;
   }
 
   .deleteCompletedBtnItem {
@@ -225,7 +223,6 @@
   }
 
   .helpBtn {
-    cursor: pointer;
     font-size: 1.5rem;
     color: rgba(0, 0, 0, 0.7);
     font-weight: bold;
@@ -235,5 +232,16 @@
     transition: .3s;
     height: 1.5rem;
     width: 1.5rem;
+  }
+
+  @media screen and (min-width: 1000px) {
+    .menu {
+      max-width: 20%;
+      width: 100%;
+      right: 0;
+      left: auto;
+      border-radius: 10px;
+      border: 1px solid #797979;
+    }
   }
 </style>

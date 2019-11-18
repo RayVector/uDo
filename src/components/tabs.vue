@@ -2,10 +2,10 @@
   <div
     :class="{menuOpen: isTabMenuShow}"
     class="tabsArea"
-    :style="{backgroundImage: 'url('+require('../assets/img/'+getTheme+'.jpg')+')'}"
+    :style="{backgroundImage: 'url('+require('../assets/img/'+getThemeName+'.jpg')+')'}"
   >
     <div class="tabsEditMenu">
-      <div @click="isTabMenuShow = !isTabMenuShow" class="tab defTab small-part">
+      <div @click="isTabMenuShow = !isTabMenuShow" class="tab defTab _small-part">
         <button
           class="defTabWrap"
           v-show="!isTabMenuShow"
@@ -50,7 +50,7 @@
           </svg>
         </button>
       </div>
-      <div @click="addNewTab" class="tab defTab small-part" v-show="isTabMenuShow">
+      <div @click="addNewTab" class="tab defTab _small-part" v-show="isTabMenuShow">
         <svg
           class="tabSettingBtn addNewTabIcon"
           width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -74,7 +74,6 @@
       class="todoTabsList"
       handle=".handle"
       tag="div"
-      v-model="newTabList"
       @end="moveItem"
       :sort="true"
     >
@@ -109,11 +108,11 @@
       }
     },
     computed: {
-      getTheme() {
-        return this.$store.state.activeTheme;
+      getThemeName() {
+        return this.$store.state.themes.themesList[this.$store.state.themes.activeTheme].themeName;
       },
       getTabList() {
-        return this.$store.state.tabs;
+        return this.$store.state.tabs.tabsList;
       },
       newTabList: {
         get() {
@@ -367,6 +366,30 @@
   .tabFade-enter, .tabFade-leave-to {
     transform: translateX(2rem);
     opacity: 0;
+  }
+
+  @media screen and (min-width: 1000px) {
+    .tabsEditMenu {
+      width: unset;
+      cursor: pointer;
+    }
+
+    .tab {
+      min-width: 5%;
+      max-width: 10%;
+      cursor: pointer;
+    }
+
+    .defTab {
+      min-width: unset;
+      max-width: unset;
+    }
+
+    .menuOpen.tabsArea {
+      max-width: 40%;
+      border: 1px solid #797979;
+      border-radius: 10px;
+    }
   }
 
 </style>

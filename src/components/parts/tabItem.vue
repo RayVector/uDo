@@ -1,20 +1,18 @@
 <template>
-  <div class="tab small-part"
+  <div class="tab _small-part"
        :class="{activeTab: index === getActiveTab}"
+       @click="swapTab(index)"
   >
     <div class="tabInfo">
       <p class="tabTasksAmount">{{getTasksList}}</p>
     </div>
     <div
       class="tabName"
-      @click="swapTab(index)"
       v-show="!isTabMenuShow"
     >
       {{item.title}}
     </div>
-    <label class="tabNameWrap"
-           @click="swapTab(index)"
-    >
+    <label class="tabNameWrap">
       <input
         type="text"
         class="tabName tabNameInput"
@@ -90,25 +88,28 @@
     },
     computed: {
       getActiveTab() {
-        return this.$store.state.activeTab
+        return this.$store.state.tabs.activeTab
       },
       tabNewName() {
         return this.item.title
       },
       getTasksList() {
-        return this.$store.state.tabs[this.index].todoItems.length
+        return this.$store.state.tabs.tabsList[this.index].todoItems.length
       }
     },
     methods: {
       swapTab(index) {
         if (index !== this.getActiveTab) {
-          // ANIMATION SWAP:
+
+          // SWAP ANIMATION:
           const page = document.querySelector('.todoItemsList');
           page.classList.add('swipePage');
           setTimeout(() => {
+            this.$store.dispatch("swapTab", index);
             page.classList.remove('swipePage');
-          }, 600);
-          this.$store.dispatch("swapTab", index);
+          }, 300);
+
+
         }
       },
       deleteTab(index) {

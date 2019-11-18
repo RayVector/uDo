@@ -9,9 +9,9 @@
         <label class="todoItemNameDivider" v-show="isPreview && !isEditableTask">
           <input
             type="checkbox"
-            class="completeTask"
+            class="changeTaskStatus"
             v-model="checked"
-            @change="completeTask"
+            @change="changeTaskStatus"
           >
 
         </label>
@@ -154,7 +154,7 @@
     <div class="smartMenu_shadow" v-show="isMenuShow && !isEditableTask"
          @click="isMenuShow = false; isTaskChosen = false"></div>
     <transition name="fadeSmartMenu">
-      <div class="smartMenu todoItemMenu small-part" v-show="isMenuShow && !isEditableTask">
+      <div class="smartMenu todoItemMenu _small-part" v-show="isMenuShow && !isEditableTask">
         <button class="manageItemBtns todoItemMenuBtn" @click="deleteItem">
           <svg
             class="settingsItemBtn"
@@ -177,6 +177,16 @@
             <circle cx="24" cy="6" r="6" fill="white" fill-opacity="0.8"></circle>
             <rect x="16" y="17" width="16" height="6" rx="2" fill="white" fill-opacity="0.8"></rect>
             <circle cx="7" cy="20" r="6" fill="white" fill-opacity="0.8"></circle>
+          </svg>
+        </button>
+        <button class="manageItemBtns todoItemMenuBtn" @click="completeTask" v-show="!item.checked">
+          <svg width="29" height="25" viewBox="0 0 29 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="M2.49034 15.2445C1.27211 14.1579 1.10449 12.2383 2.11593 10.957V10.957C3.12738 9.67575 4.93489 9.5179 6.15312 10.6045L8.16116 12.3955C9.37939 13.4821 9.54702 15.4017 8.53557 16.683V16.683C7.52413 17.9643 5.71662 18.1221 4.49839 17.0355L2.49034 15.2445Z"
+              fill="white" fill-opacity="0.7"></path>
+            <rect width="5.84918" height="25.6163" rx="2.92459"
+                  transform="matrix(-0.746279 -0.665633 0.619605 -0.784913 12.4125 24.2261)" fill="white"
+                  fill-opacity="0.7"></rect>
           </svg>
         </button>
       </div>
@@ -235,11 +245,17 @@
       deleteImage() {
         this.imgData = '';
       },
+      changeTaskStatus() {
+        this.isTaskChosen = false;
+        this.isPreview = false;
+        this.isMenuShow = false;
+        this.$store.dispatch("changeTaskStatus", {item: this.item, value: this.checked});
+      },
       completeTask() {
         this.isTaskChosen = false;
         this.isPreview = false;
         this.isMenuShow = false;
-        this.$store.dispatch("completeTask", {item: this.item, value: this.checked});
+        this.$store.dispatch("completeTask", {item: this.item, value: true});
       },
       deleteItem() {
         this.isMenuShow = false;
@@ -400,7 +416,7 @@
     font-weight: bold;
   }
 
-  .completeTask {
+  .changeTaskStatus {
     width: 1rem;
     height: 1rem;
   }
@@ -730,5 +746,30 @@
     opacity: .8;
     transform: translateX(60px);
   }
+
+  @media screen and (min-width: 1000px) {
+    .todoItemWrap {
+      max-width: 30%;
+      border: 1px solid #797979;
+      border-radius: 10px;
+      transition: all .3s ease;
+      cursor: pointer;
+    }
+
+    .todoItemWrap:not(:last-child) {
+      margin-bottom: 10px;
+      margin-right: 20px;
+    }
+
+    .todoItemWrap:hover {
+      border: 1px solid #404040;
+    }
+
+    .todoItemMenu {
+      width: 100%;
+      max-width: 70px;
+    }
+  }
+
 
 </style>

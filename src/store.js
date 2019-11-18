@@ -12,94 +12,127 @@ const vuexPersist = new VuexPersist({
 export default new Vuex.Store({
   state: {
     version: 'alpha',
-    tabs: [
-      {
-        id: 0,
-        title: "Main",
-        todoItems: []
-      }
-    ],
-    activeTab: 0,
-    activeTheme: 'deepForest',
-    // activeTheme: 'space',
-    // activeTheme: 'orange',
+    tabs: {
+      tabsList: [
+        {
+          id: 0,
+          title: "Main",
+          todoItems: []
+        }
+      ],
+      activeTab: 0,
+    },
+    themes: {
+      activeTheme: 0,
+      themesList: [
+        {
+          themeName: 'Forest',
+        },
+        {
+          themeName: 'Space',
+        },
+        {
+          themeName: 'Sea',
+        },
+      ]
+    },
+    popups: {
+      isPopupShow: false,
+      popupType: ""
+    }
+
   },
   getters: {
     sortedToDoList: state => {
-      return state.tabs[state.activeTab].todoItems.sort((a, b) => a.checked - b.checked);
+      return state.tabs.tabsList[state.tabs.activeTab].todoItems.sort((a, b) => a.checked - b.checked);
     }
   },
   mutations: {
     addTab(state) {
-      let newId = state.tabs
-        .length > 0 ? (Math.max(...state.tabs
+      let newId = state.tabs.tabsList
+        .length > 0 ? (Math.max(...state.tabs.tabsList
         .map(e => e.id)) + 1) : 0;
-      state.tabs.push({id: newId, title: String(state.tabs.length + 1), todoItems: []});
-      state.activeTab = state.tabs.length - 1;
+      state.tabs.tabsList.push({id: newId, title: String(state.tabs.tabsList.length + 1), todoItems: []});
+      state.tabs.activeTab = state.tabs.tabsList.length - 1;
     },
     swapTab(state, index) {
-      state.activeTab = index;
+      state.tabs.activeTab = index;
     },
-    sortTabsList(state) {
-      state.tabs[state.activeTab].todoItems.sort((a, b) => a.checked - b.checked);
+    sorttabsListList(state) {
+      state.tabs.tabsList[state.tabs.activeTab].todoItems.sort((a, b) => a.checked - b.checked);
     },
     newTabList(state, newTabList) {
-      state.tabs = newTabList
+      state.tabs.tabsList = newTabList
     },
     deleteTab(state, index) {
-      state.tabs.splice(index, 1);
-      state.activeTab = 0;
+      state.tabs.tabsList.splice(index, 1);
+      state.tabs.activeTab = 0;
     },
     addTask(state, value) {
-      let newIndex = state.tabs[state.activeTab].todoItems
-        .length > 0 ? (Math.max(...state.tabs[state.activeTab].todoItems
+      let newIndex = state.tabs.tabsList[state.tabs.activeTab].todoItems
+        .length > 0 ? (Math.max(...state.tabs.tabsList[state.tabs.activeTab].todoItems
         .map(e => e.id)) + 1) : 0;
-      state.tabs[state.activeTab].todoItems.unshift({txt: value, id: newIndex, checked: false, desc: '', img: ''});
+      state.tabs.tabsList[state.tabs.activeTab].todoItems.unshift({txt: value, id: newIndex, checked: false, desc: '', img: ''});
     },
     delTask(state, item) {
-      const findItem = state.tabs[state.activeTab].todoItems.findIndex(i => i.id === item.id);
-      state.tabs[state.activeTab].todoItems.splice(findItem, 1);
+      const findItem = state.tabs.tabsList[state.tabs.activeTab].todoItems.findIndex(i => i.id === item.id);
+      state.tabs.tabsList[state.tabs.activeTab].todoItems.splice(findItem, 1);
     },
     updateTask(state, item) {
-      const foundItem = state.tabs[state.activeTab].todoItems.find(i => i.id === item.id);
+      const foundItem = state.tabs.tabsList[state.tabs.activeTab].todoItems.find(i => i.id === item.id);
       foundItem.txt = item.txt;
       foundItem.desc = item.desc;
       foundItem.img = item.img;
-      state.tabs[state.activeTab].todoItems.sort((a, b) => a.checked - b.checked);
+      state.tabs.tabsList[state.tabs.activeTab].todoItems.sort((a, b) => a.checked - b.checked);
     },
     updateTaskName(state, item) {
-      const foundItem = state.tabs[state.activeTab].todoItems.find(i => i.id === item.id);
+      const foundItem = state.tabs.tabsList[state.tabs.activeTab].todoItems.find(i => i.id === item.id);
       foundItem.txt = item.txt;
     },
     updateTaskDesc(state, item) {
-      const foundItem = state.tabs[state.activeTab].todoItems.find(i => i.id === item.id);
+      const foundItem = state.tabs.tabsList[state.tabs.activeTab].todoItems.find(i => i.id === item.id);
       foundItem.desc = item.desc;
     },
     updateTaskImg(state, item) {
-      const foundItem = state.tabs[state.activeTab].todoItems.find(i => i.id === item.id);
+      const foundItem = state.tabs.tabsList[state.tabs.activeTab].todoItems.find(i => i.id === item.id);
       foundItem.img = item.img;
     },
-    completeTask(state, data) {
-      const foundItem = state.tabs[state.activeTab].todoItems.find(i => i.id === data.item.id);
+    changeTaskStatus(state, data) {
+      const foundItem = state.tabs.tabsList[state.tabs.activeTab].todoItems.find(i => i.id === data.item.id);
       foundItem.checked = data.value;
-      state.tabs[state.activeTab].todoItems.sort((a, b) => a.checked - b.checked);
+      state.tabs.tabsList[state.tabs.activeTab].todoItems.sort((a, b) => a.checked - b.checked);
+    },
+    completeTask(state, data) {
+      const foundItem = state.tabs.tabsList[state.tabs.activeTab].todoItems.find(i => i.id === data.item.id);
+      foundItem.checked = data.value;
+      state.tabs.tabsList[state.tabs.activeTab].todoItems.sort((a, b) => a.checked - b.checked);
     },
     sortable(state, newList) {
-      state.tabs[state.activeTab].todoItems = newList
+      state.tabs.tabsList[state.tabs.activeTab].todoItems = newList
     },
     sortTasksList(state) {
-      state.tabs[state.activeTab].todoItems.sort((a, b) => a.checked - b.checked);
+      state.tabs.tabsList[state.tabs.activeTab].todoItems.sort((a, b) => a.checked - b.checked);
     },
     updateTab(state, item) {
-      const foundItem = state.tabs.find(i => i.id === item.id);
+      const foundItem = state.tabs.tabsList.find(i => i.id === item.id);
       foundItem.title = item.title;
     },
     clearCompleted(state) {
-      state.tabs[state.activeTab].todoItems = state.tabs[state.activeTab].todoItems.filter(item => item.checked !== true);
+      state.tabs.tabsList[state.tabs.activeTab].todoItems = state.tabs.tabsList[state.tabs.activeTab].todoItems.filter(item => item.checked !== true);
     },
     clearPage(state) {
-      state.tabs[state.activeTab].todoItems = [];
+      state.tabs.tabsList[state.tabs.activeTab].todoItems = [];
     },
+    closePopup(state) {
+      state.popups.isPopupShow = false;
+    },
+    openPopup(state, popupType) {
+      state.popups.isPopupShow = true;
+      state.popups.popupType = popupType;
+    },
+    chooseTheme(state, index) {
+      state.themes.activeTheme = index;
+    }
   },
   actions: {
     addTab(state) {
@@ -111,8 +144,8 @@ export default new Vuex.Store({
     deleteTab(state, index) {
       state.commit("deleteTab", index);
     },
-    sortTabsList(state) {
-      state.commit("sortTabsList", state);
+    sorttabsListList(state) {
+      state.commit("sorttabsListList", state);
     },
     newTabList(state, newTabList) {
       state.commit("newTabList", newTabList);
@@ -132,6 +165,9 @@ export default new Vuex.Store({
     updateTaskImg(state, item) {
       state.commit("updateTaskImg", item);
     },
+    changeTaskStatus(state, data) {
+      state.commit("changeTaskStatus", data);
+    },
     completeTask(state, data) {
       state.commit("completeTask", data);
     },
@@ -150,6 +186,15 @@ export default new Vuex.Store({
     clearPage(state) {
       state.commit("clearPage");
     },
+    closePopup(state) {
+      state.commit("closePopup");
+    },
+    openPopup(state, popupType) {
+      state.commit("openPopup", popupType);
+    },
+    chooseTheme(state, index) {
+      state.commit("chooseTheme", index);
+    }
   },
   plugins: [vuexPersist.plugin]
 })

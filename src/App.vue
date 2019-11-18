@@ -1,43 +1,30 @@
 <template>
   <div id="app"
        class="mainApp"
-       :class="getTheme"
-       :style="{backgroundImage: 'url('+require('./assets/img/'+getTheme+'.jpg')+')'}"
+       :class="getThemeName"
+       :style="{backgroundImage: 'url('+require('./assets/img/'+getThemeName+'.jpg')+')'}"
   >
-    <!--    :style="{backgroundImage: 'url('+require('./assets/img/'+getTheme+'.jpg')+')'}"-->
     <install-prompt></install-prompt>
     <main-page class="mainPage"></main-page>
-    <div class="warningAlpha">
-      <p class="notice">Warning: Alpha version.</p>
-      <p class="notice">Please install this app in your mobile device (less than 1125 pixels wide).</p>
-      <p class="notice">We sorry for the inconvenience.</p>
-    </div>
-    <div class="wheel">
-      <div class="arc"><i class="fas fa-home"></i></div>
-      <div class="arc"><i class="fas fa-question"></i></div>
-      <div class="arc"><i class="fas fa-bell"></i></div>
-      <div class="arc"><i class="fas fa-camera"></i></div>
-      <div class="arc"><i class="fas fa-trash-alt"></i></div>
-      <div class="arc"><i class="fas fa-save"></i></div>
-      <div class="arc"><i class="fas fa-flag"></i></div>
-      <div class="arc"><i class="fab fa-codepen"></i></div>
-    </div>
+    <popup-temp>Options</popup-temp>
   </div>
 </template>
 
 <script>
   import mainPage from './components/mainPage.vue';
   import InstallPrompt from './components/InstallPrompt';
+  import PopupTemp from "./popups/popup-temp";
 
   export default {
     name: 'app',
     components: {
+      PopupTemp,
       mainPage,
       InstallPrompt,
     },
     computed: {
-      getTheme() {
-        return this.$store.state.activeTheme;
+      getThemeName() {
+        return this.$store.state.themes.themesList[this.$store.state.themes.activeTheme].themeName;
       },
     },
 
@@ -55,12 +42,6 @@
 
   .mainApp {
     background-color: #fdfdfd;
-  }
-
-  /*ATTENTION >*/
-
-  #app > * {
-    transition: .3s;
   }
 
   .mainApp {
@@ -84,33 +65,5 @@
     display: block;
   }
 
-  @media screen and (min-width: 1920px) {
 
-    .mainPage {
-      display: none;
-    }
-
-    .warningAlpha {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-direction: column;
-      height: 100%;
-      width: 100%;
-      text-align: center;
-      font-size: 1.5rem;
-    }
-
-    .notice {
-      margin-bottom: 1rem;
-    }
-    /*
-        #app {
-          margin: 1.25rem;
-        }
-        .mainApp {
-          width: 18.75rem;
-          height: 26.875rem;
-        }*/
-  }
 </style>
