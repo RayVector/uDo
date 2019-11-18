@@ -6,7 +6,7 @@
   >
     <install-prompt></install-prompt>
     <main-page class="mainPage"></main-page>
-    <popup-temp>Options</popup-temp>
+    <popup-temp></popup-temp>
   </div>
 </template>
 
