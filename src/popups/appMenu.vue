@@ -105,7 +105,7 @@
         /**
          * second parameter is popup type
          */
-        this.$store.dispatch("openPopup", "popupOptions");
+        this.$store.dispatch("openPopup", "PopupOptions");
       },
       clearAllCompleted() {
 

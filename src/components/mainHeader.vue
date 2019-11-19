@@ -35,7 +35,10 @@
     components: {Quotes},
     methods: {
       getAuthorInfo() {
-        alert("| created by Ray Vector & Dezl | rayvectorspqr@yahoo.com & demozluk@gmail.com | rayvector.info |");
+        /**
+         * second parameter is popup type
+         */
+        this.$store.dispatch('openPopup', 'PopupAuthorPart')
       },
       openMenu() {
         const icon = document.querySelector('.openMenuBtnItem');
@@ -67,6 +70,7 @@
     font-weight: bold;
     letter-spacing: -0.025rem;
     color: rgba(255, 255, 255, .8);
+    cursor: pointer;
   }
 
   .mainIconBtn {

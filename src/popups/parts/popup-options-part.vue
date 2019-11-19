@@ -43,13 +43,7 @@
   .title {
     margin-bottom: 20px;
     font-size: 2rem;
-
   }
-
-  /*.options-item {
-    display: flex;
-    flex-direction: column;
-  }*/
 
   .body {
     overflow: auto;

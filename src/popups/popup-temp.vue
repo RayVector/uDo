@@ -11,12 +11,14 @@
 </template>
 
 <script>
-  import popupOptions from './parts/popup-options-part'
+  import PopupOptions from './parts/popup-options-part'
+  import PopupAuthorPart from "./parts/popup-author-part";
 
   export default {
     name: "popup-temp",
     components: {
-      popupOptions
+      PopupAuthorPart,
+      PopupOptions
     },
     computed: {
       isPopupShow() {
