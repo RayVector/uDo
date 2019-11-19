@@ -266,7 +266,6 @@
 
   .menuOpen.tabsArea {
     border-top: 0;
-    background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
   }

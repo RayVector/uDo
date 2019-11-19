@@ -83,4 +83,11 @@
   .fadePopup-enter, .fadePopup-leave-to {
     opacity: 0;
   }
+
+  @media screen and (min-width: 1000px) {
+    .popup-temp-inner {
+      width: 400px;
+      height: 600px;
+    }
+  }
 </style>

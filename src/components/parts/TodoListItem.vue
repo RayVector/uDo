@@ -210,6 +210,9 @@
         isMenuShow: false,
         isTaskChosen: false,
         checked: this.item.checked,
+        delay: 400,
+        clicks: 0,
+        timer: null
       }
     },
     props: ['item', 'index'],
@@ -226,10 +229,26 @@
     },
     methods: {
       openSmartMenu() {
-        this.isTaskChosen = true;
-        if (this.isPreview === false) {
-          this.isMenuShow = true
+
+        this.clicks++;
+        if (this.clicks === 1) {
+          let self = this;
+          this.timer = setTimeout(function () {
+            // DO
+            self.clicks = 0
+          }, this.delay);
+        } else {
+          clearTimeout(this.timer);
+
+          this.isTaskChosen = true;
+          if (this.isPreview === false) {
+            this.isMenuShow = true
+          }
+
+          this.clicks = 0;
         }
+
+
       },
       uploadImage(e) {
         let input = e.target;

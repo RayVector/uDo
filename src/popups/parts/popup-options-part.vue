@@ -6,7 +6,6 @@
       </h1>
       <close-btn @click.native="closePopup"></close-btn>
     </div>
-
     <ul class="body">
       <options-themes></options-themes>
     </ul>

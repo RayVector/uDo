@@ -170,14 +170,10 @@
     border: none;
     border-radius: 0;
     -webkit-border-radius: 0;
-    border-bottom: 0.0325rem solid rgba(0, 0, 0, 0.5);
-    -webkit-border-bottom: 0.0325rem solid rgba(0, 0, 0, 0.5);
+    border-bottom: 1px solid rgba(255, 255, 255, .8);
     border-right: 0;
     border-right: 0;
     border-top: 0;
-    -webkit-border-top: 0;
-    -webkit-border-left: 0;
-    -webkit-border-left: 0;
     -webkit-appearance: none;
   }
 
@@ -230,10 +226,6 @@
     .userMenu {
       max-width: 20%;
       padding-left: 0;
-    }
-
-    .addTaskField {
-      border-bottom: 1px solid rgba(255, 255, 255, .8);
     }
 
     .fadeList {
