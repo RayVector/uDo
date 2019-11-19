@@ -5,8 +5,8 @@ import VueRouter from 'vue-router'
 import 'es6-promise/auto';
 import Vuex from 'vuex';
 
-import './assets/styles/medies.css'
 import './assets/styles/app.css'
+import './assets/styles/medies.css'
 import './registerServiceWorker'
 
 import './plugins/hummer'
