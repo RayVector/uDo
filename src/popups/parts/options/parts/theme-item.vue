@@ -39,6 +39,7 @@
     background-position: center;
   }
 
+
   .desc {
     padding-top: 10px;
     border-top: 1px solid #ccc;
