@@ -26,7 +26,7 @@
     padding: 5px;
     cursor: pointer;
     width: 25%;
-    height: 110px;
+    height: 120px;
   }
 
   .preview-box {
