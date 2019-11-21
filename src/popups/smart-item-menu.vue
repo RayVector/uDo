@@ -32,7 +32,7 @@
         this.$emit('closeMenu');
       },
       deleteItem() {
-        console.log('delete');
+        this.$emit('deleteItem');
       }
     }
   }

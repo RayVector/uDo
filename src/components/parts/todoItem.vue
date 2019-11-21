@@ -32,6 +32,7 @@
     <smart-item-menu
       :isMenuShow="isMenuShow"
       @closeMenu="isMenuShow = false"
+      @deleteItem="deleteItem"
     ></smart-item-menu>
   </li>
 </template>
@@ -90,7 +91,6 @@
           desc: this.desc,
         });
       },
-
       updateItemName(e) {
         this.name = e.target.value;
         if (this.name !== '') {
@@ -106,6 +106,9 @@
             alert("Enter a name without a space")
           }
         }
+      },
+      deleteItem() {
+        this.$store.dispatch('delTask', this.item);
       }
     }
   }
