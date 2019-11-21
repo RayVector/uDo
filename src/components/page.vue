@@ -39,13 +39,12 @@
         tag="ul"
         class="fadeList"
       >
-
-        <todoListItem
+        <todo-item
           v-for="(item, index) in getList"
           :item="item"
           :index="index"
           :key="item.id"
-        ></todoListItem>
+        ></todo-item>
       </transition-group>
     </draggable>
   </div>
@@ -53,13 +52,13 @@
 
 <script>
   import draggable from 'vuedraggable'
-  import todoListItem from './parts/TodoListItem.vue'
+  import TodoItem from "./parts/todoItem";
 
   export default {
     name: "page",
     components: {
+      TodoItem,
       draggable,
-      todoListItem,
     },
     data() {
       return {
