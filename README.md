@@ -30,22 +30,24 @@ COMMON:
 - Ask before deleting task;
 - Deleted task tab. Restore task. Clear after 30 days;
 - Accept button on mobile “return” keyboard;
-- Tabs name fix;
++ Tabs name fix;
 - moving tasks to another tab (smart menu);
 - task time/date/complete time;
-- settings popup from smart menu (themes, help, info, user);
++ settings popup from smart menu (themes, help, info);
+- settings popup (user);
 ----------------
 - repair getter - sort list (sortedToDoList);
 - refactor all action icons to isolate component;
-- rewrite help tips;
-- all "Alerts" to popups (vue modal window - https://vuejs.org/v2/examples/modal.html);
++ rewrite help tips;
++ all "Alerts" to popups;
+- refactor popups manager (header, title, body inside temp);
 
 Large:
 + Restyle app;
-- Menu -> settings (popup) -> Translation (Btn);
-- Menu -> settings (popup) -> Themes (Btn);
-- Tutorial about UI (popup);
-- PC version;
++ Menu -> settings (popup) -> Translation (Btn);
++ Menu -> settings (popup) -> Themes (Btn);
++ Tutorial about UI (popup);
++ PC version;
 - User Auth;
 - migrate to database or use "indexedDB" (LocalStorage Database);
 ```
@@ -54,7 +56,6 @@ ___
 ### Problems:
 ___
 ```
-- Error while synchronizing task editing;
 + Conflict: Scrolling list + v-touch (8/10);
 + Bugs with icon delete task (2/10);
 + Delete Task Icon doesn't spin in other tabs except main (2/10);
