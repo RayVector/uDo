@@ -1,6 +1,10 @@
 <template>
-  <div class="lang-item _small-part">
-    {{item.langName}}
+  <div class="lang-item _small-part"
+    @click="$emit('setLang')"
+  >
+    <span class="lang-item-code">{{item.langCode}}</span>
+    <span class="lang-item-divider"> | </span>
+    <span class="lang-item-name">{{item.langName}}</span>
   </div>
 </template>
 
@@ -32,5 +36,13 @@
 
   .lang-item:hover {
     border: 1px solid #ccc;
+  }
+
+  .lang-item-code {
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, .4);
+  }
+  .lang-item-divider {
+    padding: 0 5px;
   }
 </style>

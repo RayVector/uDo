@@ -39,8 +39,7 @@ export default new Vuex.Store({
     popups: {
       isPopupShow: false,
       popupType: ""
-    }
-
+    },
   },
   getters: {
     sortedToDoList: state => {
@@ -72,7 +71,13 @@ export default new Vuex.Store({
       let newIndex = state.tabs.tabsList[state.tabs.activeTab].todoItems
         .length > 0 ? (Math.max(...state.tabs.tabsList[state.tabs.activeTab].todoItems
         .map(e => e.id)) + 1) : 0;
-      state.tabs.tabsList[state.tabs.activeTab].todoItems.unshift({txt: value, id: newIndex, checked: false, desc: '', img: ''});
+      state.tabs.tabsList[state.tabs.activeTab].todoItems.unshift({
+        txt: value,
+        id: newIndex,
+        checked: false,
+        desc: '',
+        img: ''
+      });
     },
     delTask(state, item) {
       const findItem = state.tabs.tabsList[state.tabs.activeTab].todoItems.findIndex(i => i.id === item.id);

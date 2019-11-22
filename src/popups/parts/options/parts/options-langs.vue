@@ -8,14 +8,15 @@
           d="M16.3384 8.5H25.9991C26.8301 8.5 27.4991 9.169 27.4991 10V24C27.4991 24.831 26.8301 25.5 25.9991 25.5H16.4991L15.8184 22.6069"
           stroke="white" stroke-opacity="0.8" stroke-miterlimit="4.1" stroke-linecap="round" stroke-linejoin="round"/>
         <path d="M19.5 22.5H6.00002C5.16901 22.5 4.5 21.831 4.5 21V7C4.5 6.169 5.16901 5.5 6.00002 5.5H15.5L19.5 22.5Z"
-              stroke="white" stroke-opacity="0.8" stroke-miterlimit="4.1" stroke-linecap="round" stroke-linejoin="round"/>
+              stroke="white" stroke-opacity="0.8" stroke-miterlimit="4.1" stroke-linecap="round"
+              stroke-linejoin="round"/>
         <path d="M16.5059 25.4948L19.4958 22.5049" stroke="white" stroke-opacity="0.8" stroke-linecap="round"
               stroke-linejoin="round"/>
         <path
-          d="M13.1763 16.5879H9.3042L8.43457 19H7.17773L10.707 9.75781H11.7734L15.3091 19H14.0586L13.1763 16.5879ZM9.67236 15.585H12.8145L11.2402 11.2622L9.67236 15.585Z"
+          d="M23.252 21.24H22.0939V14.4665H23.252V21.24ZM22 12.6698C22 12.482 22.0563 12.3234 22.169 12.1941C22.2859 12.0647 22.457 12 22.6824 12C22.9077 12 23.0788 12.0647 23.1957 12.1941C23.3125 12.3234 23.371 12.482 23.371 12.6698C23.371 12.8576 23.3125 13.0141 23.1957 13.1393C23.0788 13.2646 22.9077 13.3272 22.6824 13.3272C22.457 13.3272 22.2859 13.2646 22.169 13.1393C22.0563 13.0141 22 12.8576 22 12.6698Z"
           fill="white" fill-opacity="0.8"/>
         <path
-          d="M24.9775 13.2589H23.8056V12.4731H24.9775V13.2589ZM24.9775 14.5017H23.8056V13.6999H24.9775V14.5017ZM22.1618 13.6999H23.2865V14.5017H22.1618V13.6999ZM22.1618 12.4731H23.2865V13.2589H22.1618V12.4731ZM25.5202 12H21.6506V14.9668H25.5202V12ZM20.5337 12.9381V16.1775H19.5112V12.9381H20.5337ZM21.0449 12.3849H19V17.4204H19.5112V16.7308H21.0449V12.3849ZM25.4022 16.386C25.127 16.6186 24.6944 16.9313 24.3247 17.1558C24.1281 16.8511 23.9629 16.5063 23.8449 16.1294H25.9213V15.6002H21.2494V16.1294H21.9258V18.2383C21.6427 18.2864 21.3831 18.3265 21.1551 18.3585L21.2966 18.8958C22.0438 18.7675 23.0427 18.5911 24.0022 18.4066L23.9708 17.8935C23.4674 17.9817 22.9562 18.0699 22.4843 18.1501V16.1294H23.3258C23.7191 17.4845 24.4742 18.5189 25.6382 19C25.7169 18.8557 25.8742 18.6392 26 18.5269C25.4337 18.3265 24.9697 17.9817 24.5921 17.5326C24.9697 17.3242 25.418 17.0515 25.764 16.7709L25.4022 16.386Z"
+          d="M13.1763 16.5879H9.3042L8.43457 19H7.17773L10.707 9.75781H11.7734L15.3091 19H14.0586L13.1763 16.5879ZM9.67236 15.585H12.8145L11.2402 11.2622L9.67236 15.585Z"
           fill="white" fill-opacity="0.8"/>
       </svg>
 
@@ -33,6 +34,7 @@
           :item="item"
           :index="index"
           :key="index"
+          @setLang="setLang(index)"
         ></lang-item>
       </ul>
     </transition>
@@ -49,27 +51,40 @@
     data() {
       return {
         isOpen: false,
+        activeLang: 0,
         langsList: [
           {
-            langName: "English"
+            langName: "English",
+            langCode: "EN"
           },
           {
-            langName: "Russian"
+            langName: "Russian",
+            langCode: "RU"
           },
           {
-            langName: "Spanish"
+            langName: "Spanish",
+            langCode: "ES"
           },
           {
-            langName: "Chinese"
+            langName: "Chinese",
+            langCode: "ZH"
           },
         ]
       }
     },
     methods: {
-      chooseLang() {
+      setLang(index) {
         this.isOpen = false;
-      }
-    }
+        this.activeLang = index;
+        localStorage.setItem('lang', this.langsList[index].langCode);
+        location.reload();
+      },
+    },
+    mounted() {
+      let storageLang = localStorage.getItem('lang');
+      let currentLang = this.langsList.find(item => item.langCode === storageLang);
+      this.activeLang = this.langsList.indexOf(currentLang);
+    },
   }
 </script>
 
