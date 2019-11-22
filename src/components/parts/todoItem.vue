@@ -59,14 +59,13 @@
         isMenuShow: false,
         isPreview: false,
         isEditable: false,
-        delay: 300,
+        delay: 250,
         clicks: 0,
         timer: null
       }
     },
     methods: {
       editItem() {
-
         this.clicks++;
         if (this.clicks === 1) {
           let self = this;
@@ -76,9 +75,7 @@
           }, this.delay);
         } else {
           clearTimeout(this.timer);
-
           this.isMenuShow = true;
-
           this.clicks = 0;
         }
 
@@ -181,6 +178,7 @@
     padding: 10px 0;
     color: rgba(255, 255, 255, 0.8);
     font-size: 1rem;
+    resize: none;
   }
 
   .item-desc::placeholder {
@@ -188,8 +186,11 @@
   }
 
   @media screen and (min-width: 1000px) {
+
+    .item-wrap {
+      max-width: 150px;
+    }
     .todoItem {
-      max-width: 30%;
       border: 1px solid #797979;
       border-radius: 10px;
       transition: all .3s ease;

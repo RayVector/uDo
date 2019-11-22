@@ -385,7 +385,8 @@
     }
 
     .menuOpen.tabsArea {
-      max-width: 40%;
+      max-width: 400px;
+      max-height: 500px;
       border: 1px solid #797979;
       border-radius: 10px;
     }

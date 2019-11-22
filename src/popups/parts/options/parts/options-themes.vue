@@ -1,5 +1,5 @@
 <template>
-  <li class="options-themes">
+  <li class="options-item options-themes">
     <div class="item-body" @click="isOpen = !isOpen">
       <svg
         class="options-themes-icon"
@@ -24,6 +24,7 @@
           :key="index"
           @click.native="chooseTheme(index)"
         ></theme-item>
+
       </ul>
     </transition>
   </li>
@@ -84,7 +85,7 @@
   }
 
   .expanded-item {
-    padding-top: 20px;
+    padding-top: 40px;
     padding-bottom: 40px;
     display: flex;
     justify-content: space-around;
@@ -94,10 +95,12 @@
   /*ANIMATIONS:*/
 
   .fadeExpandItem-enter-active, .fadeExpandItem-leave-active {
-    transition: opacity .3s ease;
+    transition: all .3s ease;
   }
 
   .fadeExpandItem-enter, .fadeExpandItem-leave-to {
     opacity: 0;
+    transform: translateY(-50px);
   }
+
 </style>
