@@ -3,16 +3,17 @@
 
     <div class="header">
       <div class="title">
-        Author
+        {{$t('popups.author.title')}}
       </div>
-      <close-btn @click.native="closePopup"></close-btn>
+      <close-btn-icon @click.native="closePopup"></close-btn-icon>
     </div>
 
     <div class="body">
 
-      <p class="author">Created by
-        <span class="author-name">Ray Vector</span>
+      <p class="author">
+        {{$t('popups.author.created')}}
       </p>
+      <p class="author-name">Ray Vector</p>
 
       <div class="links">
         <div class="link-item">
@@ -59,11 +60,11 @@
 </template>
 
 <script>
-  import CloseBtn from "../../components/UI/close-btn";
+  import CloseBtnIcon from "../../components/UI/close-btn-icon";
 
   export default {
     name: "popup-author-part",
-    components: {CloseBtn},
+    components: {CloseBtnIcon},
     methods: {
       closePopup() {
         this.$store.dispatch('closePopup');
@@ -78,19 +79,19 @@
   }
 
   .header {
+    margin-bottom: 20px;
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
   }
 
   .title {
-    margin-bottom: 20px;
     font-size: 2rem;
   }
 
   .body {
     overflow: auto;
-    height: 80%;
+    height: 85%;
     text-align: center;
 
     display: flex;
@@ -100,15 +101,15 @@
   }
 
   .author {
-    padding-top: 80px;
-    margin-bottom: 50px;
     font-size: 2rem;
   }
 
   .author-name {
+    margin-bottom: 30px;
     font-style: italic;
     text-decoration: underline;
     font-weight: bold;
+    font-size: 2rem;
   }
 
   .links {
@@ -119,6 +120,8 @@
   .link-item {
     display: flex;
     align-items: center;
+    flex-direction: column;
+
   }
 
   .link-item:not(:last-child) {
@@ -126,7 +129,7 @@
   }
 
   .link-item-icon {
-    margin-right: 20px;
+    margin-bottom: 10px;
     width: 50px;
     height: 50px;
     fill: #000
@@ -144,6 +147,30 @@
 
   .link-item-link:hover {
     color: rgba(255, 255, 255, .4);
+  }
+
+  @media screen and (min-width: 1000px) {
+    .author {
+      padding-top: 80px;
+    }
+
+    .author-name {
+      margin-bottom: 50px;
+    }
+
+    .link-item {
+      flex-direction: row;
+    }
+
+    .link-item:not(:last-child) {
+      margin-bottom: 40px;
+    }
+
+    .link-item-icon {
+      margin-bottom: 0;
+      margin-right: 20px;
+    }
+
   }
 
 </style>

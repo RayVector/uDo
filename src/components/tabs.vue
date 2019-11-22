@@ -10,26 +10,7 @@
           class="defTabWrap"
           v-show="!isTabMenuShow"
         >
-          <svg
-            class="tabSettingBtn"
-            width="23" height="22" viewBox="0 0 23 22" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path
-              d="M3 6C1.34315 6 0 4.65685 0 3V3C0 1.34315 1.34315 0 3 0V0C4.65685 0 6 1.34315 6 3V3C6 4.65685 4.65685 6 3 6V6Z"
-              fill="white" fill-opacity="0.8"></path>
-            <rect x="7" y="6" width="6" height="16" rx="3" transform="rotate(-90 7 6)" fill="white"
-                  fill-opacity="0.8"></rect>
-            <path
-              d="M3 14C1.34315 14 0 12.6569 0 11V11C0 9.34315 1.34315 8 3 8V8C4.65685 8 6 9.34315 6 11V11C6 12.6569 4.65685 14 3 14V14Z"
-              fill="white" fill-opacity="0.8"></path>
-            <rect x="7" y="14" width="6" height="16" rx="3" transform="rotate(-90 7 14)" fill="white"
-                  fill-opacity="0.8"></rect>
-            <path
-              d="M3 22C1.34315 22 0 20.6569 0 19V19C0 17.3431 1.34315 16 3 16V16C4.65685 16 6 17.3431 6 19V19C6 20.6569 4.65685 22 3 22V22Z"
-              fill="white" fill-opacity="0.8"></path>
-            <rect x="7" y="22" width="6" height="16" rx="3" transform="rotate(-90 7 22)" fill="white"
-                  fill-opacity="0.8"></rect>
-          </svg>
-
+          <tabs-setting-icon></tabs-setting-icon>
         </button>
         <button
           class="defTabWrap"
@@ -51,21 +32,7 @@
         </button>
       </div>
       <div @click="addNewTab" class="tab defTab _small-part" v-show="isTabMenuShow">
-        <svg
-          class="tabSettingBtn addNewTabIcon"
-          width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path
-            d="M20 16.0001C18.3431 16.0001 17 14.6569 17 13.0001V13.0001C17 11.3432 18.3431 10.0001 20 10.0001H23C24.6569 10.0001 26 11.3432 26 13.0001V13.0001C26 14.6569 24.6569 16.0001 23 16.0001H20Z"
-            fill="white" fill-opacity="0.8"></path>
-          <path
-            d="M3 16.0001C1.34315 16.0001 0 14.6569 0 13.0001V13.0001C0 11.3432 1.34315 10.0001 3 10.0001H6C7.65685 10.0001 9 11.3432 9 13.0001V13.0001C9 14.6569 7.65685 16.0001 6 16.0001H3Z"
-            fill="white" fill-opacity="0.8"></path>
-          <rect x="10" y="17.0001" width="6" height="9" rx="3" fill="white" fill-opacity="0.8"></rect>
-          <rect x="10" y="6.10352e-05" width="6" height="9" rx="3" fill="white" fill-opacity="0.8"></rect>
-          <path
-            d="M13 16.0001C11.3431 16.0001 10 14.6569 10 13.0001V13.0001C10 11.3432 11.3431 10.0001 13 10.0001V10.0001C14.6569 10.0001 16 11.3432 16 13.0001V13.0001C16 14.6569 14.6569 16.0001 13 16.0001V16.0001Z"
-            fill="white" fill-opacity="0.8"></path>
-        </svg>
+        <add-new-tab-icon></add-new-tab-icon>
       </div>
     </div>
     <draggable
@@ -98,10 +65,12 @@
 <script>
   import TabItem from "./parts/tabItem";
   import draggable from 'vuedraggable'
+  import TabsSettingIcon from "./UI/tabs-setting-icon";
+  import AddNewTabIcon from "./UI/add-newTab-icon";
 
   export default {
     name: "tabs",
-    components: {draggable, TabItem},
+    components: {AddNewTabIcon, TabsSettingIcon, draggable, TabItem},
     data() {
       return {
         isTabMenuShow: false,
@@ -128,9 +97,6 @@
         this.$store.dispatch("sortTabsList");
       },
       addNewTab() {
-        // ANIMATION ICON:
-        const icon = document.querySelector('.addNewTabIcon');
-        icon.classList.toggle('swipeIcon');
         this.$store.dispatch("addTab");
       },
     },

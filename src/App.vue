@@ -27,7 +27,10 @@
         return this.$store.state.themes.themesList[this.$store.state.themes.activeTheme].themeName;
       },
     },
-
+    beforeMount() {
+      // !! ATTENTION
+      this.$store.dispatch('closePopup');
+    }
   }
 
 </script>

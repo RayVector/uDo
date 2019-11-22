@@ -19,8 +19,9 @@
           d="M13.1763 16.5879H9.3042L8.43457 19H7.17773L10.707 9.75781H11.7734L15.3091 19H14.0586L13.1763 16.5879ZM9.67236 15.585H12.8145L11.2402 11.2622L9.67236 15.585Z"
           fill="white" fill-opacity="0.8"/>
       </svg>
-
-      <p class="options-langs-name">Langs</p>
+      <p class="options-langs-name">
+        {{$t('popups.options.langItem')}}
+      </p>
       <svg
         class="options-langs-icon arrow-icon" :class="{rotateIcon: isOpen}"
         height="512px" id="Layer_1" style="enable-background:new 0 0 512 512;" version="1.1" viewBox="0 0 512 512"

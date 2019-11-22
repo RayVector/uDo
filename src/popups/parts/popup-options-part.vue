@@ -2,9 +2,9 @@
   <aside class="popup-options-part">
     <div class="header">
       <h1 class="title">
-        Options
+        {{$t('popups.options.title')}}
       </h1>
-      <close-btn @click.native="closePopup"></close-btn>
+      <close-btn-icon @click.native="closePopup"></close-btn-icon>
     </div>
     <ul class="body">
       <options-themes></options-themes>
@@ -16,12 +16,12 @@
 <script>
 
   import OptionsThemes from "./options/parts/options-themes";
-  import CloseBtn from "../../components/UI/close-btn";
+  import CloseBtnIcon from "../../components/UI/close-btn-icon";
   import OptionsLangs from "./options/parts/options-langs";
 
   export default {
     name: "popup-options-part",
-    components: {OptionsLangs, CloseBtn, OptionsThemes},
+    components: {OptionsLangs, CloseBtnIcon, OptionsThemes},
     methods: {
       closePopup() {
         this.$store.dispatch('closePopup');

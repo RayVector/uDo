@@ -1,0 +1,24 @@
+<template>
+  <svg
+    class="help-icon"
+    width="7" height="27" viewBox="0 0 7 27" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path
+      d="M3.26087 6.52167C1.45994 6.52167 0 5.06173 0 3.2608V3.2608C0 1.45987 1.45994 -7.15256e-05 3.26087 -7.15256e-05H3.73913C5.54006 -7.15256e-05 7 1.45987 7 3.2608V3.2608C7 5.06173 5.54006 6.52167 3.73913 6.52167H3.26087Z"
+      fill="white" fill-opacity="0.8"></path>
+    <rect y="9.6087" width="7" height="17.3913" rx="3" fill="white" fill-opacity="0.8"></rect>
+  </svg>
+</template>
+
+<script>
+  export default {
+    name: "help-icon"
+  }
+</script>
+
+<style scoped lang="scss">
+  .help-icon {
+    transition: .3s;
+    height: 1.5rem;
+    width: 1.5rem;
+  }
+</style>

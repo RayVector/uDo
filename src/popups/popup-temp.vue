@@ -13,10 +13,12 @@
 <script>
   import PopupOptions from './parts/popup-options-part'
   import PopupAuthorPart from "./parts/popup-author-part";
+  import PopupHelpPart from "./parts/popup-help-part";
 
   export default {
     name: "popup-temp",
     components: {
+      PopupHelpPart,
       PopupAuthorPart,
       PopupOptions
     },

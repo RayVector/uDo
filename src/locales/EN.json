@@ -1,0 +1,27 @@
+{
+  "page": {
+    "newTodoItem": "You do..."
+  },
+  "popups": {
+    "author": {
+      "title": "Author",
+      "created": "Created by"
+    },
+    "options": {
+      "title": "Options",
+      "themeItem": "Themes",
+      "langItem": "Langs"
+    },
+    "help": {
+      "title": "Help",
+      "helpItem1": "To delete all complete notes, press the button",
+      "helpItem2": "To clear all data cache, press the button",
+      "helpItem3": "One click on the note to expand",
+      "helpItem4": "Double click on the note to edit",
+      "helpItem5": "To manage the tabs, click the button",
+      "helpItem6": "To add new tab, click the button",
+      "helpItem7": "To change name of a the tab or note, tap the name."
+    }
+  }
+}
+

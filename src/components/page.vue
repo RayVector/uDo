@@ -7,7 +7,7 @@
         <input
           class="addTaskField"
           maxlength="100"
-          placeholder="You do..."
+          :placeholder="$t('page.newTodoItem')"
           required
           type="text"
           v-model="val"
