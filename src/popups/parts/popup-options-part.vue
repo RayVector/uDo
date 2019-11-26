@@ -4,7 +4,9 @@
       <h1 class="title">
         {{$t('popups.options.title')}}
       </h1>
-      <close-btn-icon @click.native="closePopup"></close-btn-icon>
+      <button @click="closePopup">
+        <close-btn-icon></close-btn-icon>
+      </button>
     </div>
     <ul class="body">
       <options-themes></options-themes>

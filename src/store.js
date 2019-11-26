@@ -57,15 +57,11 @@ export default new Vuex.Store({
     swapTab(state, index) {
       state.tabs.activeTab = index;
     },
-    sorttabsListList(state) {
-      state.tabs.tabsList[state.tabs.activeTab].todoItems.sort((a, b) => a.checked - b.checked);
-    },
     newTabList(state, newTabList) {
       state.tabs.tabsList = newTabList
     },
     deleteTab(state, index) {
       state.tabs.tabsList.splice(index, 1);
-      state.tabs.activeTab = 0;
     },
     addTask(state, value) {
       let newIndex = state.tabs.tabsList[state.tabs.activeTab].todoItems
@@ -102,12 +98,7 @@ export default new Vuex.Store({
       const foundItem = state.tabs.tabsList[state.tabs.activeTab].todoItems.find(i => i.id === item.id);
       foundItem.img = item.img;
     },
-    changeTaskStatus(state, data) {
-      const foundItem = state.tabs.tabsList[state.tabs.activeTab].todoItems.find(i => i.id === data.item.id);
-      foundItem.checked = data.value;
-      state.tabs.tabsList[state.tabs.activeTab].todoItems.sort((a, b) => a.checked - b.checked);
-    },
-    completeTask(state, data) {
+    updateStatusTask(state, data) {
       const foundItem = state.tabs.tabsList[state.tabs.activeTab].todoItems.find(i => i.id === data.item.id);
       foundItem.checked = data.value;
       state.tabs.tabsList[state.tabs.activeTab].todoItems.sort((a, b) => a.checked - b.checked);
@@ -115,18 +106,9 @@ export default new Vuex.Store({
     sortable(state, newList) {
       state.tabs.tabsList[state.tabs.activeTab].todoItems = newList
     },
-    sortTasksList(state) {
-      state.tabs.tabsList[state.tabs.activeTab].todoItems.sort((a, b) => a.checked - b.checked);
-    },
     updateTab(state, item) {
       const foundItem = state.tabs.tabsList.find(i => i.id === item.id);
       foundItem.title = item.title;
-    },
-    clearCompleted(state) {
-      state.tabs.tabsList[state.tabs.activeTab].todoItems = state.tabs.tabsList[state.tabs.activeTab].todoItems.filter(item => item.checked !== true);
-    },
-    clearPage(state) {
-      state.tabs.tabsList[state.tabs.activeTab].todoItems = [];
     },
     closePopup(state) {
       state.popups.isPopupShow = false;
@@ -137,7 +119,13 @@ export default new Vuex.Store({
     },
     chooseTheme(state, index) {
       state.themes.activeTheme = index;
-    }
+    },
+    deleteCompleted(state, index) {
+      state.tabs.tabsList[index].todoItems = state.tabs.tabsList[index].todoItems.filter( item => item.checked === false)
+    },
+    deleteAll(state, index) {
+      state.tabs.tabsList[index].todoItems = []
+    },
   },
   actions: {
     addTab(state) {
@@ -148,9 +136,6 @@ export default new Vuex.Store({
     },
     deleteTab(state, index) {
       state.commit("deleteTab", index);
-    },
-    sorttabsListList(state) {
-      state.commit("sorttabsListList", state);
     },
     newTabList(state, newTabList) {
       state.commit("newTabList", newTabList);
@@ -173,23 +158,14 @@ export default new Vuex.Store({
     changeTaskStatus(state, data) {
       state.commit("changeTaskStatus", data);
     },
-    completeTask(state, data) {
-      state.commit("completeTask", data);
+    updateStatusTask(state, data) {
+      state.commit("updateStatusTask", data);
     },
     sortable(state, newList) {
       state.commit("sortable", newList);
     },
-    sortTasksList(state) {
-      state.commit("sortTasksList");
-    },
     updateTab(state, item) {
       state.commit("updateTab", item);
-    },
-    clearCompleted(state) {
-      state.commit("clearCompleted");
-    },
-    clearPage(state) {
-      state.commit("clearPage");
     },
     closePopup(state) {
       state.commit("closePopup");
@@ -199,7 +175,13 @@ export default new Vuex.Store({
     },
     chooseTheme(state, index) {
       state.commit("chooseTheme", index);
-    }
+    },
+    deleteCompleted (state, index) {
+       state.commit("deleteCompleted", index);
+    },
+    deleteAll (state, index) {
+       state.commit("deleteAll", index);
+    },
   },
   plugins: [vuexPersist.plugin]
 })

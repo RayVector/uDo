@@ -27,12 +27,12 @@
     </div>
     <draggable
       :delay="400"
-      chosenClass="chosen"
+      chosenClass="drag-chosen"
       class="todoItemsList"
       handle=".handle"
       tag="div"
-      @end="moveItem"
       :sort="true"
+      v-model="newList"
     >
       <transition-group
         name="itemFade"
@@ -68,12 +68,10 @@
     },
     computed: {
       getTabList() {
-
         return this.$store.state.tabs.tabsList;
-
       },
       getList() {
-        /*!!!MAIN!!! return this.$store.getters.sortedToDoList.todoItems;*/
+        /*!!!MAIN!!! need return from Store Getters*/
         if (this.$store.state.tabs.tabsList.length > 0) {
           return this.$store.state.tabs.tabsList[this.getActiveTab].todoItems;
         } else {
@@ -93,7 +91,6 @@
       }
     },
     methods: {
-
       addNewTask() {
         if (this.getTabList.length > 0) {
           if (this.val !== '') {
@@ -110,10 +107,6 @@
         }
 
       },
-      moveItem() {
-        this.$store.dispatch("sortTasksList");
-      },
-
     },
   }
 </script>
@@ -185,11 +178,8 @@
     transition: all .3s ease;
   }
 
-  .chosen {
-    transform: scale(1.05, 1.05);
-    transition: .2s;
-    background-color: rgba(0, 0, 0, 0.2);
-    z-index: 999;
+  .drag-chosen {
+    opacity: .5;
   }
 
   .todoItemsList {

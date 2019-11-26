@@ -3,46 +3,56 @@
     class="item-wrap">
     <div
       class="todoItem item-theme"
-      @click="editItem"
-      :class="{'preview-item': isPreview}"
+      :class="{'preview-item': isPreview, 'item-completed': item.checked}"
     >
-      <label class="todoItemName-wrap">
-        <input
-          type="text"
-          class="todoItem-edit-name"
-          placeholder="Todo"
-          autocomplete="off"
-          @input="updateItemName"
-          :value="itemName"
-        >
-      </label>
-      <div class="item-body" v-show="isPreview">
-        <label>
+      <div class="todoItem-content" @click="showItem">
+        <label class="todoItemName-wrap">
+          <input
+            type="text"
+            class="todoItem-edit-name"
+            placeholder="Todo"
+            autocomplete="off"
+            @input="updateItemName"
+            :value="itemName"
+            :disabled="!isPreview"
+          >
+        </label>
+        <div class="item-body" v-show="isPreview">
+          <label>
           <textarea
             class="item-desc"
             autocomplete="off"
             placeholder="Description"
             @input="updateItemDesc"
             :value="itemDesc"
+            :disabled="!isPreview"
           ></textarea>
-        </label>
+          </label>
+        </div>
       </div>
+      <button class="item-open-menu handle" @click="isMenuShow = true">
+        <three-dots-icon></three-dots-icon>
+      </button>
     </div>
     <div class="item-shadow" v-show="isPreview" @click="isPreview = false"></div>
     <smart-item-menu
       :isMenuShow="isMenuShow"
+      :isTaskComplete="item.checked"
       @closeMenu="isMenuShow = false"
       @deleteItem="deleteItem"
+      @completeItem="completeItem"
+      @uncompleteItem="uncompleteItem"
     ></smart-item-menu>
   </li>
 </template>
 
 <script>
   import SmartItemMenu from "../../popups/smart-item-menu";
+  import ThreeDotsIcon from "../UI/three-dots-icon";
 
   export default {
     name: "todoItem",
-    components: {SmartItemMenu},
+    components: {ThreeDotsIcon, SmartItemMenu},
     props: ['item', 'index'],
     computed: {
       itemName() {
@@ -59,27 +69,13 @@
         isMenuShow: false,
         isPreview: false,
         isEditable: false,
-        delay: 250,
-        clicks: 0,
-        timer: null
       }
     },
     methods: {
-      editItem() {
-        this.clicks++;
-        if (this.clicks === 1) {
-          let self = this;
+      showItem() {
+        if (!this.isPreview) {
           this.isPreview = true;
-          this.timer = setTimeout(function () {
-            self.clicks = 0
-          }, this.delay);
-        } else {
-          clearTimeout(this.timer);
-          this.isMenuShow = true;
-          this.clicks = 0;
         }
-
-
       },
       updateItemDesc(e) {
         this.desc = e.target.value;
@@ -105,7 +101,19 @@
         }
       },
       deleteItem() {
+        this.isMenuShow = false;
+        this.isPreview = false;
         this.$store.dispatch('delTask', this.item);
+      },
+      completeItem() {
+        this.isMenuShow = false;
+        this.isPreview = false;
+        this.$store.dispatch('updateStatusTask', {item: this.item, value: true});
+      },
+      uncompleteItem() {
+        this.isMenuShow = false;
+        this.isPreview = false;
+        this.$store.dispatch('updateStatusTask', {item: this.item, value: false});
       }
     }
   }
@@ -135,13 +143,19 @@
     border-top: 0.0325rem solid rgba(0, 0, 0, 0.5);
     min-height: 2rem;
     display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .todoItem-content {
+    width: 100%;
+    display: flex;
     flex-direction: column;
     align-items: flex-start;
   }
 
   .preview-item {
     z-index: 2;
-    width: 100%;
     position: relative;
   }
 
@@ -158,7 +172,6 @@
 
   .todoItem-edit-name {
     width: 100%;
-    margin-bottom: 20px;
     color: rgba(255, 255, 255, 0.8);
     border: none;
     background-color: unset;
@@ -170,6 +183,7 @@
 
   .item-body {
     width: 90%;
+    padding-top: 20px;
   }
 
   .item-desc {
@@ -184,6 +198,11 @@
   .item-desc::placeholder {
     color: rgba(255, 255, 255, 0.5);
   }
+
+  .item-completed {
+    opacity: .4;
+  }
+
 
   @media screen and (min-width: 1000px) {
 

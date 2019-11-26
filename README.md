@@ -1,5 +1,5 @@
 # uDo
-Project: [Site](...).
+Project: [Site](http://rayvector.beget.tech/).
 ### TODO:
 ___
 ```
@@ -36,8 +36,8 @@ COMMON:
 + settings popup from smart menu (themes, help, info);
 - settings popup (user);
 ----------------
-- repair getter - sort list (sortedToDoList);
-- refactor all action icons to isolate component;
+- fix getter - sort list (sortedToDoList);
++ refactor all action icons to isolate component;
 + rewrite help tips;
 + all "Alerts" to popups;
 - refactor popups manager (header, title, body inside temp);

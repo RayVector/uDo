@@ -1,24 +1,12 @@
 <template>
   <div class="menu bg-theme">
-    <close-btn-icon @click.native="closeMenu"></close-btn-icon>
-
+    <button @click="closeMenu">
+      <close-btn-icon></close-btn-icon>
+    </button>
     <button
       type="button"
       @click="openOptionsPopup">
       <options-icon></options-icon>
-    </button>
-
-    <button
-      class="deleteCompletedBtn"
-      @click="clearAllCompleted"
-    >
-      <delete-completed-icon></delete-completed-icon>
-    </button>
-    <button
-      class="clearCacheBtn"
-      @click="clearCache"
-    >
-      <clear-cache-icon></clear-cache-icon>
     </button>
     <button
       class="helpBtn"
@@ -31,22 +19,11 @@
 
 <script>
   import CloseBtnIcon from "../components/UI/close-btn-icon";
-  import DeleteCompletedIcon from "../components/UI/delete-completed-icon";
-  import ClearCacheIcon from "../components/UI/clear-cache-icon";
   import OptionsIcon from "../components/UI/options-icon";
   import HelpIcon from "../components/UI/help-icon";
   export default {
     name: "appMenu",
-    components: {HelpIcon, OptionsIcon, ClearCacheIcon, DeleteCompletedIcon, CloseBtnIcon},
-    computed: {
-      getList() {
-        /*!!!MAIN!!! return this.$store.getters.sortedToDoList.todoItems;*/
-        return this.$store.state.tabs[this.getActiveTab].todoItems
-      },
-      getActiveTab() {
-        return this.$store.state.tabs.activeTab
-      },
-    },
+    components: {HelpIcon, OptionsIcon, CloseBtnIcon},
     methods: {
       getHelp() {
         this.$emit('closeMenu');
@@ -64,33 +41,6 @@
          * second parameter is popup type
          */
         this.$store.dispatch("openPopup", "PopupOptions");
-      },
-      clearAllCompleted() {
-        if (this.getList.filter(item => item.checked !== false).length > 0) {
-          let isAccept = confirm('Do You want to delete all completed notes?');
-          if (isAccept) {
-            // ANIMATION ICON:
-            const icon = document.querySelector('.deleteCompletedBtnItem');
-            icon.classList.add('increaseIcon');
-            setTimeout(() => {
-              icon.classList.remove('increaseIcon');
-            }, 400);
-            this.$store.dispatch("clearCompleted");
-          }
-        } else {
-          alert('Nothing completed');
-        }
-      },
-      clearCache() {
-
-        if (this.getList.length > 0) {
-          let isAccept = confirm('Do You want to clear ALL notes in this tab?');
-          if (isAccept) {
-            this.$store.dispatch("clearPage");
-          }
-        } else {
-          alert('Nothing to delete.');
-        }
       },
     },
   }
@@ -112,7 +62,7 @@
     padding: 1rem;
     background-color: #e7e7e7;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
     -webkit-box-shadow: 0 10px 30px 0 rgba(50, 50, 50, 0.45);
     -moz-box-shadow: 0 10px 30px 0 rgba(50, 50, 50, 0.45);

@@ -5,7 +5,9 @@
       <div class="title">
         {{$t('popups.author.title')}}
       </div>
-      <close-btn-icon @click.native="closePopup"></close-btn-icon>
+      <button @click="closePopup">
+        <close-btn-icon></close-btn-icon>
+      </button>
     </div>
 
     <div class="body">

@@ -14,13 +14,15 @@
     },
     "help": {
       "title": "Help",
-      "helpItem1": "To delete all complete notes, press the button",
-      "helpItem2": "To clear all data cache, press the button",
-      "helpItem3": "One click on the note to expand",
-      "helpItem4": "Double click on the note to edit",
-      "helpItem5": "To manage the tabs, click the button",
-      "helpItem6": "To add new tab, click the button",
-      "helpItem7": "To change name of a the tab or note, tap the name."
+      "helpItem1": "To delete all complete notes in current tab, press this button in the tab manager",
+      "helpItem2": "To clear all notes in current tab, press this button in the tab manager",
+      "helpItem3": "Click on the note to expand",
+      "helpItem4": "To open note/tab management menu, press this button in note/tab",
+      "helpItem5": "To manage the tabs, press this button in main page",
+      "helpItem6": "To add new tab, click the button in the tab manager",
+      "helpItem7": "To change name of a the note/tab, tap the name",
+      "helpItem8": "To remove note/tab, press the button",
+      "helpItem9": "To move the note/tab, hold the button"
     }
   }
 }

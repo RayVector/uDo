@@ -4,45 +4,14 @@
     class="tabsArea"
     :style="{backgroundImage: 'url('+require('../assets/img/'+getThemeName+'.jpg')+')'}"
   >
-    <div class="tabsEditMenu">
-      <div @click="isTabMenuShow = !isTabMenuShow" class="tab defTab _small-part">
-        <button
-          class="defTabWrap"
-          v-show="!isTabMenuShow"
-        >
-          <tabs-setting-icon></tabs-setting-icon>
-        </button>
-        <button
-          class="defTabWrap"
-          v-show="isTabMenuShow"
-        >
-          <svg
-            class="tabSettingBtn"
-            width="22" height="6" viewBox="0 0 22 6" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path
-              d="M11 6C9.34315 6 8 4.65685 8 3V3C8 1.34315 9.34315 0 11 0V0C12.6569 0 14 1.34315 14 3V3C14 4.65685 12.6569 6 11 6V6Z"
-              fill="white" fill-opacity="0.8"></path>
-            <path
-              d="M3 6C1.34315 6 0 4.65685 0 3V3C0 1.34315 1.34315 0 3 0V0C4.65685 0 6 1.34315 6 3V3C6 4.65685 4.65685 6 3 6V6Z"
-              fill="white" fill-opacity="0.8"></path>
-            <path
-              d="M19 6C17.3431 6 16 4.65685 16 3V3C16 1.34315 17.3431 0 19 0V0C20.6569 0 22 1.34315 22 3V3C22 4.65685 20.6569 6 19 6V6Z"
-              fill="white" fill-opacity="0.8"></path>
-          </svg>
-        </button>
-      </div>
-      <div @click="addNewTab" class="tab defTab _small-part" v-show="isTabMenuShow">
-        <add-new-tab-icon></add-new-tab-icon>
-      </div>
-    </div>
     <draggable
       :delay="400"
-      chosenClass="chosen"
+      chosenClass="drag-chosen"
       class="todoTabsList"
       handle=".handle"
       tag="div"
-      @end="moveItem"
       :sort="true"
+      v-model="newTabList"
     >
       <transition-group
         mode="out-in"
@@ -59,6 +28,25 @@
         ></tab-item>
       </transition-group>
     </draggable>
+    <div class="tabsEditMenu">
+      <div @click="isTabMenuShow = !isTabMenuShow" class="tab defTab _small-part">
+        <button
+          class="defTabWrap"
+          v-show="!isTabMenuShow"
+        >
+          <tabs-setting-icon></tabs-setting-icon>
+        </button>
+        <button
+          class="defTabWrap"
+          v-show="isTabMenuShow"
+        >
+          <close-btn-icon></close-btn-icon>
+        </button>
+      </div>
+      <div @click="addNewTab" class="tab defTab _small-part" v-show="isTabMenuShow">
+        <add-new-tab-icon></add-new-tab-icon>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -67,10 +55,11 @@
   import draggable from 'vuedraggable'
   import TabsSettingIcon from "./UI/tabs-setting-icon";
   import AddNewTabIcon from "./UI/add-newTab-icon";
+  import CloseBtnIcon from "./UI/close-btn-icon";
 
   export default {
     name: "tabs",
-    components: {AddNewTabIcon, TabsSettingIcon, draggable, TabItem},
+    components: {CloseBtnIcon, AddNewTabIcon, TabsSettingIcon, draggable, TabItem},
     data() {
       return {
         isTabMenuShow: false,
@@ -93,9 +82,6 @@
       }
     },
     methods: {
-      moveItem() {
-        this.$store.dispatch("sortTabsList");
-      },
       addNewTab() {
         this.$store.dispatch("addTab");
       },
@@ -123,41 +109,27 @@
     align-items: center;
   }
 
-  .tab {
-    display: inline-block;
+  .tab-item-wrap {
+    position: relative;
+    display: flex;
     min-width: 25%;
     max-width: 50%;
-    text-overflow: ellipsis;
-    white-space: nowrap;
     min-height: 1.2rem;
     height: 100%;
-    max-height: 1.2rem;
-    font-size: 1rem;
+  }
+
+  .tab {
     padding: .8rem .4rem .4rem .4rem;
-    border-top: 0;
-    border-left: 0;
-    border-right: 0.0625rem solid rgba(0, 0, 0, .3);
-    border-bottom: 0.0625rem solid rgba(0, 0, 0, .3);
-    border-bottom-right-radius: .5rem;
+    display: inline-block;
+    text-overflow: ellipsis;
+    white-space: nowrap;
     text-align: left;
     font-weight: normal;
     overflow: hidden;
   }
 
-
-  .activeTab {
-    min-height: 1.5rem;
-    height: 100%;
-    max-height: 1.5rem;
-    font-weight: bold;
-    font-size: 1.5rem;
-    border-bottom-left-radius: .5rem;
-    border-right: 0.15rem solid rgba(0, 0, 0, .4);
-    border-bottom: 0.15rem solid rgba(0, 0, 0, .4);
-  }
-
   .todoTabsList {
-    padding-right: 0.3125rem;
+    /*padding-left: 0.3125rem;*/
     width: 100%;
     height: 100%;
     overflow-x: hidden;
@@ -183,6 +155,8 @@
     align-items: center;
     justify-content: center;
     padding: .4rem;
+    border-bottom-left-radius: .5rem;
+    border-bottom-right-radius: 0;
   }
 
   .defTabWrap {
@@ -234,87 +208,29 @@
     border-top: 0;
     background-size: cover;
     background-repeat: no-repeat;
+    flex-direction: column-reverse;
   }
 
-  .menuOpen .tab {
-    min-height: 1.5rem;
-    height: 100%;
-    max-height: 1.5rem;
-    padding: 1rem;
-    display: flex;
-    align-items: center;
-    width: unset;
-    min-width: unset;
-    max-width: unset;
-    border-radius: 0;
-    resize: unset;
-    overflow-y: hidden;
-    overflow-x: auto;
+  .menuOpen .todoTabsList {
+    padding-top: 20px;
   }
 
-  .menuOpen .activeTab {
-    border-top: 0.15rem solid rgba(0, 0, 0, .3);
-    border-bottom: 0.15rem solid rgba(0, 0, 0, .3);
-  }
-
-
-  .menuOpen .tabName {
-    display: inline-block;
-    width: 100%;
-    max-width: 75%;
-    background-color: unset;
-    border: unset;
-    overflow-x: auto;
-    overflow-y: hidden;
+  .menuOpen .fadeTabList {
+    flex-direction: column;
   }
 
   .menuOpen .tabsEditMenu {
     width: 100%;
     justify-content: space-between;
-    margin-bottom: 2rem;
   }
 
   .menuOpen .defTab {
-    min-width: unset;
-    max-width: unset;
-    border-top: 0;
-    border-left: 0;
-    border-right: 0;
-    border-bottom: 0;
-    border-radius: 0 0 0 20px;
+    width: 20%;
   }
 
-  .menuOpen .defTab:nth-child(1) {
-    border-radius: 0 0 20px 0;
-  }
-
-
-  .menuOpen .tabSettingBtn {
-    width: 1.8rem;
-    height: 1.8rem;
-  }
-
-
-  .menuOpen .chosen {
-    transform: scale(1.05, 1.05);
-    transition: .2s;
-    background-color: rgba(0, 0, 0, .2);
-    z-index: 999;
-  }
-
-  .menuOpen .todoTabsList {
-    padding-top: 2rem;
-    padding-right: 0;
-  }
-
-  .swipePage {
-    opacity: 0;
-  }
-
-  .menuOpen .fadeTabList {
-    flex-direction: column;
-    overflow-y: auto;
-    overflow-x: hidden;
+  .menuOpen .defTab:first-child {
+    border-bottom-right-radius: .5rem;
+    border-bottom-left-radius: 0;
   }
 
 

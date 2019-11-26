@@ -1,37 +1,33 @@
 <template>
-  <div class="smart-item-menu">
+  <div class="smart-tab-menu">
     <div class="smartMenu_shadow" v-show="isMenuShow" @click="closeMenu"></div>
     <transition name="fadeSmartMenu">
       <div class="smartMenu todoItemMenu _small-part" v-show="isMenuShow">
-        <button class="manageItemBtns" @click="completeItem" v-show="!getIsTaskComplete">
-          <complete-icon></complete-icon>
+        <button class="manageItemBtns" @click="deleteCompleted">
+          <delete-completed-icon></delete-completed-icon>
         </button>
-        <button class="manageItemBtns" @click="uncompleteItem" v-show="getIsTaskComplete">
-          <uncomplete-item-icon></uncomplete-item-icon>
+        <button class="manageItemBtns" @click="deleteAll">
+          <delete-notes-in-page-icon></delete-notes-in-page-icon>
         </button>
         <button class="manageItemBtns" @click="deleteItem">
           <trash-icon></trash-icon>
         </button>
       </div>
     </transition>
+
   </div>
 
 </template>
 
-<script>
-  import CompleteIcon from "../components/UI/complete-icon";
-  import TrashIcon from "../components/UI/trash-icon";
-  import UncompleteItemIcon from "../components/UI/uncomplete-item-icon";
 
+<script>
+  import TrashIcon from "../components/UI/trash-icon";
+  import DeleteCompletedIcon from "../components/UI/delete-completed-icon";
+  import DeleteNotesInPageIcon from "../components/UI/delete-notes-inPage-icon";
   export default {
-    name: "smart-item-menu",
-    components: {UncompleteItemIcon, TrashIcon, CompleteIcon},
-    props: ['isMenuShow', 'isTaskComplete'],
-    computed: {
-      getIsTaskComplete() {
-        return this.isTaskComplete
-      }
-    },
+    name: "smart-tab-menu",
+    components: {DeleteNotesInPageIcon, DeleteCompletedIcon, TrashIcon},
+    props: ['isMenuShow'],
     methods: {
       closeMenu() {
         this.$emit('closeMenu');
@@ -39,11 +35,11 @@
       deleteItem() {
         this.$emit('deleteItem');
       },
-      completeItem() {
-        this.$emit('completeItem');
+      deleteCompleted() {
+        this.$emit('deleteCompleted');
       },
-      uncompleteItem() {
-        this.$emit('uncompleteItem');
+      deleteAll() {
+        this.$emit('deleteAll');
       }
     }
   }
@@ -69,7 +65,7 @@
     bottom: 40%;
     top: 40%;
     right: 0;
-    min-height: 100px;
+    min-height: 130px;
     width: 20%;
     display: flex;
     flex-direction: column;
