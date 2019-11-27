@@ -4,6 +4,7 @@
     class="tabsArea"
     :style="{backgroundImage: 'url('+require('../assets/img/'+getThemeName+'.jpg')+')'}"
   >
+
     <draggable
       :delay="400"
       chosenClass="drag-chosen"
@@ -129,7 +130,6 @@
   }
 
   .todoTabsList {
-    /*padding-left: 0.3125rem;*/
     width: 100%;
     height: 100%;
     overflow-x: hidden;

@@ -34,18 +34,13 @@
       :sort="true"
       v-model="newList"
     >
-      <transition-group
-        name="itemFade"
-        tag="ul"
-        class="fadeList"
-      >
-        <todo-item
-          v-for="(item, index) in getList"
-          :item="item"
-          :index="index"
-          :key="item.id"
-        ></todo-item>
-      </transition-group>
+
+      <todo-item
+        v-for="(item, index) in getList"
+        :item="item"
+        :index="index"
+        :key="item.id"
+      ></todo-item>
     </draggable>
   </div>
 </template>
@@ -205,7 +200,7 @@
 
   /*animation:*/
   .itemFade-move {
-    transition: .3s;
+    transition: all .3s ease;
   }
 
   @media screen and (min-width: 1000px) {

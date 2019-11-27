@@ -181,6 +181,14 @@
     overflow: hidden;
   }
 
+  .todoItem-edit-name::placeholder {
+    color: rgba(255, 255, 255, 0.8);
+  }
+
+  .todoItem-edit-name:disabled {
+    opacity: 1;
+  }
+
   .item-body {
     width: 90%;
     padding-top: 20px;
