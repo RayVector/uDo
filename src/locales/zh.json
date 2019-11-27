@@ -1,37 +1,36 @@
 {
   "page": {
-    "newTodoItem": "You do..."
+    "newTodoItem": "你做..."
   },
   "popups": {
     "author": {
-      "title": "Author",
-      "created": "Created by"
+      "title": "作者",
+      "created": "由...制作"
     },
     "options": {
-      "title": "Options",
-      "themes": "Themes",
-      "langs": "Langs",
+      "title": "选件",
+      "themes": "主题",
+      "langs": "语言能力",
       "app": {
-        "title": "App",
-        "item1": "Clear data"
+        "title": "应用",
+        "item1": "清除资料"
       }
     },
     "help": {
-      "title": "Help",
-      "helpItem1": "To delete all complete notes in current tab, press this button in the tab manager",
-      "helpItem2": "To clear all notes in current tab, press this button in the tab manager",
-      "helpItem3": "Click on the note to expand",
-      "helpItem4": "To open note/tab management menu, press this button in note/tab",
-      "helpItem5": "To manage the tabs, press this button in main page",
-      "helpItem6": "To add new tab, click the button in the tab manager",
-      "helpItem7": "To change name of a the note/tab, tap the name",
-      "helpItem8": "To remove note/tab, press the button",
-      "helpItem9": "To move the note/tab, hold the button"
+      "title": "救命",
+      "helpItem1": "要删除当前标签中的所有完整笔记，请在标签管理器中按此按钮",
+      "helpItem2": "要清除当前标签页中的所有笔记，请在标签页管理器中按此按钮",
+      "helpItem3": "单击注释以展开",
+      "helpItem4": "要打开便笺/标签管理菜单，请在便笺/标签中按此按钮",
+      "helpItem5": "要管理选项卡，请在主页中按此按钮",
+      "helpItem6": "要添加新标签，请点击标签管理器中的按钮",
+      "helpItem7": "要更改便笺/标签的名称，请点击名称",
+      "helpItem8": "要删除注释/标签，请按按钮",
+      "helpItem9": "要移动记事/标签，请按住按钮"
     }
   },
   "snackbars": {
-    "tabDeleted": "Tab deleted",
-    "langChanged": "Language changed"
+    "tabDeleted": "标签已删除",
+    "langChanged": "语言已更改"
   }
 }
-

@@ -1,37 +1,37 @@
 {
   "page": {
-    "newTodoItem": "You do..."
+    "newTodoItem": "Tú lo haces..."
   },
   "popups": {
     "author": {
-      "title": "Author",
-      "created": "Created by"
+      "title": "Autor",
+      "created": "Creado por"
     },
     "options": {
-      "title": "Options",
-      "themes": "Themes",
-      "langs": "Langs",
+      "title": "Opciones",
+      "themes": "Temas",
+      "langs": "Idiomas",
       "app": {
-        "title": "App",
-        "item1": "Clear data"
+        "title": "Solicitud",
+        "item1": "Borrar datos"
       }
     },
     "help": {
-      "title": "Help",
-      "helpItem1": "To delete all complete notes in current tab, press this button in the tab manager",
-      "helpItem2": "To clear all notes in current tab, press this button in the tab manager",
-      "helpItem3": "Click on the note to expand",
-      "helpItem4": "To open note/tab management menu, press this button in note/tab",
-      "helpItem5": "To manage the tabs, press this button in main page",
-      "helpItem6": "To add new tab, click the button in the tab manager",
-      "helpItem7": "To change name of a the note/tab, tap the name",
-      "helpItem8": "To remove note/tab, press the button",
-      "helpItem9": "To move the note/tab, hold the button"
+      "title": "Ayuda",
+      "helpItem1": "Para eliminar todas las notas completas en la pestaña actual, presione este botón en el administrador de pestañas",
+      "helpItem2": "Para borrar todas las notas en la pestaña actual, presione este botón en el administrador de pestañas",
+      "helpItem3": "Haga clic en la nota para ampliar",
+      "helpItem4": "Para abrir el menú de administración de notas / pestañas, presione este botón en la nota / pestaña",
+      "helpItem5": "Para administrar las pestañas, presione este botón en la página principal",
+      "helpItem6": "Para agregar una nueva pestaña, haga clic en el botón en el administrador de pestañas",
+      "helpItem7": "Para cambiar el nombre de una nota / pestaña, toque el nombre",
+      "helpItem8": "Para eliminar la nota / pestaña, presione el botón",
+      "helpItem9": "Para mover la nota / pestaña, mantenga presionado el botón"
     }
   },
   "snackbars": {
-    "tabDeleted": "Tab deleted",
-    "langChanged": "Language changed"
+    "tabDeleted": "Pestaña eliminada",
+    "langChanged": "Idioma cambiado"
   }
 }
 
