@@ -10,7 +10,13 @@
     "options": {
       "title": "Opciones",
       "themes": "Temas",
-      "langs": "Idiomas",
+      "langs": {
+        "title": "Idiomas",
+        "en": "Inglés",
+        "ru": "Ruso",
+        "es": "Español",
+        "zh": "Chino"
+      },
       "app": {
         "title": "Solicitud",
         "item1": "Borrar datos"

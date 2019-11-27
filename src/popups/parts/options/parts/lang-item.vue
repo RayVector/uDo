@@ -1,6 +1,6 @@
 <template>
   <div class="lang-item _small-part"
-    @click="$emit('setLang')"
+       @click="$emit('setLang')"
        :class="{'active-lang': activeLang === index}"
   >
     <span class="lang-item-code">{{item.langCode}}</span>
@@ -19,8 +19,8 @@
 <style scoped lang="scss">
   .lang-item {
     margin-bottom: 10px;
-    max-width: 50%;
-    width: 100%;
+    min-width: 70%;
+    max-width: 90%;
     border: 1px solid rgba(204, 204, 204, .4);
     border-radius: 10px;
     padding: 8px;
@@ -35,12 +35,11 @@
     align-items: center;
   }
 
-
-
   .lang-item-code {
-    font-size: 0.8rem;
+    font-size: 1rem;
     color: rgba(255, 255, 255, .4);
   }
+
   .lang-item-divider {
     padding: 0 5px;
   }
@@ -50,7 +49,7 @@
     cursor: default;
   }
 
-  @media screen and  (min-width: 1000px){
+  @media screen and (min-width: 1000px) {
     .lang-item:hover {
       border: 1px solid #ccc;
     }

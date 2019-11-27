@@ -10,7 +10,13 @@
     "options": {
       "title": "Options",
       "themes": "Themes",
-      "langs": "Langs",
+      "langs": {
+        "title": "Langs",
+        "en": "English",
+        "ru": "Russian",
+        "es": "Spanish",
+        "zh": "Chinese"
+      },
       "app": {
         "title": "App",
         "item1": "Clear data"

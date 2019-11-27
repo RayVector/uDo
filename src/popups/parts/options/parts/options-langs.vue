@@ -20,7 +20,7 @@
           fill="white" fill-opacity="0.8"/>
       </svg>
       <p class="options-langs-name">
-        {{$t('popups.options.langs')}}
+        {{$t('popups.options.langs.title')}}
       </p>
       <svg
         class="options-langs-icon arrow-icon" :class="{rotateIcon: isPartOpen}"
@@ -56,19 +56,19 @@
         activeLang: 0,
         langsList: [
           {
-            langName: "English",
+            langName: this.$t("popups.options.langs.en"),
             langCode: "en"
           },
           {
-            langName: "Russian",
+            langName: this.$t("popups.options.langs.ru"),
             langCode: "ru"
           },
           {
-            langName: "Spanish",
+            langName: this.$t("popups.options.langs.es"),
             langCode: "es"
           },
           {
-            langName: "Chinese",
+            langName: this.$t("popups.options.langs.zh"),
             langCode: "zh"
           },
         ]
