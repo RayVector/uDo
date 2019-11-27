@@ -1,8 +1,5 @@
 import Vue from 'vue'
-import Vuex from 'vuex';
 import VueI18n from 'vue-i18n'
-
-Vue.use(Vuex);
 Vue.use(VueI18n);
 
 function loadLocaleMessages() {
@@ -20,14 +17,14 @@ function loadLocaleMessages() {
 
 export default new VueI18n({
   locale: getLocale(),
-  fallbackLocale: process.env.VUE_APP_I18N_FALLBACK_LOCALE || navigator.language.substring(0,2),
+  fallbackLocale: process.env.VUE_APP_I18N_FALLBACK_LOCALE || navigator.language.substring(0, 2),
   messages: loadLocaleMessages()
 })
 
 // activeLanguage
 function getLocale() {
   if (localStorage.getItem('lang') === null) {
-    localStorage.setItem('lang', navigator.language.substring(0,2));
+    localStorage.setItem('lang', navigator.language.substring(0, 2));
   } else {
     return localStorage.getItem('lang');
   }
