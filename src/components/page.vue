@@ -1,5 +1,5 @@
 <template>
-  <div class="workspace"
+  <div class="workspace scrollBar"
   >
     <div class="userMenu">
 
@@ -111,6 +111,21 @@
     height: 79%;
     overflow-y: auto;
     overflow-x: hidden;
+  }
+
+  .scrollBar::-webkit-scrollbar-track {
+    border-radius: 10px;
+    background-color: transparent;
+  }
+
+  .scrollBar::-webkit-scrollbar {
+    width: 4px;
+    background-color: transparent;
+  }
+
+  .scrollBar::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background-color: #A0A0A0;
   }
 
   .userMenu {

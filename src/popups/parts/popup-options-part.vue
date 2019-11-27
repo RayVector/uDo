@@ -8,7 +8,7 @@
         <close-btn-icon></close-btn-icon>
       </button>
     </div>
-    <ul class="body">
+    <ul class="body scrollBar">
       <options-themes></options-themes>
       <options-langs></options-langs>
       <options-app></options-app>
@@ -54,6 +54,22 @@
     overflow-y: auto;
     overflow-x: hidden;
     height: 80%;
+  }
+
+
+  .scrollBar::-webkit-scrollbar-track {
+    border-radius: 10px;
+    background-color: transparent;
+  }
+
+  .scrollBar::-webkit-scrollbar {
+    width: 4px;
+    background-color: transparent;
+  }
+
+  .scrollBar::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background-color: #A0A0A0;
   }
 
   .body .options-item {

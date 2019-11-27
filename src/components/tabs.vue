@@ -8,7 +8,7 @@
     <draggable
       :delay="400"
       chosenClass="drag-chosen"
-      class="todoTabsList"
+      class="todoTabsList scrollBar"
       handle=".handle"
       tag="div"
       :sort="true"
@@ -130,6 +130,22 @@
     display: flex;
   }
 
+  .scrollBar::-webkit-scrollbar-track {
+    border-radius: 10px;
+    background-color: transparent;
+  }
+
+  .scrollBar::-webkit-scrollbar {
+    width: 4px;
+    height: 4px;
+    background-color: transparent;
+  }
+
+  .scrollBar::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background-color: #A0A0A0;
+  }
+
   .tabNameWrap {
     display: flex;
     justify-content: flex-start;
@@ -236,6 +252,20 @@
     .tabsEditMenu {
       width: unset;
       cursor: pointer;
+    }
+
+    .menuOpen .tabsEditMenu {
+      flex-direction: row-reverse;
+    }
+
+    .menuOpen .defTab {
+      border-bottom-right-radius: .5rem;
+      border-bottom-left-radius: 0;
+    }
+
+    .menuOpen .defTab:first-child {
+      border-bottom-right-radius: 0;
+      border-bottom-left-radius: .5rem;
     }
 
     .tab-item-wrap {

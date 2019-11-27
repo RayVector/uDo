@@ -27,16 +27,15 @@ COMMON:
 + upload new icons;
 + fix application height;
 + fix icons;
-- Ask before deleting task;
-- Deleted task tab. Restore task. Clear after 30 days;
-- Accept button on mobile “return” keyboard;
++ settings popup from smart menu (themes, help, info);
 + Tabs name fix;
++ Accept button on mobile “return” keyboard;
+- Translate drive line;
+- Options: Recycle: restore task. Clear after 30 days;
 - moving tasks to another tab (smart menu);
 - task time/date/complete time;
-+ settings popup from smart menu (themes, help, info);
 - settings popup (user);
 ----------------
-- fix getter - sort list (sortedToDoList);
 + refactor all action icons to isolate component;
 + rewrite help tips;
 + all "Alerts" to popups;

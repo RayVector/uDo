@@ -44,6 +44,10 @@ export default new Vuex.Store({
       isSnackbarShow: false,
       snackbarText: ""
     },
+    modals: {
+      isModalShow: false,
+      modalText: ""
+    },
   },
   getters: {
     sortedToDoList: state => {
@@ -140,6 +144,13 @@ export default new Vuex.Store({
         state.snackbars.isSnackbarShow = false;
       }, 2000);
     },
+    closeModal(state) {
+      state.modals.isModalShow = false;
+    },
+    openModal(state, text) {
+      state.modals.modalText = text;
+      state.modals.isModalShow = true;
+    },
 
   },
   actions: {
@@ -206,7 +217,13 @@ export default new Vuex.Store({
     clearData() {
       localStorage.clear();
       location.reload();
-    }
+    },
+    closeModal(state) {
+      state.commit("closeModal");
+    },
+    openModal(state, text) {
+      state.commit("openModal", text);
+    },
   },
   plugins: [vuexPersist.plugin]
 })

@@ -145,6 +145,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    cursor: pointer;
   }
 
   .todoItem-content {
@@ -157,6 +158,7 @@
   .preview-item {
     z-index: 2;
     position: relative;
+    cursor: default;
   }
 
   .todoItem::-webkit-scrollbar {
@@ -217,7 +219,6 @@
       border: 1px solid #797979;
       border-radius: 10px;
       transition: all .3s ease;
-      cursor: pointer;
     }
 
     .todoItem:not(:last-child) {
