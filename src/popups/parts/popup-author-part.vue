@@ -92,7 +92,8 @@
   }
 
   .body {
-    overflow: auto;
+    overflow-y: auto;
+    overflow-x: hidden;
     height: 85%;
     text-align: center;
 

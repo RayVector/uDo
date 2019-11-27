@@ -1,5 +1,5 @@
 <template>
-  <li class="theme-item _small-part">
+  <li class="theme-item _small-part" :class="{'active-theme': index === getActiveTheme}">
     <div class="preview-box forest"
          :style="{backgroundImage: 'url('+require('../../../../assets/img/'+getThemeName+'.jpg')+')'}"
     ></div>
@@ -15,6 +15,9 @@
       getThemeName() {
         return this.$store.state.themes.themesList[this.index].themeName;
       },
+      getActiveTheme() {
+        return this.$store.state.themes.activeTheme
+      }
     }
   }
 </script>
@@ -46,5 +49,10 @@
     font-size: 1rem;
     text-transform: uppercase;
     text-align: center;
+  }
+
+  .active-theme {
+    opacity: .6;
+    cursor: default;
   }
 </style>

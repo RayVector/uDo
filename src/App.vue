@@ -7,6 +7,7 @@
     <install-prompt></install-prompt>
     <main-page class="mainPage"></main-page>
     <popup-temp></popup-temp>
+    <snackbar-temp></snackbar-temp>
   </div>
 </template>
 
@@ -14,10 +15,12 @@
   import mainPage from './components/mainPage.vue';
   import InstallPrompt from './components/InstallPrompt';
   import PopupTemp from "./popups/popup-temp";
+  import SnackbarTemp from "./snackbars/snackbar-temp";
 
   export default {
     name: 'app',
     components: {
+      SnackbarTemp,
       PopupTemp,
       mainPage,
       InstallPrompt,
@@ -30,7 +33,8 @@
     beforeMount() {
       // !! ATTENTION
       this.$store.dispatch('closePopup');
-    }
+    },
+
   }
 
 </script>

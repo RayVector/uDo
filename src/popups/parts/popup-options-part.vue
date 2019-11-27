@@ -11,6 +11,7 @@
     <ul class="body">
       <options-themes></options-themes>
       <options-langs></options-langs>
+      <options-app></options-app>
     </ul>
   </aside>
 </template>
@@ -20,10 +21,11 @@
   import OptionsThemes from "./options/parts/options-themes";
   import CloseBtnIcon from "../../components/UI/close-btn-icon";
   import OptionsLangs from "./options/parts/options-langs";
+  import OptionsApp from "./options/parts/options-app";
 
   export default {
     name: "popup-options-part",
-    components: {OptionsLangs, CloseBtnIcon, OptionsThemes},
+    components: {OptionsApp, OptionsLangs, CloseBtnIcon, OptionsThemes},
     methods: {
       closePopup() {
         this.$store.dispatch('closePopup');
@@ -49,7 +51,8 @@
   }
 
   .body {
-    overflow: auto;
+    overflow-y: auto;
+    overflow-x: hidden;
     height: 80%;
   }
 

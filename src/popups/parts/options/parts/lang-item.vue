@@ -1,6 +1,7 @@
 <template>
   <div class="lang-item _small-part"
     @click="$emit('setLang')"
+       :class="{'active-lang': activeLang === index}"
   >
     <span class="lang-item-code">{{item.langCode}}</span>
     <span class="lang-item-divider"> | </span>
@@ -11,7 +12,7 @@
 <script>
   export default {
     name: "lang-item",
-    props: ['item']
+    props: ['item', 'activeLang', 'index']
   }
 </script>
 
@@ -34,9 +35,7 @@
     align-items: center;
   }
 
-  .lang-item:hover {
-    border: 1px solid #ccc;
-  }
+
 
   .lang-item-code {
     font-size: 0.8rem;
@@ -44,5 +43,16 @@
   }
   .lang-item-divider {
     padding: 0 5px;
+  }
+
+  .active-lang {
+    opacity: .6;
+    cursor: default;
+  }
+
+  @media screen and  (min-width: 1000px){
+    .lang-item:hover {
+      border: 1px solid #ccc;
+    }
   }
 </style>

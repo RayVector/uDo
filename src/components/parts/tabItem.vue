@@ -87,6 +87,7 @@
       deleteItem() {
         this.$store.dispatch("swapTab", 0);
         this.$store.dispatch("deleteTab", this.index);
+        this.$store.dispatch("openSnackbar", this.$t('snackbars.tabDeleted'));
       },
       deleteCompleted() {
         this.isEditable = false;

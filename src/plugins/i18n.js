@@ -20,16 +20,15 @@ function loadLocaleMessages() {
 
 export default new VueI18n({
   locale: getLocale(),
-  fallbackLocale: process.env.VUE_APP_I18N_FALLBACK_LOCALE || 'EN',
+  fallbackLocale: process.env.VUE_APP_I18N_FALLBACK_LOCALE || navigator.language.substring(0,2),
   messages: loadLocaleMessages()
 })
 
 // activeLanguage
 function getLocale() {
   if (localStorage.getItem('lang') === null) {
-    localStorage.setItem('lang', 'EN');
+    localStorage.setItem('lang', navigator.language.substring(0,2));
   } else {
     return localStorage.getItem('lang');
   }
-
 }

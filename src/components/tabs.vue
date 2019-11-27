@@ -14,20 +14,14 @@
       :sort="true"
       v-model="newTabList"
     >
-      <transition-group
-        mode="out-in"
-        name="tabFade"
-        tag="ul"
-        class="fadeTabList"
-      >
-        <tab-item
-          v-for="(item, index) in getTabList"
-          :index="index"
-          :item="item"
-          :key="item.id"
-          :isTabMenuShow="isTabMenuShow"
-        ></tab-item>
-      </transition-group>
+
+      <tab-item
+        v-for="(item, index) in getTabList"
+        :index="index"
+        :item="item"
+        :key="item.id"
+        :isTabMenuShow="isTabMenuShow"
+      ></tab-item>
     </draggable>
     <div class="tabsEditMenu">
       <div @click="isTabMenuShow = !isTabMenuShow" class="tab defTab _small-part">
@@ -132,7 +126,8 @@
   .todoTabsList {
     width: 100%;
     height: 100%;
-    overflow-x: hidden;
+    overflow: auto;
+    display: flex;
   }
 
   .tabNameWrap {
@@ -177,18 +172,9 @@
     transition: all .3s ease;
   }
 
-  .fadeTabList {
-    overflow-y: hidden;
-    overflow-x: auto;
-    height: 100%;
-    display: flex;
-    width: 100%;
-    transition: all .3s ease-in-out;
-  }
-
 
   .menuOpen {
-    z-index: 9;
+    z-index: 2;
     position: absolute;
     right: 0;
     left: 0;
@@ -212,14 +198,12 @@
   }
 
   .menuOpen .todoTabsList {
-    padding-top: 20px;
+    display: block;
   }
 
-  .menuOpen .fadeTabList {
-    flex-direction: column;
-  }
 
   .menuOpen .tabsEditMenu {
+    margin-bottom: 20px;
     width: 100%;
     justify-content: space-between;
   }

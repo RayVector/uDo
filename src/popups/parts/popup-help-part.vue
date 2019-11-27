@@ -85,7 +85,8 @@
   }
 
   .body {
-    overflow: auto;
+    overflow-y: auto;
+    overflow-x: hidden;
     min-height: 80%;
     height: 100%;
     max-height: 80%;

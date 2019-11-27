@@ -1,0 +1,37 @@
+{
+  "page": {
+    "newTodoItem": "You do..."
+  },
+  "popups": {
+    "author": {
+      "title": "Author",
+      "created": "Created by"
+    },
+    "options": {
+      "title": "Options",
+      "themes": "Themes",
+      "langs": "Langs",
+      "app": {
+        "title": "App",
+        "item1": "Clear data"
+      }
+    },
+    "help": {
+      "title": "Help",
+      "helpItem1": "To delete all complete notes in current tab, press this button in the tab manager",
+      "helpItem2": "To clear all notes in current tab, press this button in the tab manager",
+      "helpItem3": "Click on the note to expand",
+      "helpItem4": "To open note/tab management menu, press this button in note/tab",
+      "helpItem5": "To manage the tabs, press this button in main page",
+      "helpItem6": "To add new tab, click the button in the tab manager",
+      "helpItem7": "To change name of a the note/tab, tap the name",
+      "helpItem8": "To remove note/tab, press the button",
+      "helpItem9": "To move the note/tab, hold the button"
+    }
+  },
+  "snackbars": {
+    "tabDeleted": "Tab deleted",
+    "langChanged": "Language changed"
+  }
+}
+

@@ -40,6 +40,10 @@ export default new Vuex.Store({
       isPopupShow: false,
       popupType: ""
     },
+    snackbars: {
+      isSnackbarShow: false,
+      snackbarText: ""
+    },
   },
   getters: {
     sortedToDoList: state => {
@@ -126,6 +130,17 @@ export default new Vuex.Store({
     deleteAll(state, index) {
       state.tabs.tabsList[index].todoItems = []
     },
+    closeSnackbar(state) {
+      state.snackbars.isSnackbarShow = false;
+    },
+    openSnackbar(state, text) {
+      state.snackbars.snackbarText = text;
+      state.snackbars.isSnackbarShow = true;
+      setTimeout(()=> {
+        state.snackbars.isSnackbarShow = false;
+      }, 2000);
+    },
+
   },
   actions: {
     addTab(state) {
@@ -182,6 +197,16 @@ export default new Vuex.Store({
     deleteAll (state, index) {
        state.commit("deleteAll", index);
     },
+    closeSnackbar(state) {
+      state.commit("closeSnackbar");
+    },
+    openSnackbar(state, text) {
+      state.commit("openSnackbar", text);
+    },
+    clearData() {
+      localStorage.clear();
+      location.reload();
+    }
   },
   plugins: [vuexPersist.plugin]
 })

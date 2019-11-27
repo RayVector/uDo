@@ -1,6 +1,6 @@
 <template>
   <li class="options-item options-langs">
-    <div class="item-body" @click="isOpen = !isOpen">
+    <div class="item-body" @click="isPartOpen = !isPartOpen">
       <svg
         class="options-langs-icon"
         width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -20,22 +20,23 @@
           fill="white" fill-opacity="0.8"/>
       </svg>
       <p class="options-langs-name">
-        {{$t('popups.options.langItem')}}
+        {{$t('popups.options.langs')}}
       </p>
       <svg
-        class="options-langs-icon arrow-icon" :class="{rotateIcon: isOpen}"
+        class="options-langs-icon arrow-icon" :class="{rotateIcon: isPartOpen}"
         height="512px" id="Layer_1" style="enable-background:new 0 0 512 512;" version="1.1" viewBox="0 0 512 512"
         width="512px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg"
       ><path d="M327.3,98.9l-2.1,1.8l-156.5,136c-5.3,4.6-8.6,11.5-8.6,19.2c0,7.7,3.4,14.6,8.6,19.2L324.9,411l2.6,2.3  c2.5,1.7,5.5,2.7,8.7,2.7c8.7,0,15.8-7.4,15.8-16.6h0V112.6h0c0-9.2-7.1-16.6-15.8-16.6C332.9,96,329.8,97.1,327.3,98.9z"/></svg>
     </div>
     <transition name="fadeExpandItem">
-      <ul class="expanded-item" v-show="isOpen">
+      <ul class="expanded-item" v-show="isPartOpen">
         <lang-item
           v-for="(item, index) in langsList"
           :item="item"
           :index="index"
           :key="index"
           @setLang="setLang(index)"
+          :activeLang="activeLang"
         ></lang-item>
       </ul>
     </transition>
@@ -51,34 +52,40 @@
     components: {LangItem},
     data() {
       return {
-        isOpen: false,
+        isPartOpen: false,
         activeLang: 0,
         langsList: [
           {
             langName: "English",
-            langCode: "EN"
+            langCode: "en"
           },
           {
             langName: "Russian",
-            langCode: "RU"
+            langCode: "ru"
           },
           {
             langName: "Spanish",
-            langCode: "ES"
+            langCode: "es"
           },
           {
             langName: "Chinese",
-            langCode: "ZH"
+            langCode: "zh"
           },
         ]
       }
     },
     methods: {
       setLang(index) {
-        this.isOpen = false;
-        this.activeLang = index;
-        localStorage.setItem('lang', this.langsList[index].langCode);
-        location.reload();
+        if (index !== this.activeLang) {
+          this.isPartOpen = false;
+          this.activeLang = index;
+          this.$store.dispatch("openSnackbar", this.$t('snackbars.langChanged'));
+          localStorage.setItem('lang', this.langsList[index].langCode);
+          setTimeout(() => {
+            location.reload();
+            this.$store.dispatch("closeSnackbar");
+          }, 2000);
+        }
       },
     },
     mounted() {
@@ -104,6 +111,7 @@
 
   .arrow-icon {
     margin-left: auto;
+    margin-right: 0;
     transition: .3s ease;
     fill: rgba(255, 255, 255, .8);
   }

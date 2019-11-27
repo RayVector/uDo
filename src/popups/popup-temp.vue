@@ -3,7 +3,7 @@
     <div class="popup-temp"
          v-show="isPopupShow">
       <div class="popup-temp-inner item-theme">
-        <component :is="popupType"></component>
+        <component :is="getPopupType"></component>
       </div>
       <div class="popup-temp-shadow" @click="closePopup"></div>
     </div>
@@ -26,7 +26,7 @@
       isPopupShow() {
         return this.$store.state.popups.isPopupShow;
       },
-      popupType() {
+      getPopupType() {
         return this.$store.state.popups.popupType;
       }
     },
@@ -41,6 +41,7 @@
 <style scoped lang="scss">
 
   .popup-temp {
+    z-index: 3;
     position: fixed;
     display: flex;
     justify-content: center;

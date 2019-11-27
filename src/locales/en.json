@@ -9,8 +9,12 @@
     },
     "options": {
       "title": "Options",
-      "themeItem": "Themes",
-      "langItem": "Langs"
+      "themes": "Themes",
+      "langs": "Langs",
+      "app": {
+        "title": "App",
+        "item1": "Clear data"
+      }
     },
     "help": {
       "title": "Help",
@@ -24,6 +28,10 @@
       "helpItem8": "To remove note/tab, press the button",
       "helpItem9": "To move the note/tab, hold the button"
     }
+  },
+  "snackbars": {
+    "tabDeleted": "Tab deleted",
+    "langChanged": "Language changed"
   }
 }
 
