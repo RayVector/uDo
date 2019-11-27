@@ -208,15 +208,11 @@
   }
 
   .item-completed {
-    opacity: .4;
+    opacity: .6;
   }
 
 
   @media screen and (min-width: 1000px) {
-
-    .item-wrap {
-      max-width: 150px;
-    }
     .todoItem {
       border: 1px solid #797979;
       border-radius: 10px;

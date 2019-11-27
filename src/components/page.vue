@@ -207,14 +207,17 @@
     .workspace {
       padding: 20px;
     }
+
     .userMenu {
       max-width: 20%;
       padding-left: 0;
     }
 
-    .fadeList {
+    .todoItemsList {
+      display: flex;
       flex-direction: row;
       flex-wrap: wrap;
     }
+
   }
 </style>

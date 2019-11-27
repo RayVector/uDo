@@ -94,8 +94,8 @@
 
   @media screen and (min-width: 1000px) {
     .snackbar-temp-inner {
-      width: 400px;
-      height: 600px;
+      width: 20%;
+      height: 10%;
     }
   }
 </style>

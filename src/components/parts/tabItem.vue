@@ -163,6 +163,7 @@
     border-bottom-right-radius: .5rem;
     border-left: 0.15rem solid rgba(0, 0, 0, .4);
     border-bottom: 0.15rem solid rgba(0, 0, 0, .4);
+    cursor: default;
   }
 
   .manageTab {

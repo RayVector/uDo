@@ -177,7 +177,6 @@
     z-index: 2;
     position: absolute;
     right: 0;
-    left: 0;
     padding-bottom: 2rem;
     flex-direction: column;
     align-items: flex-start;
@@ -239,9 +238,9 @@
       cursor: pointer;
     }
 
-    .tab {
-      min-width: 5%;
-      max-width: 10%;
+    .tab-item-wrap {
+      min-width: 10%;
+      max-width: 15%;
       cursor: pointer;
     }
 
