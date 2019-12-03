@@ -129,7 +129,7 @@ export default new Vuex.Store({
       state.themes.activeTheme = index;
     },
     deleteCompleted(state, index) {
-      state.tabs.tabsList[index].todoItems = state.tabs.tabsList[index].todoItems.filter( item => item.checked === false)
+      state.tabs.tabsList[index].todoItems = state.tabs.tabsList[index].todoItems.filter(item => item.checked === false)
     },
     deleteAll(state, index) {
       state.tabs.tabsList[index].todoItems = []
@@ -140,7 +140,7 @@ export default new Vuex.Store({
     openSnackbar(state, text) {
       state.snackbars.snackbarText = text;
       state.snackbars.isSnackbarShow = true;
-      setTimeout(()=> {
+      setTimeout(() => {
         state.snackbars.isSnackbarShow = false;
       }, 1000);
     },
@@ -151,6 +151,14 @@ export default new Vuex.Store({
       state.modals.modalText = text;
       state.modals.isModalShow = true;
     },
+    uploadImg(state, data) {
+      const foundedItem = state.tabs.tabsList[state.tabs.activeTab].todoItems.find(i => i.id === data.id);
+      foundedItem.img = data.img;
+    },
+    deleteImg(state, data) {
+      const foundedItem = state.tabs.tabsList[state.tabs.activeTab].todoItems.find(i => i.id === data.id);
+      foundedItem.img = '';
+    }
 
   },
   actions: {
@@ -202,11 +210,11 @@ export default new Vuex.Store({
     chooseTheme(state, index) {
       state.commit("chooseTheme", index);
     },
-    deleteCompleted (state, index) {
-       state.commit("deleteCompleted", index);
+    deleteCompleted(state, index) {
+      state.commit("deleteCompleted", index);
     },
-    deleteAll (state, index) {
-       state.commit("deleteAll", index);
+    deleteAll(state, index) {
+      state.commit("deleteAll", index);
     },
     closeSnackbar(state) {
       state.commit("closeSnackbar");
@@ -224,6 +232,13 @@ export default new Vuex.Store({
     openModal(state, text) {
       state.commit("openModal", text);
     },
+    uploadImg(state, data) {
+      state.commit("uploadImg", data);
+    },
+
+    deleteImg(state, item) {
+      state.commit("deleteImg", item);
+    }
   },
   plugins: [vuexPersist.plugin]
 })
