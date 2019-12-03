@@ -27,13 +27,14 @@
       :sort="true"
       v-model="newList"
     >
-
-      <todo-item
-        v-for="(item, index) in getList"
-        :item="item"
-        :index="index"
-        :key="item.id"
-      ></todo-item>
+      <transition-group name="itemFade">
+        <todo-item
+          v-for="(item, index) in getList"
+          :item="item"
+          :index="index"
+          :key="item.id"
+        ></todo-item>
+      </transition-group>
     </draggable>
   </div>
 </template>
@@ -85,9 +86,6 @@
         if (this.getTabList.length > 0) {
           if (this.val !== '') {
             this.$store.dispatch("addTask", this.val);
-            // ICON ANIMATION:
-            const icon = document.querySelector('.addNewTaskIcon');
-            icon.classList.toggle('swipeIcon');
           } else {
             alert("Type something in the field.");
           }
