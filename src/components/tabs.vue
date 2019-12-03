@@ -14,7 +14,6 @@
       :sort="true"
       v-model="newTabList"
     >
-
       <tab-item
         v-for="(item, index) in getTabList"
         :index="index"
@@ -27,11 +26,11 @@
       <div @click="isTabMenuShow = !isTabMenuShow" class="tab defTab _small-part">
         <button
           class="defTabWrap"
-          v-show="!isTabMenuShow"
+          v-if="!isTabMenuShow"
         >
           <tabs-setting-icon></tabs-setting-icon>
         </button>
-        <button class="defTabWrap" v-show="isTabMenuShow">
+        <button class="defTabWrap" v-else>
           <btn-rotate btn-type="crossIcon"></btn-rotate>
         </button>
       </div>
@@ -46,12 +45,11 @@
   import TabItem from "./parts/tabItem";
   import draggable from 'vuedraggable'
   import TabsSettingIcon from "./UI/tabs-setting-icon";
-  import AddNewTabIcon from "./UI/add-newTab-icon";
   import BtnRotate from "./UI/temp/btn-rotate";
 
   export default {
     name: "tabs",
-    components: {BtnRotate, AddNewTabIcon, TabsSettingIcon, draggable, TabItem},
+    components: {BtnRotate, TabsSettingIcon, draggable, TabItem},
     data() {
       return {
         isTabMenuShow: false,
@@ -95,7 +93,6 @@
   }
 
   .tabsEditMenu {
-    width: 20%;
     display: flex;
     justify-content: flex-start;
     align-items: center;
@@ -151,21 +148,15 @@
   }
 
   .defTab {
-    min-width: unset;
-    width: 100%;
-    max-width: unset;
-    min-height: 1.5rem;
-    height: 100%;
-    max-height: 1.5rem;
-    font-size: 1rem;
-    text-align: center;
+    width: 1.5rem;
+    height: 1.5rem;
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: .4rem;
     border-bottom-left-radius: .5rem;
     border-bottom-right-radius: 0;
   }
+
 
   .defTabWrap {
     width: 100%;
@@ -173,11 +164,6 @@
     display: flex;
     align-items: center;
     justify-content: center;
-  }
-
-  .tabSettingBtn {
-    width: 1.2rem;
-    height: 1.2rem;
   }
 
   .addNewTabIcon {
@@ -218,10 +204,6 @@
     margin-bottom: 20px;
     width: 100%;
     justify-content: space-between;
-  }
-
-  .menuOpen .defTab {
-    width: 20%;
   }
 
   .menuOpen .defTab:first-child {

@@ -142,7 +142,7 @@ export default new Vuex.Store({
       state.snackbars.isSnackbarShow = true;
       setTimeout(()=> {
         state.snackbars.isSnackbarShow = false;
-      }, 2000);
+      }, 1000);
     },
     closeModal(state) {
       state.modals.isModalShow = false;
