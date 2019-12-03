@@ -1,35 +1,27 @@
 <template>
-  <div class="menu bg-theme">
-    <button @click="closeMenu">
-      <close-btn-icon></close-btn-icon>
+  <div class="menu _bg-theme">
+    <button class="nav-btn" @click="closeMenu">
+      <btn-rotate btn-type="crossIcon"></btn-rotate>
     </button>
-    <button
-      type="button"
-      @click="openOptionsPopup">
-      <options-icon></options-icon>
+    <button class="nav-btn" @click="openOptionsPopup">
+      <btn-rotate btn-type="gearIcon"></btn-rotate>
     </button>
-    <button
-      class="helpBtn"
-      @click="getHelp"
-    >
-      <help-icon></help-icon>
+    <button class="nav-btn" @click="getHelp">
+      <btn-rotate btn-type="infoIcon"></btn-rotate>
     </button>
   </div>
 </template>
 
 <script>
-  import CloseBtnIcon from "../components/UI/close-btn-icon";
-  import OptionsIcon from "../components/UI/options-icon";
-  import HelpIcon from "../components/UI/help-icon";
+  import BtnRotate from "../components/UI/temp/btn-rotate";
+
   export default {
     name: "appMenu",
-    components: {HelpIcon, OptionsIcon, CloseBtnIcon},
+    components: {BtnRotate},
     methods: {
       getHelp() {
         this.$emit('closeMenu');
-        /**
-         * second parameter is popup type
-         */
+        //second parameter is popup type
         this.$store.dispatch("openPopup", "PopupHelpPart");
       },
       closeMenu() {
@@ -37,12 +29,11 @@
       },
       openOptionsPopup() {
         this.$emit('closeMenu');
-        /**
-         * second parameter is popup type
-         */
+        //second parameter is popup type
         this.$store.dispatch("openPopup", "PopupOptions");
       },
     },
+
   }
 </script>
 
@@ -71,46 +62,9 @@
     transition: .3s;
   }
 
-  .menu .close-btn {
+  .nav-btn {
     width: 1.5rem;
     height: 1.5rem;
-    transition: .3s;
-    fill: rgba(255, 255, 255, .8)
-  }
-
-  .menu-icon {
-    width: 1.5rem;
-    height: 1.5rem;
-    transition: .3s;
-    fill: rgba(255, 255, 255, .8)
-  }
-
-
-
-  .clearCacheBtn {
-    width: 3rem;
-    padding: 0.1rem;
-    border: none;
-    user-select: none;
-    backface-visibility: hidden;
-    font-size: 2rem;
-    transition: .3s;
-    line-height: 2rem;
-  }
-
-
-  .deleteCompletedBtn {
-    font-size: 1.4rem;
-  }
-
-  .blackPathBtn {
-    fill: rgba(0, 0, 0, 0.7);
-  }
-
-  .helpBtn {
-    font-size: 1.5rem;
-    color: rgba(0, 0, 0, 0.7);
-    font-weight: bold;
   }
 
 

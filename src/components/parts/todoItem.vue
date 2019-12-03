@@ -2,7 +2,7 @@
   <li
     class="item-wrap">
     <div
-      class="todoItem item-theme"
+      class="todoItem _item-theme"
       :class="{'preview-item': isPreview, 'item-completed': item.checked}"
     >
       <div class="todoItem-content" @click="showItem">

@@ -2,13 +2,13 @@
   <div class="snackbar-temp"
        v-show="isSnackbarShow">
     <transition name="fadeSnackbar">
-      <div class="snackbar-temp-inner item-theme" v-show="isSnackbarShow">
+      <div class="snackbar-temp-inner _item-theme" v-show="isSnackbarShow">
         <p class="snackbar-temp-text">
           {{getSnackbarText}}
         </p>
       </div>
     </transition>
-    <div class="snackbar-temp-shadow" @click="closeSnackbar"></div>
+    <div class="snackbar-temp-shadow"></div>
   </div>
 </template>
 

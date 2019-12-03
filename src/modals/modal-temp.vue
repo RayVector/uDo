@@ -2,7 +2,7 @@
   <div class="modal-temp"
        v-show="isModalShow">
     <transition name="fadeModal">
-      <div class="modal-temp-inner item-theme" v-show="isModalShow">
+      <div class="modal-temp-inner _item-theme" v-show="isModalShow">
         <p class="modal-temp-text">
           {{getModalText}}
         </p>

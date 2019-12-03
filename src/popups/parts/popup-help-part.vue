@@ -5,7 +5,7 @@
         {{$t('popups.help.title')}}
       </div>
       <button @click="closePopup">
-        <close-btn-icon></close-btn-icon>
+        <btn-rotate btn-type="crossIcon"></btn-rotate>
       </button>
     </div>
 
@@ -49,17 +49,20 @@
 </template>
 
 <script>
-  import CloseBtnIcon from "../../components/UI/close-btn-icon";
   import DeleteCompleted from "../../components/UI/delete-completed-icon";
   import ClearCacheIcon from "../../components/UI/clear-cache-icon";
   import TabsSettingIcon from "../../components/UI/tabs-setting-icon";
   import AddNewTabIcon from "../../components/UI/add-newTab-icon";
   import ThreeDotsIcon from "../../components/UI/three-dots-icon";
   import TrashIcon from "../../components/UI/trash-icon";
+  import BtnRotate from "../../components/UI/temp/btn-rotate";
 
   export default {
     name: "popup-help-part",
-    components: {TrashIcon, ThreeDotsIcon, AddNewTabIcon, TabsSettingIcon, ClearCacheIcon, DeleteCompleted, CloseBtnIcon},
+    components: {
+      BtnRotate,
+      TrashIcon, ThreeDotsIcon, AddNewTabIcon, TabsSettingIcon, ClearCacheIcon, DeleteCompleted
+    },
     methods: {
       closePopup() {
         this.$store.dispatch('closePopup');

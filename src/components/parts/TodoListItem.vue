@@ -1,7 +1,7 @@
 <template>
 
   <li
-    class="todoItemWrap item-theme"
+    class="todoItemWrap _item-theme"
     :class="{completed: item.checked, editableMod: isPreview, chosenTask: isTaskChosen}"
   >
     <div class="todoItemInner" :class="{editTextMod: isEditableTask}">

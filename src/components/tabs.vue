@@ -8,7 +8,7 @@
     <draggable
       :delay="400"
       chosenClass="drag-chosen"
-      class="todoTabsList scrollBar"
+      class="todoTabsList _scrollBar"
       handle=".handle"
       tag="div"
       :sort="true"
@@ -31,15 +31,12 @@
         >
           <tabs-setting-icon></tabs-setting-icon>
         </button>
-        <button
-          class="defTabWrap"
-          v-show="isTabMenuShow"
-        >
-          <close-btn-icon></close-btn-icon>
+        <button class="defTabWrap" v-show="isTabMenuShow">
+          <btn-rotate btn-type="crossIcon"></btn-rotate>
         </button>
       </div>
       <div @click="addNewTab" class="tab defTab _small-part" v-show="isTabMenuShow">
-        <add-new-tab-icon></add-new-tab-icon>
+        <btn-rotate btn-type="plusIcon"></btn-rotate>
       </div>
     </div>
   </div>
@@ -50,11 +47,11 @@
   import draggable from 'vuedraggable'
   import TabsSettingIcon from "./UI/tabs-setting-icon";
   import AddNewTabIcon from "./UI/add-newTab-icon";
-  import CloseBtnIcon from "./UI/close-btn-icon";
+  import BtnRotate from "./UI/temp/btn-rotate";
 
   export default {
     name: "tabs",
-    components: {CloseBtnIcon, AddNewTabIcon, TabsSettingIcon, draggable, TabItem},
+    components: {BtnRotate, AddNewTabIcon, TabsSettingIcon, draggable, TabItem},
     data() {
       return {
         isTabMenuShow: false,
@@ -130,18 +127,18 @@
     display: flex;
   }
 
-  .scrollBar::-webkit-scrollbar-track {
+  ._scrollBar::-webkit-scrollbar-track {
     border-radius: 10px;
     background-color: transparent;
   }
 
-  .scrollBar::-webkit-scrollbar {
+  ._scrollBar::-webkit-scrollbar {
     width: 4px;
     height: 4px;
     background-color: transparent;
   }
 
-  .scrollBar::-webkit-scrollbar-thumb {
+  ._scrollBar::-webkit-scrollbar-thumb {
     border-radius: 10px;
     background-color: #A0A0A0;
   }

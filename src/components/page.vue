@@ -1,5 +1,5 @@
 <template>
-  <div class="workspace scrollBar"
+  <div class="workspace _scrollBar"
   >
     <div class="userMenu">
 
@@ -14,15 +14,8 @@
           @keypress.enter="addNewTask"
         >
       </label>
-      <button @click='addNewTask' class="todoBtn">
-        <svg
-          class="addNewTaskIcon"
-          width="27" height="31" viewBox="0 0 27 31" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <circle cx="4.4977" cy="26.2265" r="3" transform="rotate(40 4.4977 26.2265)" fill="white"
-                  fill-opacity="0.8"></circle>
-          <rect x="22.126" width="6" height="26" rx="3" transform="rotate(40 22.126 0)" fill="white"
-                fill-opacity="0.8"></rect>
-        </svg>
+      <button class="todoBtn" @click="addNewTask">
+        <btn-rotate btn-type="penIcon"></btn-rotate>
       </button>
     </div>
     <draggable
@@ -48,10 +41,12 @@
 <script>
   import draggable from 'vuedraggable'
   import TodoItem from "./parts/todoItem";
+  import BtnRotate from "./UI/temp/btn-rotate";
 
   export default {
     name: "page",
     components: {
+      BtnRotate,
       TodoItem,
       draggable,
     },
@@ -113,17 +108,17 @@
     overflow-x: hidden;
   }
 
-  .scrollBar::-webkit-scrollbar-track {
+  ._scrollBar::-webkit-scrollbar-track {
     border-radius: 10px;
     background-color: transparent;
   }
 
-  .scrollBar::-webkit-scrollbar {
+  ._scrollBar::-webkit-scrollbar {
     width: 4px;
     background-color: transparent;
   }
 
-  .scrollBar::-webkit-scrollbar-thumb {
+  ._scrollBar::-webkit-scrollbar-thumb {
     border-radius: 10px;
     background-color: #A0A0A0;
   }
@@ -148,6 +143,8 @@
     font-size: 2rem;
     line-height: 1;
     transition: .3s;
+    width: 2.5rem;
+    height: 2.5rem;
   }
 
   .todoBtn:hover {

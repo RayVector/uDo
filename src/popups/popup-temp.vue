@@ -2,7 +2,7 @@
   <transition name="fadePopup">
     <div class="popup-temp"
          v-show="isPopupShow">
-      <div class="popup-temp-inner item-theme">
+      <div class="popup-temp-inner _item-theme">
         <component :is="getPopupType"></component>
       </div>
       <div class="popup-temp-shadow" @click="closePopup"></div>
@@ -82,7 +82,7 @@
   /*ANIMATIONS:*/
 
   .fadePopup-enter-active, .fadePopup-leave-active {
-    transition: opacity .3s ease;
+    transition: all .3s ease .2s;
   }
 
   .fadePopup-enter, .fadePopup-leave-to {

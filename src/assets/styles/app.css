@@ -48,24 +48,12 @@ li {
   list-style-type: none;
 }
 
-.swipeIcon {
-  transform: rotate(360deg);
-}
-
-.swipePage {
-  opacity: 0 !important;
-}
-
-.increaseIcon {
-  transform: scale(1.5);
-}
-
 
 /*------------------------THEMES--------------------------:*/
 
 /*FOREST:*/
 
-.Forest, .Forest .bg-theme {
+.Forest, .Forest ._bg-theme {
   background-color: #007B89;
 }
 
@@ -73,7 +61,7 @@ li {
   background-color: #007B89;
 }
 
-.Forest .item-theme, .Forest .completed {
+.Forest ._item-theme, .Forest .completed {
   background: #009a99; /* Old browsers */
   background: -moz-linear-gradient(left, #009a99 0%, #00bab3 100%); /* FF3.6-15 */
   background: -webkit-linear-gradient(left, #009a99 0%, #00bab3 100%); /* Chrome10-25,Safari5.1-6 */
@@ -85,7 +73,7 @@ li {
 
 /*SEA:*/
 
-.Sea, .Sea .bg-theme {
+.Sea, .Sea ._bg-theme {
   background-color: rgba(105, 92, 76, 1);
 }
 
@@ -93,14 +81,14 @@ li {
   background-color: rgba(105, 92, 76, 1);
 }
 
-.Sea .item-theme, .Sea .completed {
+.Sea ._item-theme, .Sea .completed {
   background-color: #51412F;
 }
 
 
 /*Space:*/
 
-.Space, .Space .bg-theme {
+.Space, .Space ._bg-theme {
   background-color: #485f6f;
 }
 
@@ -108,11 +96,18 @@ li {
   background-color: #485f6f;
 }
 
-.Space .item-theme, .Space .completed {
+.Space ._item-theme, .Space .completed {
   background: rgb(70, 84, 132);
   background: linear-gradient(90deg, rgba(70, 84, 132, 1) 0%, rgba(79, 168, 210, 1) 100%);
 }
 
 
+/*ANIMATIONS:*/
 
+._iconRotate {
+  transform: rotate(360deg);
+}
 
+._scaleIcon {
+  transform: scale(1.3);
+}
