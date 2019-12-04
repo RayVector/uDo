@@ -32,7 +32,7 @@
           v-for="(item, index) in getList"
           :item="item"
           :index="index"
-          :key="item.id"
+          :key="index"
         ></todo-item>
       </transition-group>
     </draggable>

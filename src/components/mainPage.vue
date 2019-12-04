@@ -70,7 +70,7 @@
 
   /*animation:*/
   .appMenuFade-enter-active, .appMenuFade-leave-active {
-    transition: all .3s ease .2s;
+    transition: all .3s ease .1s;
   }
 
   .appMenuFade-enter, .appMenuFade-leave-to {

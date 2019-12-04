@@ -9,7 +9,7 @@
         <button class="manageItemBtns" @click="$emit('uncompleteItem')" v-show="getIsTaskComplete">
           <uncomplete-item-icon></uncomplete-item-icon>
         </button>
-        <button @click="isTabsListShow = !isTabsListShow">
+        <button @click="isTabsListShow = !isTabsListShow" v-show="getTabsList.length > 1">
           <span class="current-tab-name">
             {{getActiveTabName}}
           </span>
@@ -17,8 +17,8 @@
         <transition name="fadeTabsListInMenu">
           <span class="smenu-tabs-list _small-part _scrollBar" v-show="isTabsListShow">
             <span class="tab-item"
-                  v-for="(tab, index) in getTabsList"
-                  :key="index"
+                  v-for="tab in getTabsList"
+                  :key="tab.id"
                   @click="tabChoice(tab)"
             >
               {{getActiveTabID !== tab.id ? tab.title : ''}}
