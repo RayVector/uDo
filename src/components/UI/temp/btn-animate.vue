@@ -5,18 +5,18 @@
 <script>
 
   export default {
-    name: "btn-rotate",
-    props: ['btnType'],
+    name: "btn-animate",
+    props: ['btnName', 'animationStyle'],
     computed: {
       getImgUrl() {
         let images = require.context('@/assets/img/UI/', false, /\.svg$/);
-        return images('./' + this.btnType + ".svg")
+        return images('./' + this.btnName + ".svg")
       }
     },
     methods: {
       animate(e) {
         const icon = e.target;
-        icon.classList.toggle('_iconRotate');
+        icon.classList.toggle(this.animationStyle.toString());
       }
     },
   }

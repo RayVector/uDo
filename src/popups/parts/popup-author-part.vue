@@ -6,7 +6,7 @@
         {{$t('popups.author.title')}}
       </div>
       <button @click="closePopup">
-        <btn-rotate btn-type="crossIcon"></btn-rotate>
+        <btn-animate btn-name="crossIcon" animation-style="_iconRotate"></btn-animate>
       </button>
     </div>
 
@@ -62,11 +62,11 @@
 </template>
 
 <script>
-  import BtnRotate from "../../components/UI/temp/btn-rotate";
+  import BtnAnimate from "../../components/UI/temp/btn-animate";
 
   export default {
     name: "popup-author-part",
-    components: {BtnRotate},
+    components: {BtnAnimate},
     methods: {
       closePopup() {
         this.$store.dispatch('closePopup');

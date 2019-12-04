@@ -5,7 +5,7 @@
         {{$t('popups.help.title')}}
       </div>
       <button @click="closePopup">
-        <btn-rotate btn-type="crossIcon"></btn-rotate>
+        <btn-animate btn-name="crossIcon" animation-style="_iconRotate"></btn-animate>
       </button>
     </div>
 
@@ -55,12 +55,12 @@
   import AddNewTabIcon from "../../components/UI/add-newTab-icon";
   import ThreeDotsIcon from "../../components/UI/three-dots-icon";
   import TrashIcon from "../../components/UI/trash-icon";
-  import BtnRotate from "../../components/UI/temp/btn-rotate";
+  import BtnAnimate from "../../components/UI/temp/btn-animate";
 
   export default {
     name: "popup-help-part",
     components: {
-      BtnRotate,
+      BtnAnimate,
       TrashIcon, ThreeDotsIcon, AddNewTabIcon, TabsSettingIcon, ClearCacheIcon, DeleteCompleted
     },
     methods: {

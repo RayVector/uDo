@@ -5,7 +5,7 @@
         {{$t('popups.options.title')}}
       </h1>
       <button @click="closePopup">
-        <btn-rotate btn-type="crossIcon"></btn-rotate>
+        <btn-animate btn-name="crossIcon" animation-style="_iconRotate"></btn-animate>
       </button>
     </div>
     <ul class="body _scrollBar">
@@ -21,11 +21,11 @@
   import OptionsThemes from "./options/parts/options-themes";
   import OptionsLangs from "./options/parts/options-langs";
   import OptionsApp from "./options/parts/options-app";
-  import BtnRotate from "../../components/UI/temp/btn-rotate";
+  import BtnAnimate from "../../components/UI/temp/btn-animate";
 
   export default {
     name: "popup-options-part",
-    components: {BtnRotate, OptionsApp, OptionsLangs, OptionsThemes},
+    components: {BtnAnimate, OptionsApp, OptionsLangs, OptionsThemes},
     methods: {
       closePopup() {
         this.$store.dispatch('closePopup');

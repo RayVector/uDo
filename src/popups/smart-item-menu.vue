@@ -9,7 +9,9 @@
         <button class="manageItemBtns" @click="uncompleteItem" v-show="getIsTaskComplete">
           <uncomplete-item-icon></uncomplete-item-icon>
         </button>
-
+        <button class="manageItemBtns">
+          <btn-animate btn-name="twoSquaresIcon" animation-style="_iconScale"></btn-animate>
+        </button>
         <button class="manageItemBtns" @click="deleteItem">
           <trash-icon></trash-icon>
         </button>
@@ -23,10 +25,11 @@
   import CompleteIcon from "../components/UI/complete-icon";
   import TrashIcon from "../components/UI/trash-icon";
   import UncompleteItemIcon from "../components/UI/uncomplete-item-icon";
+  import BtnAnimate from "../components/UI/temp/btn-animate";
 
   export default {
     name: "smart-item-menu",
-    components: {UncompleteItemIcon, TrashIcon, CompleteIcon},
+    components: {BtnAnimate, UncompleteItemIcon, TrashIcon, CompleteIcon},
     props: ['isMenuShow', 'isTaskComplete'],
     computed: {
       getIsTaskComplete() {

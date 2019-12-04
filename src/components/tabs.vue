@@ -33,11 +33,11 @@
           <tabs-setting-icon></tabs-setting-icon>
         </button>
         <button class="defTabWrap" v-else>
-          <btn-rotate btn-type="crossIcon"></btn-rotate>
+          <btn-animate btn-name="crossIcon" animation-style="_iconRotate"></btn-animate>
         </button>
       </div>
       <div @click="addNewTab" class="tab defTab _small-part" v-show="isTabMenuShow">
-        <btn-rotate btn-type="plusIcon"></btn-rotate>
+        <btn-animate btn-name="plusIcon" animation-style="_iconRotate"></btn-animate>
       </div>
     </div>
   </div>
@@ -47,11 +47,11 @@
   import TabItem from "./parts/tabItem";
   import draggable from 'vuedraggable'
   import TabsSettingIcon from "./UI/tabs-setting-icon";
-  import BtnRotate from "./UI/temp/btn-rotate";
+  import BtnAnimate from "./UI/temp/btn-animate";
 
   export default {
     name: "tabs",
-    components: {BtnRotate, TabsSettingIcon, draggable, TabItem},
+    components: {BtnAnimate, TabsSettingIcon, draggable, TabItem},
     data() {
       return {
         isTabMenuShow: false,

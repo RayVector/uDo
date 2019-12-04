@@ -1,23 +1,23 @@
 <template>
   <div class="menu _bg-theme">
     <button class="nav-btn" @click="closeMenu">
-      <btn-rotate btn-type="crossIcon"></btn-rotate>
+      <btn-animate btn-name="crossIcon" animation-style="_iconRotate"></btn-animate>
     </button>
     <button class="nav-btn" @click="openOptionsPopup">
-      <btn-rotate btn-type="gearIcon"></btn-rotate>
+      <btn-animate btn-name="gearIcon" animation-style="_iconRotate"></btn-animate>
     </button>
     <button class="nav-btn" @click="getHelp">
-      <btn-rotate btn-type="infoIcon"></btn-rotate>
+      <btn-animate btn-name="infoIcon" animation-style="_iconRotate"></btn-animate>
     </button>
   </div>
 </template>
 
 <script>
-  import BtnRotate from "../components/UI/temp/btn-rotate";
+  import BtnAnimate from "../components/UI/temp/btn-animate";
 
   export default {
     name: "appMenu",
-    components: {BtnRotate},
+    components: {BtnAnimate},
     methods: {
       getHelp() {
         this.$emit('closeMenu');
