@@ -14,13 +14,15 @@
       :sort="true"
       v-model="newTabList"
     >
-      <tab-item
-        v-for="(item, index) in getTabList"
-        :index="index"
-        :item="item"
-        :key="item.id"
-        :isTabMenuShow="isTabMenuShow"
-      ></tab-item>
+      <transition-group name="tabFade">
+        <tab-item
+          v-for="(item, index) in getTabList"
+          :index="index"
+          :item="item"
+          :key="item.id"
+          :isTabMenuShow="isTabMenuShow"
+        ></tab-item>
+      </transition-group>
     </draggable>
     <div class="tabsEditMenu">
       <div @click="isTabMenuShow = !isTabMenuShow" class="tab defTab _small-part">
