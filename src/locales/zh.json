@@ -1,6 +1,8 @@
 {
   "page": {
-    "newTodoItem": "你做..."
+    "newTodoItem": "你做...",
+    "emptyField": "在字段中输入内容",
+    "noneTabs": "创建标签"
   },
   "popups": {
     "author": {

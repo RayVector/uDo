@@ -15,7 +15,7 @@
         >
       </label>
       <button class="todoBtn" @click="addNewTask">
-        <btn-rotate btn-type="penIcon"></btn-rotate>
+        <img src="@/assets/img/UI/penIcon.svg" class="todo-pen-icon _pen-icon-add-task" alt="+">
       </button>
     </div>
     <draggable
@@ -42,12 +42,10 @@
 <script>
   import draggable from 'vuedraggable'
   import TodoItem from "./parts/todoItem";
-  import BtnRotate from "./UI/temp/btn-rotate";
 
   export default {
     name: "page",
     components: {
-      BtnRotate,
       TodoItem,
       draggable,
     },
@@ -85,13 +83,17 @@
       addNewTask() {
         if (this.getTabList.length > 0) {
           if (this.val !== '') {
+            // ANIMATION:
+            const icon = document.querySelector('._pen-icon-add-task');
+            icon.classList.toggle('_iconRotate');
+
             this.$store.dispatch("addTask", this.val);
           } else {
-            alert("Type something in the field.");
+            this.$store.dispatch("openSnackbar", this.$t('page.emptyField'));
           }
           this.val = '';
         } else {
-          alert("Create tab");
+          this.$store.dispatch("openSnackbar", this.$t('page.noneTabs'));
         }
 
       },
@@ -104,21 +106,6 @@
     height: 79%;
     overflow-y: auto;
     overflow-x: hidden;
-  }
-
-  ._scrollBar::-webkit-scrollbar-track {
-    border-radius: 10px;
-    background-color: transparent;
-  }
-
-  ._scrollBar::-webkit-scrollbar {
-    width: 4px;
-    background-color: transparent;
-  }
-
-  ._scrollBar::-webkit-scrollbar-thumb {
-    border-radius: 10px;
-    background-color: #A0A0A0;
   }
 
   .userMenu {
@@ -147,6 +134,10 @@
 
   .todoBtn:hover {
     color: rgba(0, 0, 0, .6);
+  }
+
+  .todo-pen-icon {
+    transition: all .3s ease;
   }
 
   .addTaskFieldWrap {

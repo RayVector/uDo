@@ -56,22 +56,6 @@
     height: 80%;
   }
 
-
-  ._scrollBar::-webkit-scrollbar-track {
-    border-radius: 10px;
-    background-color: transparent;
-  }
-
-  ._scrollBar::-webkit-scrollbar {
-    width: 4px;
-    background-color: transparent;
-  }
-
-  ._scrollBar::-webkit-scrollbar-thumb {
-    border-radius: 10px;
-    background-color: #A0A0A0;
-  }
-
   .body .options-item {
     margin-bottom: 30px;
   }

@@ -16,10 +16,7 @@
     methods: {
       animate(e) {
         const icon = e.target;
-        icon.classList.add('_iconRotate');
-        setTimeout(() => {
-          icon.classList.remove('_iconRotate');
-        }, 300)
+        icon.classList.toggle('_iconRotate');
       }
     },
   }

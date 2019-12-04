@@ -1,6 +1,8 @@
 {
   "page": {
-    "newTodoItem": "You do..."
+    "newTodoItem": "You do...",
+    "emptyField": "Type something in the field",
+    "noneTabs": "Create tab"
   },
   "popups": {
     "author": {

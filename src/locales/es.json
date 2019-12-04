@@ -1,6 +1,8 @@
 {
   "page": {
-    "newTodoItem": "Tú lo haces..."
+    "newTodoItem": "Tú lo haces...",
+    "emptyField": "Escribe algo en el campo",
+    "noneTabs": "Crear pestaña"
   },
   "popups": {
     "author": {

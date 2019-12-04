@@ -1,6 +1,8 @@
 {
   "page": {
-    "newTodoItem": "Сделать:"
+    "newTodoItem": "Сделать:",
+    "emptyField": "Введите текст в поле",
+    "noneTabs": "Создайте вкладку"
   },
   "popups": {
     "author": {
