@@ -27,7 +27,7 @@
       :sort="true"
       v-model="newList"
     >
-      <transition-group name="itemFade">
+      <transition-group name="itemFade" class="todoItemsList">
         <todo-item
           v-for="(item, index) in getList"
           :item="item"
