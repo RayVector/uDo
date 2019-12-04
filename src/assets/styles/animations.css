@@ -1,0 +1,10 @@
+
+/*ANIMATIONS:*/
+
+._iconRotate {
+  transform: rotate(360deg);
+}
+
+._scaleIcon {
+  transform: scale(1.3);
+}

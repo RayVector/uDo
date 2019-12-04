@@ -7,6 +7,8 @@ import Vuex from 'vuex';
 import VueI18n from 'vue-i18n'
 //STYLES
 import './assets/styles/app.css'
+import './assets/styles/themes.css'
+import './assets/styles/animations.css'
 import './assets/styles/medies.css'
 //PWA
 import './registerServiceWorker'
