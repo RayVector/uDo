@@ -2,7 +2,7 @@
   <div class="tab-item-wrap">
     <div class="tab _small-part"
          :class="{activeTab: index === getActiveTab}"
-         @click="swapTab(index)"
+         @click="swapTab"
     >
       <div class="tabInfo">
         <p class="tabTasksAmount">{{getTasksList}}</p>
@@ -73,9 +73,9 @@
       }
     },
     methods: {
-      swapTab(index) {
-        if (index !== this.getActiveTab) {
-          this.$store.dispatch("swapTab", index);
+      swapTab() {
+        if (this.item.id !== this.getActiveTab) {
+          this.$store.dispatch("swapTab", this.item.id);
         }
       },
       updateItemName(e) {

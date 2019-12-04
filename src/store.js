@@ -62,8 +62,8 @@ export default new Vuex.Store({
       state.tabs.tabsList.push({id: newId, title: String(state.tabs.tabsList.length + 1), todoItems: []});
       state.tabs.activeTab = state.tabs.tabsList.length - 1;
     },
-    swapTab(state, index) {
-      state.tabs.activeTab = index;
+    swapTab(state, tabID) {
+      state.tabs.activeTab = tabID;
     },
     newTabList(state, newTabList) {
       state.tabs.tabsList = newTabList
@@ -158,6 +158,14 @@ export default new Vuex.Store({
     deleteImg(state, data) {
       const foundedItem = state.tabs.tabsList[state.tabs.activeTab].todoItems.find(i => i.id === data.id);
       foundedItem.img = '';
+    },
+    moveItem(state, data) {
+      //Delete current item:
+      state.tabs.tabsList[state.tabs.activeTab].todoItems.splice(data.itemIndex, 1);
+      //find chosen tab in tab list in state:
+      const chosenTab = state.tabs.tabsList.find(i => i.id === data.tab.id);
+      //push current item in list of founded tab:
+      chosenTab.todoItems.unshift(data.item)
     }
 
   },
@@ -165,8 +173,8 @@ export default new Vuex.Store({
     addTab(state) {
       state.commit("addTab");
     },
-    swapTab(state, index) {
-      state.commit("swapTab", index);
+    swapTab(state, tabID) {
+      state.commit("swapTab", tabID);
     },
     deleteTab(state, index) {
       state.commit("deleteTab", index);
@@ -237,6 +245,9 @@ export default new Vuex.Store({
     },
     deleteImg(state, item) {
       state.commit("deleteImg", item);
+    },
+    moveItem(state, data) {
+      state.commit("moveItem", data);
     }
   },
   plugins: [vuexPersist.plugin]

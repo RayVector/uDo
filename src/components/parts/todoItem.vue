@@ -71,6 +71,7 @@
       @deleteItem="deleteItem"
       @completeItem="completeItem"
       @uncompleteItem="uncompleteItem"
+      @moveItem="moveItem($event)"
     ></smart-item-menu>
   </li>
 </template>
@@ -107,6 +108,9 @@
       }
     },
     methods: {
+      moveItem(tab) {
+        this.$store.dispatch('moveItem', {tab: tab, item: this.item, itemIndex: this.index})
+      },
       showItem() {
         if (!this.isPreview) {
           this.isPreview = true;
@@ -150,6 +154,7 @@
         this.isPreview = false;
         this.$store.dispatch('updateStatusTask', {item: this.item, value: false});
       },
+
       uploadImg(e) {
         let input = e.target;
         let file = input.files[0];
