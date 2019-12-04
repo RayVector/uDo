@@ -14,7 +14,7 @@
       :sort="true"
       v-model="newTabList"
     >
-      <transition-group name="tabFade">
+      <transition-group name="tabFade" tag="div" class="todoTabsList">
         <tab-item
           v-for="(item, index) in getTabList"
           :index="index"

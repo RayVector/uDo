@@ -215,6 +215,7 @@
 
   .menuOpen .tabName {
     width: 100%;
+    max-width: 90%;
     font-size: 1.5rem;
   }
 

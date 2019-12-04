@@ -9,6 +9,7 @@
         <button class="manageItemBtns" @click="uncompleteItem" v-show="getIsTaskComplete">
           <uncomplete-item-icon></uncomplete-item-icon>
         </button>
+
         <button class="manageItemBtns" @click="deleteItem">
           <trash-icon></trash-icon>
         </button>
@@ -69,11 +70,11 @@
     bottom: 40%;
     top: 40%;
     right: 0;
-    min-height: 100px;
+    min-height: 130px;
     width: 20%;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
     border-radius: 5px 0 0 5px;
     transition: .3s;
@@ -95,10 +96,6 @@
     user-select: none;
     transition: .3s;
     backface-visibility: hidden;
-  }
-
-  .manageItemBtns:not(:last-child) {
-    margin-bottom: 20px;
   }
 
   .manageItemBtns svg {
