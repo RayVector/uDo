@@ -33,6 +33,7 @@
     beforeMount() {
       // !! ATTENTION
       this.$store.dispatch('closePopup');
+      this.$store.dispatch('closeSnackbar');
     },
 
   }

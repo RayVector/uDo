@@ -235,7 +235,6 @@ export default new Vuex.Store({
     uploadImg(state, data) {
       state.commit("uploadImg", data);
     },
-
     deleteImg(state, item) {
       state.commit("deleteImg", item);
     }
