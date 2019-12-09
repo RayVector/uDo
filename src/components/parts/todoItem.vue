@@ -35,7 +35,7 @@
               id="taskImg"
               @change="uploadImg"
               class="item-img-input"
-
+              accept="image/png, image/jpeg"
             >
             <label for="taskImg" v-show="img === ''">
               <svg

@@ -5,6 +5,9 @@ if ('serviceWorker' in navigator) {
 }
 
 module.exports = {
+  // publicPath: process.env.NODE_ENV === 'production'
+  //   ? '/client/'
+  //   : '/',
   pwa: {
     workboxPluginMode: 'GenerateSW',
     workboxOptions: {

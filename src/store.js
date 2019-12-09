@@ -11,7 +11,7 @@ const vuexPersist = new VuexPersist({
 
 export default new Vuex.Store({
   state: {
-    version: 'alpha',
+    version: 'BETA',
     tabs: {
       tabsList: [
         {
@@ -43,10 +43,6 @@ export default new Vuex.Store({
     snackbars: {
       isSnackbarShow: false,
       snackbarText: ""
-    },
-    modals: {
-      isModalShow: false,
-      modalText: ""
     },
   },
   getters: {
@@ -144,13 +140,6 @@ export default new Vuex.Store({
         state.snackbars.isSnackbarShow = false;
       }, 1000);
     },
-    closeModal(state) {
-      state.modals.isModalShow = false;
-    },
-    openModal(state, text) {
-      state.modals.modalText = text;
-      state.modals.isModalShow = true;
-    },
     uploadImg(state, data) {
       const foundedItem = state.tabs.tabsList[state.tabs.activeTab].todoItems.find(i => i.id === data.id);
       foundedItem.img = data.img;
@@ -167,7 +156,6 @@ export default new Vuex.Store({
       //push current item in list of founded tab:
       chosenTab.todoItems.unshift(data.item)
     }
-
   },
   actions: {
     addTab(state) {
@@ -233,12 +221,6 @@ export default new Vuex.Store({
     clearData() {
       localStorage.clear();
       location.reload();
-    },
-    closeModal(state) {
-      state.commit("closeModal");
-    },
-    openModal(state, text) {
-      state.commit("openModal", text);
     },
     uploadImg(state, data) {
       state.commit("uploadImg", data);
