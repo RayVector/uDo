@@ -84,7 +84,7 @@
           setTimeout(() => {
             location.reload();
             this.$store.dispatch("closeSnackbar");
-          }, 2000);
+          }, 1000);
         }
       },
     },

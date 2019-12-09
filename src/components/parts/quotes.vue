@@ -5,7 +5,6 @@
 </template>
 
 <script>
-  import quotesBookEN from '@/assets/quotes/quotesBookEN.json'
 
   export default {
     name: "quotes",
@@ -15,9 +14,9 @@
       }
     },
     mounted() {
-      const max = Object.keys(quotesBookEN).length;
+      const max = Object.keys(this.$t('quotes')).length;
       let randomNumber = Math.floor(Math.random() * Math.floor(max));
-      this.quote = quotesBookEN[randomNumber];
+      this.quote = this.$t('quotes')[randomNumber];
     }
   }
 </script>

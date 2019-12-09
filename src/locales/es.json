@@ -40,6 +40,24 @@
   "snackbars": {
     "tabDeleted": "Pestaña eliminada",
     "langChanged": "Idioma cambiado"
+  },
+  "quotes": {
+    "0": "\" Te enfrentarás a muchas derrotas en la vida, pero nunca te dejes derrotar. \"-Maya Angelou",
+    "1": "\" La mayor gloria en vivir no consiste en nunca caer, sino en levantarse cada vez que caemos. \"-Nelson Mandela",
+    "2": "\" La forma de comenzar es dejar de hablar y comenzar a hacer. \"-Walt Disney",
+    "3": "\" Si la vida fuera predecible, dejaría de ser vida y carecería de sabor. \"-Eleanor Roosevelt",
+    "4": "\" La vida es lo que sucede cuando estás ocupado haciendo otros planes. \"-John Lennon",
+    "5": "\" La vida es lo que sucede cuando estás ocupado haciendo otros planes. \"-John Lennon",
+    "6": "\" Difunde amor donde quiera que vayas. Que nadie venga a ti sin irte más feliz. \" Madre Teresa ",
+    "7": "\" Cuando llegues al final de la cuerda, átale un nudo y agárrate. \"-Franklin D. Roosevelt",
+    "8": "\" Recuerda siempre que eres absolutamente único. Al igual que todos los demás. \"-Margaret Mead",
+    "9": "\" No juzgues cada día por la cosecha que cosechas sino por las semillas que plantas. \"-Robert Louis Stevenson",
+    "10": "\" El futuro pertenece a quienes creen en la belleza de sus sueños. \"-Eleanor Roosevelt",
+    "11": "\" Dime y lo olvido. Enséñame y lo recuerdo. Involúcrame y aprendo. \"-Benjamin Franklin",
+    "12": "\" Las cosas mejores y más bellas del mundo no se pueden ver ni tocar, se deben sentir con el corazón. \"-Helen Keller",
+    "13": "\" Es durante nuestros momentos más oscuros que debemos enfocarnos para ver la luz. \"-Aristóteles",
+    "14": "\" Quien sea feliz también hará felices a los demás. \"-Anne Frank",
+    "15": "\" No vayas a donde el camino puede conducir, ve donde no hay camino y deja un rastro. \"-Ralph Waldo Emerson"
   }
 }
 
