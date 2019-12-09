@@ -30,11 +30,12 @@ COMMON:
 + settings popup from smart menu (themes, help, info);
 + Tabs name fix;
 + Accept button on mobile “return” keyboard;
-- Translate drive line;
++ Translate drive line;
++ moving tasks to another tab (smart menu);
 - Options: Recycle: restore task. Clear after 30 days;
-- moving tasks to another tab (smart menu);
 - task time/date/complete time;
 - settings popup (user);
+- Modal window (ask before action);
 ----------------
 + refactor all action icons to isolate component;
 + rewrite help tips;
