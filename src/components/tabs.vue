@@ -8,13 +8,13 @@
     <draggable
       :delay="400"
       chosenClass="drag-chosen"
-      class="todoTabsList _scrollBar"
+      class="todoTabsList"
       handle=".handle"
       tag="div"
       :sort="true"
       v-model="newTabList"
     >
-      <transition-group name="tabFade" tag="div" class="todoTabsList">
+      <transition-group name="tabFade" tag="div" class="todoTabsList _scrollBar">
         <tab-item
           v-for="(item, index) in getTabList"
           :index="index"
@@ -122,7 +122,8 @@
   .todoTabsList {
     width: 100%;
     height: 100%;
-    overflow: auto;
+    overflow-y: auto;
+    overflow-x: hidden;
     display: flex;
   }
 
@@ -205,11 +206,9 @@
 
   .tabFade-enter-active, .tabFade-leave-active {
     transition: .6s;
-    transform: translateX(0);
   }
 
   .tabFade-enter, .tabFade-leave-to {
-    transform: translateX(2rem);
     opacity: 0;
   }
 
