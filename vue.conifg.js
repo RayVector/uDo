@@ -5,9 +5,13 @@ if ('serviceWorker' in navigator) {
 }
 
 module.exports = {
-  // publicPath: process.env.NODE_ENV === 'production'
-  //   ? '/client/'
-  //   : '/',
+  devServer: {
+    proxy: {
+      '/api': {
+        target: 'http://localhost:5000'
+      }
+    }
+  },
   pwa: {
     workboxPluginMode: 'GenerateSW',
     workboxOptions: {

@@ -8,39 +8,39 @@
         <p class="tabTasksAmount">{{getTasksList}}</p>
       </div>
       <div
-        class="tabName"
-        v-show="!isTabMenuShow"
+          class="tabName"
+          v-show="!isTabMenuShow"
       >
         {{item.title}}
       </div>
       <label class="tabNameWrap">
         <input
-          type="text"
-          class="tabName tabNameInput"
-          :placeholder="item.title"
-          v-show="isTabMenuShow"
-          :disabled="!isTabMenuShow"
+            type="text"
+            class="tabName tabNameInput"
+            :placeholder="item.title"
+            v-show="isTabMenuShow"
+            :disabled="!isTabMenuShow"
 
-          @input="updateItemName"
-          :value="tabNewName"
+            @input="updateItemName"
+            :value="tabNewName"
         >
       </label>
       <div class="editTabMenu">
         <button
-          @click="isMenuShow = true"
-          v-show="isTabMenuShow"
-          class="manageTab dragTabHandle handle">
+            @click="isMenuShow = true"
+            v-show="isTabMenuShow"
+            class="manageTab dragTabHandle handle">
           <three-dots-icon></three-dots-icon>
         </button>
       </div>
     </div>
     <smart-tab-menu
-      :isMenuShow="isMenuShow"
-      v-show="isMenuShow"
-      @closeMenu="isMenuShow = false"
-      @deleteItem="deleteItem"
-      @deleteCompleted="deleteCompleted"
-      @deleteAll="deleteAll"
+        :isMenuShow="isMenuShow"
+        v-show="isMenuShow"
+        @closeMenu="isMenuShow = false"
+        @deleteItem="deleteItem"
+        @deleteCompleted="deleteCompleted"
+        @deleteAll="deleteAll"
     ></smart-tab-menu>
   </div>
 
@@ -201,7 +201,8 @@
   }
 
   .menuOpen .tab-item-wrap {
-    height: unset;
+    height: 40px;
+    margin-bottom: 5px;
     width: 100%;
     max-width: 100%;
   }
@@ -209,6 +210,7 @@
   .menuOpen .tab {
     display: flex;
     max-height: unset;
+    border-radius: 0;
     border-left: 0;
     border-right: 0;
   }

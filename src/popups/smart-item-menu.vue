@@ -83,7 +83,7 @@
     bottom: 0;
     left: 0;
     right: 0;
-    z-index: 1;
+    z-index: 2;
     width: 100vw;
     height: 100vh;
     background-color: rgba(0, 0, 0, .4);
@@ -91,7 +91,7 @@
 
   .todoItemMenu {
     padding: 0.5rem;
-    z-index: 2;
+    z-index: 3;
     position: fixed;
     bottom: 40%;
     top: 40%;

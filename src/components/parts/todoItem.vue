@@ -1,49 +1,49 @@
 <template>
   <li
-    class="item-wrap">
+      class="item-wrap">
     <div
-      class="todoItem _item-theme"
-      :class="{'preview-item': isPreview, 'item-completed': item.checked}"
+        class="todoItem _item-theme"
+        :class="{'preview-item': isPreview, 'item-completed': item.checked}"
     >
       <div class="todoItem-content" @click="showItem">
         <label class="todoItemName-wrap">
           <input
-            type="text"
-            class="todoItem-edit-name"
-            placeholder="Todo"
-            autocomplete="off"
-            @input="updateItemName"
-            :value="itemName"
-            :disabled="!isPreview"
+              type="text"
+              class="todoItem-edit-name"
+              placeholder="Todo"
+              autocomplete="off"
+              @input="updateItemName"
+              :value="itemName"
+              :disabled="!isPreview"
           >
         </label>
         <div class="item-body" v-show="isPreview">
           <label>
             <textarea
-              class="item-desc"
-              autocomplete="off"
-              placeholder="Description"
-              @input="updateItemDesc"
-              :value="itemDesc"
-              :disabled="!isPreview"
+                class="item-desc"
+                autocomplete="off"
+                placeholder="Description"
+                @input="updateItemDesc"
+                :value="itemDesc"
+                :disabled="!isPreview"
             ></textarea>
           </label>
           <div class="img-area">
             <input
-              type="file"
-              ref="fileInput"
-              id="taskImg"
-              @change="uploadImg"
-              class="item-img-input"
-              accept="image/png, image/jpeg"
+                type="file"
+                ref="fileInput"
+                :id="'taskImg' + index"
+                @change="uploadImg"
+                class="item-img-input"
+                accept="image/png, image/jpeg"
             >
-            <label for="taskImg" v-show="img === ''">
+            <label :for="'taskImg' + index" v-show="img === ''">
               <svg
-                class="file-input-icon"
-                width="42" height="26" viewBox="0 0 42 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  class="file-input-icon"
+                  width="42" height="26" viewBox="0 0 42 26" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path
-                  d="M21.6267 18.9961C21.2607 19.2903 20.7393 19.2903 20.3733 18.9961L5.02605 6.65428C4.2904 6.0627 4.70871 4.875 5.65272 4.875L36.3473 4.875C37.2913 4.875 37.7096 6.0627 36.974 6.65428L21.6267 18.9961Z"
-                  fill="white" fill-opacity="0.8"></path>
+                    d="M21.6267 18.9961C21.2607 19.2903 20.7393 19.2903 20.3733 18.9961L5.02605 6.65428C4.2904 6.0627 4.70871 4.875 5.65272 4.875L36.3473 4.875C37.2913 4.875 37.7096 6.0627 36.974 6.65428L21.6267 18.9961Z"
+                    fill="white" fill-opacity="0.8"></path>
                 <rect x="3.9375" y="22.75" width="34.125" height="3.25" rx="1" fill="white" fill-opacity="0.8"></rect>
               </svg>
             </label>
@@ -65,13 +65,13 @@
     </div>
     <div class="item-shadow" v-show="isPreview" @click="isPreview = false"></div>
     <smart-item-menu
-      :isMenuShow="isMenuShow"
-      :isTaskComplete="item.checked"
-      @closeMenu="isMenuShow = false"
-      @deleteItem="deleteItem"
-      @completeItem="completeItem"
-      @uncompleteItem="uncompleteItem"
-      @moveItem="moveItem($event)"
+        :isMenuShow="isMenuShow"
+        :isTaskComplete="item.checked"
+        @closeMenu="isMenuShow = false"
+        @deleteItem="deleteItem"
+        @completeItem="completeItem"
+        @uncompleteItem="uncompleteItem"
+        @moveItem="moveItem($event)"
     ></smart-item-menu>
   </li>
 </template>
@@ -194,6 +194,7 @@
     width: 100vw;
     height: 100vh;
     background-color: rgba(0, 0, 0, .4);
+    cursor: pointer;
   }
 
   .todoItem {
@@ -281,11 +282,13 @@
   .file-input-icon {
     width: 2rem;
     height: 2rem;
+    cursor: pointer;
   }
 
   .item-img {
+    cursor: pointer;
     border: 1px solid rgba(0, 0, 0, .8);
-    max-width: 55%;
+    max-width: 45%;
     border-radius: 4px;
   }
 
@@ -341,6 +344,10 @@
 
     .todoItem:hover {
       border: 1px solid #404040;
+    }
+
+    .item-img {
+      max-width: 25%;
     }
   }
 </style>

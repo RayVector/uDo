@@ -8,13 +8,13 @@
     <draggable
       :delay="400"
       chosenClass="drag-chosen"
-      class="todoTabsList"
+      class="todoTabsList-drag scrollBar"
       handle=".handle"
       tag="div"
       :sort="true"
       v-model="newTabList"
     >
-      <transition-group name="tabFade" tag="div" class="todoTabsList _scrollBar">
+      <transition-group name="tabFade" tag="div" class="todoTabsList">
         <tab-item
           v-for="(item, index) in getTabList"
           :index="index"
@@ -119,11 +119,13 @@
     overflow: hidden;
   }
 
-  .todoTabsList {
+  .todoTabsList-drag {
     width: 100%;
     height: 100%;
-    overflow-y: auto;
-    overflow-x: hidden;
+    overflow: auto;
+  }
+
+  .todoTabsList {
     display: flex;
   }
 
@@ -140,6 +142,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    border-left: 0.0625rem solid rgba(0, 0, 0, 0.3);
+    border-bottom: 0.0625rem solid rgba(0, 0, 0, 0.3);
     border-bottom-left-radius: .5rem;
     border-bottom-right-radius: 0;
   }
@@ -163,11 +167,10 @@
     z-index: 2;
     position: absolute;
     right: 0;
-    padding-bottom: 2rem;
     flex-direction: column;
     align-items: flex-start;
     justify-content: flex-start;
-    height: 75%;
+    height: 85%;
     background-color: #f0f0f0;
     -webkit-box-shadow: 0 10px 30px 0 rgba(50, 50, 50, .4);
     -moz-box-shadow: 0 10px 30px 0 rgba(50, 50, 50, .4);
@@ -183,6 +186,7 @@
   }
 
   .menuOpen .todoTabsList {
+    padding-bottom: 2rem;
     display: block;
   }
 
@@ -196,6 +200,24 @@
   .menuOpen .defTab:first-child {
     border-bottom-right-radius: .5rem;
     border-bottom-left-radius: 0;
+  }
+
+
+  /*SCROLLBAR:*/
+
+  .scrollBar::-webkit-scrollbar-track {
+    border-radius: 0;
+    background-color: transparent;
+  }
+
+  .scrollBar::-webkit-scrollbar {
+    width: 0;
+    background-color: transparent;
+  }
+
+  .scrollBar::-webkit-scrollbar-thumb {
+    border-radius: 0;
+    background-color: transparent;
   }
 
 
@@ -235,6 +257,7 @@
     .tab-item-wrap {
       min-width: 10%;
       max-width: 15%;
+      /*max-width: 150px;*/
       cursor: pointer;
     }
 
@@ -248,6 +271,24 @@
       max-height: 500px;
       border: 1px solid #797979;
       border-radius: 10px;
+    }
+
+    /*SCROLLBAR:*/
+
+    .scrollBar::-webkit-scrollbar-track {
+      border-radius: 10px;
+      background-color: transparent;
+    }
+
+    .scrollBar::-webkit-scrollbar {
+      width: 4px;
+      height: 4px;
+      background-color: transparent;
+    }
+
+    .scrollBar::-webkit-scrollbar-thumb {
+      border-radius: 10px;
+      background-color: #A0A0A0;
     }
   }
 
