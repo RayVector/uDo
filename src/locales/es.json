@@ -21,7 +21,8 @@
       },
       "app": {
         "title": "Solicitud",
-        "item1": "Borrar datos"
+        "item1": "Borrar datos",
+        "item2": "Actualizar aplicación"
       }
     },
     "help": {

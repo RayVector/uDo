@@ -25,8 +25,6 @@
     border: 1px solid rgba(204, 204, 204, .4);
     border-radius: 10px;
     padding: 8px;
-
-    color: rgba(255, 255, 255, .8);
     cursor: pointer;
     font-size: 1.2rem;
     font-weight: bold;

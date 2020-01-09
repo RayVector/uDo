@@ -48,6 +48,10 @@ li {
   list-style-type: none;
 }
 
+input {
+  color: inherit;
+}
+
 /*SCROLLBAR:*/
 
 ._scrollBar::-webkit-scrollbar-track {

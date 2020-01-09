@@ -4,6 +4,8 @@
 
 .Forest, .Forest ._bg-theme {
   background-color: #007B89;
+  color: rgba(255, 255, 255, 0.8);
+
 }
 
 .Forest ._small-part {
@@ -16,13 +18,29 @@
   background: -webkit-linear-gradient(left, #009a99 0%, #00bab3 100%); /* Chrome10-25,Safari5.1-6 */
   background: linear-gradient(to right, #009a99 0%, #00bab3 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#009a99', endColorstr='#00bab3', GradientType=1); /* IE6-9 */
+}
 
+.Forest ._theme-icon, .Forest ._pen-icon-add-task {
+  fill: rgba(255, 255, 255, 1);
+}
+
+.Forest ._theme-input::placeholder {
+  color: rgba(255, 255, 255, .5);
+}
+
+.Forest ._theme-addTaskField {
+  border-bottom: 1px solid rgba(255, 255, 255, .8);
+}
+
+.Forest ._theme-appMenu {
+  background-color: rgba(0, 0, 0, .8);
 }
 
 /*Space:*/
 
 .Space, .Space ._bg-theme {
   background-color: #485f6f;
+  color: rgba(255, 255, 255, 0.8);
 }
 
 .Space ._small-part {
@@ -34,10 +52,27 @@
   background: linear-gradient(90deg, rgba(70, 84, 132, 1) 0%, rgba(79, 168, 210, 1) 100%);
 }
 
+.Space ._theme-icon, .Space ._pen-icon-add-task {
+  fill: rgba(255, 255, 255, 1);
+}
+
+.Space ._theme-input::placeholder {
+  color: rgba(255, 255, 255, .5);
+}
+
+.Space ._theme-addTaskField {
+  border-bottom: 1px solid rgba(255, 255, 255, .8);
+}
+
+.Space ._theme-appMenu {
+  background-color: #485f6f;
+}
+
 /*SEA:*/
 
 .Sea, .Sea ._bg-theme {
   background-color: rgba(105, 92, 76, 1);
+  color: rgba(255, 255, 255, 0.8);
 }
 
 .Sea ._small-part {
@@ -48,4 +83,81 @@
   background-color: #51412F;
 }
 
+.Sea ._theme-icon, .Sea ._pen-icon-add-task {
+  fill: rgba(255, 255, 255, 1);
+}
 
+.Sea ._theme-input::placeholder {
+  color: rgba(255, 255, 255, .5);
+}
+
+.Sea ._theme-addTaskField {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.8);
+}
+
+.Sea ._theme-appMenu {
+  background-color: rgba(105, 92, 76, 1);
+}
+
+
+/*White:*/
+
+.White, .White ._bg-theme {
+  background-color: #F7F7F7;
+  color: rgba(0, 0, 0, .8);
+}
+
+.White ._small-part {
+  background-color: #FF933D;
+}
+
+.White ._item-theme, .White .completed {
+  background-color: #FF933D;
+}
+
+.White ._theme-icon, .White ._pen-icon-add-task {
+  fill: rgba(0, 0, 0, .8);
+}
+
+.White ._theme-input::placeholder {
+  color: rgba(0, 0, 0, .5);
+}
+
+.White ._theme-addTaskField {
+  border-bottom: 1px solid rgba(0, 0, 0, .8);
+}
+
+.White ._theme-appMenu {
+  background-color: rgba(0, 0, 0, .8);
+}
+
+/* Dark: */
+
+.Dark, .Dark ._bg-theme {
+  background-color: #0D0D0D;
+  color: #F2EBDF;
+}
+
+.Dark ._small-part {
+  background-color: #8C8B88;
+}
+
+.Dark ._item-theme, .Dark .completed {
+  background-color: #8C8B88;
+}
+
+.Dark ._theme-icon, .Dark ._pen-icon-add-task {
+  fill: #F2EBDF;
+}
+
+.Dark ._theme-input::placeholder {
+  color: rgba(255, 255, 255, .5);
+}
+
+.Dark ._theme-addTaskField {
+  border-bottom: 1px solid #F2EBDF;
+}
+
+.Dark ._theme-appMenu {
+  background-color: #262626;
+}

@@ -34,6 +34,12 @@ export default new Vuex.Store({
         {
           themeName: 'Sea',
         },
+        {
+          themeName: 'White',
+        },
+        {
+          themeName: 'Dark',
+        }
       ]
     },
     popups: {
@@ -155,6 +161,9 @@ export default new Vuex.Store({
       const chosenTab = state.tabs.tabsList.find(i => i.id === data.tab.id);
       //push current item in list of founded tab:
       chosenTab.todoItems.unshift(data.item)
+    },
+    refreshApp() {
+      location.reload();
     }
   },
   actions: {
@@ -230,6 +239,9 @@ export default new Vuex.Store({
     },
     moveItem(state, data) {
       state.commit("moveItem", data);
+    },
+    refreshApp(state) {
+      state.commit("refreshApp");
     }
   },
   plugins: [vuexPersist.plugin]

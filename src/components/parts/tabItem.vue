@@ -137,7 +137,6 @@
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
-    color: rgba(255, 255, 255, 0.8);
   }
 
   .tabSettingBtn {

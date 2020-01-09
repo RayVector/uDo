@@ -101,6 +101,7 @@
     padding-bottom: 40px;
     display: flex;
     justify-content: space-around;
+    flex-wrap: wrap;
   }
 
 

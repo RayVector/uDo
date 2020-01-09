@@ -49,6 +49,7 @@
            * action is dispatch prop
            */
           {action: "clearData"},
+          {action: "refreshApp"},
         ]
       }
     },
@@ -89,7 +90,8 @@
     padding-top: 40px;
     padding-bottom: 40px;
     display: flex;
-    justify-content: space-around;
+    flex-direction: column;
+    align-items: center;
   }
 
 

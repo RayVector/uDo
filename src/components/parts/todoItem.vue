@@ -20,7 +20,7 @@
         <div class="item-body" v-show="isPreview">
           <label>
             <textarea
-                class="item-desc"
+                class="item-desc _theme-input"
                 autocomplete="off"
                 placeholder="Description"
                 @input="updateItemDesc"
@@ -234,7 +234,6 @@
 
   .todoItem-edit-name {
     width: 100%;
-    color: rgba(255, 255, 255, 0.8);
     border: none;
     background-color: unset;
     font-size: 1.2rem;
@@ -260,14 +259,10 @@
     height: 60px;
     width: 100%;
     padding: 10px 0;
-    color: rgba(255, 255, 255, 0.8);
     font-size: 1rem;
     resize: none;
   }
 
-  .item-desc::placeholder {
-    color: rgba(255, 255, 255, 0.5);
-  }
 
   .img-area {
     display: flex;

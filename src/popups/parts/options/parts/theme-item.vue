@@ -1,7 +1,7 @@
 <template>
   <li class="theme-item _small-part" :class="{'active-theme': index === getActiveTheme}">
-    <div class="preview-box forest"
-         :style="{backgroundImage: 'url('+require('../../../../assets/img/'+getThemeName+'.jpg')+')'}"
+    <div class="preview-box"
+         :style="{backgroundImage: 'url('+require('../../../../assets/img/'+getThemeName+'.jpg')+')' }"
     ></div>
     <p class="desc">{{item.themeName}}</p>
   </li>
@@ -24,6 +24,7 @@
 
 <style scoped lang="scss">
   .theme-item {
+    margin-top: 10px;
     border: 1px solid #ccc;
     border-radius: 10px;
     padding: 5px;

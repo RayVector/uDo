@@ -12,10 +12,10 @@
         <svg
           class="openMenuBtnItem"
           width="39" height="30" viewBox="0 0 39 30" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path
+          <path class="_theme-icon"
             d="M5 13.8975C5 12.7929 5.89543 11.8975 7 11.8975H32C33.1046 11.8975 34 12.7929 34 13.8975V28C34 29.1046 34.106 30 33.0014 30C32.7191 30 32.3877 30 32 30C31.6123 30 31.2809 30 30.9986 30C29.894 30 30 29.1046 30 28V23C30 21.8954 29.1046 21 28 21H27.5H27.0413C25.9207 21 25.0185 21.9194 25.0363 23.0398C25.0785 25.695 25.1273 30 25 30C20.7532 30 11.1405 29.9389 6.98039 29.911C5.88136 29.9036 5 29.0106 5 27.9116V13.8975Z"
             fill="white" fill-opacity="0.8"></path>
-          <path
+          <path class="_theme-icon"
             d="M18.972 0.328302C19.2953 0.127278 19.7047 0.127279 20.028 0.328303L33.4133 8.65077C34.2676 9.18191 33.8912 10.5 32.8853 10.5H6.11471C5.1088 10.5 4.73244 9.18191 5.58669 8.65077L18.972 0.328302Z"
             fill="white" fill-opacity="0.8"></path>
         </svg>
@@ -56,7 +56,6 @@
   .todoHeaderWrap {
     position: relative;
     padding: 1rem 1rem 1.5rem 1rem;
-    /*border-bottom: .0625rem solid rgba(0, 0, 0, .3);*/
   }
 
   .todoTitle {
@@ -69,7 +68,6 @@
     font-size: 2.3rem;
     font-weight: bold;
     letter-spacing: -0.025rem;
-    color: rgba(255, 255, 255, .8);
     cursor: pointer;
   }
 
@@ -92,9 +90,6 @@
     transition: .3s;
   }
 
-  .openMenuBtnItem line {
-    stroke: rgba(0, 0, 0, 0.7);
-  }
 
   .todoQuotes {
     position: absolute;

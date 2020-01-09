@@ -5,34 +5,43 @@
 
       <label class="addTaskFieldWrap">
         <input
-          class="addTaskField"
-          maxlength="100"
-          :placeholder="$t('page.newTodoItem')"
-          required
-          type="text"
-          v-model="val"
-          @keypress.enter="addNewTask"
+            class="addTaskField _theme-input _theme-addTaskField"
+            maxlength="100"
+            :placeholder="$t('page.newTodoItem')"
+            required
+            type="text"
+            v-model="val"
+            @keypress.enter="addNewTask"
         >
       </label>
       <button class="todoBtn" @click="addNewTask">
-        <img src="@/assets/img/UI/penIcon.svg" class="todo-pen-icon _pen-icon-add-task" alt="+">
+        <svg
+            class="todo-pen-icon"
+            width="27" height="31" viewBox="0 0 27 31" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="4.4977" cy="26.2265" r="3" transform="rotate(40 4.4977 26.2265)" fill="white"
+                  class="_pen-icon-add-task"
+                  fill-opacity="0.8"></circle>
+          <rect x="22.126" width="6" height="26" rx="3" transform="rotate(40 22.126 0)" fill="white"
+                class="_pen-icon-add-task"
+                fill-opacity="0.8"></rect>
+        </svg>
       </button>
     </div>
     <draggable
-      :delay="400"
-      chosenClass="drag-chosen"
-      class="todoItemsList"
-      handle=".handle"
-      tag="div"
-      :sort="true"
-      v-model="newList"
+        :delay="400"
+        chosenClass="drag-chosen"
+        class="todoItemsList"
+        handle=".handle"
+        tag="div"
+        :sort="true"
+        v-model="newList"
     >
       <transition-group name="itemFade" class="todoItemsList">
         <todo-item
-          v-for="(item, index) in getList"
-          :item="item"
-          :index="index"
-          :key="index"
+            v-for="(item, index) in getList"
+            :item="item"
+            :index="index"
+            :key="index"
         ></todo-item>
       </transition-group>
     </draggable>
@@ -95,7 +104,6 @@
         } else {
           this.$store.dispatch("openSnackbar", this.$t('page.noneTabs'));
         }
-
       },
     },
   }
@@ -154,11 +162,9 @@
     white-space: nowrap;
     font-weight: 500;
     font-size: 1rem;
-    color: rgba(255, 255, 255, 0.8);
     border: none;
     border-radius: 0;
     -webkit-border-radius: 0;
-    border-bottom: 1px solid rgba(255, 255, 255, .8);
     border-right: 0;
     border-right: 0;
     border-top: 0;

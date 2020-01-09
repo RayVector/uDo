@@ -1,5 +1,5 @@
 <template>
-  <div class="menu _bg-theme">
+  <div class="menu _theme-appMenu">
     <button class="nav-btn" @click="closeMenu">
       <btn-animate btn-name="crossIcon" animation-style="_iconRotate"></btn-animate>
     </button>

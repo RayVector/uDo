@@ -21,7 +21,8 @@
       },
       "app": {
         "title": "App",
-        "item1": "Clear data"
+        "item1": "Clear data",
+        "item2": "Refresh App"
       }
     },
     "help": {
