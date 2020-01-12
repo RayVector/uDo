@@ -31,7 +31,7 @@
         :delay="400"
         chosenClass="drag-chosen"
         class="todoItemsList"
-        handle=".handle"
+        handle=".handleTodoItem"
         tag="div"
         :sort="true"
         v-model="newList"

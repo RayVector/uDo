@@ -68,6 +68,7 @@ export default new Vuex.Store({
       state.tabs.activeTab = tabID;
     },
     newTabList(state, newTabList) {
+      state.tabs.activeTab = 0;
       state.tabs.tabsList = newTabList
     },
     deleteTab(state, index) {
@@ -114,7 +115,8 @@ export default new Vuex.Store({
       state.tabs.tabsList[state.tabs.activeTab].todoItems.sort((a, b) => a.checked - b.checked);
     },
     sortable(state, newList) {
-      state.tabs.tabsList[state.tabs.activeTab].todoItems = newList
+      state.tabs.tabsList[state.tabs.activeTab].todoItems = newList;
+      state.tabs.tabsList[state.tabs.activeTab].todoItems.sort((a, b) => a.checked - b.checked);
     },
     updateTab(state, item) {
       const foundItem = state.tabs.tabsList.find(i => i.id === item.id);

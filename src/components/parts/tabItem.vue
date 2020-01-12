@@ -29,7 +29,7 @@
         <button
             @click="isMenuShow = true"
             v-show="isTabMenuShow"
-            class="manageTab dragTabHandle handle">
+            class="manageTab dragTabHandle handleTab">
           <three-dots-icon></three-dots-icon>
         </button>
       </div>
@@ -77,6 +77,7 @@
         if (this.item.id !== this.getActiveTab) {
           this.$store.dispatch("swapTab", this.item.id);
         }
+        console.log(this.item.id, this.getActiveTab);
       },
       updateItemName(e) {
         this.tabName = e.target.value;

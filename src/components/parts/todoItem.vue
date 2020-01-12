@@ -59,7 +59,7 @@
           </div>
         </div>
       </div>
-      <button class="item-open-menu handle" @click="isMenuShow = true">
+      <button class="item-open-menu handleTodoItem" @click="isMenuShow = true">
         <three-dots-icon></three-dots-icon>
       </button>
     </div>

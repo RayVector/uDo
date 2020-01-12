@@ -1,34 +1,34 @@
 <template>
   <div
-    :class="{menuOpen: isTabMenuShow}"
-    class="tabsArea"
-    :style="{backgroundImage: 'url('+require('../assets/img/'+getThemeName+'.jpg')+')'}"
+      :class="{menuOpen: isTabMenuShow}"
+      class="tabsArea"
+      :style="{backgroundImage: 'url('+require('../assets/img/'+getThemeName+'.jpg')+')'}"
   >
 
     <draggable
-      :delay="400"
-      chosenClass="drag-chosen"
-      class="todoTabsList-drag scrollBar"
-      handle=".handle"
-      tag="div"
-      :sort="true"
-      v-model="newTabList"
+        :delay="400"
+        chosenClass="drag-chosen"
+        class="todoTabsList-drag scrollBar"
+        handle=".handleTab"
+        tag="div"
+        :sort="true"
+        v-model="newTabList"
     >
       <transition-group name="tabFade" tag="div" class="todoTabsList">
         <tab-item
-          v-for="(item, index) in getTabList"
-          :index="index"
-          :item="item"
-          :key="item.id"
-          :isTabMenuShow="isTabMenuShow"
+            v-for="(item, index) in getTabList"
+            :index="index"
+            :item="item"
+            :key="item.id"
+            :isTabMenuShow="isTabMenuShow"
         ></tab-item>
       </transition-group>
     </draggable>
     <div class="tabsEditMenu">
       <div @click="isTabMenuShow = !isTabMenuShow" class="tab defTab _small-part">
         <button
-          class="defTabWrap"
-          v-if="!isTabMenuShow"
+            class="defTabWrap"
+            v-if="!isTabMenuShow"
         >
           <tabs-setting-icon></tabs-setting-icon>
         </button>
@@ -66,7 +66,7 @@
       },
       newTabList: {
         get() {
-          return this.getTabList
+          return this.$store.state.tabs.tabsList;
         },
         set(newTabList) {
           this.$store.dispatch('newTabList', newTabList)
@@ -226,13 +226,6 @@
     transition: .3s;
   }
 
-  .tabFade-enter-active, .tabFade-leave-active {
-    transition: .6s;
-  }
-
-  .tabFade-enter, .tabFade-leave-to {
-    opacity: 0;
-  }
 
   @media screen and (min-width: 1000px) {
     .tabsEditMenu {
