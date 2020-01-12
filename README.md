@@ -56,6 +56,7 @@ ___
 ### Problems:
 ___
 ```
+- Change tab after draggable/sorting (8/10);
 + Conflict: Scrolling list + v-touch (8/10);
 + Bugs with icon delete task (2/10);
 + Delete Task Icon doesn't spin in other tabs except main (2/10);
