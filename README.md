@@ -1,5 +1,6 @@
 # uDo
-Project: [Site](http://rayvector.beget.tech/).
+Todo List. PWA, PC and mobile. Localstorage to keep data.
+
 ### TODO:
 ___
 ```
